@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -48,8 +48,8 @@
                                     <h3 class="card-title">Catatan Perkelas</h3>
                                     <?php $disabled = isset($cat_kelas) ? '' : 'disabled="disabled"' ?>
                                     <button id="create-note" type="button"
-                                            class="card-tools btn btn-sm btn-primary float-right" data-toggle="modal"
-                                            data-target="#daftarModal" <?= $disabled ?>>
+                                        class="card-tools btn btn-sm btn-primary float-right" data-toggle="modal"
+                                        data-target="#daftarModal" <?= $disabled ?>>
                                         <i class="fa fa-plus"></i> <span class="ml-1">Buat Catatan Kelas</span>
                                     </button>
                                 </div>
@@ -58,48 +58,49 @@
                                         <?php if (isset($cat_kelas)) : ?>
                                             <table class="table table-striped table-bordered table-hover">
                                                 <thead>
-                                                <tr>
-                                                    <th width="50" height="50" class="text-center p-0 align-middle">
-                                                        No.
-                                                    </th>
-                                                    <th class="text-center p-0 align-middle p-0">Tanggal</th>
-                                                    <th class="text-center p-0 align-middle">Jenis</th>
-                                                    <th class="text-center p-0 align-middle">Catatan</th>
-                                                    <th class="text-center p-0 align-middle">Keterangan</th>
-                                                    <th class="text-center p-0 align-middle">Aksi</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th width="50" height="50" class="text-center p-0 align-middle">
+                                                            No.
+                                                        </th>
+                                                        <th class="text-center p-0 align-middle p-0">Tanggal</th>
+                                                        <th class="text-center p-0 align-middle">Jenis</th>
+                                                        <th class="text-center p-0 align-middle">Catatan</th>
+                                                        <th class="text-center p-0 align-middle">Keterangan</th>
+                                                        <th class="text-center p-0 align-middle">Aksi</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php
-                                                if (count($cat_kelas) > 0) :
-                                                    $arrLvl = ['Tidak ada', 'Saran', 'Teguran', 'Peringatan', 'Sangsi'];
-                                                    $no = 1;
-                                                    foreach ($cat_kelas as $value) :?>
-                                                        <tr>
-                                                            <td class="text-center"><?= $no ?></td>
-                                                            <td class="text-center"><?= $value->tgl ?></td>
-                                                            <td class="text-center"><?= $arrLvl[$value->level] ?></td>
-                                                            <td><?= $value->text ?></td>
-                                                            <td class="text-center">
-                                                                <span class="badge badge-btn badge-info">
-                                                                    <?= count($value->reading) ?> siswa membaca
-                                                                </span>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <button type="button" class="btn btn-sm btn-danger"
+                                                    <?php
+                                                    if (count($cat_kelas) > 0) :
+                                                        $arrLvl = ['Tidak ada', 'Saran', 'Teguran', 'Peringatan', 'Sangsi'];
+                                                        $no = 1;
+                                                        foreach ($cat_kelas as $value) : ?>
+                                                            <tr>
+                                                                <td class="text-center"><?= $no ?></td>
+                                                                <td class="text-center"><?= $value->tgl ?></td>
+                                                                <td class="text-center"><?= $arrLvl[$value->level] ?></td>
+                                                                <td><?= $value->text ?></td>
+                                                                <td class="text-center">
+                                                                    <span class="badge badge-btn badge-info">
+                                                                        <?= count($value->reading) ?> siswa membaca
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <button type="button" class="btn btn-sm btn-danger"
                                                                         data-id="<?= $value->id_catatan ?>"
                                                                         onclick="hapus(this)">
-                                                                    <i class="fa fa-trash"></i> <span
+                                                                        <i class="fa fa-trash"></i> <span
                                                                             class="ml-1">Hapus</span>
-                                                                </button>
-                                                            </td>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        <?php $no++;
+                                                        endforeach;
+                                                    else: ?>
+                                                        <tr>
+                                                            <td colspan="6" class="text-center">Belum ada catatan</td>
                                                         </tr>
-                                                        <?php $no++; endforeach;
-                                                else:?>
-                                                    <tr>
-                                                        <td colspan="6" class="text-center">Belum ada catatan</td>
-                                                    </tr>
-                                                <?php endif; ?>
+                                                    <?php endif; ?>
                                                 </tbody>
                                             </table>
                                         <?php else: ?>
@@ -120,37 +121,38 @@
                                         <?php if (isset($cat_siswa)) : ?>
                                             <table class="table table-striped table-bordered table-hover">
                                                 <thead>
-                                                <tr>
-                                                    <th width="50" height="50" class="text-center p-0 align-middle">
-                                                        No.
-                                                    </th>
-                                                    <th class="text-center p-0 align-middle">NIS</th>
-                                                    <th class="text-center p-0 align-middle p-0">Nama</th>
-                                                    <th class="text-center p-0 align-middle">Catatan</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th width="50" height="50" class="text-center p-0 align-middle">
+                                                            No.
+                                                        </th>
+                                                        <th class="text-center p-0 align-middle">NIS</th>
+                                                        <th class="text-center p-0 align-middle p-0">Nama</th>
+                                                        <th class="text-center p-0 align-middle">Catatan</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php
-                                                if (count($cat_siswa) > 0) :
-                                                    $no = 1;
-                                                    foreach ($cat_siswa as $value) :?>
-                                                        <tr>
-                                                            <td class="text-center"><?= $no ?></td>
-                                                            <td class="text-center"><?= $value->nis ?></td>
-                                                            <td><?= $value->nama ?></td>
-                                                            <td class="text-center">
-                                                                <button onclick="loadCatatanSiswa(<?= $value->id_siswa ?>)"
+                                                    <?php
+                                                    if (count($cat_siswa) > 0) :
+                                                        $no = 1;
+                                                        foreach ($cat_siswa as $value) : ?>
+                                                            <tr>
+                                                                <td class="text-center"><?= $no ?></td>
+                                                                <td class="text-center"><?= $value->nis ?></td>
+                                                                <td><?= $value->nama ?></td>
+                                                                <td class="text-center">
+                                                                    <button onclick="loadCatatanSiswa(<?= $value->id_siswa ?>)"
                                                                         class="btn btn-xs btn-success"><?= $value->jml_catatan ?>
-                                                                    catatan
-                                                                </button>
-                                                            </td>
+                                                                        catatan
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        <?php $no++;
+                                                        endforeach;
+                                                    else: ?>
+                                                        <tr>
+                                                            <td colspan="6" class="text-center">Belum ada catatan</td>
                                                         </tr>
-                                                        <?php $no++; endforeach;
-                                                else:?>
-                                                    <tr>
-                                                        <td colspan="6" class="text-center">Belum ada catatan</td>
-                                                    </tr>
-                                                <?php endif; ?>
+                                                    <?php endif; ?>
                                                 </tbody>
                                             </table>
                                         <?php else: ?>
@@ -199,7 +201,7 @@
                             <div class="form-group">
                                 <label>Catatan</label>
                                 <textarea style="min-height: 200px" class="form-control" name="text" id="input_text"
-                                          required></textarea>
+                                    required></textarea>
                             </div>
                         </div>
                     </div>
@@ -219,9 +221,9 @@
 </div>
 
 <script>
-    var arrKelas = JSON.parse('<?= json_encode($kelas)?>');
-    var mplSelected = '<?= isset($mapel_selected) ? $mapel_selected : ''?>';
-    var klsSelected = '<?= isset($kelas_selected) ? $kelas_selected : ''?>';
+    var arrKelas = JSON.parse('<?= json_encode($kelas) ?>');
+    var mplSelected = '<?= isset($mapel_selected) ? $mapel_selected : '' ?>';
+    var klsSelected = '<?= isset($kelas_selected) ? $kelas_selected : '' ?>';
 
     var form;
     var oldData = '';
@@ -247,7 +249,7 @@
                 $.ajax({
                     url: base_url + 'kelascatatan/hapus/' + idCatatan,
                     method: "GET",
-                    success: function (respon) {
+                    success: function(respon) {
                         console.log(respon);
                         if (respon) {
                             reload($('#opsi-mapel').val(), $('#opsi-kelas').val(), $('#opsi-tipe').val(), true);
@@ -259,7 +261,7 @@
                             });
                         }
                     },
-                    error: function (xhr, error, status) {
+                    error: function(xhr, error, status) {
                         console.log(xhr.responseText);
                         swal.fire({
                             title: "Gagal",
@@ -286,7 +288,7 @@
     }
 
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         var selKelas = $('#opsi-kelas');
         var selMapel = $('#opsi-mapel');
         form = $('#formselect');
@@ -301,30 +303,30 @@
             selKelas.html('');
             selKelas.prepend("<option value='' selected='selected' disabled='disabled'>Pilih Kelas</option>");
             console.log(arrKelas[idMapel]);
-            $.each(arrKelas[idMapel], function (index, value) {
+            $.each(arrKelas[idMapel], function(index, value) {
                 if (value != null) {
                     selKelas.append('<option value="' + index + '">' + value + '</option>');
                 }
             });
         }
 
-        selKelas.change(function () {
+        selKelas.change(function() {
             reload(selMapel.val(), $(this).val(), false);
         });
 
-        selMapel.on('change', function () {
+        selMapel.on('change', function() {
             selectKelas($(this).val());
             //reload($(this).val(), selKelas.val(), false);
         });
 
-        $('#daftarModal').on('show.bs.modal', function (e) {
+        $('#daftarModal').on('show.bs.modal', function(e) {
             var kelas = $("#opsi-kelas option:selected").text();
             $('#daftarLabel').text('Catatan Untuk Kelas ' + kelas);
             $('#input-mapel').val(selMapel.val());
             $('#input-kelas').val(selKelas.val());
         });
 
-        $('#formcatatan').submit('click', function (e) {
+        $('#formcatatan').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log("data:", $(this).serialize());
@@ -334,10 +336,10 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     console.log("result", data);
                     $('#daftarModal').modal('hide').data('bs.modal', null);
-                    $('#daftarModal').on('hidden', function () {
+                    $('#daftarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
 
@@ -360,9 +362,10 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     $('#daftarModal').modal('hide').data('bs.modal', null);
-                    $('#daftarModal').on('hidden', function () {
+                    $('#daftarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     console.log("error", xhr.responseText);

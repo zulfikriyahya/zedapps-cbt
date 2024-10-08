@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -20,17 +20,17 @@
                         </a>
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-default" data-toggle="tooltip"
-                                    title="Print" onclick="print()">
+                                title="Print" onclick="print()">
                                 <i class="fas fa-print"></i> <span
-                                        class="d-none d-sm-inline-block ml-1"> Print/PDF</span></button>
+                                    class="d-none d-sm-inline-block ml-1"> Print/PDF</span></button>
                             <button type="button" class="btn btn-sm btn-default" data-toggle="tooltip"
-                                    title="Export As Word" onclick="exportWord()">
+                                title="Export As Word" onclick="exportWord()">
                                 <i class="fa fa-file-word"></i> <span class="d-none d-sm-inline-block ml-1"> Word</span>
                             </button>
                             <button type="button" class="btn btn-sm btn-default" data-toggle="tooltip"
-                                    title="Export As Excel" onclick="exportExcel()">
+                                title="Export As Excel" onclick="exportExcel()">
                                 <i class="fa fa-file-excel"></i> <span
-                                        class="d-none d-sm-inline-block ml-1"> Excel</span></button>
+                                    class="d-none d-sm-inline-block ml-1"> Excel</span></button>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,8 @@
 <script>
     var docTitle = '';
     const namaBulan = ["", "Januar1", "Februar1", "Maret", "April", "Mei", "Juni",
-        "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    ];
 
     var styleHead = 'data-fill-color="ffffff" data-t="s" data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-f-bold="true"';
     var styleNormal = 'data-fill-color="ffffff" data-t="s" data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-f-bold="false"';
@@ -159,7 +160,7 @@
         }
 
         var numCol = 0;
-        $.each(data.bulans, function (k, v) {
+        $.each(data.bulans, function(k, v) {
             numCol += Object.keys(data.materi[v]).length;
         });
 
@@ -190,7 +191,7 @@
             '<th rowspan="3" style="min-width: 100px; border: 1px solid #c0c0c0; text-align: center; vertical-align: middle;margin: 0px;" ' + styleHead + '>Nilai Rata-rata</th>' +
             '</tr><tr>';
 
-        $.each(data.bulans, function (k, v) {
+        $.each(data.bulans, function(k, v) {
             var ind = parseInt(v);
             var lon = Object.keys(data.materi[v]).length;
             konten += '<th colspan="' + lon + '"  style="border: 1px solid #c0c0c0; text-align: center; vertical-align: middle;margin: 0px;" ' + styleHead + '>' + namaBulan[ind] + '</th>';
@@ -202,9 +203,9 @@
         konten += '</tr><tr>';
 
         var colWidth = '4,15,35';
-        $.each(data.bulans, function (i, bln) {
+        $.each(data.bulans, function(i, bln) {
             var no = 1;
-            $.each(data.materi[bln], function (tgl, jam) {
+            $.each(data.materi[bln], function(tgl, jam) {
                 konten += '<th class="tanggal" style="border: 1px solid #c0c0c0; text-align: center; vertical-align: middle;margin: 0px;" ' + styleHead + '>P' + no + '</th>';
                 no++;
                 colWidth += ',4';
@@ -214,38 +215,40 @@
         konten += '</tr></thead><tbody>';
 
         var no = 1;
-        $.each(data.log, function (key, value) {
+        $.each(data.log, function(key, value) {
             konten += '<tr>' +
                 '<td style="border: 1px solid #c0c0c0; text-align: center; vertical-align: middle;margin: 0px;" ' + styleNormal + '>' + no + '</td>' +
                 '<td style="border: 1px solid #c0c0c0; text-align: center; vertical-align: middle;margin: 0px;" ' + styleNormal + '>' + value.nis + '</td>' +
                 '<td class="nama-siswa" style="border: 1px solid #c0c0c0; vertical-align: middle;" ' + styleNama + '>' + value.nama + '</td>';
             var totalMtr = 0;
             var totalNilai = 0;
-            $.each(data.bulans, function (i, nbln) {
+            $.each(data.bulans, function(i, nbln) {
                 var tgls = Object.keys(data.materi[nbln]);
-                tgls.sort(function (a, b) {
+                tgls.sort(function(a, b) {
                     return (a < b) ? -1 : 1;
                 });
                 var jmlMtrBulan = 0;
                 var jmlNilaiBulan = 0;
-                $.each(tgls, function (index, tgl) {
+                $.each(tgls, function(index, tgl) {
                     var a = new Date(sthn, parseInt(nbln) - 1, tgl);
                     var d = a.getDay();
                     var arrJam = [];
 
                     if (a <= today) {
-                        var adaMateri = {}, adaTugas = {};
+                        var adaMateri = {},
+                            adaTugas = {};
                         var jadwalPerHari = data.mapels[d];
-                        $.each(jadwalPerHari, function (jamke, valJam) {
+                        $.each(jadwalPerHari, function(jamke, valJam) {
                             arrJam.push(jamke);
                             adaMateri[jamke] = data.materi[nbln][tgl][jamke]['1'] != null;
                             adaTugas[jamke] = data.materi[nbln][tgl][jamke]['2'] != null;
                         });
                         var bg = 'lightgrey';
                         var style = styleNormal;
-                        var nilaiMateri = 0, nilaiTugas = 0;
+                        var nilaiMateri = 0,
+                            nilaiTugas = 0;
                         var jmlJamMtr = 0;
-                        $.each(arrJam, function (index, jj) {
+                        $.each(arrJam, function(index, jj) {
                             if (adaMateri[jj]) {
                                 jmlJamMtr += 1;
                             }
@@ -291,7 +294,7 @@
         konten += '</tbody></table>' + catatan;
         $('#konten-absensi').html(konten);
 
-        $.each($('table#log-nilai').find('th'), function () {
+        $.each($('table#log-nilai').find('th'), function() {
             if ($(this).hasClass("tanggal")) {
                 $(this).html('<p style=" font-size: 8pt; margin: 1px 2px; display: block; text-align: center; vertical-align: middle;"> ' + $(this).html() + '</p>')
             } else {
@@ -299,7 +302,7 @@
             }
         });
 
-        $.each($('table#log-nilai').find('td'), function () {
+        $.each($('table#log-nilai').find('td'), function() {
             if ($(this).hasClass("nama-siswa")) {
                 $(this).html('<p style="width: 150px; margin: 1px 2px; -webkit-line-clamp: 1; overflow : hidden; text-overflow: ellipsis; display: -webkit-box;-webkit-box-orient: vertical;"> ' + $(this).text() + '</p>')
             } else {
@@ -330,7 +333,7 @@
         $('#konten-copy').html(copy);
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         var selKelas = $('#opsi-kelas');
         var selMapel = $('#opsi-mapel');
         var selTahun = $('#opsi-tahun');
@@ -349,11 +352,11 @@
             if (!empty) {
                 $('#loading').removeClass('d-none');
 
-                setTimeout(function () {
+                setTimeout(function() {
                     $.ajax({
                         url: base_url + 'kelasnilai/loadnilaimapel?' + newData,
                         type: "GET",
-                        success: function (data) {
+                        success: function(data) {
                             console.log(data);
                             if (data.length === 0) {
                                 $('#log-nilai').html('');
@@ -362,7 +365,7 @@
                                 createTable(data)
                             }
                         },
-                        error: function (xhr, status, error) {
+                        error: function(xhr, status, error) {
                             console.log(xhr.responseText);
                         }
                     });
@@ -370,27 +373,35 @@
             }
         }
 
-        selMapel.on('change', function () {
+        selMapel.on('change', function() {
             reload($(this).val(), selKelas.val(), selTahun.val(), selSmt.val());
         });
 
-        selKelas.change(function () {
+        selKelas.change(function() {
             reload(selMapel.val(), $(this).val(), selTahun.val(), selSmt.val());
         });
 
-        selTahun.change(function () {
+        selTahun.change(function() {
             reload(selMapel.val(), selKelas.val(), $(this).val(), selSmt.val());
         });
 
-        selSmt.on('change', function () {
+        selSmt.on('change', function() {
             reload(selMapel.val(), selKelas.val(), selTahun.val(), $(this).val());
         });
 
         //reload('14', '101', '2', '1');
-        selMapel.select2({theme: 'bootstrap4'});
-        selKelas.select2({theme: 'bootstrap4'});
-        selSmt.select2({theme: 'bootstrap4'});
-        selTahun.select2({theme: 'bootstrap4'});
+        selMapel.select2({
+            theme: 'bootstrap4'
+        });
+        selKelas.select2({
+            theme: 'bootstrap4'
+        });
+        selSmt.select2({
+            theme: 'bootstrap4'
+        });
+        selTahun.select2({
+            theme: 'bootstrap4'
+        });
     });
 
     function print() {
@@ -407,7 +418,12 @@
         var converted = htmlDocx.asBlob(content, {
             orientation: 'landscape',
             size: 'A4',
-            margins: {top: 700, bottom: 700, left: 1000, right: 1000}
+            margins: {
+                top: 700,
+                bottom: 700,
+                left: 1000,
+                right: 1000
+            }
         });
 
         saveAs(converted, docTitle + '.docx');
@@ -422,5 +438,4 @@
             }
         });
     }
-
 </script>

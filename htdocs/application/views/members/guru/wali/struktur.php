@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -23,10 +23,25 @@
                     <div class="row">
                         <input type="hidden" name="id_kelas" value="<?= $id_kelas ?>">
                         <?php
-                        $inputs = ['Ketua Kelas', 'Wakil Ketua', 'Sekretaris 1', 'Sekretaris 2',
-                            'Bendahara 1', 'Bendahara 2', 'Sie Ekstrakurikuler', 'Sie Upacara', 'Sie Olahraga',
-                            'Sie Keagamaan', 'Sie Keamanan', 'Sie Ketertiban', 'Sie Kebersihan', 'Sie Keindahan',
-                            'Sie Kesehatan', 'Sie Kekeluargaan', 'Sie Humas'];
+                        $inputs = [
+                            'Ketua Kelas',
+                            'Wakil Ketua',
+                            'Sekretaris 1',
+                            'Sekretaris 2',
+                            'Bendahara 1',
+                            'Bendahara 2',
+                            'Sie Ekstrakurikuler',
+                            'Sie Upacara',
+                            'Sie Olahraga',
+                            'Sie Keagamaan',
+                            'Sie Keamanan',
+                            'Sie Ketertiban',
+                            'Sie Kebersihan',
+                            'Sie Keindahan',
+                            'Sie Kesehatan',
+                            'Sie Kekeluargaan',
+                            'Sie Humas'
+                        ];
                         $ids = ['ketua', 'wakil_ketua', 'sekretaris_1', 'sekretaris_2', 'bendahara_1', 'bendahara_2', 'sie_ekstrakurikuler', 'sie_upacara', 'sie_olahraga', 'sie_keagamaan', 'sie_keamanan', 'sie_ketertiban', 'sie_kebersihan', 'sie_keindahan', 'sie_kesehatan', 'sie_kekeluargaan', 'sie_humas'];
 
                         //var_dump($struktur);
@@ -36,7 +51,7 @@
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i
-                                                        class="far fa-user mr-2"></i><?= $inputs[$key] ?></span>
+                                                    class="far fa-user mr-2"></i><?= $inputs[$key] ?></span>
                                         </div>
                                         <?php
                                         echo form_dropdown(
@@ -58,12 +73,12 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         $('.select2').select2();
 
-        $('#create').submit('click', function (e) {
+        $('#create').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log("data:", $(this).serialize());
@@ -72,7 +87,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     if (data) {
                         swal.fire({
                             title: "Sukses",
@@ -92,7 +107,8 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     swal.fire({
                         title: "ERROR",

@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
 	<section class="content-header">
 		<div class="container-fluid">
 			<div class="row mb-2">
@@ -22,11 +22,11 @@
 							<button type="button" class="btn btn-sm btn-default" data-toggle="tooltip" title="Print"><i
 									class="fas fa-print"></i></button>
 							<button type="button" class="btn btn-sm btn-default" data-toggle="tooltip"
-									title="Export As PDF"><i class="fas fa-file-pdf"></i></button>
+								title="Export As PDF"><i class="fas fa-file-pdf"></i></button>
 							<button type="button" class="btn btn-sm btn-default" data-toggle="tooltip"
-									title="Export As Word"><i class="fa fa-file-word"></i></button>
+								title="Export As Word"><i class="fa fa-file-word"></i></button>
 							<button type="button" class="btn btn-sm btn-default" data-toggle="tooltip"
-									title="Export As Excel"><i class="fa fa-file-excel"></i></button>
+								title="Export As Excel"><i class="fa fa-file-excel"></i></button>
 						</div>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 								<div class="col-9">
 									<select id="dropdown-kelas" class="form-control">
 										<?php foreach ($kelas as $k) : ?>
-										<option value="#content-below-<?= $k->id_kelas ?>"><?= $k->nama_kelas ?></option>
+											<option value="#content-below-<?= $k->id_kelas ?>"><?= $k->nama_kelas ?></option>
 										<?php endforeach; ?>
 									</select>
 								</div>
@@ -63,37 +63,37 @@
 						<div class="table-responsive">
 							<table id="sesi" class="w-100 table table-striped table-bordered table-hover">
 								<thead class="alert alert-primary">
-								<tr>
-									<th height="50" width="40" class="align-middle text-center p-0">No.</th>
-									<th class="align-middle text-center p-0">Kelas</th>
-									<th class="align-middle text-center p-0">Jurusan</th>
-									<th class="align-middle text-center p-0">Sesi</th>
-									<th class="align-middle text-center p-0">Set Siswa</th>
-								</tr>
+									<tr>
+										<th height="50" width="40" class="align-middle text-center p-0">No.</th>
+										<th class="align-middle text-center p-0">Kelas</th>
+										<th class="align-middle text-center p-0">Jurusan</th>
+										<th class="align-middle text-center p-0">Sesi</th>
+										<th class="align-middle text-center p-0">Set Siswa</th>
+									</tr>
 								</thead>
 								<tbody>
-								<?php
-								$no = 1;
-								foreach ($kelas as $k) : ?>
-									<tr data-id="<?= $k->id_kelas ?>">
-										<td class="align-middle text-center p-0"><?= $no++ ?></td>
-										<td class="align-middle"><?= $k->nama_kelas ?></td>
-										<td class="align-middle"><?= $k->nama_jurusan ?></td>
-										<td data-name="input-sesi">
-											<?php echo form_dropdown(
-												'sesi_id',
-												$sesi,
-												$k->sesi_id,
-												'class="form-control form-control-sm" id="kelas-' . $k->id_kelas . '" required'
-											);
-											?>
-										</td>
-										<td class="text-center">
-											<input class="check"
-												   type="checkbox" <?php echo($k->set_siswa == "1" ? 'checked' : ''); ?>>
-										</td>
-									</tr>
-								<?php endforeach; ?>
+									<?php
+									$no = 1;
+									foreach ($kelas as $k) : ?>
+										<tr data-id="<?= $k->id_kelas ?>">
+											<td class="align-middle text-center p-0"><?= $no++ ?></td>
+											<td class="align-middle"><?= $k->nama_kelas ?></td>
+											<td class="align-middle"><?= $k->nama_jurusan ?></td>
+											<td data-name="input-sesi">
+												<?php echo form_dropdown(
+													'sesi_id',
+													$sesi,
+													$k->sesi_id,
+													'class="form-control form-control-sm" id="kelas-' . $k->id_kelas . '" required'
+												);
+												?>
+											</td>
+											<td class="text-center">
+												<input class="check"
+													type="checkbox" <?php echo ($k->set_siswa == "1" ? 'checked' : ''); ?>>
+											</td>
+										</tr>
+									<?php endforeach; ?>
 								</tbody>
 							</table>
 						</div>
@@ -116,14 +116,14 @@
 							<?php foreach ($kelas as $titletab) : ?>
 								<li class="nav-item">
 									<a class="nav-link <?= $kelas[0]->id_kelas === $titletab->id_kelas ? 'active' : '' ?>"
-									   href="#content-below-<?= $titletab->id_kelas ?>">
-									   <!--
+										href="#content-below-<?= $titletab->id_kelas ?>">
+										<!--
 									   id="content-below-<?= $titletab->id_kelas ?>-tab"
 									   data-toggle="pill" href="#content-below-<?= $titletab->id_kelas ?>" role="tab"
 									   aria-controls="content-below-<?= $titletab->id_kelas ?>"
 									   aria-selected="true">
 									   -->
-									   <?= $titletab->nama_kelas ?>
+										<?= $titletab->nama_kelas ?>
 									</a>
 								</li>
 							<?php endforeach; ?>
@@ -131,40 +131,40 @@
 						<div class="tab-content" id="content-below-tabContent">
 							<?php foreach ($kelas as $titletab) : ?>
 								<div class="tab-pane fade <?= $kelas[0]->id_kelas === $titletab->id_kelas ? 'active show' : '' ?>" id="content-below-<?= $titletab->id_kelas ?>" role="tabpanel"
-									 aria-labelledby="content-below-<?= $titletab->id_kelas ?>-tab">
+									aria-labelledby="content-below-<?= $titletab->id_kelas ?>-tab">
 									<?php $arraySiswaPerKelas = $kelasarray[$titletab->nama_kelas]; ?>
 									<div class="table-responsive">
 										<table id="sesi" class="w-100 table table-striped table-bordered table-hover">
 											<thead class="alert alert-primary">
-											<tr>
-												<th height="50" width="40" class="align-middle text-center p-0">No.</th>
-												<th class="align-middle text-center p-0">Nama Siswa</th>
-												<th class="align-middle text-center p-0">Kelas</th>
-												<th class="align-middle text-center p-0">Sesi</th>
-											</tr>
+												<tr>
+													<th height="50" width="40" class="align-middle text-center p-0">No.</th>
+													<th class="align-middle text-center p-0">Nama Siswa</th>
+													<th class="align-middle text-center p-0">Kelas</th>
+													<th class="align-middle text-center p-0">Sesi</th>
+												</tr>
 											</thead>
 											<tbody>
-											<?php
-											$no = 1;
-											foreach ($arraySiswaPerKelas as $s) : ?>
-												<tr data-id="<?= $s->id_siswa ?>">
-													<td class="align-middle text-center p-0"><?= $no++ ?></td>
-													<td class="align-middle"><?= $s->nama ?></td>
-													<td class="align-middle"><?= $s->nama_kelas ?></td>
-													<td class="align-middle text-center" data-name="input-sesi">
-														<?php if ($s->set_siswa === "0") :
-														echo form_dropdown(
-															'sesi_id',
-															$sesi,
-															($s->sesi === '0' || is_null($s->sesi)) ? $s->sesi_id : $s->sesi,
-															'class="form-control form-control-sm" id="siswa-' . $s->id_siswa . '" required '
-														);
-														else: ?>
-														<?= $s->sesi_id; ?>
-														<?php endif; ?>
-													</td>
-												</tr>
-											<?php endforeach; ?>
+												<?php
+												$no = 1;
+												foreach ($arraySiswaPerKelas as $s) : ?>
+													<tr data-id="<?= $s->id_siswa ?>">
+														<td class="align-middle text-center p-0"><?= $no++ ?></td>
+														<td class="align-middle"><?= $s->nama ?></td>
+														<td class="align-middle"><?= $s->nama_kelas ?></td>
+														<td class="align-middle text-center" data-name="input-sesi">
+															<?php if ($s->set_siswa === "0") :
+																echo form_dropdown(
+																	'sesi_id',
+																	$sesi,
+																	($s->sesi === '0' || is_null($s->sesi)) ? $s->sesi_id : $s->sesi,
+																	'class="form-control form-control-sm" id="siswa-' . $s->id_siswa . '" required '
+																);
+															else: ?>
+																<?= $s->sesi_id; ?>
+															<?php endif; ?>
+														</td>
+													</tr>
+												<?php endforeach; ?>
 											</tbody>
 										</table>
 									</div>
@@ -186,4 +186,3 @@
 </div>
 
 <script src="<?= base_url() ?>/assets/app/js/cbt/sesisiswa/crud1.js"></script>
-

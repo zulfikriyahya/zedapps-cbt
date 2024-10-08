@@ -23,7 +23,7 @@ $colWidth = '';
 $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
 ?>
 
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -67,16 +67,16 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                         <div class="col-md-4 mb-3">
                             <div class="row">
                                 <button type="button" id="import-essai"
-                                        class="btn btn-info align-text-bottom btn-disabled col-5"
-                                        data-toggle="tooltip"
-                                        title="Input nilai manual">
+                                    class="btn btn-info align-text-bottom btn-disabled col-5"
+                                    data-toggle="tooltip"
+                                    title="Input nilai manual">
                                     <i class="fa fa-pencil ml-1 mr-1"></i> Input Nilai
                                 </button>
                                 <div class="col-1"></div>
                                 <button type="button" id="mark-all"
-                                        class="btn btn-success align-text-bottom btn-disabled col-6"
-                                        data-toggle="tooltip"
-                                        title="Tandai semua siswa sudah dikoreksi" disabled>
+                                    class="btn btn-success align-text-bottom btn-disabled col-6"
+                                    data-toggle="tooltip"
+                                    title="Tandai semua siswa sudah dikoreksi" disabled>
                                     <i class="fa fa-check ml-1 mr-1"></i> Tandai semua
                                 </button>
                             </div>
@@ -90,15 +90,15 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                             </button>
                         <?php else: ?>
                             <button type="button" class="btn btn-danger align-text-bottom"
-                                    data-toggle="modal" data-target="#perbaikanModal">
+                                data-toggle="modal" data-target="#perbaikanModal">
                                 <i class="fa fa-balance-scale-right ml-1 mr-1"></i> Katrol
                             </button>
                         <?php endif; ?>
                         <input style="width: 24px; height: 24px" class="m-1" id="nilai-detail" type="checkbox" checked>
                         <label for="nilai-detail" class="mt-1 mr-1">Detail</label>
                         <button type="button" id="download-excel" class="btn btn-success align-text-bottom mr-2"
-                                data-toggle="tooltip"
-                                title="Download Excel">
+                            data-toggle="tooltip"
+                            title="Download Excel">
                             <i class="fa fa-file-excel ml-1 mr-1"></i> Ekspor Excel
                         </button>
                     </div>
@@ -117,7 +117,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                         $colWidth .= ',10,10,10';
 
                         $totalSoal = $info->tampil_pg + $info->tampil_kompleks + $info->tampil_jodohkan + $info->tampil_isian + $info->tampil_esai;
-                        ?>
+                    ?>
                         <div class="d-none" id="info">
                             <div id="info-ujian"></div>
                         </div>
@@ -248,34 +248,34 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                                                 PG
                                             </th>
                                         <?php endif;
-                                        if ($info->tampil_kompleks > 0) :?>
+                                        if ($info->tampil_kompleks > 0) : ?>
                                             <th class="text-center align-middle bg-blue" data-fill-color="b8daff"
                                                 data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-f-bold="true"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
                                                 PK
                                             </th>
                                         <?php endif;
-                                        if ($info->tampil_jodohkan > 0) :?>
+                                        if ($info->tampil_jodohkan > 0) : ?>
                                             <th class="text-center align-middle bg-blue" data-fill-color="b8daff"
                                                 data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-f-bold="true"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
                                                 JO
                                             </th>
                                         <?php endif;
-                                        if ($info->tampil_isian > 0) :?>
+                                        if ($info->tampil_isian > 0) : ?>
                                             <th class="text-center align-middle bg-blue" data-fill-color="b8daff"
                                                 data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-f-bold="true"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
                                                 IS
                                             </th>
                                         <?php endif;
-                                        if ($info->tampil_esai > 0) :?>
+                                        if ($info->tampil_esai > 0) : ?>
                                             <th class="text-center align-middle bg-blue" data-fill-color="b8daff"
                                                 data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-f-bold="true"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
                                                 ES
                                             </th>
-                                        <?php endif;
+                                    <?php endif;
                                     endif;
                                     ?>
                                     <th class="text-center align-middle bg-blue" data-fill-color="b8daff"
@@ -296,7 +296,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                                     $idSiswa = $siswa->id_siswa;
                                     $disable = strpos($siswa->mulai_ujian, '-') !== false;
                                     $disabled = $disable ? 'disabled' : '';
-                                    ?>
+                                ?>
                                     <tr>
                                         <td class="text-center align-middle" data-a-v="middle" data-a-h="center"
                                             data-b-a-s="thin"
@@ -337,7 +337,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                                             if (round($siswa->skor_total, 2) > 0 && $siswa->skor_total < $nilaiTerrendah) {
                                                 $nilaiTerrendah = round($siswa->skor_total, 2);
                                             }
-                                            ?>
+                                        ?>
                                             <td class="no-soal-siswa d-none" <?= $bg ?> data-a-v="middle"
                                                 data-a-h="center"
                                                 data-b-a-s="thin"
@@ -348,46 +348,54 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                                             <td class="text-success" data-a-v="middle" data-a-h="center"
                                                 data-b-a-s="thin"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                                <b><?= $disable ? '' : $benar_pg ?></b></td>
+                                                <b><?= $disable ? '' : $benar_pg ?></b>
+                                            </td>
                                             <td class="text-danger" data-a-v="middle" data-a-h="center"
                                                 data-b-a-s="thin"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                                <b><?= $disable ? '' : $salah_pg ?></b></td>
+                                                <b><?= $disable ? '' : $salah_pg ?></b>
+                                            </td>
 
                                             <td class="text-center text-info align-middle" data-a-v="middle"
                                                 data-a-h="center" data-b-a-s="thin"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                                <b> <?= $disable ? '' : $siswa->skor_pg ?> </b></td>
+                                                <b> <?= $disable ? '' : $siswa->skor_pg ?> </b>
+                                            </td>
                                         <?php endif;
                                         if ($info->tampil_kompleks > 0) : ?>
                                             <td class="text-center text-success align-middle" data-a-v="middle"
                                                 data-a-h="center" data-b-a-s="thin"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                                <b> <?= $disable ? '' : $siswa->skor_kompleks ?> </b></td>
+                                                <b> <?= $disable ? '' : $siswa->skor_kompleks ?> </b>
+                                            </td>
                                         <?php endif;
                                         if ($info->tampil_jodohkan > 0) : ?>
                                             <td class="text-center text-success align-middle" data-a-v="middle"
                                                 data-a-h="center" data-b-a-s="thin"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                                <b> <?= $disable ? '' : $siswa->skor_jodohkan ?> </b></td>
+                                                <b> <?= $disable ? '' : $siswa->skor_jodohkan ?> </b>
+                                            </td>
                                         <?php endif;
                                         if ($info->tampil_isian > 0) : ?>
                                             <td class="text-center text-success align-middle" data-a-v="middle"
                                                 data-a-h="center" data-b-a-s="thin"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                                <b> <?= $disable ? '' : $siswa->skor_isian ?> </b></td>
+                                                <b> <?= $disable ? '' : $siswa->skor_isian ?> </b>
+                                            </td>
                                         <?php endif;
                                         if ($info->tampil_esai > 0) : ?>
                                             <td class="text-center text-success align-middle" data-a-v="middle"
                                                 data-a-h="center" data-b-a-s="thin"
                                                 style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                                <b> <?= $disable ? '' : $siswa->skor_essai ?> </b></td>
+                                                <b> <?= $disable ? '' : $siswa->skor_essai ?> </b>
+                                            </td>
                                         <?php endif; ?>
 
                                         <td class="text-center align-middle" data-a-v="middle" data-a-h="center"
                                             data-b-a-s="thin"
                                             style="border: 1px solid black;border-collapse: collapse; text-align: center;">
-                                            <b> <?= $disable ? '' : round($siswa->skor_total, 2) ?> </b></td>
+                                            <b> <?= $disable ? '' : round($siswa->skor_total, 2) ?> </b>
+                                        </td>
                                         <td class="text-center align-middle" data-a-v="middle" data-a-h="center"
                                             data-b-a-s="thin"
                                             style="border: 1px solid black;border-collapse: collapse; text-align: center;">
@@ -397,22 +405,23 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                                             data-a-h="center" data-b-a-s="thin"
                                             style="border: 1px solid black;border-collapse: collapse; text-align: center;">
                                             <button type="button" class="btn btn-xs bg-success mb-1 <?= $disabled ?>"
-                                                    onclick="lihatJawaban(<?= $siswa->id_siswa ?>)"
-                                                    data-toggle="tooltip" title="Detail Jawaban Siswa" <?= $disabled ?>>
+                                                onclick="lihatJawaban(<?= $siswa->id_siswa ?>)"
+                                                data-toggle="tooltip" title="Detail Jawaban Siswa" <?= $disabled ?>>
                                                 Koreksi
                                             </button>
                                             <?php if (isset($siswa->dikoreksi) && $siswa->dikoreksi === '1') : ?>
                                                 <i title="Sudah dikoreksi"
-                                                   class="fa fa-check-circle text-green ml-1"></i>
+                                                    class="fa fa-check-circle text-green ml-1"></i>
                                             <?php else: ?>
                                                 <i title="Belum dikoreksi" class="fa fa-warning text-warning ml-1"></i>
                                             <?php endif; ?>
                                             <input type="hidden" name="ids[<?= $idSiswa ?>]"
-                                                   value="<?= $disabled ? '2' : (isset($siswa->dikoreksi) && $siswa->dikoreksi ? '1' : '0') ?>">
+                                                value="<?= $disabled ? '2' : (isset($siswa->dikoreksi) && $siswa->dikoreksi ? '1' : '0') ?>">
                                         </td>
                                     </tr>
 
-                                    <?php $no++; endforeach; ?>
+                                <?php $no++;
+                                endforeach; ?>
                             </table>
                             <?= form_close() ?>
                         </div>
@@ -450,7 +459,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
 
 <?= form_open('update', array('id' => 'perbaikan-nilai')) ?>
 <div class="modal fade" id="perbaikanModal" tabindex="-1" role="dialog" aria-labelledby="perbaikanModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -464,7 +473,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                     <label for="nama_sesi" class="col-md-4 col-form-label">Nilai Tertinggi</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" name="ya" value="<?= $YA ?>"
-                               placeholder="Nilai tertinggi yang diinginkan" required>
+                            placeholder="Nilai tertinggi yang diinginkan" required>
                         <small>diisi nilai puluhan maksimal 100, misal 80 sampai 100</small>
                     </div>
                 </div>
@@ -472,7 +481,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                     <label for="kode_sesi" class="col-md-4 col-form-label">Nilai Terrendah</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" name="yb" value="<?= $YB ?>"
-                               placeholder="Nilai terrendah yang diinginkan" required>
+                            placeholder="Nilai terrendah yang diinginkan" required>
                         <small>diisi nilai puluhan dibawah nilai tertinggi, misal 60</small>
                     </div>
                 </div>
@@ -493,17 +502,17 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
     var colWidthMin = '5,15,35,15,10,10,10,10,10,10';
     var colWidth = '<?= $colWidth ?>';
 
-    var idJadwal = '<?=$jadwal_selected?>';
-    var idKelas = '<?=$kelas_selected?>';
+    var idJadwal = '<?= $jadwal_selected ?>';
+    var idKelas = '<?= $kelas_selected ?>';
     const arrSiswa = <?= json_encode($siswas) ?>;
-    var isSelected = <?= count($siswas) > 0 ? 1 : 0?>;
-    var namaMapel = '<?=isset($info) ? $info->kode : ''?>';
-    var jenisUjian = '<?=isset($info) ? $info->kode_jenis : ''?>';
+    var isSelected = <?= count($siswas) > 0 ? 1 : 0 ?>;
+    var namaMapel = '<?= isset($info) ? $info->kode : '' ?>';
+    var jenisUjian = '<?= isset($info) ? $info->kode_jenis : '' ?>';
 
-    var nilai_max = <?=$XA?>;//nilai siswa terbesar
-    var nilai_min = <?=$XB?>;//nilai siswa terkecil
-    var hasil_max = <?=$YA?>;//batas nilai terbesar
-    var hasil_min = <?=$YB?>;//batas nilai terkecil
+    var nilai_max = <?= $XA ?>; //nilai siswa terbesar
+    var nilai_min = <?= $XB ?>; //nilai siswa terkecil
+    var hasil_max = <?= $YA ?>; //batas nilai terbesar
+    var hasil_min = <?= $YB ?>; //batas nilai terkecil
 
     function lihatJawaban(idSiswa) {
         //console.log("cbtnilai/getnilaisiswa?siswa=" + idSiswa + '&jadwal=' + idJadwal);
@@ -515,12 +524,12 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             type: "GET",
             url: base_url + "cbtstatus/getjadwalujianbyjadwal?id_jadwal=" + idJadwal,
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
                 var selKelas = $('#kelas');
                 selKelas.html('');
                 selKelas.append('<option value="">Pilih Kelas</option>');
-                $.each(response, function (k, v) {
+                $.each(response, function(k, v) {
                     if (v != null) {
                         selKelas.append('<option value="' + k + '">' + v + '</option>');
                     }
@@ -534,13 +543,13 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             type: "GET",
             url: base_url + "cbtstatus/getjadwalujianbykelas?id_kelas=" + idKelas,
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
 
                 var selJadwal = $('#jadwal');
                 selJadwal.html('');
                 selJadwal.append('<option value="">Pilih Jadwal</option>');
-                $.each(response, function (k, v) {
+                $.each(response, function(k, v) {
                     if (v != null) {
                         selJadwal.append('<option value="' + k + '">' + v + '</option>');
                     }
@@ -552,7 +561,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
         });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         const loading = $('#loading');
@@ -578,11 +587,11 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             }
         }
 
-        $('#rollback').on('click', function (e) {
+        $('#rollback').on('click', function(e) {
             loadSiswaKelas(opsiKelas.val(), opsiJadwal.val())
         });
 
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             //loadSiswaKelas($(this).val(), opsiJadwal.val())
             //console.log(opsiKelas.val(), opsiJadwal.val())
             //const dis = $(this).val() === "<?= $kelas_selected ?>" && opsiJadwal.val() === "<?= $jadwal_selected ?>"
@@ -591,7 +600,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             getKelasJadwal($(this).val());
         });
 
-        opsiJadwal.change(function () {
+        opsiJadwal.change(function() {
             idJadwal = $(this).val();
             //getDetailJadwal(idJadwal);
             //const dis = $(this).val() === "<?= $jadwal_selected ?>" && opsiKelas === "<?= $kelas_selected ?>"
@@ -600,7 +609,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             loadSiswaKelas(opsiKelas.val(), $(this).val())
         });
 
-        $("#download-excel").click(function (event) {
+        $("#download-excel").click(function(event) {
             var table = document.querySelector("#table-status");
             if (table != null) {
                 //TableToExcel.convert(table);
@@ -628,10 +637,8 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
 
         loading.addClass('d-none');
 
-        $("#nilai-detail").on("click", function () {
-            if (this.checked) {
-            } else {
-            }
+        $("#nilai-detail").on("click", function() {
+            if (this.checked) {} else {}
             var exluded = this.checked;
             $('#no-soal-tile').attr('data-exclude', '' + !exluded);
             $('.no-soal').attr('data-exclude', '' + !exluded);
@@ -641,7 +648,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             $('#table-status').attr('data-cols-width', width == colWidth ? colWidthMin : colWidth)
         });
 
-        $('#perbaikan-nilai').on('submit', function (e) {
+        $('#perbaikan-nilai').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -649,7 +656,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             if (table != null) {
                 var $inputs = $('#perbaikan-nilai :input');
                 var values = {};
-                $inputs.each(function () {
+                $inputs.each(function() {
                     values[this.name] = $(this).val();
                 });
                 hasil_max = values['ya'];
@@ -658,16 +665,16 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                 //console.log(nilai_max, nilai_min);
 
                 $('#perbaikanModal').modal('hide').data('bs.modal', null);
-                $('#perbaikanModal').on('hidden', function () {
-                    $(this).data('modal', null);  // destroys modal
+                $('#perbaikanModal').on('hidden', function() {
+                    $(this).data('modal', null); // destroys modal
                 });
                 $('#loading').removeClass('d-none');
                 window.location.href = base_url + 'cbtnilai?kelas=' + opsiKelas.val() + '&jadwal=' + opsiJadwal.val() +
                     '&xa=' + nilai_max + '&xb=' + nilai_min + '&ya=' + hasil_max + '&yb=' + hasil_min;
             } else {
                 $('#perbaikanModal').modal('hide').data('bs.modal', null);
-                $('#perbaikanModal').on('hidden', function () {
-                    $(this).data('modal', null);  // destroys modal
+                $('#perbaikanModal').on('hidden', function() {
+                    $(this).data('modal', null); // destroys modal
                 });
 
 
@@ -679,7 +686,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             }
         });
 
-        $("#import-essai").on("click", function () {
+        $("#import-essai").on("click", function() {
             var kls = opsiKelas.val();
             var jad = opsiJadwal.val();
             if (kls = null || jad == null) {
@@ -688,7 +695,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             window.location.href = base_url + 'cbtnilai/inputessai?kelas=' + opsiKelas.val() + '&jadwal=' + opsiJadwal.val();
         });
 
-        $('#mark-all').on('click', function () {
+        $('#mark-all').on('click', function() {
             let dataPost = new FormData($('#koreksi-semua')[0])
             dataPost.append('id_jadwal', idJadwal)
             //console.log('arrSiswa', dataForm)
@@ -711,7 +718,7 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                 data: dataPost,
                 processData: false,
                 contentType: false,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.success > 0) {
                         swal.fire({
@@ -731,7 +738,8 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
                             icon: "error"
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     loading.addClass('d-none');
                     console.log("error", xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
@@ -744,8 +752,12 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
             });
         })
 
-        opsiKelas.select2({theme: 'bootstrap4'});
-        opsiJadwal.select2({theme: 'bootstrap4'});
+        opsiKelas.select2({
+            theme: 'bootstrap4'
+        });
+        opsiJadwal.select2({
+            theme: 'bootstrap4'
+        });
 
     })
 </script>

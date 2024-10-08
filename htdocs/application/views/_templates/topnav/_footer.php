@@ -8,7 +8,7 @@
     <div class="container">
         <?= strftime('%A, %d %B %Y') ?>, <span class="live-clock"><?= date('H:i:s') ?></span>
         <div class="pull-right hidden-xs">
-            <b>Ujian Online</b> v2
+            <b>ZEDAPPS SCHOOL</b>
         </div>
     </div>
     <!-- /.container -->
@@ -24,7 +24,7 @@
     function sisawaktu(t) {
         var time = new Date(t);
         var n = new Date();
-        var x = setInterval(function () {
+        var x = setInterval(function() {
             var now = new Date().getTime();
             var dis = time.getTime() - now;
             var h = Math.floor((dis % (1000 * 60 * 60 * 60)) / (1000 * 60 * 60));
@@ -36,7 +36,7 @@
             var cd = h + ":" + m + ":" + s;
             $('.sisawaktu').html(cd);
         }, 100);
-        setTimeout(function () {
+        setTimeout(function() {
             waktuHabis();
         }, (time.getTime() - n.getTime()));
     }
@@ -44,7 +44,7 @@
     function countdown(t) {
         var time = new Date(t);
         var n = new Date();
-        var x = setInterval(function () {
+        var x = setInterval(function() {
             var now = new Date().getTime();
             var dis = time.getTime() - now;
             var d = Math.floor(dis / (1000 * 60 * 60 * 24));
@@ -58,7 +58,7 @@
             var cd = d + " Hari, " + h + " Jam, " + m + " Menit, " + s + " Detik ";
             $('.countdown').html(cd);
 
-            setTimeout(function () {
+            setTimeout(function() {
                 location.reload()
             }, dis);
         }, 1000);
@@ -74,8 +74,8 @@
         });
     }
 
-    $(document).ready(function () {
-        setInterval(function () {
+    $(document).ready(function() {
+        setInterval(function() {
             var date = new Date();
             var h = date.getHours(),
                 m = date.getMinutes(),

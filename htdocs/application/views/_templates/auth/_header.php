@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,4 +16,5 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/mystyle.css">
     <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
 </head>
+
 <body class="hold-transition">

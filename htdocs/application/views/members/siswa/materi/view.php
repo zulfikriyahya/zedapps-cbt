@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 23/08/20
- * Time: 23:18
- */
 
 $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
 ?>
@@ -23,21 +17,21 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                 $avatar = $materi->foto == null ? 'assets/img/guru.png' : $materi->foto;
                                 ?>
                                 <img class="img-circle media-left" src="<?= base_url($avatar) ?>" width="60"
-                                     height="60"/>
+                                    height="60" />
                                 <div class="media-body ml-4">
                                     <span class="text-lg"><b><?= $materi->nama_guru ?></b></span>
-                                    <br/>
+                                    <br />
                                     <span> <?= $materi->nama_mapel ?> </span>
-                                    <br/>
+                                    <br />
                                     <span>Kelas <?= $siswa->nama_kelas ?> </span>
                                 </div>
                             </div>
                             <div class="card-tools pl-3 pr-3 pb-1 pt-1 text-center alert alert-default-info m-0"
-                                 style="line-height: 1">
+                                style="line-height: 1">
                                 Nilai
                                 <br>
                                 <span style="font-size: 28pt">
-                                <?= $ada_nilai ? $logs->nilai : '' ?>
+                                    <?= $ada_nilai ? $logs->nilai : '' ?>
                                 </span>
                             </div>
                         </div>
@@ -77,7 +71,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                             <div class="media card-title text-bold">File Pendukung</div>
                         </div>
                         <div class="card-body">
-                            <img id="img1"/>
+                            <img id="img1" />
                             <ul class="clearfix media-list">
                                 <?php
                                 $files = unserialize($materi->file ?? '');
@@ -86,17 +80,17 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                     $temp = explode('.', $file["src"] ?? '');
                                     $extension = end($temp);
                                     //echo $extension;
-                                    if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'gif') :?>
+                                    if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'gif') : ?>
                                         <li>
                                             <img src="<?= base_url() . $file["src"] ?>" data-target="#view-modal"
-                                                 data-toggle="modal" data-src="<?= base_url() . $file["src"] ?>"
-                                                 data-type="<?= $file["type"] ?>"/>
+                                                data-toggle="modal" data-src="<?= base_url() . $file["src"] ?>"
+                                                data-type="<?= $file["type"] ?>" />
                                             <div class="title-thumb"><?= $file["name"] ?></div>
                                         </li>
                                     <?php elseif ($extension == 'mpeg' || $extension == 'mpg' || $extension == 'mp4' || $extension == 'avi'): ?>
                                         <li>
                                             <img src="<?= base_url() . '/assets/app/img/icon_play_black.png' ?>"
-                                                 onClick="parent.open('<?= base_url() . $file["src"] ?>')">
+                                                onClick="parent.open('<?= base_url() . $file["src"] ?>')">
                                             <div class="title-thumb"><?= $file["name"] ?></div>
                                         </li>
                                     <?php else: ?>
@@ -104,7 +98,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                             <li>
                                                 <a href="<?= base_url() . $file["src"] ?>">
                                                     <img src="<?= base_url() . '/assets/app/img/excel-icon.png' ?> "
-                                                         onclick="dialogDownload()">
+                                                        onclick="dialogDownload()">
                                                     <div class="title-thumb"><?= $file["name"] ?></div>
                                                 </a>
                                             </li>
@@ -112,7 +106,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                             <li>
                                                 <a href="<?= base_url() . $file["src"] ?>">
                                                     <img src="<?= base_url() . '/assets/app/img/word-icon.png' ?> "
-                                                         onclick="dialogDownload()">
+                                                        onclick="dialogDownload()">
                                                     <div class="title-thumb"><?= $file["name"] ?></div>
                                                 </a>
                                             </li>
@@ -120,7 +114,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                             <li>
                                                 <a href="<?= base_url() . $file["src"] ?>">
                                                     <img src="<?= base_url() . '/assets/app/img/pdf-icon.png' ?> "
-                                                         onclick="dialogDownload()">
+                                                        onclick="dialogDownload()">
                                                     <div class="title-thumb"><?= $file["name"] ?></div>
                                                 </a>
                                             </li>
@@ -128,7 +122,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                             <li>
                                                 <a href="<?= base_url() . $file["src"] ?>">
                                                     <img src="<?= base_url() . '/assets/app/img/document-icon.svg' ?> "
-                                                         style="padding: 8px" onclick="dialogDownload()">
+                                                        style="padding: 8px" onclick="dialogDownload()">
                                                     <div class="title-thumb"><?= $file["name"] ?></div>
                                                 </a>
                                             </li>
@@ -147,12 +141,12 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                     <?= form_open('', array('id' => 'formhasil')) ?>
                                     <label>Hasil <?= $judul ?></label>
                                     <textarea id="text-materi" name='isi_materi' class='editor'
-                                              data-id="<?= $this->security->get_csrf_hash() ?>"
-                                              data-name="<?= $this->security->get_csrf_token_name() ?>"
-                                              rows='10' cols='80'
-                                              style='width:100%;'><?= $logs != null ? $logs->text : '' ?></textarea>
+                                        data-id="<?= $this->security->get_csrf_hash() ?>"
+                                        data-name="<?= $this->security->get_csrf_token_name() ?>"
+                                        rows='10' cols='80'
+                                        style='width:100%;'><?= $logs != null ? $logs->text : '' ?></textarea>
                                     <button type="submit" class="btn btn-primary float-right ml-1"><i
-                                                class="fa fa-upload"></i> KIRIM
+                                            class="fa fa-upload"></i> KIRIM
                                     </button>
                                     <?= form_close(); ?>
                                 </div>
@@ -166,12 +160,12 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                             <div class="form-group">
                                                 <ul id="media-upload" class="clearfix media-list">
                                                     <li class="myupload">
-														<span>
-															<i class="fa fa-plus" aria-hidden="true"></i>
-															<input name="file_uploads" type="file" id="picupload"
-                                                                   class="picupload">
+                                                        <span>
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            <input name="file_uploads" type="file" id="picupload"
+                                                                class="picupload">
                                                             <input type="hidden" name="max-size" value="2048">
-														</span>
+                                                        </span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -238,7 +232,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
 </div>
 
 <script>
-    var adaNilai = '<?=$ada_nilai?>' == '1';
+    var adaNilai = '<?= $ada_nilai ?>' == '1';
     var logMateri = JSON.parse('<?= json_encode($logs) ?>');
     var logMulai = '<?= $logs != null && $logs->log_time != null ? $logs->log_time : '' ?>';
     var logSelesai = '<?= $logs != null && $logs->finish_time != null ? $logs->finish_time : '' ?>';
@@ -252,7 +246,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
     //console.log('files', arrFileAttach);
     dataFiles = $.merge(dataFiles, arrFileAttach);
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
         $('.editor').summernote({
             toolbar: [
@@ -285,11 +279,11 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
         });
 
         if (logMulai === '') {
-            setTimeout(function () {
+            setTimeout(function() {
                 $.ajax({
                     type: "GET",
                     url: base_url + "siswa/savelogmateri?id_siswa=" + idSiswa + '&id_kjm=' + idKjm + '&jamke=' + jamKe + '&mapel=' + mapel,
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
                     }
                 });
@@ -298,7 +292,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
 
         createPreviewFile();
 
-        $('#formhasil').submit(function (e) {
+        $('#formhasil').submit(function(e) {
             e.stopPropagation();
             e.preventDefault();
 
@@ -310,22 +304,23 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                 type: 'POST',
                 url: base_url + 'siswa/savefilemateriselesai',
                 data: dataUpload,
-                success: function (data) {
+                success: function(data) {
                     if (data.status === 'error') {
                         showDangerToast(data.status);
                     } else {
-                        setTimeout(function () {
+                        setTimeout(function() {
                             window.history.back();
                         }, 1000);
                     }
-                }, error: function (data) {
+                },
+                error: function(data) {
                     showDangerToast('Gagal menyimpan');
                     console.log(data);
                 }
             });
         });
 
-        $('body').on('click', '.remove-pic', function () {
+        $('body').on('click', '.remove-pic', function() {
             $(this).parent().parent().parent().remove();
             var removeItem = $(this).attr('data-id');
 
@@ -341,7 +336,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
             console.log(dataFiles);
         });
 
-        $("#picupload").on('change', function (e) {
+        $("#picupload").on('change', function(e) {
             if (adaNilai) return;
             var form = new FormData($("#formfile")[0]);
             var maxSize = $("#formfile").find('input[name="max-size"]').val();
@@ -349,7 +344,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
             //createPreviewFile($(this), e)
         });
 
-        $('#view-modal').on('show.bs.modal', function (e) {
+        $('#view-modal').on('show.bs.modal', function(e) {
             if (adaNilai) return;
             var src = $(e.relatedTarget).data('src');
             var type = $(e.relatedTarget).data('type');
@@ -387,10 +382,11 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
             type: 'POST',
             url: base_url + 'siswa/savefilemateriselesai',
             data: dataUpload,
-            success: function (data) {
+            success: function(data) {
                 showSuccessToast(data.status);
                 createPreviewFile();
-            }, error: function (data) {
+            },
+            error: function(data) {
                 showDangerToast('Gagal meyimpan gambar');
                 console.log(data);
             }
@@ -408,16 +404,16 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
             contentType: false,
             cache: false,
             timeout: 600000,
-            success: function (data) {
+            success: function(data) {
                 console.log('result', data.filename);
                 //dataFiles.push(data.src);
                 //$('#files-attach').val(JSON.stringify(names_files));
                 if (data.status) {
                     var item = {};
-                    item ['size'] = data.size;
-                    item ["type"] = data.type;
-                    item ["src"] = data.src;
-                    item ["name"] = data.filename;
+                    item['size'] = data.size;
+                    item["type"] = data.type;
+                    item["src"] = data.src;
+                    item["name"] = data.filename;
                     dataFiles.push(item);
                     console.log(data.type);
                     saveFileToDb();
@@ -433,7 +429,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                     });
                 }
             },
-            error: function (e) {
+            error: function(e) {
                 console.log("error", e.responseText);
                 $.toast({
                     heading: "ERROR!!",
@@ -451,11 +447,13 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
     function deleteImage(src) {
         if (adaNilai) return;
         $.ajax({
-            data: {src: src},
+            data: {
+                src: src
+            },
             type: "POST",
             url: base_url + "siswa/deletefile",
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
             }
         });
@@ -465,7 +463,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
         showSuccessToast("File telah didownload")
     }
 
-    function createPreviewFile(/*elem, event*/) {
+    function createPreviewFile( /*elem, event*/ ) {
         //var files = event.target.files;
         for (var j = 0; j < dataFiles.length; j++) {
             let file = dataFiles[j];
@@ -523,7 +521,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
             }
         }
 
-        $(".remove-pic").click(function () {
+        $(".remove-pic").click(function() {
             console.log("First Way: " + $(this).data('id'));
             //$(this).parent().parent().parent().remove();
             var elm = $(this).parent().parent().parent();
@@ -562,5 +560,4 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
         '`': '&#x60;',
         '=': '&#x3D;'
     };
-
 </script>

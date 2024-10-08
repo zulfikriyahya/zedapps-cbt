@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -23,29 +23,29 @@
                                 }
                                 ?>
                                 <img id="foto-guru" src="<?= base_url() . $foto ?>"
-                                     class="img-circle profile-avatar mt-2" alt="User avatar">
+                                    class="img-circle profile-avatar mt-2" alt="User avatar">
                                 <h4 class="mt-5"><?= $guru->nama_guru ?></h4>
                                 <h5 class="mb-5"><?= $guru->level . ' ' . $guru->nama_kelas ?></h5>
                                 <div class="user-button">
                                     <div class="row">
                                         <div class="col-6">
                                             <button type="button" data-toggle="modal" data-target="#editFotoModal"
-                                                    class="btn btn-sm btn-primary btn-block"><i
-                                                        class="fas fa-image"></i> Ganti Foto
+                                                class="btn btn-sm btn-primary btn-block"><i
+                                                    class="fas fa-image"></i> Ganti Foto
                                             </button>
                                         </div>
                                         <div class="col-6">
                                             <button type="button" class="btn btn-danger btn-sm btn-block"
-                                                    onclick="deleteImage(true)"><i
-                                                        class="fa fa-trash"></i> Hapus Foto
+                                                onclick="deleteImage(true)"><i
+                                                    class="fa fa-trash"></i> Hapus Foto
                                             </button>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-12">
                                             <button type="button" class="btn btn-warning btn-block" data-toggle="modal"
-                                                    data-target="#editLoginModal"><i
-                                                        class="fa fa-pencil"></i> Edit Username / Password
+                                                data-target="#editLoginModal"><i
+                                                    class="fa fa-pencil"></i> Edit Username / Password
                                             </button>
                                         </div>
                                     </div>
@@ -61,13 +61,13 @@
                                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill"
-                                           href="#custom-tabs-four-home" role="tab"
-                                           aria-controls="custom-tabs-four-home" aria-selected="true">Profile *</a>
+                                            href="#custom-tabs-four-home" role="tab"
+                                            aria-controls="custom-tabs-four-home" aria-selected="true">Profile *</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill"
-                                           href="#custom-tabs-four-profile" role="tab"
-                                           aria-controls="custom-tabs-four-profile" aria-selected="false">Data
+                                            href="#custom-tabs-four-profile" role="tab"
+                                            aria-controls="custom-tabs-four-profile" aria-selected="false">Data
                                             Lengkap</a>
                                     </li>
                                 </ul>
@@ -82,24 +82,24 @@
                         <div class="card-body">
                             <div class="tab-content" id="custom-tabs-four-tabContent">
                                 <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel"
-                                     aria-labelledby="custom-tabs-four-home-tab">
+                                    aria-labelledby="custom-tabs-four-home-tab">
                                     <?php foreach ($input_profile as $input) : ?>
                                         <?php if ($input->name == 'jenis_kelamin'): ?>
                                             <div class="form-group row">
                                                 <div class="col-md-4 col-6 mb-sm-0">
                                                     <label for="<?= $input->name ?>"
-                                                           class="control-label"><?= $input->label ?></label>
+                                                        class="control-label"><?= $input->label ?></label>
                                                 </div>
                                                 <div class="col-md-8 col-6 mb-sm-0">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-															<span class="input-group-text"><i
-                                                                        class="<?= $input->icon ?>"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                    class="<?= $input->icon ?>"></i></span>
                                                         </div>
                                                         <select class="form-control" data-placeholder="Jenis Kelamin"
-                                                                name="jenis_kelamin" required>
+                                                            name="jenis_kelamin" required>
                                                             <option value="" <?= $input->value == null ? 'selected' : '' ?>
-                                                                    disabled>Pilih Jenis Kelamin
+                                                                disabled>Pilih Jenis Kelamin
                                                             </option>
                                                             <?php
                                                             $arrJk = ["L" => "Laki-laki", "P" => "Perempuan"];
@@ -114,25 +114,25 @@
                                             <div class="form-group row">
                                                 <div class="col-md-4 mb-sm-0">
                                                     <label for="<?= $input->name ?>"
-                                                           class="control-label"><?= $input->label ?></label>
+                                                        class="control-label"><?= $input->label ?></label>
                                                 </div>
                                                 <div class="col-md-8 mb-sm-0">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-															<span class="input-group-text"><i
-                                                                        class="<?= $input->icon ?>"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                    class="<?= $input->icon ?>"></i></span>
                                                         </div>
                                                         <?php
                                                         $arrAgama = ["Islam", "Kristen", "Katolik", "Kristen Protestan", "Hindu", "Budha", "Konghucu", "lainnya"];
                                                         ?>
                                                         <select class="form-control" id="agama"
-                                                                data-placeholder="Pilih Agama yang dianut" name="agama">
+                                                            data-placeholder="Pilih Agama yang dianut" name="agama">
                                                             <option value="Pilih Agama yang dianut">Pilih Agama yang
                                                                 dianut
                                                             </option>
                                                             <?php foreach ($arrAgama as $agama) : ?>
                                                                 <option
-                                                                        value="<?= $agama ?>" <?= $agama == $input->value ? 'selected' : '' ?>><?= $agama ?></option>
+                                                                    value="<?= $agama ?>" <?= $agama == $input->value ? 'selected' : '' ?>><?= $agama ?></option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -142,41 +142,42 @@
                                             <div class="form-group row">
                                                 <div class="col-md-4 mb-sm-0">
                                                     <label for="<?= $input->name ?>"
-                                                           class="control-label"><?= $input->label ?></label>
+                                                        class="control-label"><?= $input->label ?></label>
                                                 </div>
                                                 <div class="col-md-8 mb-sm-0">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-															<span class="input-group-text"><i
-                                                                        class="<?= $input->icon ?>"></i></span>
+                                                            <span class="input-group-text"><i
+                                                                    class="<?= $input->icon ?>"></i></span>
                                                         </div>
                                                         <input value="<?= trim($input->value ?? '') ?>"
-                                                               id="<?= $input->name ?>" type="<?= $input->type ?>"
-                                                               class="form-control" name="<?= $input->name ?>"
-                                                               placeholder="<?= $input->label ?>">
+                                                            id="<?= $input->name ?>" type="<?= $input->type ?>"
+                                                            class="form-control" name="<?= $input->name ?>"
+                                                            placeholder="<?= $input->label ?>">
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php endif; endforeach; ?>
+                                    <?php endif;
+                                    endforeach; ?>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel"
-                                     aria-labelledby="custom-tabs-four-profile-tab">
+                                    aria-labelledby="custom-tabs-four-profile-tab">
                                     <?php foreach ($input_alamat as $alamat) : ?>
                                         <div class="form-group row">
                                             <div class="col-md-4 mb-sm-0">
                                                 <label for="<?= $alamat->name ?>"
-                                                       class="control-label"><?= $alamat->label ?></label>
+                                                    class="control-label"><?= $alamat->label ?></label>
                                             </div>
                                             <div class="col-md-8 mb-sm-0">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-														<span class="input-group-text"><i
-                                                                    class="<?= $alamat->icon ?>"></i></span>
+                                                        <span class="input-group-text"><i
+                                                                class="<?= $alamat->icon ?>"></i></span>
                                                     </div>
                                                     <input value="<?= trim($alamat->value ?? '') ?>" id="<?= $alamat->name ?>"
-                                                           type="<?= $alamat->type ?>"
-                                                           class="form-control" name="<?= $alamat->name ?>"
-                                                           placeholder="<?= $alamat->label ?>">
+                                                        type="<?= $alamat->type ?>"
+                                                        class="form-control" name="<?= $alamat->name ?>"
+                                                        placeholder="<?= $alamat->label ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -196,7 +197,7 @@
 </div>
 
 <div class="modal fade" id="editFotoModal" tabindex="-1" role="dialog" aria-labelledby="editFotoLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -210,9 +211,9 @@
                 <div class="form-group pb-2">
                     <label for="foto-profile">Foto Profil</label>
                     <input type="file" id="foto-profile" name="foto" class="dropify"
-                           data-max-file-size-preview="2M"
-                           data-allowed-file-extensions="jpg jpeg png"
-                           data-default-file="<?= base_url() . $guru->foto ?>"/>
+                        data-max-file-size-preview="2M"
+                        data-allowed-file-extensions="jpg jpeg png"
+                        data-default-file="<?= base_url() . $guru->foto ?>" />
                 </div>
                 <?= form_close() ?>
             </div>
@@ -225,7 +226,7 @@
 
 <?= form_open('', array('id' => 'updatelogin'), array('id_guru' => $guru->id_guru)) ?>
 <div class="modal fade" id="editLoginModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -240,14 +241,14 @@
                         <span class="input-group-text">Username</span>
                     </div>
                     <input type="text" class="form-control" name="username" value="<?= $guru->username ?>"
-                           placeholder="Username">
+                        placeholder="Username">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend w-40">
                         <span class="input-group-text">Password Lama</span>
                     </div>
                     <input class="form-control" name="old" value="<?= $guru->password ?>" placeholder="Username"
-                           readonly>
+                        readonly>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend w-40">
@@ -260,7 +261,7 @@
                         <span class="input-group-text">Konfirmasi Password</span>
                     </div>
                     <input type="text" name="new_confirm" class="form-control" placeholder="Konfirmasi Password Baru"
-                           required>
+                        required>
                 </div>
             </div>
             <div class="modal-footer">
@@ -274,15 +275,14 @@
 
 <script>
     var fotoProfile = '';
-    var idGuru = '<?=$guru->id_guru?>';
-    var src = '<?=$guru->foto?>';
-    $(document).ready(function () {
+    var idGuru = '<?= $guru->id_guru ?>';
+    var src = '<?= $guru->foto ?>';
+    $(document).ready(function() {
         $('#tgl_lahir').datetimepicker({
-            icons:
-                {
-                    next: 'fa fa-angle-right',
-                    previous: 'fa fa-angle-left'
-                },
+            icons: {
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
+            },
             format: 'Y-m-d',
             timepicker: false,
             scrollInput: false,
@@ -313,17 +313,17 @@
         });
 
 
-        drEvent.on('dropify.beforeClear', function (event, element) {
+        drEvent.on('dropify.beforeClear', function(event, element) {
             //return confirm("Hapus logo \"" + element.file.name + "\" ?");
         });
 
-        drEvent.on('dropify.afterClear', function (event, element) {
+        drEvent.on('dropify.afterClear', function(event, element) {
             src = $(event.currentTarget).data('default-file');
             deleteImage(false);
             fotoProfile = '';
         });
 
-        drEvent.on('dropify.errors', function (event, element) {
+        drEvent.on('dropify.errors', function(event, element) {
             console.log('Has Errors');
             $.toast({
                 heading: "Error",
@@ -336,11 +336,11 @@
             });
         });
 
-        $('#editFotoModal').on('hidden.bs.modal', function (e) {
+        $('#editFotoModal').on('hidden.bs.modal', function(e) {
             window.location.reload();
         });
 
-        $('#submit-profil').click(function () {
+        $('#submit-profil').click(function() {
             console.log("data:", $('#formguru').serialize());
 
             $.ajax({
@@ -348,7 +348,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $('#formguru').serialize(),
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.status) {
                         swal.fire({
@@ -369,7 +369,8 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     swal.fire({
                         title: "ERROR",
@@ -381,14 +382,14 @@
             });
         });
 
-        $('#updatelogin').on('submit', function (e) {
+        $('#updatelogin').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             var dataPost = $(this).serialize();
             console.log("data:", dataPost);
 
             $('#editLoginModal').modal('hide').data('bs.modal', null);
-            $('#editLoginModal').on('hidden', function () {
+            $('#editLoginModal').on('hidden', function() {
                 $(this).data('modal', null);
             });
 
@@ -397,7 +398,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: dataPost,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.status) {
                         swal.fire({
@@ -433,7 +434,8 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     swal.fire({
                         title: "ERROR",
@@ -456,10 +458,10 @@
                 contentType: false,
                 cache: false,
                 timeout: 600000,
-                success: function (data) {
+                success: function(data) {
                     fotoProfile = data.src;
                 },
-                error: function (e) {
+                error: function(e) {
                     console.log("error", e.responseText);
                     $.toast({
                         heading: "ERROR!!",
@@ -474,7 +476,7 @@
             });
         }
 
-        $("#foto-profile").change(function () {
+        $("#foto-profile").change(function() {
             var input = $(this)[0];
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -488,7 +490,7 @@
             }
         });
 
-        $('#foto-guru').on("error", function () {
+        $('#foto-guru').on("error", function() {
             $(this).attr("src", base_url + 'assets/img/siswa.png');
         });
     });
@@ -496,11 +498,13 @@
     function deleteImage(fromBtn) {
         console.log(src);
         $.ajax({
-            data: {src: src},
+            data: {
+                src: src
+            },
             type: "GET",
             url: base_url + "guruview/deletefile/" + idGuru,
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
                 if (fromBtn) {
                     window.location.href = base_url + 'guruview';

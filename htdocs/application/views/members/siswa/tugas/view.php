@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 23/08/20
- * Time: 23:18
- */
 
 $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unserialize($log_selesai->file ?? '') : [];
 ?>
@@ -22,12 +16,12 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
                                 $avatar = $tugas->foto == null ? 'assets/img/guru.png' : $tugas->foto;
                                 ?>
                                 <img class="img-circle media-left" src="<?= base_url($avatar) ?>" width="60"
-                                     height="60"/>
+                                    height="60" />
                                 <div class="media-body ml-4">
                                     <span class="text-lg"><b><?= $tugas->nama_guru ?></b></span>
-                                    <br/>
+                                    <br />
                                     <span> <?= $tugas->nama_mapel ?> </span>
-                                    <br/>
+                                    <br />
                                     <span>Kelas <?= $siswa->nama_kelas ?> </span>
                                 </div>
                             </div>
@@ -46,12 +40,12 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
                                     <?= form_open('', array('id' => 'formhasil')) ?>
                                     <label>Hasil Tugas</label>
                                     <textarea id="text-tugas" name='isi_tugas' class='editor'
-                                              data-id="<?= $this->security->get_csrf_hash() ?>"
-                                              data-name="<?= $this->security->get_csrf_token_name() ?>"
-                                              rows='10' cols='80'
-                                              style='width:100%;'><?= $log_selesai != null ? $log_selesai->text : '' ?></textarea>
+                                        data-id="<?= $this->security->get_csrf_hash() ?>"
+                                        data-name="<?= $this->security->get_csrf_token_name() ?>"
+                                        rows='10' cols='80'
+                                        style='width:100%;'><?= $log_selesai != null ? $log_selesai->text : '' ?></textarea>
                                     <button type="submit" class="btn btn-primary float-right ml-1"><i
-                                                class="fa fa-upload"></i> KIRIM
+                                            class="fa fa-upload"></i> KIRIM
                                     </button>
                                     <?= form_close(); ?>
                                 </div>
@@ -65,11 +59,11 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
                                             <div class="form-group">
                                                 <ul id="media-list" class="clearfix">
                                                     <li class="myupload">
-														<span>
-															<i class="fa fa-plus" aria-hidden="true"></i>
-															<input name="file_uploads" type="file" id="picupload"
-                                                                   class="picupload">
-														</span>
+                                                        <span>
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            <input name="file_uploads" type="file" id="picupload"
+                                                                class="picupload">
+                                                        </span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -123,11 +117,11 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
     var jamKe = '<?= $jamke ?>';
 
     var dataFiles = [];
-    var arrFileAttach = JSON.parse('<?= json_encode($dataFileAttach)?>');
+    var arrFileAttach = JSON.parse('<?= json_encode($dataFileAttach) ?>');
     dataFiles = $.merge(dataFiles, arrFileAttach);
 
     console.log(logMulai);
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         $('.editor').summernote({
             toolbar: [
@@ -160,11 +154,11 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
         });
 
         if (logMulai === '') {
-            setTimeout(function () {
+            setTimeout(function() {
                 $.ajax({
                     type: "GET",
                     url: base_url + "siswa/savelogtugas?id_siswa=" + idSiswa + '&id_kjm=' + idKjt + '&jamke=' + jamKe,
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
                     }
                 });
@@ -173,7 +167,7 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
 
         createPreviewFile();
 
-        $('#formhasil').submit(function (e) {
+        $('#formhasil').submit(function(e) {
             e.stopPropagation();
             e.preventDefault();
 
@@ -195,7 +189,7 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
                 type: 'POST',
                 url: base_url + 'siswa/savefiletugasselesai',
                 data: dataUpload,
-                success: function (data) {
+                success: function(data) {
                     if (data.status === 'error') {
                         swal.fire({
                             title: "Gagal",
@@ -215,7 +209,8 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
                             }
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
                         title: "Error",
@@ -226,7 +221,7 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
             });
         });
 
-        $('body').on('click', '.remove-pic', function () {
+        $('body').on('click', '.remove-pic', function() {
             $(this).parent().parent().parent().remove();
             var removeItem = $(this).attr('data-id');
 
@@ -242,7 +237,7 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
             console.log(dataFiles);
         });
 
-        $("#picupload").on('change', function (e) {
+        $("#picupload").on('change', function(e) {
             var form = new FormData($("#formfile")[0]);
             //console.log('nama file', names_files);
             uploadAttach(base_url + 'siswa/uploadfile', form);
@@ -272,10 +267,11 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
             type: 'POST',
             url: base_url + 'siswa/savefiletugasselesai',
             data: dataUpload,
-            success: function (data) {
+            success: function(data) {
                 showSuccessToast(data.status);
                 createPreviewFile();
-            }, error: function (data) {
+            },
+            error: function(data) {
                 showDangerToast('Gagal meyimpan gambar');
                 console.log(data);
             }
@@ -292,23 +288,23 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
             contentType: false,
             cache: false,
             timeout: 600000,
-            success: function (data) {
+            success: function(data) {
                 console.log('result', data.filename);
                 //dataFiles.push(data.src);
                 //$('#files-attach').val(JSON.stringify(names_files));
 
                 var item = {};
-                item ['size'] = data.size;
-                item ["type"] = data.type;
-                item ["src"] = data.src;
-                item ["name"] = data.filename;
+                item['size'] = data.size;
+                item["type"] = data.type;
+                item["src"] = data.src;
+                item["name"] = data.filename;
                 dataFiles.push(item);
                 console.log(data.type);
                 //createPreviewFile();
 
                 saveFileToDb();
             },
-            error: function (e) {
+            error: function(e) {
                 console.log("error", e.responseText);
                 $.toast({
                     heading: "ERROR!!",
@@ -325,17 +321,19 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
 
     function deleteImage(src) {
         $.ajax({
-            data: {src: src},
+            data: {
+                src: src
+            },
             type: "POST",
             url: base_url + "siswa/deletefile",
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
             }
         });
     }
 
-    function createPreviewFile(/*elem, event*/) {
+    function createPreviewFile( /*elem, event*/ ) {
         //var files = event.target.files;
         for (var j = 0; j < dataFiles.length; j++) {
             let file = dataFiles[j];
@@ -376,5 +374,4 @@ $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unseriali
         }
         console.log(dataFiles);
     }
-
 </script>

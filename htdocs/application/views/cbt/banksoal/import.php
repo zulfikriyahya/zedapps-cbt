@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -8,7 +8,7 @@
                 <div class="col-3">
                     <button onclick="window.history.back();" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </button>
                 </div>
             </div>
@@ -34,8 +34,8 @@
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <a href="<?= base_url('uploads/import/format/format_soal_akm.docx') ?>"
-                               class="btn-success btn mb-1 w-100"
-                               download="Template Soal <?= $bank->nama_mapel ?> <?= $bank->bank_kode ?>">
+                                class="btn-success btn mb-1 w-100"
+                                download="Template Soal <?= $bank->nama_mapel ?> <?= $bank->bank_kode ?>">
                                 <i class="fas fa-download"></i><span class="ml-2">Download Template</span>
                             </a>
                         </div>
@@ -45,7 +45,7 @@
                                     <?= form_open_multipart('', array('id' => 'formPreviewWord')); ?>
                                     <div class="custom-file">
                                         <input type="file" name="upload_file" class="custom-file-input input-sm"
-                                               id="upload-word" accept=".doc, .docx">
+                                            id="upload-word" accept=".doc, .docx">
                                         <label class="custom-file-label" for="upload-word">Upload Soal</label>
                                     </div>
                                     <?= form_close(); ?>
@@ -59,8 +59,8 @@
                         </div>
                     </div>
                     <div id="file-preview" class="table-responsive"
-                         data-id="<?= $this->security->get_csrf_hash() ?>"
-                         data-name="<?= $this->security->get_csrf_token_name() ?>">
+                        data-id="<?= $this->security->get_csrf_hash() ?>"
+                        data-name="<?= $this->security->get_csrf_token_name() ?>">
                         <div class="alert alert-default-info align-content-center" role="alert">
                             Sebelum upload, pastikan anda telah mengisi format yang telah disediakan.
                         </div>
@@ -75,24 +75,24 @@
 <?= form_close() ?>
 
 <script type="text/javascript"
-        src="<?= base_url() ?>/assets/plugins/jquery-table2json/src/tabletojson-cell.js"></script>
+    src="<?= base_url() ?>/assets/plugins/jquery-table2json/src/tabletojson-cell.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/assets/plugins/jquery-table2json/src/tabletojson-row.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/assets/plugins/jquery-table2json/src/tabletojson.js"></script>
 <script src="<?= base_url() ?>/assets/app/js/mammoth.browser.min.js"></script>
 <script>
     var bank_id = '<?= $bank->id_bank ?>';
     const jenjang = '<?= $setting->jenjang ?>';
-    $(function () {
+    $(function() {
         bsCustomFileInput.init();
     });
 
     var pg;
     var essai;
     var filename = '';
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
-        $('#upload-word').on('change', function (e) {
+        $('#upload-word').on('change', function(e) {
             var form = new FormData($("#formPreviewWord")[0]);
             filename = $("#formPreviewWord").text();
             //preview(base_url + 'cbtbanksoal/previewword/'+bank_id, form, filename);
@@ -124,26 +124,29 @@
         var options = {
             styleMap: ["u => u", "strike => del"]
         };
-        reader.onloadend = function (event) {
+        reader.onloadend = function(event) {
             var arrayBuffer = reader.result;
-            mammoth.convertToHtml({arrayBuffer: arrayBuffer}, options).then(function (resultObject) {
+            mammoth.convertToHtml({
+                arrayBuffer: arrayBuffer
+            }, options).then(function(resultObject) {
                 $(showDiv).html(resultObject.value);
-                setTimeout(function () {
+                setTimeout(function() {
                     $('#file-preview').children().not("table").remove();
-                    $('#file-preview').children('table').each(function (i, v) {
+                    $('#file-preview').children('table').each(function(i, v) {
                         console.log('tbls', i);
                         $(this).addClass('table table-bordered w-100 table-soal');
 
-                        const $trs = $(this).find('tr'), headers = $trs.splice(0, 1); // header rows
+                        const $trs = $(this).find('tr'),
+                            headers = $trs.splice(0, 1); // header rows
 
                         var indexTr = 0;
                         let hide = false;
-                        $trs.each(function (index, tr) {
+                        $trs.each(function(index, tr) {
                             var cekTbl = $(tr).parent().closest('td');
                             if (cekTbl.length === 0) {
                                 $(this).addClass('tr-soal');
                                 var $tds = $(this).find('td');
-                                $tds.each(function (it, td) {
+                                $tds.each(function(it, td) {
                                     var tdlength = $(td).closest('tr').hasClass('tr-soal');
                                     if (tdlength) $(td).addClass('td-soal');
                                     $(td).find('table').addClass('table table-bordered table-inner');
@@ -197,7 +200,7 @@
                             }
                         });
 
-                        $(this).find('p').each(function () {
+                        $(this).find('p').each(function() {
                             var arabic = /[\u0600-\u06FF]/;
                             var string = $(this).text();
                             if (arabic.test(string)) {
@@ -247,9 +250,9 @@
         let formData = new FormData($('#grouping')[0])
         formData.append("id_bank", bank_id)
 
-        $.each($tables, function (i, row) {
-            var tbl = $(this).find('.tr-soal').get().map(function (row) {
-                return $(row).find('.td-soal').get().map(function (cell) {
+        $.each($tables, function(i, row) {
+            var tbl = $(this).find('.tr-soal').get().map(function(row) {
+                return $(row).find('.td-soal').get().map(function(cell) {
                     return $(cell).html();
                 });
             });
@@ -290,7 +293,7 @@
                         var knc = $(items[5]).text().trim();
 
                         if (soalCek != "" || imgCheck) {
-                            formData.append('soal[' + tempJenis + ']' +'[' + no + '][soal]', encodeURIComponent(removeUrl(items[1])));
+                            formData.append('soal[' + tempJenis + ']' + '[' + no + '][soal]', encodeURIComponent(removeUrl(items[1])));
                             formData.append('soal[' + tempJenis + ']' + '[' + no + '][opsi][' + ops + ']', encodeURIComponent(removeUrl(items[4])));
 
                             if (knc != "" && knc.toUpperCase() == "V") {
@@ -372,7 +375,7 @@
             index++;
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             //console.log('old_json', datapost);
             console.log('form', Object.fromEntries(formData))
             sendData(formData);
@@ -397,7 +400,7 @@
             processData: false,
             contentType: false,
             data: datapost,
-            success: function (result) {
+            success: function(result) {
                 console.log("result", result);
                 swal.fire({
                     title: "Sukses",
@@ -411,7 +414,8 @@
                         //window.location.href = base_url + 'cbtbanksoal';
                     }
                 });
-            }, error: function (xhr, status, error) {
+            },
+            error: function(xhr, status, error) {
                 console.log("error", xhr.responseText);
                 const err = JSON.parse(xhr.responseText)
                 swal.fire({
@@ -429,15 +433,15 @@
             url: base_url + "cbtbanksoal/uploadsoalimage",
             data: datapost,
             type: "POST",
-            error: function (err) {
+            error: function(err) {
                 console.error(err);
             },
-            success: function (data) {
+            success: function(data) {
                 $(id).attr('src', base_url + data.src);
                 //$(id).attr('data-imgsrc', data.src);
                 //console.log(data);
             },
-            complete: function () {
+            complete: function() {
                 //console.log("Request finished.");
             }
         });
@@ -446,5 +450,4 @@
     function removeUrl(str) {
         return str.replace(base_url, '');
     }
-
 </script>

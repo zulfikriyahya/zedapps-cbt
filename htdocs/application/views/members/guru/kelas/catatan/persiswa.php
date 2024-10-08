@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -8,7 +8,7 @@
                 <div class="col-6">
                     <button onclick="window.history.back();" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </button>
                 </div>
             </div>
@@ -21,53 +21,53 @@
                 <div class="card-header">
                     <h6 class="card-title">Catatan Untuk <b><?= $siswa->nama ?></b></h6>
                     <button type="button" class="btn btn-sm btn-primary card-tools" data-toggle="modal"
-                            data-target="#daftarModal">
+                        data-target="#daftarModal">
                         <i class="fa fa-plus"></i> <span class="ml-1">Buat Catatan</span>
                     </button>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
-                        <tr>
-                            <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
-                            <th class="text-center p-0 align-middle p-0">Tanggal</th>
-                            <th class="text-center p-0 align-middle">Jenis</th>
-                            <th class="text-center p-0 align-middle">Catatan</th>
-                            <th class="text-center p-0 align-middle">Aksi</th>
-                        </tr>
+                            <tr>
+                                <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
+                                <th class="text-center p-0 align-middle p-0">Tanggal</th>
+                                <th class="text-center p-0 align-middle">Jenis</th>
+                                <th class="text-center p-0 align-middle">Catatan</th>
+                                <th class="text-center p-0 align-middle">Aksi</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <?php
-                        $arrLvl = ['Tidak ada', 'Saran', 'Teguran', 'Peringatan', 'Sangsi'];
-                        if (count($catatan_siswa) > 0) :
-                            foreach ($catatan_siswa as $key => $value) : ?>
-                                <tr>
-                                    <td class="text-center">
-                                        <?= ($key + 1) ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <?= $value->tgl ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <?= $arrLvl[$value->level] ?>
-                                    </td>
-                                    <td>
-                                        <?= $value->text ?>
-                                    </td>
-                                    <td width="100" class="text-center">
-                                        <button type="button" class="btn btn-sm btn-danger"
+                            <?php
+                            $arrLvl = ['Tidak ada', 'Saran', 'Teguran', 'Peringatan', 'Sangsi'];
+                            if (count($catatan_siswa) > 0) :
+                                foreach ($catatan_siswa as $key => $value) : ?>
+                                    <tr>
+                                        <td class="text-center">
+                                            <?= ($key + 1) ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?= $value->tgl ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?= $arrLvl[$value->level] ?>
+                                        </td>
+                                        <td>
+                                            <?= $value->text ?>
+                                        </td>
+                                        <td width="100" class="text-center">
+                                            <button type="button" class="btn btn-sm btn-danger"
                                                 data-id="<?= $value->id_catatan ?>" onclick="hapus(this)">
-                                            <i class="fa fa-trash"></i> <span class="ml-1">Hapus</span>
-                                        </button>
+                                                <i class="fa fa-trash"></i> <span class="ml-1">Hapus</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;
+                            else: ?>
+                                <tr>
+                                    <td colspan="5" class="text-center">Belum ada catatan
                                     </td>
                                 </tr>
-                            <?php endforeach;
-                        else: ?>
-                            <tr>
-                                <td colspan="5" class="text-center">Belum ada catatan
-                                </td>
-                            </tr>
-                        <?php endif; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -105,7 +105,7 @@
                             <div class="form-group">
                                 <label>Catatan</label>
                                 <textarea style="min-height: 200px" class="form-control" name="text" id="input_text"
-                                          required></textarea>
+                                    required></textarea>
                             </div>
                         </div>
                     </div>
@@ -125,9 +125,9 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        $('#formcatatan').submit('click', function (e) {
+        $('#formcatatan').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log("data:", $(this).serialize());
@@ -137,10 +137,10 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     console.log("result", data);
                     $('#daftarModal').modal('hide').data('bs.modal', null);
-                    $('#daftarModal').on('hidden', function () {
+                    $('#daftarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
 
@@ -163,9 +163,10 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     $('#daftarModal').modal('hide').data('bs.modal', null);
-                    $('#daftarModal').on('hidden', function () {
+                    $('#daftarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     console.log("error", xhr.responseText);
@@ -197,7 +198,7 @@
                 $.ajax({
                     url: base_url + 'kelascatatan/hapus/' + idCatatan,
                     method: "GET",
-                    success: function (respon) {
+                    success: function(respon) {
                         console.log(respon);
                         if (respon) {
                             window.location.reload();
@@ -210,7 +211,7 @@
                             });
                         }
                     },
-                    error: function (xhr, error, status) {
+                    error: function(xhr, error, status) {
                         console.log(xhr.responseText);
                         swal.fire({
                             title: "Gagal",

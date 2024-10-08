@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-light pt-4 ">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -16,14 +16,14 @@
                     <h3 class="card-title">Master <?= $subjudul ?></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-action btn-success btn-sm" data-action="aktifkan"
-                                data-toggle="tooltip" title="Aktifkan">
+                            data-toggle="tooltip" title="Aktifkan">
                             <i class="fa fa-users m-1"></i><span
-                                    class="d-none d-sm-inline-block ml-1">Aktifkan Semua</span>
+                                class="d-none d-sm-inline-block ml-1">Aktifkan Semua</span>
                         </button>
                         <button type="button" class="btn btn-action btn-danger btn-sm" data-action="nonaktifkan"
-                                data-toggle="tooltip" title="Nonaktifkan">
+                            data-toggle="tooltip" title="Nonaktifkan">
                             <i class="fa fa-ban m-1"></i><span
-                                    class="d-none d-sm-inline-block ml-1">Nonaktifkan Semua</span>
+                                class="d-none d-sm-inline-block ml-1">Nonaktifkan Semua</span>
                         </button>
                     </div>
                 </div>
@@ -62,16 +62,16 @@
                         <?= form_open('', array('id' => 'bulk')); ?>
                         <table id="users" class="w-100 table table-striped table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th class="text-center" style="width: 40px">No.</th>
-                                <th>NIS</th>
-                                <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th class="text-center">Reset Login</th>
-                                <th class="text-center">Status/Aksi</th>
-                            </tr>
+                                <tr>
+                                    <th class="text-center" style="width: 40px">No.</th>
+                                    <th>NIS</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th class="text-center">Reset Login</th>
+                                    <th class="text-center">Status/Aksi</th>
+                                </tr>
                             </thead>
                             <tbody id="table-body">
                             </tbody>
@@ -97,7 +97,7 @@
 <input type="hidden" id="pager-limit" name="limit" value="10">
 <?= form_close() ?>
 
-<script src="<?=base_url()?>/assets/app/js/jquery.twbsPagination.js" type="text/javascript"></script>
+<script src="<?= base_url() ?>/assets/app/js/jquery.twbsPagination.js" type="text/javascript"></script>
 <script type="text/javascript">
     let currentPage = 1;
     let perPage = 10;
@@ -110,7 +110,7 @@
         defaultOpts = {
             visiblePages: 5,
             initiateStartPageClick: false,
-            onPageClick: function (event, page) {
+            onPageClick: function(event, page) {
                 console.info(page + ' (from options)');
                 currentPage = page;
                 loadSiswa();
@@ -118,21 +118,21 @@
         };
         $pagination.twbsPagination(defaultOpts);
 
-        $('#users_length').change(function () {
+        $('#users_length').change(function() {
             $('#pager-limit').val($(this).val());
             perPage = $(this).val();
             currentPage = 1;
             loadSiswa();
         });
 
-        $('#input-search').on('change keyup', function () {
+        $('#input-search').on('change keyup', function() {
             var val = $(this).val();
             query = val === "" ? null : val;
             $('#btn-clear').attr('disabled', query == null)
             $('#btn-search').attr('disabled', query == null)
         });
 
-        $('#btn-clear').on('click', function () {
+        $('#btn-clear').on('click', function() {
             query = null;
             currentPage = 1;
             $(this).attr('disabled', query == null);
@@ -146,7 +146,7 @@
             $.ajax({
                 url: base_url + "usersiswa/activate/" + id,
                 type: "GET",
-                success: function (response) {
+                success: function(response) {
                     console.log("pass", response.pass);
                     $('#loading').addClass('d-none');
                     if (response.msg) {
@@ -182,9 +182,9 @@
             let nama = $(this).data("nama").replace("'", "");
             $('#loading').removeClass('d-none');
             $.ajax({
-                url: base_url + "usersiswa/deactivate/" + username +"/"+nama,
+                url: base_url + "usersiswa/deactivate/" + username + "/" + nama,
                 type: "GET",
-                success: function (response) {
+                success: function(response) {
                     $('#loading').addClass('d-none');
                     if (response.msg) {
                         if (response.status) {
@@ -219,22 +219,22 @@
             let nama = encodeURIComponent($(this).data("nama"));
             $('#loading').removeClass('d-none');
             $.ajax({
-                url: base_url + "usersiswa/reset_login/" + username +"/"+nama,
+                url: base_url + "usersiswa/reset_login/" + username + "/" + nama,
                 type: "GET",
-                success: function (response) {
+                success: function(response) {
                     $('#loading').addClass('d-none');
                     if (response.msg) {
                         if (response.status) {
                             swal.fire({
                                 title: "Sukses",
-                                html: "<b>"+decodeURIComponent(response.msg)+"<b>",
+                                html: "<b>" + decodeURIComponent(response.msg) + "<b>",
                                 icon: "success"
                             });
                             loadSiswa();
                         } else {
                             swal.fire({
                                 title: "Error",
-                                html: "<b>"+decodeURIComponent(response.msg)+"<b>",
+                                html: "<b>" + decodeURIComponent(response.msg) + "<b>",
                                 icon: "error"
                             });
                         }
@@ -282,7 +282,7 @@
                     $.ajax({
                         url: uri,
                         type: "GET",
-                        success: function (response) {
+                        success: function(response) {
                             $('#loading').addClass('d-none');
                             console.log("result", response);
                             swal.fire({
@@ -320,7 +320,7 @@
             url: base_url + 'usersiswa/list',
             data: dataPost,
             type: 'POST',
-            success: function (data) {
+            success: function(data) {
                 $('#loading').addClass('d-none');
                 $('#input-search').val(data.search);
                 if (data.pages > 0) {
@@ -334,7 +334,8 @@
                     $pagination.addClass('d-none');
                 }
                 previewData(data);
-            }, error: function (xhr, status, error) {
+            },
+            error: function(xhr, status, error) {
                 $('#loading').addClass('d-none')
                 console.log("error", xhr.responseText);
                 swal.fire({
@@ -351,7 +352,7 @@
         $('#input-search').val(data.search);
         var html = '';
         if (data.lists.length > 0) {
-            $.each(data.lists, function (idx, siswa) {
+            $.each(data.lists, function(idx, siswa) {
                 const kls = siswa.nama_kelas != null ? siswa.nama_kelas : '';
                 html += `<tr>
                 <td class="text-center align-middle">
@@ -376,18 +377,18 @@
                 } else {
                     html += `<span class="badge badge-success">Aktif</span><br><button type="button" class="btn btn-nonaktif btn-danger btn-xs" data-username="${siswa.username}" data-nama="${siswa.nama}" data-toggle="tooltip" title="Nonaktifkan"> <i class="fa fa-ban text-xs mr-1 ml-1"></i></button>`;
                 }
-            html +=`</td></tr>`;
+                html += `</td></tr>`;
             });
         } else {
             html += '<tr><td colspan="7" class="text-center align-middle">Tidak ada data siswa</td><tr>';
         }
 
         $('#table-body').html(html);
-        $(`.avatar`).each(function () {
-            $(this).on("error", function () {
+        $(`.avatar`).each(function() {
+            $(this).on("error", function() {
                 var src = $(this).attr('src').replace('profiles', 'foto_siswa');
                 $(this).attr("src", src);
-                $(this).on("error", function () {
+                $(this).on("error", function() {
                     $(this).attr("src", base_url + 'assets/img/siswa.png');
                 });
             });
@@ -399,6 +400,4 @@
         currentPage = 1;
         loadSiswa();
     }
-
-
 </script>

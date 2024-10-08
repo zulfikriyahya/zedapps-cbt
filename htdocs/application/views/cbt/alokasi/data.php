@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -64,21 +64,21 @@
                             <div class="form-group">
                                 <label for="dari">Dari</label>
                                 <input type='text' id="dari" name='dari' value="<?= $dari_selected ?>"
-                                       class='tgl form-control' autocomplete='off'/>
+                                    class='tgl form-control' autocomplete='off' />
                             </div>
                         </div>
                         <div class='col-md-2 col-4 <?= $dnone ?>' id="tgl-sampai">
                             <div class="form-group">
                                 <label for="sampai">Sampai</label>
                                 <input type='text' id="sampai" name='sampai'
-                                       class='tgl form-control' value="<?= $sampai_selected ?>"
-                                       autocomplete='off'/>
+                                    class='tgl form-control' value="<?= $sampai_selected ?>"
+                                    autocomplete='off' />
                             </div>
                         </div>
                     </div>
                     <?php
                     if (count($jadwals) > 0) :
-                        if ($jenis_selected != null) :?>
+                        if ($jenis_selected != null) : ?>
                             <table class="table border mt-4" id="tbl">
                                 <tr>
                                     <th class="text-center align-middle border">
@@ -109,7 +109,7 @@
                                             $no++;
                                         }
                                     }
-                                    ?>
+                                ?>
                                     <tr>
                                         <td class="text-center align-middle border">
                                             <?= buat_tanggal(date('D, d M Y', strtotime($jadwal->tgl_mulai))) ?>
@@ -122,7 +122,7 @@
                                         </td>
                                         <td class="text-center border jam-ke" data-id="<?= $jadwal->id_jadwal ?>">
                                             <input class="form-control" type="number" min="1" name="jamke"
-                                                   value="<?= $jadwal->jam_ke ?>">
+                                                value="<?= $jadwal->jam_ke ?>">
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -141,9 +141,11 @@
 </div>
 <script src="<?= base_url() ?>/assets/app/js/jquery.rowspanizer.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
-        $("#tbl").rowspanizer({columns: [0]});
+        $("#tbl").rowspanizer({
+            columns: [0]
+        });
 
         var opsiLevel = $("#level");
         var opsiJenis = $("#jenis");
@@ -153,11 +155,10 @@
         var opsiSampai = $("#sampai");
 
         opsiDari.datetimepicker({
-            icons:
-                {
-                    next: 'fa fa-angle-right',
-                    previous: 'fa fa-angle-left'
-                },
+            icons: {
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
+            },
             timepicker: false,
             scrollInput: false,
             scrollMonth: false,
@@ -170,11 +171,10 @@
         });
 
         opsiSampai.datetimepicker({
-            icons:
-                {
-                    next: 'fa fa-angle-right',
-                    previous: 'fa fa-angle-left'
-                },
+            icons: {
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
+            },
             timepicker: false,
             scrollInput: false,
             scrollMonth: false,
@@ -186,7 +186,7 @@
             }
         });
 
-        opsiFilter.change(function () {
+        opsiFilter.change(function() {
             if ($(this).val() == '0') {
                 $('#tgl-dari').addClass('d-none');
                 $('#tgl-sampai').addClass('d-none');
@@ -202,7 +202,7 @@
             }
         });
 
-        opsiLevel.change(function () {
+        opsiLevel.change(function() {
             //var lvl = $(this).val();
             //if (lvl != "" && lvl !== old) {
             getAllJadwal();
@@ -210,20 +210,20 @@
             //}
         });
 
-        opsiJenis.change(function () {
+        opsiJenis.change(function() {
             getAllJadwal();
         });
 
-        var dariold = "<?=$dari_selected?>";
-        opsiDari.change(function () {
+        var dariold = "<?= $dari_selected ?>";
+        opsiDari.change(function() {
             var dari = $(this).val();
             if (dari != "" && dari !== dariold) {
                 getAllJadwal();
             }
         });
 
-        var sampaiold = "<?=$sampai_selected?>";
-        opsiSampai.change(function () {
+        var sampaiold = "<?= $sampai_selected ?>";
+        opsiSampai.change(function() {
             var sampai = $(this).val();
             if (sampai != "" && sampai !== sampaiold) {
                 getAllJadwal();
@@ -245,12 +245,13 @@
             }
         }
 
-        $('#simpanalokasi').on('submit', function (e) {
+        $('#simpanalokasi').on('submit', function(e) {
             e.stopPropagation();
             e.preventDefault();
             e.stopImmediatePropagation();
 
-            const $rows1 = $('#tbl').find('tr'), headers1 = $rows1.splice(0, 1);
+            const $rows1 = $('#tbl').find('tr'),
+                headers1 = $rows1.splice(0, 1);
             var jsonObj = [];
             $rows1.each((i, row) => {
                 const td = $(row).find('.jam-ke');
@@ -258,8 +259,8 @@
                 const id_jadwal = td.data('id');
 
                 let item = {};
-                item ["id_jadwal"] = id_jadwal;
-                item ["jam_ke"] = jam_ke;
+                item["id_jadwal"] = id_jadwal;
+                item["jam_ke"] = jam_ke;
 
                 jsonObj.push(item);
             });
@@ -284,7 +285,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: dataPost,
-                success: function (data) {
+                success: function(data) {
                     console.log("response:", data);
                     if (data.status) {
                         swal.fire({
@@ -306,7 +307,8 @@
                             icon: "error"
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("response:", xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -318,7 +320,7 @@
             });
         });
 
-        $('#selector button').click(function () {
+        $('#selector button').click(function() {
             $(this).addClass('active').siblings().addClass('btn-outline-primary').removeClass('active btn-primary');
 
             if (!$('#by-kelas').is(':hidden')) {

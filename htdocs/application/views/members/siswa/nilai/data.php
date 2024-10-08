@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 23/08/20
- * Time: 23:18
- */
-?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper" style="margin-top: -1px;">
     <!-- Main content -->
@@ -25,38 +17,39 @@
                         <div class="card-body">
                             <div id="list-nilai-materi" class="table-responsive">
                                 <?php
-                                if (count($nilai_materi) > 0):?>
+                                if (count($nilai_materi) > 0): ?>
                                     <table class="table table-hover w-100" id="table-nilai-materi" style="line-height: 1">
                                         <thead>
-                                        <tr>
-                                            <th class="text-center">NO</th>
-                                            <th>Materi</th>
-                                            <th>Tanggal</th>
-                                            <th class="text-center">Nilai</th>
-                                        </tr>
+                                            <tr>
+                                                <th class="text-center">NO</th>
+                                                <th>Materi</th>
+                                                <th>Tanggal</th>
+                                                <th class="text-center">Nilai</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($nilai_materi as $nil) :
+                                            <?php
+                                            $no = 1;
+                                            foreach ($nilai_materi as $nil) :
                                             ?>
-                                            <tr onclick="showDialog(this)" data-text="<?= $nil->catatan ?>">
-                                                <td class="text-center"><?= $no ?></td>
-                                                <td>
-                                                    <?= $nil->kode ?>
-                                                    <br>
-                                                    <small>
-                                                        <?= $nil->kode_materi ?>
-                                                    </small>
-                                                    <br>
-                                                    <small>
-                                                        <?= $nil->judul_materi ?>
-                                                    </small>
-                                                </td>
-                                                <td><?= singkat_tanggal(date('D, d M Y', strtotime($nil->jadwal_materi))) ?></td>
-                                                <td class="text-center text-lg"><b><?= $nil->nilai ?></b></td>
-                                            </tr>
-                                            <?php $no++; endforeach; ?>
+                                                <tr onclick="showDialog(this)" data-text="<?= $nil->catatan ?>">
+                                                    <td class="text-center"><?= $no ?></td>
+                                                    <td>
+                                                        <?= $nil->kode ?>
+                                                        <br>
+                                                        <small>
+                                                            <?= $nil->kode_materi ?>
+                                                        </small>
+                                                        <br>
+                                                        <small>
+                                                            <?= $nil->judul_materi ?>
+                                                        </small>
+                                                    </td>
+                                                    <td><?= singkat_tanggal(date('D, d M Y', strtotime($nil->jadwal_materi))) ?></td>
+                                                    <td class="text-center text-lg"><b><?= $nil->nilai ?></b></td>
+                                                </tr>
+                                            <?php $no++;
+                                            endforeach; ?>
                                         </tbody>
                                     </table>
                                 <?php else: ?>
@@ -78,35 +71,36 @@
                                 <?php if (count($nilai_tugas) > 0): ?>
                                     <table class="table table-hover w-100" id="table-nilai-tugas" style="line-height: 1">
                                         <thead>
-                                        <tr>
-                                            <th class="text-center">NO</th>
-                                            <th>Tugas</th>
-                                            <th>Tanggal</th>
-                                            <th class="text-center">Nilai</th>
-                                        </tr>
+                                            <tr>
+                                                <th class="text-center">NO</th>
+                                                <th>Tugas</th>
+                                                <th>Tanggal</th>
+                                                <th class="text-center">Nilai</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($nilai_tugas as $nil) :
+                                            <?php
+                                            $no = 1;
+                                            foreach ($nilai_tugas as $nil) :
                                             ?>
-                                            <tr onclick="showDialog(this)" data-text="<?= $nil->catatan ?>">
-                                                <td class="text-center"><?= $no ?></td>
-                                                <td>
-                                                    <?= $nil->kode ?>
-                                                    <br>
-                                                    <small>
-                                                        <?= $nil->kode_materi ?>
-                                                    </small>
-                                                    <br>
-                                                    <small>
-                                                        <?= $nil->judul_materi ?>
-                                                    </small>
-                                                </td>
-                                                <td><?= singkat_tanggal(date('D, d M Y', strtotime($nil->jadwal_materi))) ?></td>
-                                                <td class="text-center text-lg"><b><?= $nil->nilai ?></b></td>
-                                            </tr>
-                                            <?php $no++; endforeach; ?>
+                                                <tr onclick="showDialog(this)" data-text="<?= $nil->catatan ?>">
+                                                    <td class="text-center"><?= $no ?></td>
+                                                    <td>
+                                                        <?= $nil->kode ?>
+                                                        <br>
+                                                        <small>
+                                                            <?= $nil->kode_materi ?>
+                                                        </small>
+                                                        <br>
+                                                        <small>
+                                                            <?= $nil->judul_materi ?>
+                                                        </small>
+                                                    </td>
+                                                    <td><?= singkat_tanggal(date('D, d M Y', strtotime($nil->jadwal_materi))) ?></td>
+                                                    <td class="text-center text-lg"><b><?= $nil->nilai ?></b></td>
+                                                </tr>
+                                            <?php $no++;
+                                            endforeach; ?>
                                         </tbody>
                                     </table>
                                 <?php else: ?>
@@ -133,53 +127,55 @@
                                 ?>
                                 <table class="table w-100" id="table-nilai-ujian">
                                     <thead>
-                                    <tr>
-                                        <th class="text-center align-middle">NO</th>
-                                        <th>Jenis Penilaian</th>
-                                        <th>Mata Pelajaran</th>
-                                        <th>Kode Penilaian</th>
-                                        <th class="text-center">Nilai</th>
-                                        <th class="text-center">Detail</th>
-                                    </tr>
+                                        <tr>
+                                            <th class="text-center align-middle">NO</th>
+                                            <th>Jenis Penilaian</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>Kode Penilaian</th>
+                                            <th class="text-center">Nilai</th>
+                                            <th class="text-center">Detail</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                    if (count($jadwal) > 0) :
-                                        $no = 1;
-                                        foreach ($jadwal as $j) :
-                                            $hanya_pg = $j->tampil_pg > 0 && $j->tampil_kompleks == 0 && $j->tampil_jodohkan == 0 && $j->tampil_isian == 0 && $j->tampil_esai == 0;
-                                            $total = !$hanya_pg && isset($skor[$j->id_jadwal]->dikoreksi) && $skor[$j->id_jadwal]->dikoreksi == 0 ? '*' : ($j->hasil_tampil == '0' ? '**' : $skor[$j->id_jadwal]->skor_total);
-                                            ?>
-                                            <tr>
-                                                <td class="text-center"><?= $no ?></td>
-                                                <td><?= $j->nama_jenis ?>
-                                                    <br><small><?= buat_tanggal(date('D, d M Y', strtotime($j->tgl_mulai))) ?></small>
-                                                </td>
-                                                <td><?= $j->kode ?></td>
-                                                <td><?= $j->bank_kode ?></td>
-                                                <td class="text-center"><?= $total ?></td>
-                                                <td class="text-center">
-                                                    <button type="button"
+                                        <?php
+                                        if (count($jadwal) > 0) :
+                                            $no = 1;
+                                            foreach ($jadwal as $j) :
+                                                $hanya_pg = $j->tampil_pg > 0 && $j->tampil_kompleks == 0 && $j->tampil_jodohkan == 0 && $j->tampil_isian == 0 && $j->tampil_esai == 0;
+                                                $total = !$hanya_pg && isset($skor[$j->id_jadwal]->dikoreksi) && $skor[$j->id_jadwal]->dikoreksi == 0 ? '*' : ($j->hasil_tampil == '0' ? '**' : $skor[$j->id_jadwal]->skor_total);
+                                        ?>
+                                                <tr>
+                                                    <td class="text-center"><?= $no ?></td>
+                                                    <td><?= $j->nama_jenis ?>
+                                                        <br><small><?= buat_tanggal(date('D, d M Y', strtotime($j->tgl_mulai))) ?></small>
+                                                    </td>
+                                                    <td><?= $j->kode ?></td>
+                                                    <td><?= $j->bank_kode ?></td>
+                                                    <td class="text-center"><?= $total ?></td>
+                                                    <td class="text-center">
+                                                        <button type="button"
                                                             data-koreksi="<?= isset($skor[$j->id_jadwal]->dikoreksi) ? $skor[$j->id_jadwal]->dikoreksi : '0' ?>"
                                                             data-tampil="<?= $j->hasil_tampil ?>"
                                                             data-id="<?= $j->id_jadwal ?>"
                                                             data-toggle="modal"
                                                             data-target="#detail-nilai"
                                                             class="btn btn-sm btn-primary">
-                                                        Detail
-                                                    </button>
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <?php $no++;
+                                            endforeach;
+                                        else: ?>
+                                            <tr>
+                                                <td colspan="6" class="text-center">
+                                                    <div class="alert align-content-center alert-default-warning"
+                                                        role="alert">
+                                                        Belum ada jadwal ulangan/ujian
+                                                    </div>
                                                 </td>
                                             </tr>
-                                            <?php $no++; endforeach; else: ?>
-                                        <tr>
-                                            <td colspan="6" class="text-center">
-                                                <div class="alert align-content-center alert-default-warning"
-                                                     role="alert">
-                                                    Belum ada jadwal ulangan/ujian
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php endif; ?>
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                                 <hr>
@@ -200,7 +196,7 @@
 </div>
 
 <div class="modal fade" id="detail-nilai" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -284,18 +280,19 @@
 
 <script>
     var arrbulan = ['', 'Januari', 'Februari', 'Maret', 'April',
-        'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
     var arrhari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'];
-    var skores = JSON.parse('<?= json_encode($skor)?>');
-    var durasies = JSON.parse('<?= json_encode($durasi)?>');
-    var jadwals = JSON.parse('<?= json_encode($jadwal)?>');
+    var skores = JSON.parse('<?= json_encode($skor) ?>');
+    var durasies = JSON.parse('<?= json_encode($durasi) ?>');
+    var jadwals = JSON.parse('<?= json_encode($jadwal) ?>');
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#table-nilai-materi').DataTable();
         $('#table-nilai-tugas').DataTable();
         $('#table-nilai-ujian').DataTable();
 
-        $('#detail-nilai').on('show.bs.modal', function (e) {
+        $('#detail-nilai').on('show.bs.modal', function(e) {
             var tampilNilai = $(e.relatedTarget).data('tampil');
             var id = $(e.relatedTarget).data('id');
             var dikoreksi = $(e.relatedTarget).data('koreksi') == '1';
@@ -326,7 +323,7 @@
                 } else {
                     var old_date_obj = new Date(dur.mulai).getTime();
                     var new_date_obj = new Date(dur.selesai).getTime();
-                    let dr = (new_date_obj - old_date_obj)/1000;
+                    let dr = (new_date_obj - old_date_obj) / 1000;
                     dr /= 60;
                     $('#jdurasi').html(': ' + Math.round(dr) + ' menit');
                 }

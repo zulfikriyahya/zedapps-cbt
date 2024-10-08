@@ -15,7 +15,7 @@
     <!-- v3 -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
-          href="<?= base_url() ?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        href="<?= base_url() ?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/fontawesome.min.css">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/jqvmap/jqvmap.min.css">
     <!-- pace-progress -->
     <link rel="stylesheet"
-          href="<?= base_url() ?>/assets/plugins/pace-progress/themes/silver/pace-theme-center-circle.css">
+        href="<?= base_url() ?>/assets/plugins/pace-progress/themes/silver/pace-theme-center-circle.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/jquery-datetimepicker/jquery.datetimepicker.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet"
-          href="<?= base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+        href="<?= base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css">
@@ -84,7 +84,7 @@
     <script src="<?= base_url() ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <script type="text/javascript"
-            src="<?= base_url() ?>/assets/plugins/DualSelectList/js/bala.DualSelectList.jquery.js"></script>
+        src="<?= base_url() ?>/assets/plugins/DualSelectList/js/bala.DualSelectList.jquery.js"></script>
 
     <script defer src="<?= base_url() ?>/assets/plugins/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/app/css/stylised.css">
@@ -118,7 +118,7 @@
     </style>
 </head>
 <script>
-    let base_url = '<?=base_url()?>';
+    let base_url = '<?= base_url() ?>';
     let globalToken;
     let adaJadwalUjian;
 </script>
@@ -176,7 +176,8 @@
     }
 
     var bulans = ['Januari', 'Februari', 'Maret', 'April',
-        'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
     var arrhari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'];
 
     function stringToDate(dateStr) {
@@ -199,7 +200,6 @@
         let day = date.getDate().toString().padStart(2, '0');
         return arrhari[date.getDay()] + ', ' + day + ' ' + bulans[month] + ' ' + year;
     }
-
 </script>
 
 <?php
@@ -253,11 +253,12 @@ function singkat_tanggal($str)
 }
 
 ?>
-<body style="background-color:#343a40" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed text-sm" onload="startTime()">
-<div class="wrapper">
-    <!-- Navbar -->
-    <?php require_once("navbar.php"); ?>
 
-    <!-- Sidebar -->
-    <?php require_once("sidebar.php"); ?>
-    <!-- /.sidebar -->
+<body style="background-color:#343a40" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed text-sm" onload="startTime()">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <?php require_once("navbar.php"); ?>
+
+        <!-- Sidebar -->
+        <?php require_once("sidebar.php"); ?>
+        <!-- /.sidebar -->

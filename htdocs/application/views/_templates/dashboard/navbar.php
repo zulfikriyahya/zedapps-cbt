@@ -9,7 +9,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-        <div class="user-panel border-0 d-flex mt-1">
+            <div class="user-panel border-0 d-flex mt-1">
                 <div class="image">
                     <img src="<?= $profile->foto == null ? base_url() . 'assets/img/user.png' : base_url() . $profile->foto; ?>" class="img-circle elevation-2" alt="User Image">
                 </div>

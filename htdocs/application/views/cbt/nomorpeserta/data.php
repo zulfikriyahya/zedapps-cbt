@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -58,8 +58,8 @@
 </div>
 
 <script>
-    var arrKelas = JSON.parse('<?=json_encode($kelas)?>');
-    var tahun = '<?=$tp_active->tahun?>';
+    var arrKelas = JSON.parse('<?= json_encode($kelas) ?>');
+    var tahun = '<?= $tp_active->tahun ?>';
 
     function sortByName(a, b) {
         var aName = a.nama.toLowerCase();
@@ -86,15 +86,15 @@
     function getNomorPeserta(arr) {
         if (arr.length > 0) {
             $('#loading').removeClass('d-none');
-            setTimeout(function () {
+            setTimeout(function() {
                 var arrStr = encodeURIComponent(JSON.stringify(arr));
                 $.ajax({
                     type: "GET",
                     url: base_url + "cbtnomorpeserta/getsiswakelas/" + arrStr,
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
                         var newArr = [];
-                        $.map(response.siswa, function (value, index) {
+                        $.map(response.siswa, function(value, index) {
                             var item = {};
                             item['id'] = value.id_siswa;
                             item['username'] = value.username;
@@ -121,14 +121,14 @@
 
         if (val.length > 0) {
             $('#loading').removeClass('d-none');
-            setTimeout(function () {
+            setTimeout(function() {
                 var arrStr = encodeURIComponent(JSON.stringify(val));
                 console.log(arrStr);
                 $.ajax({
                     url: base_url + "cbtnomorpeserta/resetnomor?kelas=" + arrStr,
                     type: "GET",
                     //data: $(this).serialize() + "&siswa=" + JSON.stringify(arrayNomor),
-                    success: function (data) {
+                    success: function(data) {
                         console.log("response:", data);
                         if (data.status) {
                             getNomorPeserta(val)
@@ -140,7 +140,8 @@
                                 showCancelButton: false,
                             });
                         }
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         const err = JSON.parse(xhr.responseText)
                         swal.fire({
                             title: "Error",
@@ -155,7 +156,7 @@
 
     function createNumber() {
         $('#loading').removeClass('d-none');
-        setTimeout(function () {
+        setTimeout(function() {
             if (arrayNomor.length > 0) {
                 //var t = new Date();
                 //var current = t.getFullYear();
@@ -165,7 +166,7 @@
 
                 var newArrNomor = [];
                 var n = 1;
-                $.map(arrayNomor, function (value, index) {
+                $.map(arrayNomor, function(value, index) {
                     var item = {};
                     item['id'] = value.id;
                     item['username'] = value.username;
@@ -215,7 +216,7 @@
         $('.editable').attr('contentEditable', true);
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         var opsiKelas = $("#kelas");
@@ -227,17 +228,18 @@
             opsiKelas.prepend("<option value='Semua'>Semua Kelas</option>");
         }
 
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             var val = $(this).val();
             getNomorPeserta(val);
         });
 
-        $('#setNomor').submit('click', function (e) {
+        $('#setNomor').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             if (arrayNomor.length > 0) {
 
-                const $rows1 = $('#table-nomor').find('tr'), headers1 = $rows1.splice(0, 1);
+                const $rows1 = $('#table-nomor').find('tr'),
+                    headers1 = $rows1.splice(0, 1);
                 $rows1.each((i, row) => {
                     const id = $(row).find('td.editable').attr('id');
                     const nomor = $(row).find('td.editable').text().trim();
@@ -266,7 +268,7 @@
                     type: "POST",
                     dataType: "JSON",
                     data: $(this).serialize() + "&siswa=" + JSON.stringify(arrayNomor),
-                    success: function (data) {
+                    success: function(data) {
                         console.log("response:", data);
                         console.log(data);
                         if (data) {
@@ -284,7 +286,8 @@
                                 showCancelButton: false,
                             });
                         }
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log(xhr.responseText);
                         const err = JSON.parse(xhr.responseText)
                         swal.fire({

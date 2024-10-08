@@ -8,7 +8,7 @@ if (isset($jadwal_kbm)) {
     $jmlMapelPerHari = 0;
 }
 ?>
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -36,10 +36,10 @@ if (isset($jadwal_kbm)) {
                         <br>
                         <?php
                         if (count($kelas) > 0) :
-                            foreach ($kelas as $key => $value) :?>
+                            foreach ($kelas as $key => $value) : ?>
                                 <a href="<?= base_url('kelasjadwal/kelas/' . $key) ?>"
-                                   class="mt-1 btn <?= $id_kelas == $key ? 'btn-success' : 'btn-outline-success' ?>"
-                                   id="btn-<?= $key ?>"><?= $value ?>
+                                    class="mt-1 btn <?= $id_kelas == $key ? 'btn-success' : 'btn-outline-success' ?>"
+                                    id="btn-<?= $key ?>"><?= $value ?>
                                 </a>
                             <?php endforeach;
                         else: ?>
@@ -120,8 +120,8 @@ if (isset($jadwal_kbm)) {
                                                 <span class="input-group-text">Jam Mulai</span>
                                             </div>
                                             <input id="jam_mulai" type="text" name="jam_mulai" class="form-control"
-                                                   value="<?= $jadwal_kbm->kbm_jam_mulai ?>" autocomplete="off"
-                                                   placeholder="Jam Mulai" required>
+                                                value="<?= $jadwal_kbm->kbm_jam_mulai ?>" autocomplete="off"
+                                                placeholder="Jam Mulai" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -130,9 +130,9 @@ if (isset($jadwal_kbm)) {
                                                 <span class="input-group-text">Jumlah Mapel</span>
                                             </div>
                                             <input id="jml-mapel" type="number" class="form-control" name="jml_mapel"
-                                                   value="<?= $jadwal_kbm->kbm_jml_mapel_hari == '' ? 0 : $jadwal_kbm->kbm_jml_mapel_hari ?>"
-                                                   placeholder="Jml Mapel"
-                                                   required>
+                                                value="<?= $jadwal_kbm->kbm_jml_mapel_hari == '' ? 0 : $jadwal_kbm->kbm_jml_mapel_hari ?>"
+                                                placeholder="Jml Mapel"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
@@ -177,64 +177,64 @@ if (isset($jadwal_kbm)) {
                             <div class="table-responsive">
                                 <table id="jadwal-pelajaran" class="w-100 table table-bordered">
                                     <thead class="alert alert-primary">
-                                    <tr>
-                                        <th height="50" class="align-middle text-center p-0" style="min-width: 150px">WAKTU</th>
-                                        <th class="align-middle text-center p-0" style="min-width: 150px">SENIN</th>
-                                        <th class="align-middle text-center p-0" style="min-width: 150px">SELASA</th>
-                                        <th class="align-middle text-center p-0" style="min-width: 150px">RABU</th>
-                                        <th class="align-middle text-center p-0" style="min-width: 150px">KAMIS</th>
-                                        <th class="align-middle text-center p-0" style="min-width: 150px">JUM'AT</th>
-                                        <th class="align-middle text-center p-0" style="min-width: 150px">SABTU</th>
-                                    </tr>
+                                        <tr>
+                                            <th height="50" class="align-middle text-center p-0" style="min-width: 150px">WAKTU</th>
+                                            <th class="align-middle text-center p-0" style="min-width: 150px">SENIN</th>
+                                            <th class="align-middle text-center p-0" style="min-width: 150px">SELASA</th>
+                                            <th class="align-middle text-center p-0" style="min-width: 150px">RABU</th>
+                                            <th class="align-middle text-center p-0" style="min-width: 150px">KAMIS</th>
+                                            <th class="align-middle text-center p-0" style="min-width: 150px">JUM'AT</th>
+                                            <th class="align-middle text-center p-0" style="min-width: 150px">SABTU</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                    $jamMulai = new DateTime($jadwal_kbm->kbm_jam_mulai);
-                                    $jamSampai = new DateTime($jadwal_kbm->kbm_jam_mulai);
-                                    for ($i = 0; $i < $jadwal_kbm->kbm_jml_mapel_hari; $i++) :
-                                        $jamke = $i + 1;
-                                        if (in_array($jamke, $arrIst)) :
-                                            $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                            ?>
-                                            <tr class="jam bg-gradient-red" data-jamke="<?= $jamke ?>">
-                                                <td class="align-middle text-center">
-                                                    <?= $jamMulai->format('H:i') ?> - <?= $jamSampai->format('H:i') ?>
-                                                </td>
-                                                <td class="align-middle text-center p-0">IS</td>
-                                                <td class="align-middle text-center p-0">TI</td>
-                                                <td class="align-middle text-center p-0">RA</td>
-                                                <td class="align-middle text-center p-0">H</td>
-                                                <td class="align-middle text-center p-0">A</td>
-                                                <td class="align-middle text-center p-0">T</td>
-                                            </tr>
-                                            <?php
-                                            $jamMulai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                        else :
-                                            $jamSampai->add(new DateInterval('PT' . $jadwal_kbm->kbm_jam_pel . 'M'));
-                                            ?>
-                                            <tr class="jam" data-jamke="<?= $jamke ?>">
-                                                <td class="align-middle text-center bg-gradient-primary">
-                                                    <?= $jamMulai->format('H:i') ?> - <?= $jamSampai->format('H:i') ?>
-                                                </td>
-                                                <?php
-                                                foreach ($arr_id_hari as $hari) :
-                                                    $sel = isset($arrRes[$jamke]) && isset($arrRes[$jamke][$hari])
-                                                        ? $arrRes[$jamke][$hari]['id_mapel'] : ''; ?>
-                                                    <td class="align-middle">
-                                                        <?= form_dropdown(
-                                                            'input-mapel',
-                                                            $mapels,
-                                                            $sel,
-                                                            'data-idhari="' . $hari . '" data-jamke="' . $jamke . '"' .
-                                                            ' class="select2 form-control form-control-sm" data-placeholder="Pilih Mapel"'
-                                                        ); ?>
+                                        <?php
+                                        $jamMulai = new DateTime($jadwal_kbm->kbm_jam_mulai);
+                                        $jamSampai = new DateTime($jadwal_kbm->kbm_jam_mulai);
+                                        for ($i = 0; $i < $jadwal_kbm->kbm_jml_mapel_hari; $i++) :
+                                            $jamke = $i + 1;
+                                            if (in_array($jamke, $arrIst)) :
+                                                $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
+                                        ?>
+                                                <tr class="jam bg-gradient-red" data-jamke="<?= $jamke ?>">
+                                                    <td class="align-middle text-center">
+                                                        <?= $jamMulai->format('H:i') ?> - <?= $jamSampai->format('H:i') ?>
                                                     </td>
-                                                <?php endforeach; ?>
-                                            </tr>
+                                                    <td class="align-middle text-center p-0">IS</td>
+                                                    <td class="align-middle text-center p-0">TI</td>
+                                                    <td class="align-middle text-center p-0">RA</td>
+                                                    <td class="align-middle text-center p-0">H</td>
+                                                    <td class="align-middle text-center p-0">A</td>
+                                                    <td class="align-middle text-center p-0">T</td>
+                                                </tr>
                                             <?php
-                                            $jamMulai->add(new DateInterval('PT' . $jadwal_kbm->kbm_jam_pel . 'M'));
-                                        endif;
-                                    endfor; ?>
+                                                $jamMulai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
+                                            else :
+                                                $jamSampai->add(new DateInterval('PT' . $jadwal_kbm->kbm_jam_pel . 'M'));
+                                            ?>
+                                                <tr class="jam" data-jamke="<?= $jamke ?>">
+                                                    <td class="align-middle text-center bg-gradient-primary">
+                                                        <?= $jamMulai->format('H:i') ?> - <?= $jamSampai->format('H:i') ?>
+                                                    </td>
+                                                    <?php
+                                                    foreach ($arr_id_hari as $hari) :
+                                                        $sel = isset($arrRes[$jamke]) && isset($arrRes[$jamke][$hari])
+                                                            ? $arrRes[$jamke][$hari]['id_mapel'] : ''; ?>
+                                                        <td class="align-middle">
+                                                            <?= form_dropdown(
+                                                                'input-mapel',
+                                                                $mapels,
+                                                                $sel,
+                                                                'data-idhari="' . $hari . '" data-jamke="' . $jamke . '"' .
+                                                                    ' class="select2 form-control form-control-sm" data-placeholder="Pilih Mapel"'
+                                                            ); ?>
+                                                        </td>
+                                                    <?php endforeach; ?>
+                                                </tr>
+                                        <?php
+                                                $jamMulai->add(new DateInterval('PT' . $jadwal_kbm->kbm_jam_pel . 'M'));
+                                            endif;
+                                        endfor; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -262,10 +262,10 @@ if (isset($jadwal_kbm)) {
 </div>
 
 <script>
-    var arrMapel = JSON.parse(JSON.stringify(<?= isset($mapels) ? json_encode($mapels) : '[]'?>));
+    var arrMapel = JSON.parse(JSON.stringify(<?= isset($mapels) ? json_encode($mapels) : '[]' ?>));
     let method = '<?= $method ?>';
     var jmlMapel = 0;
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.select2').select2();
         //$('.popr').popr();
         $('#jam_mulaiEdit, #jam_mulai').datetimepicker({
@@ -278,10 +278,10 @@ if (isset($jadwal_kbm)) {
         });
 
         onChangeJmlIst('<?= count($jmlIst) ?>');
-        jmlMapel = '<?=$jmlMapelPerHari?>';
+        jmlMapel = '<?= $jmlMapelPerHari ?>';
         onChangeJmlMapel(jmlMapel);
 
-        $('#setjadwal').on('submit', function (e) {
+        $('#setjadwal').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -292,7 +292,7 @@ if (isset($jadwal_kbm)) {
                 data: $(this).serialize(),
                 method: 'POST',
                 dataType: "JSON",
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     swal.fire({
                         "title": data.status ? "Berhasil" : "Gagal",
@@ -304,37 +304,38 @@ if (isset($jadwal_kbm)) {
                         }
                     });
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     showDangerToast(xhr.responseText);
                 }
             });
         });
 
-        $('#jum_ist').on('change', function () {
+        $('#jum_ist').on('change', function() {
             //console.log($(this).val());
             onChangeJmlIst($(this).val());
         });
 
-        $('#jml-mapel').on('change', function () {
+        $('#jml-mapel').on('change', function() {
             onChangeJmlMapel($(this).val());
         });
 
-        $('#setmapel').submit('click', function (e) {
+        $('#setmapel').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
-            const $rows = $('#jadwal-pelajaran').find('tr'), headers = $rows.splice(0, 1); // header rows
+            const $rows = $('#jadwal-pelajaran').find('tr'),
+                headers = $rows.splice(0, 1); // header rows
             var jsonObj = [];
             $rows.each((i, row) => {
                 //var jamke = $(row).attr("data-jamke");
                 const $colsHari = $(row).find('select');
                 $colsHari.each((h, col) => {
                     let item = {};
-                    item ["id_tp"] = id_tp_active;
-                    item ["id_smt"] = id_smt_active;
-                    item ["id_hari"] = $(col).data("idhari");
-                    item ["id_mapel"] = $(col).val();
-                    item ["jam_ke"] = $(col).data("jamke");
+                    item["id_tp"] = id_tp_active;
+                    item["id_smt"] = id_smt_active;
+                    item["id_hari"] = $(col).data("idhari");
+                    item["id_mapel"] = $(col).val();
+                    item["jam_ke"] = $(col).data("jamke");
 
                     jsonObj.push(item);
                 });
@@ -345,7 +346,7 @@ if (isset($jadwal_kbm)) {
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize() + "&method=" + method + "&data=" + JSON.stringify(jsonObj),
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.status) {
                         swal.fire({
@@ -364,7 +365,8 @@ if (isset($jadwal_kbm)) {
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     swal.fire({
                         title: "ERROR",
@@ -391,7 +393,7 @@ if (isset($jadwal_kbm)) {
     */
 
     function reload() {
-        window.location.href = base_url + 'kelasjadwal/kelas/' + '<?=$id_kelas?>';
+        window.location.href = base_url + 'kelasjadwal/kelas/' + '<?= $id_kelas ?>';
     }
 
     function onChangeJmlMapel(s) {

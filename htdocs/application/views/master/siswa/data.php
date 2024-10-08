@@ -16,15 +16,15 @@
                     <h6 class="card-title"><b><?= $subjudul ?></b></h6>
                     <div class="card-tools">
                         <button type="button" data-toggle="modal" data-target="#createSiswaModal"
-                                class="btn btn-sm btn-primary"><i
-                                    class="fas fa-plus"></i><span
-                                    class="d-none d-sm-inline-block ml-1">Tambah Siswa</span>
+                            class="btn btn-sm btn-primary"><i
+                                class="fas fa-plus"></i><span
+                                class="d-none d-sm-inline-block ml-1">Tambah Siswa</span>
                         </button>
                         <a href="<?= base_url('datasiswa/add') ?>" class="btn btn-sm bg-info"><i
-                                    class="fas fa-upload"></i><span class="d-none d-sm-inline-block ml-1">Import</span></a>
+                                class="fas fa-upload"></i><span class="d-none d-sm-inline-block ml-1">Import</span></a>
                         <a href="<?= base_url('datasiswa/update') ?>" class="btn btn-sm bg-success"><i
-                                    class="fas fa-database"></i><span
-                                    class="d-none d-sm-inline-block ml-1">Update Data</span></a>
+                                class="fas fa-database"></i><span
+                                class="d-none d-sm-inline-block ml-1">Update Data</span></a>
                     </div>
                 </div>
 
@@ -45,6 +45,9 @@
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="dataTables_filter">
+                                    <!-- <button id="btn-clear" type="button" class="btn btn-sm btn-light m-0" data-toggle="tooltip" title="hapus pencarian" disabled="disabled">
+                                        <i class="fa fa-times"></i>
+                                    </button> -->
                                     <label>
                                         <input id="input-search" type="search" class="form-control form-control-sm" placeholder="" aria-controls="users">
                                     </label>
@@ -55,14 +58,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 mb-2 d-flex flex-row justify-content-between">                              
+                            <div class="col-12 mb-2 d-flex flex-row justify-content-between">
                                 <div class="dropdown">
                                     <button id="dropdown-btn" class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" disabled="disabled">
-                                    Aksi
+                                        Aksi
                                     </button>
                                     <div id="dropdown-action" class="dropdown-menu">
-                                        <a class="dropdown-item" id="hapus" href="#">
-                                            <i class="far fa-trash-alt"></i> Hapus Terpilih</a>
+                                        <a class="dropdown-item" id="pindah" href="#">Set sebagai PINDAH</a>
+                                        <a class="dropdown-item" id="keluar" href="#">Set sebagai KELUAR</a>
+                                        <a class="dropdown-item" id="hapus" href="#">HAPUS</a>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center">
@@ -70,6 +74,8 @@
                                     <select id="users-filter" class="ml-2 form-control form-control-sm">
                                         <option value="1">Aktif</option>
                                         <option value="5">Tanpa Kelas</option>
+                                        <option value="3">Pindah</option>
+                                        <option value="4">Keluar</option>
                                     </select>
                                 </div>
                             </div>
@@ -77,16 +83,16 @@
                                 <?= form_open('datasiswa/delete', array('id' => 'bulk')); ?>
                                 <div class="table-responsive">
                                     <table id="table-siswa" class="w-100 table table-md table-striped table-bordered table-hover">
-                                        <thead class="bg-maroon">
-                                        <tr>
-                                            <th height="50" class="align-middle text-center p-0">
-                                                <input class="select_all" type="checkbox">
-                                            </th>
-                                            <th class="align-middle text-center p-0">No.</th>
-                                            <th class="align-middle">Nama & Kelas</th>
-                                            <th class="align-middle">NIS & NISN</th>
-                                            <th class="align-middle text-center p-0">Aksi</th>
-                                        </tr>
+                                        <thead>
+                                            <tr>
+                                                <th height="50" class="align-middle text-center p-0">
+                                                    <input class="select_all" type="checkbox">
+                                                </th>
+                                                <th class="align-middle text-center p-0">No.</th>
+                                                <th class="align-middle">NAMA & KELAS</th>
+                                                <th class="align-middle">NIS & NISN</th>
+                                                <th class="align-middle text-center p-0">Aksi</th>
+                                            </tr>
                                         </thead>
                                         <tbody id="table-body">
                                         </tbody>
@@ -102,20 +108,17 @@
                         </div>
                     </div>
                 </div>
-                
-
                 <div class="overlay" id="loading">
                     <div class="spinner-grow"></div>
                 </div>
             </div>
-
         </div>
     </section>
 </div>
 
 <?= form_open('', array('id' => 'formsiswa')); ?>
 <div class="modal fade" id="createSiswaModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -135,7 +138,7 @@
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input id="nama_siswa" type="text" class="form-control" name="nama_siswa"
-                                   placeholder="Nama Siswa" required>
+                                placeholder="Nama Siswa" required>
                         </div>
                     </div>
                 </div>
@@ -175,7 +178,7 @@
                                 <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
                             </div>
                             <select class="form-control" id="jenis_kelamin" data-placeholder="Jenis Kelamin"
-                                    name="jenis_kelamin">
+                                name="jenis_kelamin">
                                 <option value="">Pilih Jenis Kelamin</option>
                                 <option value="L">Laki-laki</option>
                                 <option value="P">Perempuan</option>
@@ -194,24 +197,24 @@
                             </div>
                             <?php
                             if ($setting->jenjang == 1) {
-                                $opsis ['1'] = '1';
-                                $opsis ['2'] = '2';
-                                $opsis ['3'] = '3';
-                                $opsis ['4'] = '4';
-                                $opsis ['5'] = '5';
-                                $opsis ['6'] = '6';
+                                $opsis['1'] = '1';
+                                $opsis['2'] = '2';
+                                $opsis['3'] = '3';
+                                $opsis['4'] = '4';
+                                $opsis['5'] = '5';
+                                $opsis['6'] = '6';
                             } elseif ($setting->jenjang == 2) {
-                                $opsis ['7'] = '7';
-                                $opsis ['8'] = '8';
-                                $opsis ['9'] = '9';
+                                $opsis['7'] = '7';
+                                $opsis['8'] = '8';
+                                $opsis['9'] = '9';
                             } else {
-                                $opsis ['10'] = '10';
-                                $opsis ['11'] = '11';
-                                $opsis ['12'] = '12';
+                                $opsis['10'] = '10';
+                                $opsis['11'] = '11';
+                                $opsis['12'] = '12';
                             };
                             ?>
                             <select class="form-control" id="kelas_awal" data-placeholder="Pilih Kelas"
-                                    name="kelas_awal">
+                                name="kelas_awal">
                                 <option value="">Pilih Kelas Awal</option>
                                 <?php foreach ($opsis as $kelas) : ?>
                                     <option value="<?= $kelas ?>"><?= $kelas ?></option>
@@ -227,11 +230,11 @@
                     <div class="col-md-8 col-sm-offset-8">
                         <div class="input-group">
                             <div class="input-group-prepend">
-								<span class="input-group-text">
-									<i class="fas fa-calendar-alt"></i></span>
+                                <span class="input-group-text">
+                                    <i class="fas fa-calendar-alt"></i></span>
                             </div>
                             <input type="text" name="tahun_masuk" id="tahunmasuk" class="form-control"
-                                   autocomplete="off" placeholder="Tgl/Tahun Masuk" required>
+                                autocomplete="off" placeholder="Tgl/Tahun Masuk" required>
                         </div>
                     </div>
                 </div>
@@ -245,7 +248,7 @@
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input id="username" type="text" class="form-control" name="username" placeholder="Username"
-                                   required>
+                                required>
                         </div>
                     </div>
                 </div>
@@ -283,19 +286,19 @@
 <input type="hidden" id="pager-limit" name="limit" value="10">
 <?= form_close() ?>
 
-<script src="<?=base_url()?>/assets/app/js/jquery.twbsPagination.js" type="text/javascript"></script>
+<script src="<?= base_url() ?>/assets/app/js/jquery.twbsPagination.js" type="text/javascript"></script>
 <script>
     let currentPage = 1;
     let perPage = 10;
     let $pagination, defaultOpts, query, actionBulk;
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
         $pagination = $('#pagination');
         defaultOpts = {
             visiblePages: 5,
             initiateStartPageClick: false,
-            onPageClick: function (event, page) {
+            onPageClick: function(event, page) {
                 console.info(page + ' (from options)');
                 currentPage = page;
                 loadSiswa();
@@ -303,26 +306,26 @@
         };
         $pagination.twbsPagination(defaultOpts);
 
-        $('#users_length').change(function () {
+        $('#users_length').change(function() {
             $('#pager-limit').val($(this).val());
             perPage = $(this).val();
             currentPage = 1;
             loadSiswa();
         });
 
-        $('#users-filter').change(function () {
+        $('#users-filter').change(function() {
             currentPage = 1;
             loadSiswa();
         });
 
-        $('#input-search').on('change keyup', function () {
+        $('#input-search').on('change keyup', function() {
             var val = $(this).val();
             query = val === "" ? null : val;
             $('#btn-clear').attr('disabled', query == null)
             $('#btn-search').attr('disabled', query == null)
         });
 
-        $('#btn-clear').on('click', function () {
+        $('#btn-clear').on('click', function() {
             query = null;
             currentPage = 1;
             $(this).attr('disabled', query == null);
@@ -330,16 +333,16 @@
             loadSiswa();
         });
 
-        $(".select_all").on("click", function () {
+        $(".select_all").on("click", function() {
             if (this.checked) {
-                $(".check").each(function () {
+                $(".check").each(function() {
                     this.checked = true;
                     $(".select_all").prop("checked", true);
                     $('#hapusterpilih').removeAttr('disabled');
                     $('#dropdown-btn').removeAttr('disabled');
                 });
             } else {
-                $(".check").each(function () {
+                $(".check").each(function() {
                     this.checked = false;
                     $(".select_all").prop("checked", false);
                     $('#hapusterpilih').attr('disabled', 'disabled');
@@ -348,7 +351,7 @@
             }
         });
 
-        $("#table-siswa tbody").on("click", "tr .check", function () {
+        $("#table-siswa tbody").on("click", "tr .check", function() {
             var check = $("#table-siswa tbody tr .check").length;
             var checked = $("#table-siswa tbody tr .check:checked").length;
             if (check === checked) {
@@ -366,14 +369,15 @@
             }
         });
 
-        $("#bulk").on("submit", function (e) {
+        $("#bulk").on("submit", function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
+            //console.log($(this).serialize() + '&aksi=' +actionBulk)
             $.ajax({
                 url: $(this).attr("action"),
-                data: $(this).serialize() + '&aksi=' +actionBulk,
+                data: $(this).serialize() + '&aksi=' + actionBulk,
                 type: "POST",
-                success: function (respon) {
+                success: function(respon) {
                     if (respon.status) {
                         $(".select_all").prop("checked", false);
                         $('#hapusterpilih').attr('disabled', 'disabled');
@@ -393,7 +397,7 @@
                         });
                     }
                 },
-                error: function () {
+                error: function() {
                     swal.fire({
                         title: "Gagal",
                         text: "Ada data yang sedang digunakan",
@@ -404,11 +408,10 @@
         });
 
         $('#tahunmasuk').datetimepicker({
-            icons:
-                {
-                    next: 'fa fa-angle-right',
-                    previous: 'fa fa-angle-left'
-                },
+            icons: {
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
+            },
             timepicker: false,
             format: 'Y-m-d',
             disabledWeekDays: [0],
@@ -418,7 +421,7 @@
             }
         });
 
-        $('#formsiswa').on('submit', function (e) {
+        $('#formsiswa').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log($(this).serialize());
@@ -427,11 +430,11 @@
                 data: $(this).serialize(),
                 dataType: "JSON",
                 type: 'POST',
-                success: function (response) {
+                success: function(response) {
                     console.log("result", response);
                     $('#createSiswaModal').modal('hide').data('bs.modal', null);
-                    $('#createSiswaModal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#createSiswaModal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
 
                     if (response.insert) {
@@ -441,10 +444,10 @@
                         showDangerToast(response.text);
                     }
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     $('#createSiswaModal').modal('hide').data('bs.modal', null);
-                    $('#createSiswaModal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#createSiswaModal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
                     showDangerToast("Gagal disimpan");
                     console.log(xhr.responseText);
@@ -452,7 +455,7 @@
             })
         });
 
-        $("#dropdown-action a ").click(function () {
+        $("#dropdown-action a ").click(function() {
             let x = $(this).attr('id');
             //alert(x);
             actionBulk = x;
@@ -480,7 +483,7 @@
             url: base_url + 'datasiswa/list',
             data: dataPost,
             type: 'POST',
-            success: function (data) {
+            success: function(data) {
                 $('#loading').addClass('d-none');
                 $('#input-search').val(data.search);
                 if (data.pages > 0) {
@@ -494,7 +497,8 @@
                     $pagination.addClass('d-none');
                 }
                 previewData(data);
-            }, error: function (xhr, status, error) {
+            },
+            error: function(xhr, status, error) {
                 $('#loading').addClass('d-none')
                 console.log("error", xhr.responseText);
                 swal.fire({
@@ -512,30 +516,30 @@
         var html = '';
 
         if (data.lists.length > 0) {
-            $.each(data.lists, function (idx, siswa) {
-                const kls = siswa.nama_kelas != null ? '<span class="badge badge-info">'+siswa.nama_kelas+'</span>' : '';
+            $.each(data.lists, function(idx, siswa) {
+                const kls = siswa.nama_kelas != null ? '<span class="badge badge-info">' + siswa.nama_kelas + '</span>' : '';
                 const status = siswa.aktif == "0" ? '<span class="badge badge-danger">Nonaktif</span>' : '<span class="badge badge-success">Aktif</span>';
                 html += '<tr>' +
                     '   <td class="text-center align-middle">' +
-                    '       <input name="checked[]" class="check" value="'+siswa.id_siswa+'" type="checkbox">' +
+                    '       <input name="checked[]" class="check" value="' + siswa.id_siswa + '" type="checkbox">' +
                     '   </td>' +
-                    '   <td class="text-center align-middle">'+ Number((perPage * (currentPage - 1)) + (idx + 1)) +'</td>' +
+                    '   <td class="text-center align-middle">' + Number((perPage * (currentPage - 1)) + (idx + 1)) + '</td>' +
                     '   <td>' +
                     '       <div class="media d-flex h-100">' +
                     '           <img class="avatar img-circle justify-content-center align-self-center"' +
-                    '                src="'+base_url+siswa.foto+'" width="50" height="50" alt="User Image"> ' +
-                    '           <div class="media-body ml-2 justify-content-center align-self-center">'+siswa.nama+'<br>' + kls +
-                    '               <span class="badge badge-info mr-1">'+siswa.jenis_kelamin+'</span>' + status +
+                    '                src="' + base_url + siswa.foto + '" width="50" height="50" alt="User Image"> ' +
+                    '           <div class="media-body ml-2 justify-content-center align-self-center">' + siswa.nama + '<br>' + kls +
+                    '               <span class="badge badge-info mr-1">' + siswa.jenis_kelamin + '</span>' + status +
                     '           </div>' +
                     '       </div>' +
                     '   </td>' +
                     '   <td class=" align-middle">' +
-                    '       <span class="badge badge-light">'+siswa.nis+'</span><br>' +
-                    '       <span class="badge badge-light">'+siswa.nisn+'</span>' +
+                    '       <span class="badge badge-light">' + siswa.nis + '</span><br>' +
+                    '       <span class="badge badge-light">' + siswa.nisn + '</span>' +
                     '   </td>' +
                     '   <td class=" align-middle">' +
                     '       <div class="text-center">' +
-                    '           <a class="btn btn-xs btn-warning" href="'+base_url+'datasiswa/edit/'+siswa.id_siswa+'">' +
+                    '           <a class="btn btn-xs btn-warning" href="' + base_url + 'datasiswa/edit/' + siswa.id_siswa + '">' +
                     '               <i class="fa fa-pencil-alt"></i> Edit' +
                     '           </a>' +
                     '       </div>' +
@@ -546,11 +550,11 @@
             html += '<tr><td colspan="5" class="text-center align-middle">Tidak ada data siswa</td><tr>';
         }
         $('#table-body').html(html);
-        $(`.avatar`).each(function () {
-            $(this).on("error", function () {
+        $(`.avatar`).each(function() {
+            $(this).on("error", function() {
                 var src = $(this).attr('src').replace('profiles', 'foto_siswa');
                 $(this).attr("src", src);
-                $(this).on("error", function () {
+                $(this).on("error", function() {
                     $(this).attr("src", base_url + 'assets/img/siswa.png');
                 });
             });
@@ -579,6 +583,54 @@
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Hapus!"
+            }).then(result => {
+                if (result.value) {
+                    $("#bulk").submit();
+                }
+            });
+        }
+    }
+
+    function bulk_pindah() {
+        if ($("#table-siswa tbody tr .check:checked").length == 0) {
+            swal.fire({
+                title: "Gagal",
+                text: "Tidak ada data yang dipilih",
+                icon: "error"
+            });
+        } else {
+            swal.fire({
+                title: "Anda yakin?",
+                text: "Data terpilih akan diset sebagai siswa PINDAH",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "YA!"
+            }).then(result => {
+                if (result.value) {
+                    $("#bulk").submit();
+                }
+            });
+        }
+    }
+
+    function bulk_keluar() {
+        if ($("#table-siswa tbody tr .check:checked").length == 0) {
+            swal.fire({
+                title: "Gagal",
+                text: "Tidak ada data yang dipilih",
+                icon: "error"
+            });
+        } else {
+            swal.fire({
+                title: "Anda yakin?",
+                text: "Data terpilih akan diset sebagai siswa KELUAR",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "YA!"
             }).then(result => {
                 if (result.value) {
                     $("#bulk").submit();

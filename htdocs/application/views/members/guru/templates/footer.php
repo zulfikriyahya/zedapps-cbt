@@ -3,9 +3,9 @@
 
 <!-- Main Footer -->
 <footer class="main-footer bg-dark">
-    <strong>ZEDAPPS CBT</strong> Version <?= APP_VERSION ?>
+    <strong>ZEDAPPS SCHOOL</strong> Version <?= APP_VERSION ?>
     <div class="float-right d-none d-sm-inline-block">
-        <strong>Copyright &copy; 2018 - <?= date('Y'); ?> <a href="https://zedlabs.id" target="blank">ZEDLABS</a></strong>
+        <strong>Copyright &copy; 2018 - <?= date('Y'); ?></strong>
     </div>
 </footer>
 
@@ -98,7 +98,7 @@
 
 <!-- Custom JS -->
 <script type="text/javascript">
-    $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
+    $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
         return {
             "iStart": oSettings._iDisplayStart,
             "iEnd": oSettings.fnDisplayEnd(),
@@ -124,10 +124,10 @@
         table.ajax.reload();
     }
 
-    var initDestroyTimeOutPace = function () {
+    var initDestroyTimeOutPace = function() {
         var counter = 0;
 
-        var refreshIntervalId = setInterval(function () {
+        var refreshIntervalId = setInterval(function() {
             var progress;
 
             if (typeof $('.pace-progress').attr('data-progress-text') !== 'undefined') {
@@ -145,7 +145,6 @@
         }, 100);
     };
     initDestroyTimeOutPace();
-
 </script>
 
 </body>

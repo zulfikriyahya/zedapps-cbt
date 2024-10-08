@@ -1,15 +1,11 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: AbangAzmi
- * Date: 20/12/2020
- * Time: 11:45
- */
 
 $satuan = [
     "1" => ["I ~ V", "VI"],
     "2" => ["VII-VIII", "IX"],
-    "3" => ["X-XI", "XII"
+    "3" => [
+        "X-XI",
+        "XII"
     ]
 ];
 
@@ -62,8 +58,8 @@ $satuan = [
                                 <label class="col-5 col-form-label">Tgl Rapor PTS</label>
                                 <div class="col-7">
                                     <input type="text" name="tgl_rapor_pts"
-                                           value="<?= $rapor != null ? $rapor->tgl_rapor_pts : '' ?>"
-                                           class="form-control tgl" autocomplete="off" required>
+                                        value="<?= $rapor != null ? $rapor->tgl_rapor_pts : '' ?>"
+                                        class="form-control tgl" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -71,8 +67,8 @@ $satuan = [
                                     Kls <?= $satuan[$setting->jenjang][0] ?></label>
                                 <div class="col-7">
                                     <input type="text" name="tgl_rapor_akhir"
-                                           value="<?= $rapor != null ? $rapor->tgl_rapor_akhir : '' ?>"
-                                           class="form-control tgl" autocomplete="off" required>
+                                        value="<?= $rapor != null ? $rapor->tgl_rapor_akhir : '' ?>"
+                                        class="form-control tgl" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -80,8 +76,8 @@ $satuan = [
                                     Kls <?= $satuan[$setting->jenjang][1] ?></label>
                                 <div class="col-7">
                                     <input type="text" name="tgl_rapor_kelas_akhir"
-                                           value="<?= $rapor != null ? $rapor->tgl_rapor_kelas_akhir : '' ?>"
-                                           class="form-control tgl" autocomplete="off" required>
+                                        value="<?= $rapor != null ? $rapor->tgl_rapor_kelas_akhir : '' ?>"
+                                        class="form-control tgl" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -127,31 +123,31 @@ $satuan = [
                                 <label class="col-4 col-form-label">KKM</label>
                                 <div class="col-8">
                                     <input type="number" name="kkm" value="<?= $rapor != null ? $rapor->kkm : '' ?>"
-                                           class="form-control kkm" required>
+                                        class="form-control kkm" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-4 col-form-label">Bobot PH</label>
                                 <div class="col-8">
                                     <input type="number" name="bobot_ph"
-                                           value="<?= $rapor != null ? $rapor->bobot_ph : '' ?>"
-                                           class="form-control kkm" required>
+                                        value="<?= $rapor != null ? $rapor->bobot_ph : '' ?>"
+                                        class="form-control kkm" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-4 col-form-label">Bobot PTS</label>
                                 <div class="col-8">
                                     <input type="number" name="bobot_pts"
-                                           value="<?= $rapor != null ? $rapor->bobot_pts : '' ?>"
-                                           class="form-control kkm" required>
+                                        value="<?= $rapor != null ? $rapor->bobot_pts : '' ?>"
+                                        class="form-control kkm" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-4 col-form-label">Bobot PAS</label>
                                 <div class="col-8">
                                     <input type="number" name="bobot_pas"
-                                           value="<?= $rapor != null ? $rapor->bobot_pas : '' ?>"
-                                           class="form-control kkm" required>
+                                        value="<?= $rapor != null ? $rapor->bobot_pas : '' ?>"
+                                        class="form-control kkm" required>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +168,7 @@ $satuan = [
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         function onChangeKkm() {
             console.log('change');
             var tunggal = $('#tunggal').val();
@@ -199,11 +195,10 @@ $satuan = [
                     ]
                 }
             },
-            icons:
-                {
-                    next: 'fa fa-angle-right',
-                    previous: 'fa fa-angle-left'
-                },
+            icons: {
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
+            },
             timepicker: false,
             scrollInput: false,
             scrollMonth: false,
@@ -213,11 +208,11 @@ $satuan = [
                 horizontal: 'left',
                 vertical: 'bottom'
             }
-        }).change(function () {
+        }).change(function() {
             $(this).val(buat_tanggal_indonesia($(this).val()));
         });
 
-        $('#editsetting').submit(function (e) {
+        $('#editsetting').submit(function(e) {
             e.stopPropagation();
             e.preventDefault();
             e.stopImmediatePropagation();
@@ -230,8 +225,8 @@ $satuan = [
                 type: "POST",
                 dataType: "json",
                 data: $(this).serialize(),
-                success: function (response) {
-                    setTimeout(function () {
+                success: function(response) {
+                    setTimeout(function() {
                         $('#loading').addClass('d-none');
                         if (response.status) {
                             showSuccessToast("Sukses")
@@ -239,7 +234,8 @@ $satuan = [
                             showSuccessToast("gagal")
                         }
                     }, 500);
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     $('#loading').addClass('d-none');
                     console.log("response:", xhr.responseText);
                     showDangerToast('gagal disimpan')
@@ -247,10 +243,9 @@ $satuan = [
             });
         });
 
-        $('#tunggal').on('change', function () {
+        $('#tunggal').on('change', function() {
             onChangeKkm();
         });
 
     })
 </script>
-

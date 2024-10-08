@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 07/07/20
- * Time: 17:20
- */
-?>
-
 <div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
@@ -17,7 +8,7 @@
                 <div class="col-6">
                     <button onclick="window.history.back();" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </button>
                 </div>
             </div>
@@ -33,33 +24,33 @@
                 <div class="card-body">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
-                        <tr>
-                            <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
-                            <th class="text-center p-0 align-middle p-0">Tanggal</th>
-                            <th class="text-center p-0 align-middle">Catatan</th>
-                        </tr>
+                            <tr>
+                                <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
+                                <th class="text-center p-0 align-middle p-0">Tanggal</th>
+                                <th class="text-center p-0 align-middle">Catatan</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <?php if (count($catatan_siswa) > 0) :
-                            foreach ($catatan_siswa as $key => $value) : ?>
+                            <?php if (count($catatan_siswa) > 0) :
+                                foreach ($catatan_siswa as $key => $value) : ?>
+                                    <tr>
+                                        <td class="text-center">
+                                            <?= ($key + 1) ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?= $value->tgl ?>
+                                        </td>
+                                        <td>
+                                            <?= $value->text ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;
+                            else: ?>
                                 <tr>
-                                    <td class="text-center">
-                                        <?= ($key + 1) ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <?= $value->tgl ?>
-                                    </td>
-                                    <td>
-                                        <?= $value->text ?>
+                                    <td colspan="3" class="text-center">Belum ada catatan
                                     </td>
                                 </tr>
-                            <?php endforeach;
-                        else: ?>
-                            <tr>
-                                <td colspan="3" class="text-center">Belum ada catatan
-                                </td>
-                            </tr>
-                        <?php endif; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -96,16 +87,16 @@
 </div>
 
 <script>
-    var idSiswa = <?=$siswa->id_siswa?>;
-    var idMapel = <?=$id_mapel?>;
-    var idKelas = <?=$id_kelas?>;
-    $(document).ready(function () {
+    var idSiswa = <?= $siswa->id_siswa ?>;
+    var idMapel = <?= $id_mapel ?>;
+    var idKelas = <?= $id_kelas ?>;
+    $(document).ready(function() {
 
-        $('#daftarModal').on('show.bs.modal', function (e) {
+        $('#daftarModal').on('show.bs.modal', function(e) {
             $('#daftarLabel').text('Catatan Untuk Kelas ');
         });
 
-        $('#formcatatan').submit('click', function (e) {
+        $('#formcatatan').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log("data:", $(this).serialize());
@@ -126,10 +117,10 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     console.log("result", data);
                     $('#daftarModal').modal('hide').data('bs.modal', null);
-                    $('#daftarModal').on('hidden', function () {
+                    $('#daftarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
 
@@ -152,9 +143,10 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     $('#daftarModal').modal('hide').data('bs.modal', null);
-                    $('#daftarModal').on('hidden', function () {
+                    $('#daftarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     console.log("error", xhr.responseText);

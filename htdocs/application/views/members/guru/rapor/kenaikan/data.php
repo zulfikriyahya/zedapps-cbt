@@ -1,13 +1,4 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 07/07/20
- * Time: 17:20
- */
-?>
-
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -48,31 +39,32 @@
 
                     <table class="table table-striped table-bordered table-hover" id="tbl-siswa">
                         <thead>
-                        <tr>
-                            <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
-                            <th class="text-center p-0 align-middle">N I S N</th>
-                            <th class="text-center p-0 align-middle">N I S</th>
-                            <th class="text-center p-0 align-middle p-0">Nama Siswa</th>
-                            <th class="text-center p-0 align-middle">Naik / Lulus</th>
-                        </tr>
+                            <tr>
+                                <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
+                                <th class="text-center p-0 align-middle">N I S N</th>
+                                <th class="text-center p-0 align-middle">N I S</th>
+                                <th class="text-center p-0 align-middle p-0">Nama Siswa</th>
+                                <th class="text-center p-0 align-middle">Naik / Lulus</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($siswas as $siswa) :
+                            <?php
+                            $no = 1;
+                            foreach ($siswas as $siswa) :
                             ?>
-                            <tr>
-                                <td class="d-none id-siswa"><?= $siswa->id_siswa ?></td>
-                                <td class="text-center"><?= $no ?></td>
-                                <td class="text-center"><?= $siswa->nisn ?></td>
-                                <td class="text-center"><?= $siswa->nis ?></td>
-                                <td><?= $siswa->nama ?></td>
-                                <td>
-                                    <?php
-                                    echo form_dropdown('naik', $naiks, $siswa->naik != null ? $siswa->naik : '', 'class="form-control form-control-sm naik"'); ?>
-                                </td>
-                            </tr>
-                            <?php $no++; endforeach; ?>
+                                <tr>
+                                    <td class="d-none id-siswa"><?= $siswa->id_siswa ?></td>
+                                    <td class="text-center"><?= $no ?></td>
+                                    <td class="text-center"><?= $siswa->nisn ?></td>
+                                    <td class="text-center"><?= $siswa->nis ?></td>
+                                    <td><?= $siswa->nama ?></td>
+                                    <td>
+                                        <?php
+                                        echo form_dropdown('naik', $naiks, $siswa->naik != null ? $siswa->naik : '', 'class="form-control form-control-sm naik"'); ?>
+                                    </td>
+                                </tr>
+                            <?php $no++;
+                            endforeach; ?>
                         </tbody>
                     </table>
 
@@ -89,21 +81,22 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('#formkenaikan').submit('click', function (e) {
+    $(document).ready(function() {
+        $('#formkenaikan').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log("data:", $(this).serialize());
 
-            const $rows1 = $('#tbl-siswa').find('tr'), headers1 = $rows1.splice(0, 1);
+            const $rows1 = $('#tbl-siswa').find('tr'),
+                headers1 = $rows1.splice(0, 1);
             var jsonObj = [];
             $rows1.each((i, row) => {
                 const id_siswa = $(row).find('.id-siswa').text();
                 const naik = $(row).find('.naik').val();
 
                 let item = {};
-                item ["id_siswa"] = id_siswa;
-                item ["naik"] = naik;
+                item["id_siswa"] = id_siswa;
+                item["naik"] = naik;
 
                 jsonObj.push(item);
             });
@@ -115,7 +108,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize() + '&naik=' + JSON.stringify(jsonObj),
-                success: function (data) {
+                success: function(data) {
                     console.log("result", data);
                     swal.fire({
                         title: "Sukses",
@@ -127,7 +120,8 @@
                             window.location.reload()
                         }
                     });
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     swal.fire({
                         title: "ERROR",

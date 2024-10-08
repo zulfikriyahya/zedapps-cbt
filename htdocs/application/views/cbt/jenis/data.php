@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -19,8 +19,8 @@
                             <i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ml-1">Reload</span>
                         </button>
                         <button type="button" data-toggle="modal" data-target="#createJenisModal"
-                                class="btn btn-sm btn-primary"><i
-                                    class="fas fa-plus"></i><span class="d-none d-sm-inline-block ml-1">Tambah Jenis Ujian</span>
+                            class="btn btn-sm btn-primary"><i
+                                class="fas fa-plus"></i><span class="d-none d-sm-inline-block ml-1">Tambah Jenis Ujian</span>
                         </button>
                     </div>
                 </div>
@@ -29,15 +29,15 @@
                     <div class="table-responsive">
                         <table id="jenis" class="w-100 table table-striped table-bordered table-hover table-sm">
                             <thead>
-                            <tr>
-                                <th width="40" class="align-middle text-center p-0">
-                                    <input class="select_all" type="checkbox">
-                                </th>
-                                <th width="40" class="align-middle text-center p-0">No.</th>
-                                <th>Jenis Ujian</th>
-                                <th>Kode Jenis</th>
-                                <th width="100" class="align-middle text-center p-0">Aksi</th>
-                            </tr>
+                                <tr>
+                                    <th width="40" class="align-middle text-center p-0">
+                                        <input class="select_all" type="checkbox">
+                                    </th>
+                                    <th width="40" class="align-middle text-center p-0">No.</th>
+                                    <th>Jenis Ujian</th>
+                                    <th>Kode Jenis</th>
+                                    <th width="100" class="align-middle text-center p-0">Aksi</th>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -50,7 +50,7 @@
 
 <?= form_open('create', array('id' => 'create')) ?>
 <div class="modal fade" id="createJenisModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -71,7 +71,7 @@
                     <label for="kode_jenis" class="col-md-4 col-form-label">Kode Jenis*</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" name="kode_jenis" placeholder="Kode Jenis Ujian"
-                               required>
+                            required>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
 
 <?= form_open('update', array('id' => 'update')) ?>
 <div class="modal fade" id="editJenisModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -128,5 +128,3 @@
 <?= form_close() ?>
 
 <script src="<?= base_url() ?>/assets/app/js/cbt/jenis/crud.js"></script>
-
-

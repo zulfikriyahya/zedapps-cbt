@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -84,7 +84,7 @@
                                 <tr>
                                     <td rowspan="6">
                                         <img width="100" height="120" src="<?= base_url() . $siswa->foto ?>"
-                                             style="object-fit: cover;object-position: center;outline: 1px solid;"/>
+                                            style="object-fit: cover;object-position: center;outline: 1px solid;" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -128,12 +128,12 @@
 <script type="text/javascript" src="<?= base_url() ?>/assets/app/js/jquery.wordexport.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/assets/app/js/tableToExcel.js"></script>
 <script type="text/javascript">
-    var user_id = '<?=$user->id?>';
-    var kelas = '<?=$kelas_selected == null ? '0' : $kelas_selected?>';
-    var ruang = '<?=$ruang_selected == null ? '0' : $ruang_selected?>';
-    var sesi = '<?=$sesi_selected == null ? '0' : $sesi_selected?>';
+    var user_id = '<?= $user->id ?>';
+    var kelas = '<?= $kelas_selected == null ? '0' : $kelas_selected ?>';
+    var ruang = '<?= $ruang_selected == null ? '0' : $ruang_selected ?>';
+    var sesi = '<?= $sesi_selected == null ? '0' : $sesi_selected ?>';
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         var opsiRuang = $("#ruang");
@@ -147,7 +147,7 @@
         opsiSesi.prepend("<option value='' " + selSesi + " disabled>Pilih Sesi</option>");
         opsiKelas.prepend("<option value='' " + selKelas + " disabled>Pilih Kelas</option>");
 
-        $('#selector button').click(function () {
+        $('#selector button').click(function() {
             $(this).addClass('active').siblings().addClass('btn-outline-primary').removeClass('active btn-primary');
 
             if (!$('#by-kelas').is(':hidden')) {
@@ -178,22 +178,22 @@
             }
         }
 
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             kelas = $(this).val();
             loadSiswaKelas(kelas);
         });
 
-        opsiRuang.change(function () {
+        opsiRuang.change(function() {
             ruang = $(this).val();
             loadSiswaRuang(ruang, opsiSesi.val());
         });
 
-        opsiSesi.change(function () {
+        opsiSesi.change(function() {
             sesi = $(this).val();
             loadSiswaRuang(opsiRuang.val(), sesi);
         });
 
-        $("#download-word").click(function (event) {
+        $("#download-word").click(function(event) {
             $("#for-export").wordExport(`test`);
         });
     });

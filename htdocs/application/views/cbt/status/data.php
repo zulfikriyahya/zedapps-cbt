@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <h6 class="card-title"><?= $subjudul ?></h6>
                     <button class="card-tools btn btn-default btn-sm mr-2 btn-toggle" data-toggle="modal"
-                            data-target="#infoModal"><i class="fas fa-info-circle mr-1"></i> Info Error
+                        data-target="#infoModal"><i class="fas fa-info-circle mr-1"></i> Info Error
                     </button>
                 </div>
                 <div class="card-body">
@@ -25,7 +25,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-center">TOKEN</span>
                                 </div>
-                                <input id="token-input" class="form-control text-bold text-center" readonly="readonly"/>
+                                <input id="token-input" class="form-control text-bold text-center" readonly="readonly" />
                                 <div class="input-group-append" id="kolom-kanan">
                                     <span id="interval" class="input-group-text text-xs d-none">-- : -- : --</span>
                                 </div>
@@ -91,7 +91,7 @@
                                     <ul>
                                         <li>
                                             Gunakan tombol <span class="badge badge-success pt-1 pb-1"><i
-                                                        class="fa fa-sync ml-1 mr-1"></i> Refresh</span>
+                                                    class="fa fa-sync ml-1 mr-1"></i> Refresh</span>
                                             untuk merefresh halaman
                                         </li>
                                         <li>
@@ -119,9 +119,9 @@
                         </div>
                         <div class="col-12">
                             <button type="button" class="btn btn-success align-bottom mb-2"
-                                    onclick="refreshStatus()"
-                                    data-toggle="tooltip"
-                                    title="Refresh">
+                                onclick="refreshStatus()"
+                                data-toggle="tooltip"
+                                title="Refresh">
                                 <i class="fa fa-sync ml-1 mr-1"></i> Refresh
                             </button>
                             <?php
@@ -129,12 +129,12 @@
                             ?>
                             <div class="float-right align-bottom mb-2">
                                 <label><input type="search" id="cari-status-siswa"
-                                              class="form-control form-control-sm" placeholder="Cari">
+                                        class="form-control form-control-sm" placeholder="Cari">
                                 </label>
                                 <button type="button" class="btn btn-success ml-2 <?= $dnone ?>"
-                                        onclick="terapkanAksi()"
-                                        data-toggle="tooltip"
-                                        title="Terapkan Aksi pada siswa terpilih">
+                                    onclick="terapkanAksi()"
+                                    data-toggle="tooltip"
+                                    title="Terapkan Aksi pada siswa terpilih">
                                     <i class="fa fa-check ml-1 mr-1"></i> Terapkan Aksi
                                 </button>
                             </div>
@@ -235,8 +235,8 @@
 </div>
 
 <script>
-    const ruangs = JSON.parse('<?=json_encode($ruang)?>');
-    const arrRuang = JSON.parse('<?=json_encode($ruangs)?>');
+    const ruangs = JSON.parse('<?= json_encode($ruang) ?>');
+    const arrRuang = JSON.parse('<?= json_encode($ruangs) ?>');
     var dnone = '<?= $this->ion_auth->is_admin() ? "" : "d-none" ?>';
     var printBy = '1';
     var url = '';
@@ -245,14 +245,15 @@
     var jadwal, ruang, sesi;
 
     function terapkanAksi() {
-        const $rows = $('#table-status').find('tr'), headers = $rows.splice(0, 2);
+        const $rows = $('#table-status').find('tr'),
+            headers = $rows.splice(0, 2);
         let item = {};
-        item ["reset"] = [];
+        item["reset"] = [];
         //item ["id_logs"] = [];
-        item ["force"] = [];
-        item ["log"] = [];
-        item ["ulang"] = [];
-        item ["hapus"] = [];
+        item["force"] = [];
+        item["log"] = [];
+        item["ulang"] = [];
+        item["hapus"] = [];
         $rows.each((i, row) => {
             var siswa_id = $(row).attr("data-id");
 
@@ -260,16 +261,16 @@
             const $colForce = $(row).find('.input-force');
             const $colUlang = $(row).find('.input-ulang');
             if ($colReset.prop("checked") === true) {
-                item ["reset"].push(siswa_id + '0' + jadwal + '1');
+                item["reset"].push(siswa_id + '0' + jadwal + '1');
                 //item ["id_logs"].push(siswa_id+''+jadwal);
             }
             if ($colForce.prop("checked") === true) {
-                item ["force"].push(siswa_id + '0' + jadwal);
-                item ["log"].push(siswa_id);
+                item["force"].push(siswa_id + '0' + jadwal);
+                item["log"].push(siswa_id);
             }
             if ($colUlang.prop("checked") === true) {
-                item ["ulang"].push(siswa_id);
-                item ["hapus"].push(siswa_id + '0' + jadwal);
+                item["ulang"].push(siswa_id);
+                item["hapus"].push(siswa_id + '0' + jadwal);
             }
         });
 
@@ -299,7 +300,7 @@
                     url: base_url + "siswa/applyaction",
                     type: 'POST',
                     data: dataSiswa,
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data);
                         if (printBy === '1') {
                             url = base_url + "cbtstatus/getsiswaruang?ruang=" + ruang + '&sesi=' + sesi + '&jadwal=' + jadwal;
@@ -307,7 +308,8 @@
                             url = base_url + "cbtstatus/getsiswakelas?kelas=" + kelas + '&jadwal=' + jadwal;
                         }
                         refreshStatus();
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log(xhr.responseText);
                     }
                 });
@@ -318,11 +320,11 @@
     function refreshStatus() {
         $('#cari-status-siswa').val('')
         $('#loading').removeClass('d-none');
-        setTimeout(function () {
+        setTimeout(function() {
             $.ajax({
                 type: "GET",
                 url: url,
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     createPreview(response)
                 }
@@ -405,7 +407,7 @@
                     '<td class="text-center align-middle">' + ruang + '</td>' +
                     '<td class="text-center align-middle">' + mulai + '</td>' +
                     '<td class="text-center align-middle">' + loading + durasi + '</td>' +
-                    '<td class="text-center align-middle '+dnone+'">' +
+                    '<td class="text-center align-middle ' + dnone + '">' +
                     '	<button type="button" class="btn btn-default" ' +
                     'data-siswa="' + idSiswa + '" data-jadwal="' + data.info.id_jadwal + '" ' +
                     'data-toggle="modal" data-target="#resetModal" ' + disabledReset + '><i class="fa fa-refresh"></i></button>' +
@@ -440,7 +442,7 @@
             '</div>' +
             '<div class="col-4">Jenis Ujian</div>' +
             '<div class="col-8">' +
-            '<b>'+data.info.kode_jenis+'</b>' +
+            '<b>' + data.info.kode_jenis + '</b>' +
             '</div>' +
             '<div class="col-4">Jml. Soal</div>' +
             '<div class="col-8">' +
@@ -452,16 +454,16 @@
         $('#info-ujian').html(infoJadwal);
         $('#loading').addClass('d-none');
 
-        $("#input-reset-all").on("click", function () {
+        $("#input-reset-all").on("click", function() {
             if (this.checked) {
-                $(".input-reset").each(function () {
+                $(".input-reset").each(function() {
                     if (!$(this).prop('disabled')) {
                         this.checked = true;
                     }
                     $("#input-reset-all").prop("checked", true);
                 });
             } else {
-                $(".input-reset").each(function () {
+                $(".input-reset").each(function() {
                     if (!$(this).prop('disabled')) {
                         this.checked = false;
                     }
@@ -470,16 +472,16 @@
             }
         });
 
-        $("#input-force-all").on("click", function () {
+        $("#input-force-all").on("click", function() {
             if (this.checked) {
-                $(".input-force").each(function () {
+                $(".input-force").each(function() {
                     if (!$(this).prop('disabled')) {
                         this.checked = true;
                     }
                     $("#input-force-all").prop("checked", true);
                 });
             } else {
-                $(".input-force").each(function () {
+                $(".input-force").each(function() {
                     if (!$(this).prop('disabled')) {
                         this.checked = false;
                     }
@@ -488,16 +490,16 @@
             }
         });
 
-        $("#input-ulang-all").on("click", function () {
+        $("#input-ulang-all").on("click", function() {
             if (this.checked) {
-                $(".input-ulang").each(function () {
+                $(".input-ulang").each(function() {
                     if (!$(this).prop('disabled')) {
                         this.checked = true;
                     }
                     $("#input-ulang-all").prop("checked", true);
                 });
             } else {
-                $(".input-ulang").each(function () {
+                $(".input-ulang").each(function() {
                     if (!$(this).prop('disabled')) {
                         this.checked = false;
                     }
@@ -514,12 +516,12 @@
             type: "GET",
             url: base_url + "cbtstatus/getjadwalujianbyjadwal?id_jadwal=" + idJadwal,
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
                 var selKelas = $('#kelas');
                 selKelas.html('');
                 selKelas.append('<option value="">Pilih Kelas</option>');
-                $.each(response, function (k, v) {
+                $.each(response, function(k, v) {
                     if (v != null) {
                         selKelas.append('<option value="' + k + '">' + v + '</option>');
                     }
@@ -528,7 +530,7 @@
         });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         var opsiPrintBy = $("#printby");
@@ -562,7 +564,7 @@
             }
         }
 
-        opsiPrintBy.change(function () {
+        opsiPrintBy.change(function() {
             printBy = $(this).val();
             if (printBy === '1') {
                 $('#by-kelas').addClass('d-none');
@@ -575,32 +577,32 @@
             }
         });
 
-        opsiJadwal.change(function () {
+        opsiJadwal.change(function() {
             getDetailJadwal($(this).val());
             opsiRuang.html("<option value='' selected='selected'>Pilih Ruang</option>");
             if ($(this).val()) {
-                $.each(arrRuang, function (k, v) {
-                    opsiRuang.append("<option value='"+k+"'>"+ruangs[k]+"</option>");
+                $.each(arrRuang, function(k, v) {
+                    opsiRuang.append("<option value='" + k + "'>" + ruangs[k] + "</option>");
                 })
             }
         });
 
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             kelas = $(this).val();
             jadwal = opsiJadwal.val();
             loadSiswaKelas(kelas, jadwal)
         });
 
-        opsiRuang.change(function () {
+        opsiRuang.change(function() {
             opsiSesi.html("<option value='' selected='selected'>Pilih Sesi</option>");
             if ($(this).val()) {
-                $.each(arrRuang[$(this).val()], function (k, v) {
-                    opsiSesi.append("<option value='"+k+"'>"+v.nama_sesi+"</option>");
+                $.each(arrRuang[$(this).val()], function(k, v) {
+                    opsiSesi.append("<option value='" + k + "'>" + v.nama_sesi + "</option>");
                 })
             }
         });
 
-        opsiSesi.change(function () {
+        opsiSesi.change(function() {
             sesi = $(this).val();
             ruang = opsiRuang.val();
             jadwal = opsiJadwal.val();
@@ -609,19 +611,19 @@
 
         var idSiswa = '';
         var idJadwal = '';
-        $('#resetModal').on('show.bs.modal', function (e) {
+        $('#resetModal').on('show.bs.modal', function(e) {
             idSiswa = $(e.relatedTarget).data('siswa');
             idJadwal = $(e.relatedTarget).data('jadwal');
 
             console.log('siswa:' + idSiswa, 'jadwal:' + idJadwal);
         });
 
-        $('#reset').on('submit', function (e) {
+        $('#reset').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
             $('#resetModal').modal('hide').data('bs.modal', null);
-            $('#resetModal').on('hidden', function () {
+            $('#resetModal').on('hidden', function() {
                 $(this).data('modal', null);
             });
 
@@ -629,21 +631,29 @@
                 url: base_url + "siswa/resettimer",
                 type: 'POST',
                 data: $(this).serialize() + '&id_durasi=' + idSiswa + '0' + idJadwal,
-                success: function (data) {
+                success: function(data) {
                     console.log(data.status);
                     if (data.status) refreshStatus();
                     else showDangerToast('tidak bisa mereset waktu');
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log('error');
                 }
             });
         });
 
-        opsiKelas.select2({theme: 'bootstrap4'});
-        opsiRuang.select2({theme: 'bootstrap4'});
-        opsiSesi.select2({theme: 'bootstrap4'});
-        opsiJadwal.select2({theme: 'bootstrap4'});
+        opsiKelas.select2({
+            theme: 'bootstrap4'
+        });
+        opsiRuang.select2({
+            theme: 'bootstrap4'
+        });
+        opsiSesi.select2({
+            theme: 'bootstrap4'
+        });
+        opsiJadwal.select2({
+            theme: 'bootstrap4'
+        });
 
     });
-
 </script>

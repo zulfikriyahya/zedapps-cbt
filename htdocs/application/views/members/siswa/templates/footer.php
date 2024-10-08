@@ -16,9 +16,9 @@
 
 <!-- Main Footer -->
 <footer class="main-footer">
-    <strong>ZEDAPPS CBT</strong> <!-- v.<?= APP_VERSION ?> -->
+    <strong>ZEDAPPS SCHOOL</strong> <!-- v.<?= APP_VERSION ?> -->
     <div class="float-right d-none d-sm-inline-block">
-        <strong>Copyright &copy; 2018 - <?= date('Y'); ?> <a href="https://zedlabs.id" target="blank">ZEDLABS</a></strong>
+        <strong>Copyright &copy; 2018 - <?= date('Y'); ?></strong>
     </div>
 </footer>
 
@@ -37,7 +37,7 @@
     var runningText = JSON.parse('<?= json_encode($running_text) ?>');
     //console.log('runn', runningText);
     var teks = '';
-    $.each(runningText, function (i, v) {
+    $.each(runningText, function(i, v) {
         teks += '<span class="ml-3 mr-3">' + v.text + '</span> &bull; '
     });
 
@@ -52,7 +52,6 @@
         //true or false - should the marquee be duplicated to show an effect of continues flow
         duplicated: true
     });
-
 </script>
 <!-- DataTables -->
 <script src="<?= base_url() ?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -93,7 +92,7 @@
 
 <!-- Custom JS -->
 <script type="text/javascript">
-    $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
+    $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
         return {
             "iStart": oSettings._iDisplayStart,
             "iEnd": oSettings.fnDisplayEnd(),
@@ -119,10 +118,10 @@
         table.ajax.reload();
     }
 
-    var initDestroyTimeOutPace = function () {
+    var initDestroyTimeOutPace = function() {
         var counter = 0;
 
-        var refreshIntervalId = setInterval(function () {
+        var refreshIntervalId = setInterval(function() {
             var progress;
 
             if (typeof $('.pace-progress').attr('data-progress-text') !== 'undefined') {
@@ -140,7 +139,6 @@
         }, 100);
     };
     initDestroyTimeOutPace();
-
 </script>
 
 </body>

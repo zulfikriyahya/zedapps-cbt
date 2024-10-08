@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -19,8 +19,8 @@
                             <i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ml-1">Reload</span>
                         </button>
                         <button type="button" data-toggle="modal" data-target="#createSesiModal"
-                                class="btn btn-sm btn-primary"><i
-                                    class="fas fa-plus"></i><span class="d-none d-sm-inline-block ml-1">Tambah Sesi Ujian</span>
+                            class="btn btn-sm btn-primary"><i
+                                class="fas fa-plus"></i><span class="d-none d-sm-inline-block ml-1">Tambah Sesi Ujian</span>
                         </button>
                     </div>
                 </div>
@@ -29,16 +29,16 @@
                     <div class="table-responsive">
                         <table id="sesi" class="w-100 table table-striped table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th width="40" class="align-middle text-center p-0">
-                                    <input class="select_all" type="checkbox">
-                                </th>
-                                <th width="40" class="align-middle text-center p-0">No.</th>
-                                <th>Sesi</th>
-                                <th>Kode</th>
-                                <th>Waktu</th>
-                                <th class="align-middle text-center p-0">Aksi</th>
-                            </tr>
+                                <tr>
+                                    <th width="40" class="align-middle text-center p-0">
+                                        <input class="select_all" type="checkbox">
+                                    </th>
+                                    <th width="40" class="align-middle text-center p-0">No.</th>
+                                    <th>Sesi</th>
+                                    <th>Kode</th>
+                                    <th>Waktu</th>
+                                    <th class="align-middle text-center p-0">Aksi</th>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -51,7 +51,7 @@
 
 <?= form_open('create', array('id' => 'create')) ?>
 <div class="modal fade" id="createSesiModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -78,14 +78,14 @@
                     <label class="col-md-4 col-form-label">Jam Mulai*</label>
                     <div class="col-md-8">
                         <input type="text" id="jamAwal" name="waktu_mulai" class="form-control" autocomplete="off"
-                               required>
+                            required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-md-4 col-form-label">Jam Berakhir*</label>
                     <div class="col-md-8">
                         <input type="text" id="jamAkhir" name="waktu_akhir" class="form-control" autocomplete="off"
-                               required>
+                            required>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
 
 <?= form_open('update', array('id' => 'update')) ?>
 <div class="modal fade" id="editSesiModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -131,14 +131,14 @@
                     <label class="col-md-4 col-form-label">Jam Mulai*</label>
                     <div class="col-md-8">
                         <input type="text" id="jamAwalEdit" name="waktu_mulai" class="form-control" autocomplete="off"
-                               required>
+                            required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-md-4 col-form-label">Jam Berakhir*</label>
                     <div class="col-md-8">
                         <input type="text" id="jamAkhirEdit" name="waktu_akhir" class="form-control" autocomplete="off"
-                               required>
+                            required>
                     </div>
                 </div>
             </div>
@@ -155,5 +155,3 @@
 <?= form_close() ?>
 
 <script src="<?= base_url() ?>/assets/app/js/cbt/sesi/crud.js"></script>
-
-

@@ -47,15 +47,15 @@ foreach ($soal_ada as $key => $value) {
 }
 ?>
 
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between mb-2">
                 <h1><?= $subjudul ?></h1>
                 <a href="<?= base_url('cbtbanksoal/detail/' . $bank->id_bank) ?>" type="button"
-                   class="btn btn-sm btn-danger float-right">
+                    class="btn btn-sm btn-danger float-right">
                     <i class="fas fa-arrow-circle-left"></i><span
-                            class="d-none d-sm-inline-block ml-1">Kembali</span>
+                        class="d-none d-sm-inline-block ml-1">Kembali</span>
                 </a>
             </div>
         </div>
@@ -77,19 +77,19 @@ foreach ($soal_ada as $key => $value) {
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
                         <li class="nav-item"><a class="nav-link <?= $tab_active == '1' ? 'active' : '' ?>"
-                                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=1') ?>">Pilihan
+                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=1') ?>">Pilihan
                                 Ganda</a></li>
                         <li class="nav-item"><a class="nav-link <?= $tab_active == '2' ? 'active' : '' ?>"
-                                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=2') ?>">Pilihan
+                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=2') ?>">Pilihan
                                 Ganda Kompleks</a></li>
                         <li class="nav-item"><a class="nav-link <?= $tab_active == '3' ? 'active' : '' ?>"
-                                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=3') ?>">Menjodohkan</a>
+                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=3') ?>">Menjodohkan</a>
                         </li>
                         <li class="nav-item"><a class="nav-link <?= $tab_active == '4' ? 'active' : '' ?>"
-                                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=4') ?>">Isian
+                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=4') ?>">Isian
                                 Singkat</a></li>
                         <li class="nav-item"><a class="nav-link <?= $tab_active == '5' ? 'active' : '' ?>"
-                                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=5') ?>">Essai/Uraian</a>
+                                href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=5') ?>">Essai/Uraian</a>
                         </li>
                     </ul>
                 </div>
@@ -97,9 +97,9 @@ foreach ($soal_ada as $key => $value) {
                     <input type="hidden" id="jenis-id" name="jenis" value="1" class="form-control">
                     <input type="hidden" id="bank-id" name="bank_id" value="<?= $bank->id_bank ?>" class="form-control">
                     <input type="hidden" id="soal-id" name="soal_id"
-                           value="<?= is_null($soal) ? '0' : $soal->id_soal ?>" class="form-control">
+                        value="<?= is_null($soal) ? '0' : $soal->id_soal ?>" class="form-control">
                     <input type="hidden" id="method" name="method" value="<?= is_null($soal) ? 'add' : 'edit' ?>"
-                           class="form-control">
+                        class="form-control">
 
                     <div class="tab-content">
                         <div class="tab-pane  <?= $tab_active == '1' ? 'active' : '' ?>" id="ganda">
@@ -112,17 +112,17 @@ foreach ($soal_ada as $key => $value) {
                             $tpg = !isset($jml_pg) || $jml_pg == null || $jml_pg->nomor_soal == null ? 0 : $jml_pg->nomor_soal;
                             for ($i = 0; $i < $tpg; $i++) : ?>
                                 <a href="javascript:void(0)"
-                                   class="mt-1 btn btn-circle-sm <?= !in_array($no, $pg_belum_komplit) ? 'btn-success' : 'btn-outline-danger' ?> <?= is_null($soal) ? ($no == 1 ? 'active' : '') : ($no == $soal->nomor_soal ? 'active' : '') ?>"
-                                   onclick="getSoalById(<?= $bank->id_bank ?>, <?= $no ?>, <?= '1' . $no ?>, '1')"
-                                   id="btn-<?= '1' . $no ?>"><?= $no ?>
+                                    class="mt-1 btn btn-circle-sm <?= !in_array($no, $pg_belum_komplit) ? 'btn-success' : 'btn-outline-danger' ?> <?= is_null($soal) ? ($no == 1 ? 'active' : '') : ($no == $soal->nomor_soal ? 'active' : '') ?>"
+                                    onclick="getSoalById(<?= $bank->id_bank ?>, <?= $no ?>, <?= '1' . $no ?>, '1')"
+                                    id="btn-<?= '1' . $no ?>"><?= $no ?>
                                 </a>
-                                <?php
+                            <?php
                                 $no++;
                             endfor; ?>
                             <a href="javascript:void(0)" class="pt-1 btn btn-oval-sm btn-outline-success"
-                               data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
-                               data-nomor="<?= $no ?>" onclick="tambahSoalPg(this)" id="btn-add-new-pg"><i
-                                        class="fa fa-plus"></i> Tambah PG</a>
+                                data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
+                                data-nomor="<?= $no ?>" onclick="tambahSoalPg(this)" id="btn-add-new-pg"><i
+                                    class="fa fa-plus"></i> Tambah PG</a>
                         </div>
                         <div class="tab-pane <?= $tab_active == '2' ? 'active' : '' ?>" id="kompleks">
                             <div class="alert alert-default-success align-content-center" role="alert">
@@ -135,17 +135,17 @@ foreach ($soal_ada as $key => $value) {
                             $no2 = 1;
                             for ($i = 0; $i < $tpg2; $i++) : ?>
                                 <a href="javascript:void(0)"
-                                   class="mt-1 btn btn-circle-sm <?= !in_array($no2, $pg2_belum_komplit) ? 'btn-success' : 'btn-outline-danger' ?> <?= is_null($soal) ? ($no2 == 1 ? 'active' : '') : ($no2 == $soal->nomor_soal ? 'active' : '') ?>"
-                                   onclick="getSoalById(<?= $bank->id_bank ?>, <?= $no2 ?>, <?= '2' . $no2 ?>, '2')"
-                                   id="btn-<?= '2' . $no2 ?>"><?= $no2 ?>
+                                    class="mt-1 btn btn-circle-sm <?= !in_array($no2, $pg2_belum_komplit) ? 'btn-success' : 'btn-outline-danger' ?> <?= is_null($soal) ? ($no2 == 1 ? 'active' : '') : ($no2 == $soal->nomor_soal ? 'active' : '') ?>"
+                                    onclick="getSoalById(<?= $bank->id_bank ?>, <?= $no2 ?>, <?= '2' . $no2 ?>, '2')"
+                                    id="btn-<?= '2' . $no2 ?>"><?= $no2 ?>
                                 </a>
-                                <?php
+                            <?php
                                 $no2++;
                             endfor; ?>
                             <a href="javascript:void(0)" class="pt-1 btn btn-oval-sm btn-outline-success"
-                               data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
-                               data-nomor="<?= $no2 ?>" onclick="tambahSoalPg2(this)" id="btn-add-new-pg"><i
-                                        class="fa fa-plus"></i> Tambah PG Kompleks</a>
+                                data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
+                                data-nomor="<?= $no2 ?>" onclick="tambahSoalPg2(this)" id="btn-add-new-pg"><i
+                                    class="fa fa-plus"></i> Tambah PG Kompleks</a>
                         </div>
                         <div class="tab-pane <?= $tab_active == '3' ? 'active' : '' ?>" id="jodoh">
                             <div class="alert alert-default-success align-content-center" role="alert">
@@ -156,15 +156,16 @@ foreach ($soal_ada as $key => $value) {
                             $tej = !isset($jml_jodohkan) || $jml_jodohkan == null || $jml_jodohkan->nomor_soal == null ? 0 : $jml_jodohkan->nomor_soal;
                             for ($i = 0; $i < $tej; $i++) : ?>
                                 <a href="javascript:void(0)"
-                                   class="mt-1 btn btn-circle-sm <?= !in_array($noj, $jodohkan_belum_komplit) ? 'btn-primary' : 'btn-outline-danger' ?>"
-                                   onclick="getSoalById(<?= $bank->id_bank ?>, <?= $noj ?>, <?= '3' . $noj ?>, '3')"
-                                   id="btn-<?= '3' . $noj ?>"><?= $noj ?>
+                                    class="mt-1 btn btn-circle-sm <?= !in_array($noj, $jodohkan_belum_komplit) ? 'btn-primary' : 'btn-outline-danger' ?>"
+                                    onclick="getSoalById(<?= $bank->id_bank ?>, <?= $noj ?>, <?= '3' . $noj ?>, '3')"
+                                    id="btn-<?= '3' . $noj ?>"><?= $noj ?>
                                 </a>
-                                <?php $noj++; endfor; ?>
+                            <?php $noj++;
+                            endfor; ?>
                             <a href="javascript:void(0)" class="pt-1 btn btn-oval-sm btn-outline-primary"
-                               data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
-                               data-nomor="<?= $noj ?>" onclick="tambahSoalJodohkan(this)" id="btn-add-new-essai"><i
-                                        class="fa fa-plus"></i> Tambah Soal Menjodohkan</a>
+                                data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
+                                data-nomor="<?= $noj ?>" onclick="tambahSoalJodohkan(this)" id="btn-add-new-essai"><i
+                                    class="fa fa-plus"></i> Tambah Soal Menjodohkan</a>
                         </div>
                         <div class="tab-pane <?= $tab_active == '4' ? 'active' : '' ?>" id="isian">
                             <div class="alert alert-default-success align-content-center" role="alert">
@@ -175,15 +176,16 @@ foreach ($soal_ada as $key => $value) {
                             $tei = !isset($jml_isian) || $jml_isian == null || $jml_isian->nomor_soal == null ? 0 : $jml_isian->nomor_soal;
                             for ($i = 0; $i < $tei; $i++) : ?>
                                 <a href="javascript:void(0)"
-                                   class="mt-1 btn btn-circle-sm <?= !in_array($noi, $isian_belum_komplit) ? 'btn-primary' : 'btn-outline-danger' ?>"
-                                   onclick="getSoalById(<?= $bank->id_bank ?>, <?= $noi ?>, <?= '4' . $noi ?>, '4')"
-                                   id="btn-<?= '4' . $noi ?>"><?= $noi ?>
+                                    class="mt-1 btn btn-circle-sm <?= !in_array($noi, $isian_belum_komplit) ? 'btn-primary' : 'btn-outline-danger' ?>"
+                                    onclick="getSoalById(<?= $bank->id_bank ?>, <?= $noi ?>, <?= '4' . $noi ?>, '4')"
+                                    id="btn-<?= '4' . $noi ?>"><?= $noi ?>
                                 </a>
-                                <?php $noi++; endfor; ?>
+                            <?php $noi++;
+                            endfor; ?>
                             <a href="javascript:void(0)" class="pt-1 btn btn-oval-sm btn-outline-primary"
-                               data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
-                               data-nomor="<?= $noi ?>" onclick="tambahSoalIsian(this)" id="btn-add-new-essai"><i
-                                        class="fa fa-plus"></i> Tambah Soal Isian</a>
+                                data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
+                                data-nomor="<?= $noi ?>" onclick="tambahSoalIsian(this)" id="btn-add-new-essai"><i
+                                    class="fa fa-plus"></i> Tambah Soal Isian</a>
                         </div>
                         <div class="tab-pane <?= $tab_active == '5' ? 'active' : '' ?>" id="essai">
                             <div class="alert alert-default-success align-content-center" role="alert">
@@ -194,15 +196,16 @@ foreach ($soal_ada as $key => $value) {
                             $tes = !isset($jml_essai) || $jml_essai == null || $jml_essai->nomor_soal == null ? 0 : $jml_essai->nomor_soal;
                             for ($i = 0; $i < $tes; $i++) : ?>
                                 <a href="javascript:void(0)"
-                                   class="mt-1 btn btn-circle-sm <?= !in_array($noe, $essai_belum_komplit) ? 'btn-primary' : 'btn-outline-danger' ?>"
-                                   onclick="getSoalById(<?= $bank->id_bank ?>, <?= $noe ?>, <?= '5' . $noe ?>, '5')"
-                                   id="btn-<?= '5' . $noe ?>"><?= $noe ?>
+                                    class="mt-1 btn btn-circle-sm <?= !in_array($noe, $essai_belum_komplit) ? 'btn-primary' : 'btn-outline-danger' ?>"
+                                    onclick="getSoalById(<?= $bank->id_bank ?>, <?= $noe ?>, <?= '5' . $noe ?>, '5')"
+                                    id="btn-<?= '5' . $noe ?>"><?= $noe ?>
                                 </a>
-                                <?php $noe++; endfor; ?>
+                            <?php $noe++;
+                            endfor; ?>
                             <a href="javascript:void(0)" class="pt-1 btn btn-oval-sm btn-outline-primary"
-                               data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
-                               data-nomor="<?= $noe ?>" onclick="tambahSoalEssai(this)" id="btn-add-new-essai"><i
-                                        class="fa fa-plus"></i> Tambah Essai</a>
+                                data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
+                                data-nomor="<?= $noe ?>" onclick="tambahSoalEssai(this)" id="btn-add-new-essai"><i
+                                    class="fa fa-plus"></i> Tambah Essai</a>
                         </div>
                     </div>
                 </div>
@@ -236,25 +239,25 @@ foreach ($soal_ada as $key => $value) {
                                 <div class="form-group">
                                     <label>Soal</label>
                                     <textarea class="textsoal" id="textsoal"
-                                              data-id="<?= $this->security->get_csrf_hash() ?>"
-                                              data-name="<?= $this->security->get_csrf_token_name() ?>" name="soal"
-                                              placeholder="Tulis soal disini"
-                                              style="width:100%;"></textarea>
+                                        data-id="<?= $this->security->get_csrf_hash() ?>"
+                                        data-name="<?= $this->security->get_csrf_token_name() ?>" name="soal"
+                                        placeholder="Tulis soal disini"
+                                        style="width:100%;"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6" id="jawaban-area">
                                 <?php
-                                $opsis [''] = 'Pilih Jawaban Benar :';
-                                $opsis ['a'] = 'A';
-                                $opsis ['b'] = 'B';
-                                $opsis ['c'] = 'C';
+                                $opsis[''] = 'Pilih Jawaban Benar :';
+                                $opsis['a'] = 'A';
+                                $opsis['b'] = 'B';
+                                $opsis['c'] = 'C';
 
                                 if ($bank->opsi == 4) {
-                                    $opsis ['d'] = 'D';
+                                    $opsis['d'] = 'D';
                                     $rangeAbjad = range('a', 'd');
                                 } elseif ($bank->opsi == 5) {
-                                    $opsis ['d'] = 'D';
-                                    $opsis ['e'] = 'E';
+                                    $opsis['d'] = 'D';
+                                    $opsis['e'] = 'E';
                                     $rangeAbjad = range('a', 'e');
                                 } else {
                                     $rangeAbjad = range('a', 'c');
@@ -263,13 +266,13 @@ foreach ($soal_ada as $key => $value) {
                                 <div id="root-opsi-pg" class="<?= $pg_none ?>">
                                     <?php
                                     foreach ($rangeAbjad as $abjad) :
-                                        ?>
+                                    ?>
                                         <div class="mb-3 ml-3">
                                             <label>Jawaban <?= strtoupper($abjad ?? '') ?></label>
                                             <textarea class="textjawaban" id="textjawaban_<?= $abjad ?>"
-                                                      name="jawaban_<?= $abjad ?>"
-                                                      placeholder="Place some text here"
-                                                      style="width:100%;"></textarea>
+                                                name="jawaban_<?= $abjad ?>"
+                                                placeholder="Place some text here"
+                                                style="width:100%;"></textarea>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
@@ -305,12 +308,12 @@ foreach ($soal_ada as $key => $value) {
                                     </div>
                                     <div class="<?= $isian_none ?>" id="root-jawaban-isian">
                                         <input type="text" id="jawaban-isian" name="jawaban_isian" class="form-control"
-                                               value="" disabled="disabled"/>
+                                            value="" disabled="disabled" />
                                     </div>
                                     <div class="<?= $essai_none ?>" id="root-jawaban-essai">
-										<textarea class="textjawaban-essai" id="jawaban-essai" name="jawaban_essai"
-                                                  placeholder="Place some text here" style="width:100%;"
-                                                  disabled="disabled">
+                                        <textarea class="textjawaban-essai" id="jawaban-essai" name="jawaban_essai"
+                                            placeholder="Place some text here" style="width:100%;"
+                                            disabled="disabled">
 										</textarea>
                                     </div>
                                 </div>
@@ -329,7 +332,7 @@ foreach ($soal_ada as $key => $value) {
 
 <?= form_open('create', array('id' => 'addfile')) ?>
 <div class="modal fade" id="pickerModal" tabindex="-1" role="dialog" aria-labelledby="pickerModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -345,11 +348,11 @@ foreach ($soal_ada as $key => $value) {
                 <div class="form-group">
                     <ul id="media-list" class="clearfix">
                         <li class="myupload">
-                                    <span>
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                        <input name="file_uploads" type="file" id="picupload"
-                                               class="picupload">
-                                    </span>
+                            <span>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                <input name="file_uploads" type="file" id="picupload"
+                                    class="picupload">
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -363,7 +366,7 @@ foreach ($soal_ada as $key => $value) {
 <?= form_close() ?>
 
 <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -394,25 +397,25 @@ foreach ($soal_ada as $key => $value) {
 <script src="<?= base_url() ?>/assets/plugins/katex/katex.min.js"></script>
 
 <script type="text/javascript">
-    var nomor_soal = '<?=$p_no?>';
-    let soal_ada = '<?=is_null($soal) ? 'n' : 'y'?>';
+    var nomor_soal = '<?= $p_no ?>';
+    let soal_ada = '<?= is_null($soal) ? 'n' : 'y' ?>';
     let idBank = '<?= $bank->id_bank ?>';
     let idSoal = '<?= is_null($soal) ? 0 : $soal->id_soal ?>';
     let jenis = '<?= $tab_active ?>';
     console.log('jns', jenis);
 
     var dataFiles = [];
-    var arrFileAttach = JSON.parse('<?= json_encode($dataFileAttach)?>');
+    var arrFileAttach = JSON.parse('<?= json_encode($dataFileAttach) ?>');
     dataFiles = $.merge(dataFiles, arrFileAttach);
 
-    var adaPg = JSON.parse('<?= json_encode($soal_pg_ada)?>');
-    var adaPg2 = JSON.parse('<?= json_encode($soal_pg2_ada)?>');
-    var adaJodohkan = JSON.parse('<?= json_encode($soal_jodohkan_ada)?>');
-    var adaIsian = JSON.parse('<?= json_encode($soal_isian_ada)?>');
-    var adaEssai = JSON.parse('<?= json_encode($soal_esai_ada)?>');
+    var adaPg = JSON.parse('<?= json_encode($soal_pg_ada) ?>');
+    var adaPg2 = JSON.parse('<?= json_encode($soal_pg2_ada) ?>');
+    var adaJodohkan = JSON.parse('<?= json_encode($soal_jodohkan_ada) ?>');
+    var adaIsian = JSON.parse('<?= json_encode($soal_isian_ada) ?>');
+    var adaEssai = JSON.parse('<?= json_encode($soal_esai_ada) ?>');
     console.log('adaPg', adaIsian);
 
-    $(function () {
+    $(function() {
         bsCustomFileInput.init();
     });
 </script>

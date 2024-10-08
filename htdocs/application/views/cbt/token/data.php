@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -57,7 +57,7 @@
                                     <div class="col-6">
                                         <label>Interval (menit)</label>
                                         <input id="jarak" type="number" class="form-control" name="jarak"
-                                               value="<?= $token->jarak ?>" <?= $token->auto == '0' ? 'disabled="disabled"' : '' ?>>
+                                            value="<?= $token->jarak ?>" <?= $token->auto == '0' ? 'disabled="disabled"' : '' ?>>
                                         <button class="float-right mt-3 btn btn-info" onclick="simpanToken()">Simpan
                                         </button>
                                     </div>
@@ -71,7 +71,7 @@
                                     <span>TOKEN SAAT INI</span>
                                     <h1 id="token-view"><?= $token->token ?></h1>
                                     <small id="info-interval" class="mt-3 text-center d-none">Token akan dibuat otomatis dalam <b
-                                                id="interval">-- : -- : --</b></small>
+                                            id="interval">-- : -- : --</b></small>
                                 </div>
                             </div>
                         </div>
@@ -100,16 +100,18 @@
         }
     }
 
-    $(document).ready(function () {
-        $('#auto').on('change', function () {
+    $(document).ready(function() {
+        $('#auto').on('change', function() {
             var idAuto = $(this).val();
             var token = {};
-            token ["token"] = globalToken.token;
-            token ["auto"] = idAuto;
+            token["token"] = globalToken.token;
+            token["auto"] = idAuto;
             $('#jarak').attr('disabled', idAuto == '0');
         });
 
         console.log('height', $("#card-set").height());
-        $("#card-view").css({'height':($("#card-set").height()+'px')});
+        $("#card-view").css({
+            'height': ($("#card-set").height() + 'px')
+        });
     });
 </script>

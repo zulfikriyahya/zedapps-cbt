@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 07/08/20
- * Time: 22:29
- */
-
-?>
 <div class="content-wrapper" style="margin-top: -1px;">
     <div class="sticky">
     </div>
@@ -37,7 +28,7 @@
                     <div class="card my-shadow">
                         <div class="card-header">
                             <h5 class="text-center">
-                                TUGAS HARI INI<br/><?= buat_tanggal(date('D, d M Y')) ?>
+                                TUGAS HARI INI<br /><?= buat_tanggal(date('D, d M Y')) ?>
                             </h5>
                         </div>
                         <div class="card-body">
@@ -49,13 +40,13 @@
                                 if (count($tugas) > 0) :
                                     for ($i = 0; $i < $kbm->kbm_jml_mapel_hari; $i++) :
                                         $jamke = $i + 1;
-                                        ?>
+                                ?>
 
                                         <div class="col-md-6 col-lg-4">
                                             <div class="card border">
                                                 <?php if (in_array($jamke, $arrIst)) :
                                                     $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                                    ?>
+                                                ?>
                                                     <div class="card-header">
                                                         <div class="card-title">
                                                             <b>JAM KE <?= $jamke ?></b>
@@ -103,8 +94,8 @@
                                                                 <div class="inner">
                                                                     <h3><?= $tugas[$jamke]->kode_materi ?></h3>
                                                                     <span class="nama-mapel d-inline-block text-truncate"
-                                                                          style="width: 300px">
-                                                                <?= $tugas[$jamke]->nama_mapel ?></span>
+                                                                        style="width: 300px">
+                                                                        <?= $tugas[$jamke]->nama_mapel ?></span>
                                                                     <br>
                                                                     <span><?= $tugas[$jamke]->nama_guru ?></span>
                                                                     <br>
@@ -116,9 +107,9 @@
                                                                 <hr style="margin-top:0; margin-bottom: 0">
 
                                                                 <a href="<?= base_url('siswa/bukatugas/' . $tugas[$jamke]->id_kjm . '/' . $jamke) ?>"
-                                                                   class="small-box-footer p-2">BUKA TUGAS
+                                                                    class="small-box-footer p-2">BUKA TUGAS
                                                                     <i class="fas fa-arrow-circle-right ml-3"></i><span
-                                                                            class="ml-2"></span>
+                                                                        class="ml-2"></span>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -142,7 +133,7 @@
                                                             </div>
                                                         </div>
                                                     <?php endif; ?>
-                                                    <?php
+                                                <?php
                                                     $jamMulai->add(new DateInterval('PT' . $kbm->kbm_jam_pel . 'M'));
                                                 endif; ?>
                                             </div>
@@ -170,11 +161,11 @@
                                 <?php foreach ($week as $index => $tgl) :
                                     $active = $index == 0 ? 'active' : '';
                                     $selected = $index == 0 ? 'true' : 'false';
-                                    ?>
+                                ?>
                                     <li class="nav-item" role="presentation">
                                         <a type="button" class="btn nav-link seminggu <?= $active ?>" id="<?= $tgl ?>"
-                                           data-toggle="pill" data-target="#tab-<?= $tgl ?>" type="button" role="tab"
-                                           aria-controls="<?= $tgl ?>" aria-selected="<?= $selected ?>">
+                                            data-toggle="pill" data-target="#tab-<?= $tgl ?>" type="button" role="tab"
+                                            aria-controls="<?= $tgl ?>" aria-selected="<?= $selected ?>">
                                             <?= str_replace(',', '<br>', singkat_tanggal(date('D, d M', strtotime($tgl)))) ?>
                                         </a>
                                     </li>
@@ -187,9 +178,9 @@
 
                                 foreach ($tugass as $tg => $mat) :
                                     $show = $tg == $today ? 'show active' : '';
-                                    ?>
+                                ?>
                                     <div class="tab-pane fade <?= $show ?>" id="tab-<?= $tg ?>" role="tabpanel"
-                                         aria-labelledby="tab-<?= $tg ?>-tab">
+                                        aria-labelledby="tab-<?= $tg ?>-tab">
                                         <?php
                                         //echo '<pre>';
                                         //var_dump($logs[$tg]);
@@ -205,25 +196,10 @@
                                             </tr>
                                             <?php
                                             foreach ($mat as $jam => $mtr) :
-                                                ?>
+                                            ?>
                                                 <?php if (in_array($jam, $arrIst)) :
-                                                $jamSampai->add(new DateInterval('PT' . $arrDur[$jam] . 'M'));
+                                                    $jamSampai->add(new DateInterval('PT' . $arrDur[$jam] . 'M'));
                                                 ?>
-                                                <tr>
-                                                    <td class="text-center align-middle">
-                                                        <?= $jam ?><br>
-                                                        <small>
-                                                            <?= $jamMulai->format('H:i') ?>
-                                                            s/d <?= $jamSampai->format('H:i') ?>
-                                                        </small>
-                                                    </td>
-                                                    <td colspan="3" class="align-middle">ISTIRAHAT</td>
-                                                </tr>
-                                                <?php
-                                                $jamMulai->add(new DateInterval('PT' . $arrDur[$jam] . 'M'));
-                                            else :
-                                                $jamSampai->add(new DateInterval('PT' . $kbm->kbm_jam_pel . 'M'));
-                                                if (isset($tugas[$jamke]->id_materi)) : ?>
                                                     <tr>
                                                         <td class="text-center align-middle">
                                                             <?= $jam ?><br>
@@ -232,34 +208,49 @@
                                                                 s/d <?= $jamSampai->format('H:i') ?>
                                                             </small>
                                                         </td>
-                                                        <?php
-                                                        if (isset($mtr->id_kjm)) :
-                                                            $status = '';
-                                                            //var_dump($log[$mtr->id_kjm]);
-                                                            if (count($log) > 0) {
-                                                                if (isset($log[$mtr->id_kjm]) && $log[$mtr->id_kjm]->finish_time != null) {
-                                                                    $status = '<a href="' . base_url() . 'siswa/bukatugas/' . $mtr->id_kjm . '/' . $tg . '" class="btn btn-success">Selesai</a>';
-                                                                } else {
-                                                                    $status = '<a href="' . base_url() . 'siswa/bukatugas/' . $mtr->id_kjm . '/' . $tg . '" class="btn btn-warning">Belum Selesai</a>';
-                                                                }
-                                                            } else {
-                                                                $status = '<a href="' . base_url() . 'siswa/bukatugas/' . $mtr->id_kjm . '/' . $tg . '" class="btn btn-danger">Belum Dikerjakan</a>';
-                                                            }
-                                                            ?>
-                                                            <td class="align-middle"><?= $mtr->nama_mapel ?></td>
-                                                            <td class="align-middle"
-                                                                style="line-height: 1"><?= $mtr->kode_materi ?>
-                                                                <br><small><?= $mtr->judul_materi ?></small>
-                                                            </td>
-                                                            <td class="text-center align-middle"><?= $status ?></td>
-                                                        <?php else: ?>
-                                                            <td class="align-middle"><?= $mtr->nama_mapel ?></td>
-                                                            <td class="align-middle">-</td>
-                                                            <td class="text-center align-middle">-</td>
-                                                        <?php endif; ?>
+                                                        <td colspan="3" class="align-middle">ISTIRAHAT</td>
                                                     </tr>
-                                                <?php else: ?>
-                                                    <!--
+                                                    <?php
+                                                    $jamMulai->add(new DateInterval('PT' . $arrDur[$jam] . 'M'));
+                                                else :
+                                                    $jamSampai->add(new DateInterval('PT' . $kbm->kbm_jam_pel . 'M'));
+                                                    if (isset($tugas[$jamke]->id_materi)) : ?>
+                                                        <tr>
+                                                            <td class="text-center align-middle">
+                                                                <?= $jam ?><br>
+                                                                <small>
+                                                                    <?= $jamMulai->format('H:i') ?>
+                                                                    s/d <?= $jamSampai->format('H:i') ?>
+                                                                </small>
+                                                            </td>
+                                                            <?php
+                                                            if (isset($mtr->id_kjm)) :
+                                                                $status = '';
+                                                                //var_dump($log[$mtr->id_kjm]);
+                                                                if (count($log) > 0) {
+                                                                    if (isset($log[$mtr->id_kjm]) && $log[$mtr->id_kjm]->finish_time != null) {
+                                                                        $status = '<a href="' . base_url() . 'siswa/bukatugas/' . $mtr->id_kjm . '/' . $tg . '" class="btn btn-success">Selesai</a>';
+                                                                    } else {
+                                                                        $status = '<a href="' . base_url() . 'siswa/bukatugas/' . $mtr->id_kjm . '/' . $tg . '" class="btn btn-warning">Belum Selesai</a>';
+                                                                    }
+                                                                } else {
+                                                                    $status = '<a href="' . base_url() . 'siswa/bukatugas/' . $mtr->id_kjm . '/' . $tg . '" class="btn btn-danger">Belum Dikerjakan</a>';
+                                                                }
+                                                            ?>
+                                                                <td class="align-middle"><?= $mtr->nama_mapel ?></td>
+                                                                <td class="align-middle"
+                                                                    style="line-height: 1"><?= $mtr->kode_materi ?>
+                                                                    <br><small><?= $mtr->judul_materi ?></small>
+                                                                </td>
+                                                                <td class="text-center align-middle"><?= $status ?></td>
+                                                            <?php else: ?>
+                                                                <td class="align-middle"><?= $mtr->nama_mapel ?></td>
+                                                                <td class="align-middle">-</td>
+                                                                <td class="text-center align-middle">-</td>
+                                                            <?php endif; ?>
+                                                        </tr>
+                                                    <?php else: ?>
+                                                        <!--
                                                 <div class="card-header">
                                                     <div class="card-title">
                                                         <b>JAM KE <?= $jamke ?></b>
@@ -278,10 +269,10 @@
                                                     </div>
                                                 </div>
                                                 -->
-                                                <?php endif; ?>
+                                                    <?php endif; ?>
                                                 <?php
-                                                $jamMulai->add(new DateInterval('PT' . $kbm->kbm_jam_pel . 'M'));
-                                            endif; ?>
+                                                    $jamMulai->add(new DateInterval('PT' . $kbm->kbm_jam_pel . 'M'));
+                                                endif; ?>
                                             <?php endforeach; ?>
                                         </table>
                                     </div>
@@ -299,12 +290,12 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         //getMateri(senin);
         var w = $(window).width();
         setWidth(w);
 
-        $(window).on('resize', function () {
+        $(window).on('resize', function() {
             setWidth($(this).width());
         });
     });

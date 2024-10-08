@@ -1,24 +1,15 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 07/07/20
- * Time: 17:20
- */
-?>
-
 <div class="content-wrapper bg-white pt-4">
-    <!--
-	<section class="content-header">
-		<div class="container-fluid">
-			<div class="row mb-2">
-				<div class="col-sm-6">
-					<h1><?= $judul ?></h1>
-				</div>
-			</div>
-		</div>
-	</section>
-	-->
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-sm-6">
+                    <h1><?= $judul ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="content">
         <div class="container">
             <div class="row">
@@ -26,7 +17,7 @@
                 $col = '';
                 if ($this->ion_auth->is_admin()) :
                     $col = 'col-md-7';
-                    ?>
+                ?>
                     <div class="col-12 col-md-5 mb-4">
                         <div class="card my-shadow border">
                             <div class="card-header">
@@ -41,7 +32,7 @@
                                     <?php
                                     for ($i = 0; $i < 5; $i++) :
                                         $text = isset($running_text[$i]) ? $running_text[$i]->text : '';
-                                        ?>
+                                    ?>
                                         <tr>
                                             <td width="30" class="text-sm text-center"><?= $i + 1 ?></td>
                                             <td class="text-sm editable"><?= $text ?></td>
@@ -70,7 +61,7 @@
                                 </div>
                                 <div class="col-10">
                                     <select id="opsi-kepada" name="kepada[]" class="select2 form-control"
-                                            multiple="multiple" required>
+                                        multiple="multiple" required>
                                         <option value='guru'>Semua Guru</option>
                                         <option value='siswa'>Semua Siswa</option>
                                         <?php foreach ($kelas as $key => $value) : ?>
@@ -161,17 +152,17 @@
                                                 <span class="btn-circle btn-success media-left pt-1">A</span>
                                                 <div class="media-body ml-3">
                                                     <span class="font-weight-bold">Admin</b></span>
-                                                    <br/>
+                                                    <br />
                                                     <span class="text-gray"><?= buat_tanggal(date('D, d M Y H:i', strtotime($pengumuman->tanggal))) ?>
-                                            </span>
+                                                    </span>
                                                 </div>
                                             <?php else: ?>
                                                 <img class="img-circle media-left"
-                                                     src="<?= $pengumuman->foto != null ? base_url() . $pengumuman->foto : base_url('assets/img/siswa.png') ?>"
-                                                     width="50" height="50"/>
+                                                    src="<?= $pengumuman->foto != null ? base_url() . $pengumuman->foto : base_url('assets/img/siswa.png') ?>"
+                                                    width="50" height="50" />
                                                 <div class="media-body ml-3">
                                                     <span class="font-weight-bold"><?= $pengumuman->nama_guru ?></span>
-                                                    <br/>
+                                                    <br />
                                                     <span class="text-gray"> <?= $pengumuman->tanggal ?> </span>
                                                 </div>
                                             <?php endif; ?>
@@ -181,28 +172,28 @@
                                         </div>
                                         <div class="text-muted">
                                             <button type="button" class="btn btn-default btn-sm mr-2 btn-toggle"
-                                                    data-id="<?= $pengumuman->id_post ?>" data-toggle="modal"
-                                                    data-target="#komentarModal"><i class="fas fa-reply mr-1"></i> Tulis
+                                                data-id="<?= $pengumuman->id_post ?>" data-toggle="modal"
+                                                data-target="#komentarModal"><i class="fas fa-reply mr-1"></i> Tulis
                                                 komentar
                                             </button>
                                             <button type="button" id="trigger<?= $pengumuman->id_post ?>"
-                                                    class="btn btn-default btn-sm mr-2 action-collapse"
-                                                    data-toggle="collapse" aria-expanded="true"
-                                                    aria-controls="collapse-<?= $pengumuman->id_post ?>"
-                                                    href="#collapse-<?= $pengumuman->id_post ?>">
+                                                class="btn btn-default btn-sm mr-2 action-collapse"
+                                                data-toggle="collapse" aria-expanded="true"
+                                                aria-controls="collapse-<?= $pengumuman->id_post ?>"
+                                                href="#collapse-<?= $pengumuman->id_post ?>">
                                                 <i class="fa fa-commenting-o mr-1"></i><?= $pengumuman->jml ?> komentar
                                             </button>
                                             <button type="button" class="btn btn-default btn-sm"
-                                                    onclick="hapusPost(<?= $pengumuman->id_post ?>)"
-                                                    data-id="<?= $pengumuman->id_post ?>">
+                                                onclick="hapusPost(<?= $pengumuman->id_post ?>)"
+                                                data-id="<?= $pengumuman->id_post ?>">
                                                 <i class="fa fa-trash mr-1"></i> Hapus
                                             </button>
 
                                         </div>
                                     </div>
                                     <div id="collapse-<?= $pengumuman->id_post ?>" class="p-2 collapse toggle-comment"
-                                         data-id="<?= $pengumuman->id_post ?>"
-                                         data-parent="#parent<?= $pengumuman->id_post ?>">
+                                        data-id="<?= $pengumuman->id_post ?>"
+                                        data-parent="#parent<?= $pengumuman->id_post ?>">
                                         <hr class="m-0">
                                         <div id="konten<?= $pengumuman->id_post ?>" class="p-4">
                                         </div>
@@ -213,8 +204,8 @@
                                             <div class="text-center">Tidak ada komentar</div>
                                         <?php else: ?>
                                             <div id="loadmore<?= $pengumuman->id_post ?>"
-                                                 onclick="getComments(<?= $pengumuman->id_post ?>)"
-                                                 class="text-center mt-4 loadmore">
+                                                onclick="getComments(<?= $pengumuman->id_post ?>)"
+                                                class="text-center mt-4 loadmore">
                                                 <div class="btn btn-default">Muat komentar lainnya ...</div>
                                             </div>
                                         <?php endif; ?>
@@ -245,10 +236,10 @@
                     <input type="hidden" id="id-post" name="id_post" value="">
                     <div class="input-group">
                         <input type="text" name="text" placeholder="Tulis komentar ..."
-                               class="form-control form-control-sm" required>
+                            class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                                <button type="submit" class="btn btn-success btn-sm">Komentari</button>
-                            </span>
+                            <button type="submit" class="btn btn-success btn-sm">Komentari</button>
+                        </span>
                     </div>
                     <?= form_close() ?>
                 </div>
@@ -276,10 +267,10 @@
                     <input type="hidden" id="id-comment" name="id_comment" value="">
                     <div class="input-group">
                         <input type="text" name="text" placeholder="Tulis balasan ...."
-                               class="form-control form-control-sm" required>
+                            class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                                <button type="submit" class="btn btn-success btn-sm">Balas</button>
-                            </span>
+                            <button type="submit" class="btn btn-success btn-sm">Balas</button>
+                        </span>
                     </div>
                     <?= form_close() ?>
                 </div>
@@ -292,7 +283,7 @@
 </div>
 
 <script>
-    var guru = '<?=isset($guru) ? $guru->id_guru : ""?>';
+    var guru = '<?= isset($guru) ? $guru->id_guru : "" ?>';
 
     function createTime(d) {
         var date = new Date(d);
@@ -333,13 +324,13 @@
 
     function addComments(id, comments, append) {
         var comm = '';
-        $.each(comments, function (i, v) {
+        $.each(comments, function(i, v) {
             var dari = v.dari_group === '1' ? 'Admin' : (v.dari_group === '2' ? v.nama_guru : v.nama_siswa);
             var foto = v.dari_group === '2' ? (v.foto != null ? base_url + v.foto : base_url + 'assets/img/siswa.png') :
                 (v.foto_siswa != null ? base_url + v.foto_siswa : base_url + 'assets/img/siswa.png');
             var avatar = v.dari == '0' ? '<div class="btn-circle-sm btn-success media-left pt-1" style="width: 43px; height: 40px">A</div>' : '<img class="img-circle border" src="' + foto + '" alt="Img" width="40px" height="40px">';
-            comm += '<div class="media mt-1" id="parent-reply' + v.id_comment + '">'
-                + avatar +
+            comm += '<div class="media mt-1" id="parent-reply' + v.id_comment + '">' +
+                avatar +
                 '    <div class="w-100 ml-2">' +
                 '        <div class="media-body border pl-3 bg-light" style="border-radius: 20px">' +
                 '            <span class="text-xs text-muted"><b>' + dari + '</b></span>' +
@@ -376,7 +367,7 @@
             $(`#konten${id}`).prepend(comm);
         }
 
-        $('.toggle-reply').on('shown.bs.collapse', function (e) {
+        $('.toggle-reply').on('shown.bs.collapse', function(e) {
             var konten = $(this);
             var id = konten.data('id');
             var list = $(this).find('.media').length;
@@ -387,7 +378,7 @@
     function addReplies(id, replies, append) {
         console.log('replies', replies);
         var repl = '';
-        $.each(replies, function (i, v) {
+        $.each(replies, function(i, v) {
             var sudahAda = $(`.media${v.id_reply}`).length;
             if (!sudahAda) {
                 var dari = v.dari_group == '1' ? 'Admin' : (v.dari_group == '2' ? v.nama_guru : v.nama_siswa);
@@ -395,8 +386,8 @@
                     (v.foto_siswa != null ? base_url + v.foto_siswa : base_url + 'assets/img/siswa.png');
                 var avatar = v.dari == '0' ? '<div class="btn-circle-sm btn-success media-left pt-1 mr-2" style="width: 37px">A</div>' : '<img class="img-circle mr-2 border" src="' + foto + '" alt="Img" width="35px" height="35px">';
                 repl +=
-                    '<div class="media mt-1 media' + v.id_reply + '">'
-                    + avatar +
+                    '<div class="media mt-1 media' + v.id_reply + '">' +
+                    avatar +
                     '    <div class="w-100">' +
                     '        <div class="media-body border pl-3" style="border-radius: 17px; background-color: #dee2e6">' +
                     '            <span class="text-xs text-muted"><b>' + dari + '</b></span>' +
@@ -426,14 +417,15 @@
         //console.log("url", base_url + "pengumuman/getcomment/" + id + "/" + page);
         $(`#loading${id}`).removeClass('d-none');
         $(`#loadmore${id}`).addClass('d-none');
-        var $count = $(`#loadmore${id}`), page = $count.data('count');
+        var $count = $(`#loadmore${id}`),
+            page = $count.data('count');
         if (!page) page = 0;
 
-        setTimeout(function () {
+        setTimeout(function() {
             $.ajax({
                 url: base_url + "pengumuman/getcomment/" + id + "/" + page,
                 type: "GET",
-                success: function (response) {
+                success: function(response) {
                     //console.log('page', page);
                     console.log("result", response);
                     page += 1;
@@ -445,7 +437,8 @@
                     }
                     $(`#loading${id}`).addClass('d-none');
                     addComments(id, response, true)
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                 }
             });
@@ -455,14 +448,15 @@
     function getReplies(id) {
         $(`#loading-reply${id}`).removeClass('d-none');
         $(`#loadmore-reply${id}`).addClass('d-none');
-        var $count = $(`#loadmore-reply${id}`), page = $count.data('count');
+        var $count = $(`#loadmore-reply${id}`),
+            page = $count.data('count');
         if (!page) page = 0;
 
-        setTimeout(function () {
+        setTimeout(function() {
             $.ajax({
                 url: base_url + "pengumuman/getreplies/" + id + "/" + page,
                 type: "GET",
-                success: function (response) {
+                success: function(response) {
                     //console.log('page', page);
                     console.log("result", response);
                     page += 1;
@@ -475,7 +469,8 @@
                     }
                     $(`#loading-reply${id}`).addClass('d-none');
                     addReplies(id, response, true)
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                 }
             });
@@ -505,7 +500,7 @@
                 $.ajax({
                     url: base_url + "pengumuman/hapuspost/" + idPost,
                     type: "GET",
-                    success: function (data) {
+                    success: function(data) {
                         console.log("result", data);
                         if (data) {
                             swal.fire({
@@ -526,7 +521,8 @@
                                 showCancelButton: false,
                             });
                         }
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log("error", xhr.responseText);
                         const err = JSON.parse(xhr.responseText)
                         swal.fire({
@@ -563,7 +559,7 @@
                 $.ajax({
                     url: base_url + "pengumuman/hapuskomentar/" + idKomentar,
                     type: "GET",
-                    success: function (data) {
+                    success: function(data) {
                         console.log("result", data);
                         if (data) {
                             swal.fire({
@@ -572,8 +568,7 @@
                                 icon: "success",
                                 showCancelButton: false,
                             }).then(result => {
-                                if (result.value) {
-                                }
+                                if (result.value) {}
                             });
                         } else {
                             swal.fire({
@@ -583,7 +578,8 @@
                                 showCancelButton: false,
                             });
                         }
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log("error", xhr.responseText);
                         const err = JSON.parse(xhr.responseText)
                         swal.fire({
@@ -620,7 +616,7 @@
                 $.ajax({
                     url: base_url + "pengumuman/hapusbalasan/" + idReply,
                     type: "GET",
-                    success: function (data) {
+                    success: function(data) {
                         console.log("result", data);
                         if (data) {
                             swal.fire({
@@ -629,8 +625,7 @@
                                 icon: "success",
                                 showCancelButton: false,
                             }).then(result => {
-                                if (result.value) {
-                                }
+                                if (result.value) {}
                             });
                         } else {
                             swal.fire({
@@ -640,7 +635,8 @@
                                 showCancelButton: false,
                             });
                         }
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log("error", xhr.responseText);
                         const err = JSON.parse(xhr.responseText)
                         swal.fire({
@@ -672,7 +668,7 @@
     function createListText(data) {
         var html = '<table class="table w-100">';
         if (data.running_text.length > 0) {
-            $.each(data.running_text, function (i, v) {
+            $.each(data.running_text, function(i, v) {
                 html += '<tr> ' +
                     '<td>' + v.text + '</td>' +
                     '<td>' +
@@ -693,21 +689,22 @@
         $.ajax({
             url: base_url + "pengumuman/hapusrunningtext/" + id,
             type: "GET",
-            success: function (response) {
+            success: function(response) {
                 console.log('page', response);
                 if (!response) {
                     showDangerToast('Tidak bisa menghapus')
                 } else {
                     loadListText()
                 }
-            }, error: function (xhr, status, error) {
+            },
+            error: function(xhr, status, error) {
                 console.log("error", xhr.responseText);
                 showDangerToast('Tidak bisa menghapus')
             }
         });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.editable').attr('contentEditable', true);
         console.log('guru', guru);
         $('.select2').select2();
@@ -718,14 +715,14 @@
             minHeight: 100,
         });
 
-        $('.toggle-comment').on('shown.bs.collapse', function (e) {
+        $('.toggle-comment').on('shown.bs.collapse', function(e) {
             var konten = $(this);
             var id = konten.data('id');
             var list = $(this).find('.media').length;
             if (list === 0) $(`#loadmore${id}`).click();
         });
 
-        $('#formpengumuman').submit('click', function (e) {
+        $('#formpengumuman').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log("data:", $(this).serialize());
@@ -746,7 +743,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     console.log("result", data);
                     if (data) {
                         swal.fire({
@@ -767,7 +764,8 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -779,7 +777,7 @@
             });
         });
 
-        $('#komentarModal').on('show.bs.modal', function (e) {
+        $('#komentarModal').on('show.bs.modal', function(e) {
             var id = $(e.relatedTarget).data('id');
             $("#id-post").val(id);
 
@@ -789,7 +787,7 @@
             }
         });
 
-        $('#balasanModal').on('show.bs.modal', function (e) {
+        $('#balasanModal').on('show.bs.modal', function(e) {
             var id = $(e.relatedTarget).data('id');
             $("#id-comment").val(id);
 
@@ -799,7 +797,7 @@
             }
         });
 
-        $('#komentar').on('submit', function (e) {
+        $('#komentar').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -811,18 +809,18 @@
                 data: $(this).serialize(),
                 method: 'POST',
                 dataType: "JSON",
-                success: function (response) {
+                success: function(response) {
                     console.log("result", response);
                     $('#komentarModal').modal('hide').data('bs.modal', null);
-                    $('#komentarModal').on('hidden', function () {
+                    $('#komentarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     addComments(id, response, false)
                     //window.location.href = base_url + 'pengumuman';
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     $('#komentarModal').modal('hide').data('bs.modal', null);
-                    $('#komentarModal').on('hidden', function () {
+                    $('#komentarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     showDangerToast('Error, komentar tidak terkirim');
@@ -830,7 +828,7 @@
             });
         });
 
-        $('#balasan').on('submit', function (e) {
+        $('#balasan').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -842,18 +840,18 @@
                 data: $(this).serialize(),
                 method: 'POST',
                 dataType: "JSON",
-                success: function (response) {
+                success: function(response) {
                     console.log("result", response);
                     $('#balasanModal').modal('hide').data('bs.modal', null);
-                    $('#balasanModal').on('hidden', function () {
+                    $('#balasanModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     //window.location.href = base_url + 'pengumuman';
                     addReplies(id, response, false)
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     $('#balasanModal').modal('hide').data('bs.modal', null);
-                    $('#balasanModal').on('hidden', function () {
+                    $('#balasanModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     showDangerToast('Error, balasan tidak terkirim');
@@ -861,7 +859,7 @@
             });
         });
 
-        $('#formrunningtext').on('submit', function (e) {
+        $('#formrunningtext').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -873,8 +871,8 @@
                 const text = $(row).find('.editable').text();
 
                 let item = {};
-                item ["id_text"] = no;
-                item ["text"] = text;
+                item["id_text"] = no;
+                item["text"] = text;
                 jsonObj.push(item);
                 no++;
             });
@@ -886,7 +884,7 @@
                 url: base_url + "pengumuman/saverunningtext",
                 type: "POST",
                 data: dataPost,
-                success: function (response) {
+                success: function(response) {
                     console.log('updates', response);
                     if (response.status[0]) {
                         window.location.reload();
@@ -895,7 +893,8 @@
                     } else {
                         showDangerToast('Tidak bisa menyimpan')
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     showDangerToast('Error, Tidak bisa menyimpan')
                 }

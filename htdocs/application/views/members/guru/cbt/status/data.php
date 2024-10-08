@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <h6 class="card-title"><?= $subjudul ?></h6>
                     <button class="card-tools btn btn-default btn-sm mr-2 btn-toggle" data-toggle="modal"
-                            data-target="#infoModal"><i class="fas fa-info-circle mr-1"></i> Info Error
+                        data-target="#infoModal"><i class="fas fa-info-circle mr-1"></i> Info Error
                     </button>
                 </div>
                 <div class="card-body">
@@ -25,7 +25,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-center">TOKEN</span>
                                 </div>
-                                <input id="token-input" class="form-control text-bold text-center" readonly="readonly"/>
+                                <input id="token-input" class="form-control text-bold text-center" readonly="readonly" />
                                 <div class="input-group-append" id="kolom-kanan">
                                     <span id="interval" class="input-group-text text-xs d-none">-- : -- : --</span>
                                 </div>
@@ -71,34 +71,34 @@
                         <div class="card-body table-responsive">
                             <table class="table table-bordered">
                                 <thead>
-                                <tr>
-                                    <th class="text-center align-middle">Jadwal</th>
-                                    <th class="text-center align-middle">Ruang</th>
-                                    <th class="text-center align-middle">Sesi</th>
-                                    <th class="text-center align-middle">Aksi</th>
-                                </tr>
+                                    <tr>
+                                        <th class="text-center align-middle">Jadwal</th>
+                                        <th class="text-center align-middle">Ruang</th>
+                                        <th class="text-center align-middle">Sesi</th>
+                                        <th class="text-center align-middle">Aksi</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                foreach ($pengawas as $peng) :
+                                    <?php
+                                    foreach ($pengawas as $peng) :
                                     ?>
-                                    <tr>
-                                        <td class="text-center align-middle">
-                                            <b><?= singkat_tanggal(date('D, d M Y', strtotime($peng->tgl_mulai))) ?></b>
-                                            <br>
-                                            <?=$peng->bank_kode . ' ('. $peng->kode_jenis.')' ?>
-                                        </td>
-                                        <td class="text-center align-middle"><?=$ruang[$peng->id_ruang]?></td>
-                                        <td class="text-center align-middle"><?=$sesi[$peng->id_sesi]?></td>
-                                        <td class="text-center align-middle">
-                                            <button class="btn btn-info btn-sm"
-                                                    data-id="<?=$peng->id_jadwal?>"
-                                                    data-ruang="<?=$peng->id_ruang?>"
-                                                    data-sesi="<?=$peng->id_sesi?>"
+                                        <tr>
+                                            <td class="text-center align-middle">
+                                                <b><?= singkat_tanggal(date('D, d M Y', strtotime($peng->tgl_mulai))) ?></b>
+                                                <br>
+                                                <?= $peng->bank_kode . ' (' . $peng->kode_jenis . ')' ?>
+                                            </td>
+                                            <td class="text-center align-middle"><?= $ruang[$peng->id_ruang] ?></td>
+                                            <td class="text-center align-middle"><?= $sesi[$peng->id_sesi] ?></td>
+                                            <td class="text-center align-middle">
+                                                <button class="btn btn-info btn-sm"
+                                                    data-id="<?= $peng->id_jadwal ?>"
+                                                    data-ruang="<?= $peng->id_ruang ?>"
+                                                    data-sesi="<?= $peng->id_sesi ?>"
                                                     onclick="detail(this)">Lihat Status</button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <table class="table table-bordered" id="table-status">
@@ -165,20 +165,20 @@
 </div>
 
 <script>
-    const ruangs = JSON.parse('<?=json_encode($ruang)?>');
-    const arrRuang = JSON.parse('<?=json_encode($ruangs)?>');
+    const ruangs = JSON.parse('<?= json_encode($ruang) ?>');
+    const arrRuang = JSON.parse('<?= json_encode($ruangs) ?>');
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         $('#kolom-kanan').html('<button class="btn btn-default" id="refresh-token"><i class="fa fa-refresh"></i> </button>');
 
-        getToken(function (result) {
+        getToken(function(result) {
             getGlobalToken();
         });
 
-        $('#refresh-token').click(function () {
-            getToken(function (result) {
+        $('#refresh-token').click(function() {
+            getToken(function(result) {
                 getGlobalToken();
             });
         });
@@ -201,37 +201,36 @@
         opsiRuang.html("<option value='' selected='selected'>Pilih Ruang</option>");
         opsiSesi.html("<option value='' selected='selected'>Pilih Sesi</option>");
 
-        opsiJadwal.change(function () {
+        opsiJadwal.change(function() {
             opsiRuang.html("<option value='' selected='selected'>Pilih Ruang</option>");
             if ($(this).val()) {
-                $.each(arrRuang, function (k, v) {
-                    opsiRuang.append("<option value='"+k+"'>"+ruangs[k]+"</option>");
+                $.each(arrRuang, function(k, v) {
+                    opsiRuang.append("<option value='" + k + "'>" + ruangs[k] + "</option>");
                 })
             }
         });
 
-        opsiRuang.change(function () {
+        opsiRuang.change(function() {
             opsiSesi.html("<option value='' selected='selected'>Pilih Sesi</option>");
             if ($(this).val()) {
-                $.each(arrRuang[$(this).val()], function (k, v) {
-                    opsiSesi.append("<option value='"+k+"'>"+v.nama_sesi+"</option>");
+                $.each(arrRuang[$(this).val()], function(k, v) {
+                    opsiSesi.append("<option value='" + k + "'>" + v.nama_sesi + "</option>");
                 })
             }
         });
 
-        $('#detail-pengampu').on('click', function (e) {
+        $('#detail-pengampu').on('click', function(e) {
             if (opsiRuang.val() && opsiSesi.val() && opsiJadwal.val())
-                window.location.href = base_url + 'cbtstatus/status_ruang?ruang=' + opsiRuang.val()
-                    + '&sesi=' + opsiSesi.val()
-                    + '&jadwal=' + opsiJadwal.val();
+                window.location.href = base_url + 'cbtstatus/status_ruang?ruang=' + opsiRuang.val() +
+                '&sesi=' + opsiSesi.val() +
+                '&jadwal=' + opsiJadwal.val();
             else showDangerToast('Pilih dahulu JADWAL, RUANG dan SESI')
         })
     });
 
     function detail(e) {
-        window.location.href = base_url + 'cbtstatus/status_ruang?ruang=' + $(e).data('ruang')
-            + '&sesi=' + $(e).data('sesi')
-            + '&jadwal=' + $(e).data('id');
+        window.location.href = base_url + 'cbtstatus/status_ruang?ruang=' + $(e).data('ruang') +
+            '&sesi=' + $(e).data('sesi') +
+            '&jadwal=' + $(e).data('id');
     }
-
 </script>

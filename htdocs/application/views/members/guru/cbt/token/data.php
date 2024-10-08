@@ -1,4 +1,4 @@
-<div class="content-wrapper bg-white">
+<div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -28,13 +28,13 @@
 <script>
     let timerTokenView;
     let timerTokenRemaining, timerTokenOnGoing;
-    $(document).ready(function () {
-        getToken(function (result) {
+    $(document).ready(function() {
+        getToken(function(result) {
             getGlobalToken();
         });
 
-        $('#refresh-token').click(function () {
-            getToken(function (result) {
+        $('#refresh-token').click(function() {
+            getToken(function(result) {
                 getGlobalToken();
             });
         });
@@ -49,5 +49,4 @@
             }
         }
     }
-
 </script>

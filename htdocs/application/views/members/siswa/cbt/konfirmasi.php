@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: multazam
- * Date: 23/08/20
- * Time: 23:18
- */
-?>
 <div class="content-wrapper" style="margin-top: -1px;">
     <div class="sticky">
     </div>
@@ -77,15 +69,15 @@
 									-->
                                         <li class="list-group-item p-1"> Jumlah Soal
                                             <span class="float-right">
-											<b><?= $bank->tampil_pg + $bank->tampil_kompleks + $bank->tampil_jodohkan + $bank->tampil_isian + $bank->tampil_esai ?></b>
-										</span>
+                                                <b><?= $bank->tampil_pg + $bank->tampil_kompleks + $bank->tampil_jodohkan + $bank->tampil_isian + $bank->tampil_esai ?></b>
+                                            </span>
                                         </li>
                                         <?php if ($bank->token === '1') : ?>
                                             <li class="list-group-item p-1"><span
-                                                        class="text-danger"><b>Token</b></span>
+                                                    class="text-danger"><b>Token</b></span>
                                                 <div class="float-right" style="width: 100px">
                                                     <input type='text' id="input-token" class="form-control form-control-sm text-center" name='token'
-                                                           placeholder="Token"/>
+                                                        placeholder="Token" />
                                                 </div>
                                             </li>
                                         <?php endif; ?>
@@ -95,7 +87,7 @@
                                         <h5>Pengawas Ujian:</h5>
                                         <ul>
                                             <?php
-                                            foreach ($pengawas as $pws) :?>
+                                            foreach ($pengawas as $pws) : ?>
                                                 <li><?= $pws->nama_guru ?></li>
                                             <?php endforeach; ?>
                                         </ul>
@@ -115,7 +107,7 @@
                                             hubungi proktor
                                         </div>
                                     </div>
-                                <small>Refresh halaman ini jika sudah diizinkan</small>
+                                    <small>Refresh halaman ini jika sudah diizinkan</small>
                                 <?php elseif (!$support): ?>
                                     <div class="alert alert-default-danger text-center p-2">
                                         <h3><i class="icon fas fa-ban"></i> WARNING..!!</h3>
@@ -137,7 +129,7 @@
 
 <script src="<?= base_url() ?>/assets/app/js/redirect.js"></script>
 <script>
-    $('#konfir').submit(function (e) {
+    $('#konfir').submit(function(e) {
         e.stopPropagation();
         e.preventDefault();
 
@@ -159,7 +151,7 @@
             type: 'POST',
             url: base_url + 'siswa/validasisiswa',
             data: $(this).serialize(),
-            success: function (data) {
+            success: function(data) {
                 console.log(data);
                 // jika menggunakan token, cek token
                 if (data.token === true) {
@@ -222,7 +214,8 @@
                         "icon": "error"
                     });
                 }
-            }, error: function (xhr, error, status) {
+            },
+            error: function(xhr, error, status) {
                 swal.fire({
                     "title": "Error",
                     "html": "Coba kembali ke beranda, lalu ulangi lagi<br>006",
@@ -242,7 +235,10 @@
         endTime.setMinutes(endTime.getMinutes() - startTime.getMinutes());
         endTime.setSeconds(endTime.getSeconds() - startTime.getSeconds());
 
-        return {h: endTime.getHours(), m: endTime.getMinutes(), s: endTime.getSeconds()}
+        return {
+            h: endTime.getHours(),
+            m: endTime.getMinutes(),
+            s: endTime.getSeconds()
+        }
     }
-
 </script>
