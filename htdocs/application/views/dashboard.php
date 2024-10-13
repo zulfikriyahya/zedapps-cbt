@@ -169,7 +169,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body text-dark p-0">
                             <div class="card border-0 shadow-none m-0">
                                 <div class="card-header d-flex p-0">
                                     <ul class="nav nav-pills p-2">
