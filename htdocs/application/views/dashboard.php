@@ -187,7 +187,7 @@
                                 </div>
                                 <?php
                                 if (count($jadwals) > 0 && count($kbms) > 0): ?>
-                                    <div class="card-body p-0">
+                                    <div class="card-body text-dark p-0">
                                         <div class="tab-content">
                                             <?php
                                             $no = 1;
