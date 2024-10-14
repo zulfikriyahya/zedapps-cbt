@@ -199,7 +199,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <ul class="nav nav-pills mb-2 border" id="pills-tab" role="tablist">
+                            <ul class="nav nav-pills mb-2 border " id="pills-tab" role="tablist">
                                 <?php foreach ($week as $index => $tgl) :
                                     $idhari = date('N', strtotime($tgl));
                                     $hari = date('Y-m-d');

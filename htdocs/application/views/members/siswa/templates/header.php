@@ -109,7 +109,7 @@ function buat_tanggal($str)
     $str = str_replace("Aug", "Agustus", $str);
     $str = str_replace("Sep", "September", $str);
     $str = str_replace("Oct", "Oktober", $str);
-    $str = str_replace("Nov", "Nopember", $str);
+    $str = str_replace("Nov", "November", $str);
     $str = str_replace("Dec", "Desember", $str);
     $str = str_replace("Mon", "Senin", $str);
     $str = str_replace("Tue", "Selasa", $str);
