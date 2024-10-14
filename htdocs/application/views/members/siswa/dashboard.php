@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
+                            <div class="card-title text-white text-bold">
                                 MENU UTAMA
                             </div>
                         </div>
@@ -21,8 +21,8 @@
                                         <a href="<?= base_url($m->link) ?>">
                                             <figure class="text-center">
                                                 <img class="img-fluid"
-                                                    src="<?= base_url() ?>/assets/app/img/<?= $m->icon ?>" width="80"
-                                                    height="80" />
+                                                    src="<?= base_url() ?>/assets/app/img/<?= $m->icon ?>" width="60"
+                                                    height="60" />
                                                 <figcaption><?= $m->title ?></figcaption>
                                             </figure>
                                         </a>
@@ -37,8 +37,8 @@
                 <div class="col-12 col-md-7">
                     <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
-                                INFO/PENGUMUMAN
+                            <div class="card-title text-white text-bold">
+                                PENGUMUMAN
                             </div>
                         </div>
                         <div class="card-body">
@@ -60,7 +60,7 @@
                 <div class="col-12 col-md-5">
                     <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
+                            <div class="card-title text-white text-bold">
                                 JADWAL HARI INI
                             </div>
                             <div class="card-tools">

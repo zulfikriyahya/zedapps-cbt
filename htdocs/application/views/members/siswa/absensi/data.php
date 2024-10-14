@@ -37,9 +37,9 @@ $arrBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli',
             <?php $this->load->view('members/siswa/templates/top'); ?>
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-primary">
+                    <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
+                            <div class="card-title text-white text-bold">
                                 Kehadiran Hari Ini
                             </div>
                         </div>
@@ -142,10 +142,10 @@ $arrBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli',
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="card card-indigo">
+                    <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
-                                Detail Kehadiran Bulan <?= buat_tanggal(date('M')) ?>
+                            <div class="card-title text-white text-bold">
+                                Kehadiran Bulan <?= buat_tanggal(date('M')) ?>
                             </div>
                         </div>
                         <div class="card-body">

@@ -79,9 +79,10 @@ now override the 3.3 new styles for modern browsers & apply opacity
 	position: sticky;
 	top: 0;
 	padding: 50px;
-	background-image: url("../img/bgx.jpg");
-	background-size:52px;
-	background-repeat: repeat;
+	/* background-image: url("../img/bgx.jpg"); */
+	/* background-size:52px; */
+	/* background-repeat: repeat; */
+	background-color: #101010;
 	height: 300px;
 }
 
