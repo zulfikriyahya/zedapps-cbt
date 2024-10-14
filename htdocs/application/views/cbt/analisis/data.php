@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -13,10 +13,10 @@
         <div class="container-fluid">
 
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row mb-3">
                         <div class="col-4">
                             <div class="input-group">
@@ -77,10 +77,10 @@
                         //echo '<br>';
                         //var_dump($soals);
                         //echo '</pre>';
-                        if (isset($soals[1])) :?>
+                        if (isset($soals[1])) : ?>
                             <div class="card card-success col-md-12 p-0">
-                                <div class="card-header">
-                                    <h3 class="card-title">Soal Pilihan Ganda</h3>
+                                <div class="card-header bg-info">
+                                    <h3 class="card-title text-bold">Soal Pilihan Ganda</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -89,127 +89,128 @@
                                     </div>
                                 </div>
 
-                                <div class="card-body p-0 table-responsive">
+                                <div class="card-body text-dark p-0 table-responsive">
                                     <div class="row">
                                         <div class="col-12">
                                             <table class="table table-bordered w-100">
-                                                <thead>
-                                                <tr>
-                                                    <th class="text-center" style="width: 40px">NO.</th>
-                                                    <th>SOAL</th>
-                                                    <th colspan="2" class="text-center" style="width: 300px">ANALISA
-                                                    </th>
-                                                </tr>
+                                                <thead class="bg-maroon">
+                                                    <tr>
+                                                        <th class="text-center" style="width: 40px">NO.</th>
+                                                        <th>SOAL</th>
+                                                        <th colspan="2" class="text-center" style="width: 300px">ANALISA
+                                                        </th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php
-                                                $no = 1;
-                                                foreach ($soals[1] as $soal) :?>
-                                                    <tr>
-                                                        <td><?= $no ?></td>
-                                                        <td>
-                                                            <?= $soal->soal ?>
-                                                            <br>
-                                                            <ol type="A">
-                                                                <li>
-                                                                    <?= $soal->opsi_a ?>
-                                                                </li>
-                                                                <li>
-                                                                    <?= $soal->opsi_b ?>
-                                                                </li>
-                                                                <?php if ($info->opsi == 3) : ?>
+                                                    <?php
+                                                    $no = 1;
+                                                    foreach ($soals[1] as $soal) : ?>
+                                                        <tr>
+                                                            <td><?= $no ?></td>
+                                                            <td>
+                                                                <?= $soal->soal ?>
+                                                                <br>
+                                                                <ol type="A">
                                                                     <li>
-                                                                        <?= $soal->opsi_c ?>
-                                                                    </li>
-                                                                <?php elseif ($info->opsi == 4) : ?>
-                                                                    <li>
-                                                                        <?= $soal->opsi_c ?>
+                                                                        <?= $soal->opsi_a ?>
                                                                     </li>
                                                                     <li>
-                                                                        <?= $soal->opsi_d ?>
+                                                                        <?= $soal->opsi_b ?>
                                                                     </li>
-                                                                <?php else : ?>
-                                                                    <li>
-                                                                        <?= $soal->opsi_c ?>
-                                                                    </li>
-                                                                    <li>
-                                                                        <?= $soal->opsi_d ?>
-                                                                    </li>
-                                                                    <li>
-                                                                        <?= $soal->opsi_e ?>
-                                                                    </li>
-                                                                <?php endif; ?>
-                                                            </ol>
-                                                            <p>JAWABAN: <b><?= strtoupper($soal->jawaban ?? '') ?></b></p>
-                                                        </td>
-                                                        <td style="width: 150px">
-                                                            <ul class="chart-legend clearfix m-0">
+                                                                    <?php if ($info->opsi == 3) : ?>
+                                                                        <li>
+                                                                            <?= $soal->opsi_c ?>
+                                                                        </li>
+                                                                    <?php elseif ($info->opsi == 4) : ?>
+                                                                        <li>
+                                                                            <?= $soal->opsi_c ?>
+                                                                        </li>
+                                                                        <li>
+                                                                            <?= $soal->opsi_d ?>
+                                                                        </li>
+                                                                    <?php else : ?>
+                                                                        <li>
+                                                                            <?= $soal->opsi_c ?>
+                                                                        </li>
+                                                                        <li>
+                                                                            <?= $soal->opsi_d ?>
+                                                                        </li>
+                                                                        <li>
+                                                                            <?= $soal->opsi_e ?>
+                                                                        </li>
+                                                                    <?php endif; ?>
+                                                                </ol>
+                                                                <p>JAWABAN: <b><?= strtoupper($soal->jawaban ?? '') ?></b></p>
+                                                            </td>
+                                                            <td style="width: 150px">
+                                                                <ul class="chart-legend clearfix m-0">
+                                                                    <?php
+                                                                    if ($info->opsi == '3') {
+                                                                        $opsis = ['a', 'b', 'c'];
+                                                                    } elseif ($info->opsi == '4') {
+                                                                        $opsis = ['a', 'b', 'c', 'd'];
+                                                                    } else {
+                                                                        $opsis = ['a', 'b', 'c', 'd', 'e'];
+                                                                    }
+
+                                                                    foreach ($opsis as $opsi) :
+                                                                        $bg = 'btn-danger';
+                                                                        if (strtoupper($opsi ?? '') == strtoupper($soal->jawaban ?? '')) {
+                                                                            $bg = 'btn-success';
+                                                                        } ?>
+                                                                        <li class="m-1">
+                                                                            <span class="pl-2 pr-2 btn-circle-sm <?= $bg ?>"
+                                                                                style="white-space: nowrap">
+                                                                                <?= strtoupper($opsi ?? '') ?>
+                                                                                = <?= isset($soal->jawaban_siswa['jawab_' . $opsi]) ? count($soal->jawaban_siswa['jawab_' . $opsi]) : 0 ?>
+                                                                                siswa
+                                                                            </span>
+                                                                        </li>
+                                                                    <?php endforeach; ?>
+                                                                </ul>
                                                                 <?php
-                                                                if ($info->opsi == '3') {
-                                                                    $opsis = ['a', 'b', 'c'];
-                                                                } elseif ($info->opsi == '4') {
-                                                                    $opsis = ['a', 'b', 'c', 'd'];
+                                                                if ($soal->status_kesukaran == 'mudah') {
+                                                                    $warna = 'alert-default-success';
+                                                                } else if ($soal->status_kesukaran == 'sedang') {
+                                                                    $warna = 'alert-default-warning';
                                                                 } else {
-                                                                    $opsis = ['a', 'b', 'c', 'd', 'e'];
+                                                                    $warna = 'alert-default-danger';
                                                                 }
 
-                                                                foreach ($opsis as $opsi) :
-                                                                    $bg = 'btn-danger';
-                                                                    if (strtoupper($opsi ?? '') == strtoupper($soal->jawaban ?? '')) {
-                                                                        $bg = 'btn-success';
-                                                                    } ?>
-                                                                    <li class="m-1">
-                                                    <span class="pl-2 pr-2 btn-circle-sm <?= $bg ?>"
-                                                          style="white-space: nowrap">
-                                                        <?= strtoupper($opsi ?? '') ?>
-                                                        = <?= isset($soal->jawaban_siswa['jawab_' . $opsi]) ? count($soal->jawaban_siswa['jawab_' . $opsi]) : 0 ?>
-                                                        siswa
-                                                    </span>
-                                                                    </li>
-                                                                <?php endforeach; ?>
-                                                            </ul>
-                                                            <?php
-                                                            if ($soal->status_kesukaran == 'mudah') {
-                                                                $warna = 'alert-default-success';
-                                                            } else if ($soal->status_kesukaran == 'sedang') {
-                                                                $warna = 'alert-default-warning';
-                                                            } else {
-                                                                $warna = 'alert-default-danger';
-                                                            }
+                                                                if ($soal->status_valid == 'Valid') {
+                                                                    $warna_valid = 'alert-default-success';
+                                                                } else {
+                                                                    $warna_valid = 'alert-default-danger';
+                                                                }
 
-                                                            if ($soal->status_valid == 'Valid') {
-                                                                $warna_valid = 'alert-default-success';
-                                                            } else {
-                                                                $warna_valid = 'alert-default-danger';
-                                                            }
-
-                                                            if ($soal->daya_pembeda >= 0.70) {
-                                                                $warna_daya = 'alert-default-primary';
-                                                            } else if ($soal->daya_pembeda >= 0.40) {
-                                                                $warna_daya = 'alert-default-success';
-                                                            } else if ($soal->daya_pembeda >= 0.20) {
-                                                                $warna_daya = 'alert-default-warning';
-                                                            } else {
-                                                                $warna_daya = 'alert-default-danger';
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <p class="alert <?= $warna ?> p-1">
-                                                                Kesukaran:<br>
-                                                                <b><?= $soal->tingkat_kesukaran ?></b> <?= $soal->status_kesukaran ?>
-                                                            </p>
-                                                            <p class="alert <?= $warna_valid ?> p-1">
-                                                                Validasi:<br>
-                                                                <b><?= round($soal->nilai_valid, 2) ?></b> <?= $soal->status_valid ?>
-                                                            </p>
-                                                            <p class="alert <?= $warna_daya ?> p-1">
-                                                                Pembeda:<br>
-                                                                <b><?= round($soal->daya_pembeda, 2) ?></b> <?= $soal->status_daya ?>
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <?php $no++; endforeach; ?>
+                                                                if ($soal->daya_pembeda >= 0.70) {
+                                                                    $warna_daya = 'alert-default-primary';
+                                                                } else if ($soal->daya_pembeda >= 0.40) {
+                                                                    $warna_daya = 'alert-default-success';
+                                                                } else if ($soal->daya_pembeda >= 0.20) {
+                                                                    $warna_daya = 'alert-default-warning';
+                                                                } else {
+                                                                    $warna_daya = 'alert-default-danger';
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <p class="alert <?= $warna ?> p-1">
+                                                                    Kesukaran:<br>
+                                                                    <b><?= $soal->tingkat_kesukaran ?></b> <?= $soal->status_kesukaran ?>
+                                                                </p>
+                                                                <p class="alert <?= $warna_valid ?> p-1">
+                                                                    Validasi:<br>
+                                                                    <b><?= round($soal->nilai_valid, 2) ?></b> <?= $soal->status_valid ?>
+                                                                </p>
+                                                                <p class="alert <?= $warna_daya ?> p-1">
+                                                                    Pembeda:<br>
+                                                                    <b><?= round($soal->daya_pembeda, 2) ?></b> <?= $soal->status_daya ?>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    <?php $no++;
+                                                    endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -244,11 +245,11 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                            $no = 1;
-                            foreach ($soals[2] as $soal) :
-                                $soal->opsi_a = @unserialize($soal->opsi_a ?? '');
-                                $soal->jawaban = @unserialize($soal->jawaban ?? '');
-                                ?>
+                                        $no = 1;
+                                        foreach ($soals[2] as $soal) :
+                                            $soal->opsi_a = @unserialize($soal->opsi_a ?? '');
+                                            $soal->jawaban = @unserialize($soal->jawaban ?? '');
+                                        ?>
                                             <tr>
                                                 <td><?= $no ?></td>
                                                 <td>
@@ -268,13 +269,14 @@
                                                 <td>
                                                 </td>
                                             </tr>
-                                            <?php $no++; endforeach; ?>
+                                            <?php $no++;
+                                        endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                             -->
-                        <?php endif;
+                            <?php endif;
                         if (isset($soals[3])) :
                             foreach ($soals[3] as $soal) :
                                 $soal->jawaban_siswa = @unserialize($soal->jawaban_siswa ?? '');
@@ -282,9 +284,10 @@
 
                                 $soal->jawaban_siswa = json_decode(json_encode($soal->jawaban_siswa));
                                 $soal->jawaban_benar = json_decode(json_encode($soal->jawaban_benar));
-                                ?>
+                            ?>
                                 <!-- Todo analisis menjodohkan -->
-                            <?php endforeach; endif;
+                            <?php endforeach;
+                        endif;
                         if (isset($soals[4])) : ?>
                             <!-- Todo analisis isian singkat -->
                         <?php endif;
@@ -302,8 +305,8 @@
 </div>
 
 <script>
-    var idJadwal = '<?=$jadwal_selected?>';
-    var isSelected = <?= $jadwal_selected == null ? 0 : 1?>;
+    var idJadwal = '<?= $jadwal_selected ?>';
+    var isSelected = <?= $jadwal_selected == null ? 0 : 1 ?>;
 
     function getDetailJadwal(idJadwal) {
         $('#loading').removeClass('d-none');
@@ -311,18 +314,19 @@
             type: "GET",
             url: base_url + "cbtstatus/getjadwalujianbyjadwal?id_jadwal=" + idJadwal,
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 $('#loading').addClass('d-none');
                 console.log(response);
                 var selKelas = $('#kelas');
                 selKelas.html('');
                 selKelas.append('<option value="">Pilih Kelas</option>');
-                $.each(response, function (k, v) {
+                $.each(response, function(k, v) {
                     if (v != null) {
                         selKelas.append('<option value="' + k + '">' + v + '</option>');
                     }
                 });
-            }, error: function (xhr, status, error) {
+            },
+            error: function(xhr, status, error) {
                 console.log("response:", xhr.responseText);
                 const err = JSON.parse(xhr.responseText)
                 swal.fire({
@@ -334,7 +338,7 @@
         });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         var opsiJadwal = $("#jadwal");
@@ -362,34 +366,35 @@
             window.location.href = base_url + "cbtanalisis?&thn=" + thn + "&smt=" + smt;
         }
 
-        opsiSmt.change(function () {
+        opsiSmt.change(function() {
             loadJadwalTahun(opsiThn.val(), $(this).val());
         });
 
-        opsiThn.change(function () {
+        opsiThn.change(function() {
             loadJadwalTahun($(this).val(), opsiSmt.val());
         });
 
-        opsiJadwal.change(function () {
+        opsiJadwal.change(function() {
             console.log($(this).val());
             loadSoal($(this).val(), opsiThn.val(), opsiSmt.val())
             //getDetailJadwal($(this).val(), opsiThn.val(), opsiSmt.val());
         });
 
-        $('#kalkulasi').click(function () {
+        $('#kalkulasi').click(function() {
             console.log('test', base_url + "cbtanalisis/kalkulasi?jadwal=" + opsiJadwal.val());
             $.ajax({
                 url: base_url + "cbtanalisis/kalkulasi?jadwal=" + opsiJadwal.val(),
                 type: "GET",
-                success: function (data) {
+                success: function(data) {
                     window.location.reload();
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                 }
             });
         });
 
-        $('table tbody tr img').each(function () {
+        $('table tbody tr img').each(function() {
             var curSrc = $(this).attr('src');
             console.log('src', curSrc);
             if (curSrc.indexOf("http") === -1 && curSrc.indexOf("data:image") === -1) {
@@ -401,9 +406,15 @@
             }
         });
 
-        opsiThn.select2({theme: 'bootstrap4'});
-        opsiSmt.select2({theme: 'bootstrap4'});
-        opsiJadwal.select2({theme: 'bootstrap4'});
+        opsiThn.select2({
+            theme: 'bootstrap4'
+        });
+        opsiSmt.select2({
+            theme: 'bootstrap4'
+        });
+        opsiJadwal.select2({
+            theme: 'bootstrap4'
+        });
 
         /*
         var donutData = {

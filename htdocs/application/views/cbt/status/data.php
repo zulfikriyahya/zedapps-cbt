@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,13 +12,13 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <button class="card-tools btn btn-default btn-sm mr-2 btn-toggle" data-toggle="modal"
                         data-target="#infoModal"><i class="fas fa-info-circle mr-1"></i> Info Error
                     </button>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <div class="col-12 mb-3">
                             <div class="input-group">
@@ -111,7 +111,7 @@
                                         </li>
                                         <li>
                                             <span class="badge badge-success"><i class="fa fa-check ml-1 mr-1"></i> Terapkan Aksi</span>
-                                            untuk menerapkan aksi terpilih ke setiap siswa yang dipilih
+                                            untuk menerapkan aksi terpilih ke setiap siswa yang dipilih.
                                         </li>
                                     </ul>
                                 </div>
@@ -333,7 +333,7 @@
     }
 
     function createPreview(data) {
-        var tbody = '<thead class="alert-light">' +
+        var tbody = '<thead class="bg-maroon">' +
             '<tr>' +
             '<th rowspan="2" class="text-center align-middle" width="40">No.</th>' +
             '<th rowspan="2" class="text-center align-middle" width="100">No. Peserta</th>' +

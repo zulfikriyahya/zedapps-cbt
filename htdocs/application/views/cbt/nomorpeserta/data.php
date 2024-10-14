@@ -190,7 +190,7 @@
     function createPreview() {
         $('#generate').removeClass('d-none');
         $('#table-nomor').html('');
-        var tbody = '<thead class="alert-primary">' +
+        var tbody = '<thead class="bg-maroon">' +
             '<tr>' +
             '<th class="text-center align-middle" width="40" height="50">No.</th>' +
             '<th class="text-center align-middle" width="100">USERNAME</th>' +

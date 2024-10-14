@@ -47,11 +47,11 @@ foreach ($soal_ada as $key => $value) {
 }
 ?>
 
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between mb-2">
-                <h1><?= $subjudul ?></h1>
+                <h1 class="text-bold"><?= $subjudul ?></h1>
                 <a href="<?= base_url('cbtbanksoal/detail/' . $bank->id_bank) ?>" type="button"
                     class="btn btn-sm btn-danger float-right">
                     <i class="fas fa-arrow-circle-left"></i><span
@@ -64,7 +64,7 @@ foreach ($soal_ada as $key => $value) {
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow">
-                <div class="card-body">
+                <div class="card-body rounded bg-maroon text-dark">
                     <div class="row">
                         <h6 class="col-md-6"><b>Bank
                                 Soal:</b> <?= $bank->bank_kode . ' | PG: ' . $bank->tampil_pg . ', Essai: ' . $bank->tampil_esai ?>
@@ -74,26 +74,26 @@ foreach ($soal_ada as $key => $value) {
             </div>
             <?= form_open('create', array('id' => 'create')) ?>
             <div class="card my-shadow">
-                <div class="card-header p-2">
+                <div class="card-header bg-orange p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link <?= $tab_active == '1' ? 'active' : '' ?>"
+                        <li class="nav-item text-bold"><a class="nav-link <?= $tab_active == '1' ? 'active' : '' ?>"
                                 href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=1') ?>">Pilihan
                                 Ganda</a></li>
-                        <li class="nav-item"><a class="nav-link <?= $tab_active == '2' ? 'active' : '' ?>"
+                        <li class="nav-item text-bold"><a class="nav-link <?= $tab_active == '2' ? 'active' : '' ?>"
                                 href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=2') ?>">Pilihan
                                 Ganda Kompleks</a></li>
-                        <li class="nav-item"><a class="nav-link <?= $tab_active == '3' ? 'active' : '' ?>"
+                        <li class="nav-item text-bold"><a class="nav-link <?= $tab_active == '3' ? 'active' : '' ?>"
                                 href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=3') ?>">Menjodohkan</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link <?= $tab_active == '4' ? 'active' : '' ?>"
+                        <li class="nav-item text-bold"><a class="nav-link <?= $tab_active == '4' ? 'active' : '' ?>"
                                 href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=4') ?>">Isian
                                 Singkat</a></li>
-                        <li class="nav-item"><a class="nav-link <?= $tab_active == '5' ? 'active' : '' ?>"
+                        <li class="nav-item text-bold"><a class="nav-link <?= $tab_active == '5' ? 'active' : '' ?>"
                                 href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank . '?tab=5') ?>">Essai/Uraian</a>
                         </li>
                     </ul>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <input type="hidden" id="jenis-id" name="jenis" value="1" class="form-control">
                     <input type="hidden" id="bank-id" name="bank_id" value="<?= $bank->id_bank ?>" class="form-control">
                     <input type="hidden" id="soal-id" name="soal_id"
@@ -119,7 +119,7 @@ foreach ($soal_ada as $key => $value) {
                             <?php
                                 $no++;
                             endfor; ?>
-                            <a href="javascript:void(0)" class="pt-1 btn btn-oval-sm btn-outline-success"
+                            <a href="javascript:void(0)" class="pt-1 btn btn-oval-sm btn-outline-primary"
                                 data-mapel="<?= $bank->bank_mapel_id ?>" data-bank="<?= $bank->id_bank ?>"
                                 data-nomor="<?= $no ?>" onclick="tambahSoalPg(this)" id="btn-add-new-pg"><i
                                     class="fa fa-plus"></i> Tambah PG</a>
@@ -222,17 +222,17 @@ foreach ($soal_ada as $key => $value) {
                 <span>Belum ada soal</span>
             </div>
             <div class="card my-shadow d-none" id="not-empty-soal">
-                <div class="card-header">
+                <div class="card-header bg-info">
                     <div class="card-title">
-                        <h6 id="nomor-soal"><b>Soal Nomor: 1</b></h6>
+                        <h6 id="nomor-soal" class="text-bold">Soal Nomor: 1</h6>
                     </div>
                     <div class="card-tools">
-                        <button type="submit" class="btn btn-primary btn-sm mr-1">
+                        <button type="submit" class="btn btn-success btn-sm mr-1">
                             <i class="fa fa-plus mr-1"></i>Simpan
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="soal-area mt-4">
                         <div class="row">
                             <div class="col-md-6" id="soal-area">

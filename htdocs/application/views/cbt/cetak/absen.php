@@ -1,14 +1,14 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <a href="<?= base_url('cbtcetak') ?>" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </a>
                 </div>
             </div>
@@ -19,63 +19,63 @@
         <div class="container-fluid">
             <?= form_open('', array('id' => 'set-kop')) ?>
             <div class="card my-shadow">
-                <div class="card-header">
-                    <h6 class="card-title">Setting Kop Daftar Kehadiran</h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold">Setting Kop Daftar Kehadiran</h6>
                     <button type="submit" class="card-tools btn btn-sm bg-primary text-white">
                         <i class="fas fa-save mr-1"></i> Simpan
                     </button>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Header 1</label>
                                 <input class="form-control" name="header_1" placeholder="Header 1"
-                                       value="<?= isset($kop->header_1) ? $kop->header_1 : '' ?>" required>
+                                    value="<?= isset($kop->header_1) ? $kop->header_1 : '' ?>" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Header 2</label>
                                 <input class="form-control" name="header_2" placeholder="Header 2"
-                                       value="<?= isset($kop->header_2) ? $kop->header_2 : '' ?>" required>
+                                    value="<?= isset($kop->header_2) ? $kop->header_2 : '' ?>" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Header 3</label>
                                 <input class="form-control" name="header_3" placeholder="Header 3"
-                                       value="<?= isset($kop->header_3) ? $kop->header_3 : '' ?>" required>
+                                    value="<?= isset($kop->header_3) ? $kop->header_3 : '' ?>" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Header 4</label>
                                 <input class="form-control" name="header_4" placeholder="Header 4"
-                                       value="<?= isset($kop->header_4) ? $kop->header_4 : '' ?>" required>
+                                    value="<?= isset($kop->header_4) ? $kop->header_4 : '' ?>" required>
                             </div>
                         </div>
                         <div class="col-md-4 d-none">
                             <div class="form-group">
                                 <label>Proktor</label>
                                 <input id="input-proktor" class="form-control" name="proktor" placeholder="Proktor"
-                                       value="<?= isset($kop->proktor) ? $kop->proktor : '' ?>">
+                                    value="<?= isset($kop->proktor) ? $kop->proktor : '' ?>">
                             </div>
                         </div>
                         <div class="col-md-4 d-none">
                             <div class="form-group">
                                 <label>Pengawas</label>
                                 <input id="input-pengawas-1" class="form-control" name="pengawas_1"
-                                       placeholder="Pengawas 1"
-                                       value="<?= isset($kop->pengawas_1) ? $kop->pengawas_1 : '' ?>">
+                                    placeholder="Pengawas 1"
+                                    value="<?= isset($kop->pengawas_1) ? $kop->pengawas_1 : '' ?>">
                             </div>
                         </div>
                         <div class="col-md-4 d-none">
                             <div class="form-group">
                                 <label>Pengawas 2</label>
                                 <input id="input-pengawas-2" class="form-control" name="pengawas_2"
-                                       placeholder="Pengawas 2"
-                                       value="<?= isset($kop->pengawas_2) ? $kop->pengawas_2 : '' ?>">
+                                    placeholder="Pengawas 2"
+                                    value="<?= isset($kop->pengawas_2) ? $kop->pengawas_2 : '' ?>">
                             </div>
                         </div>
                     </div>
@@ -84,16 +84,16 @@
             <?= form_close() ?>
 
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6>Cetak</h6>
+                        <h6 class="text-bold">Cetak</h6>
                     </div>
                     <div id="selector" class="card-tools btn-group">
                         <button type="button" class="btn active btn-primary">By Ruang</button>
                         <button type="button" class="btn btn-outline-primary">By Kelas</button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <div class="col-6 col-md-3 mb-3 d-none" id="by-kelas">
                             <div class="input-group">
@@ -156,16 +156,16 @@
 
 <script src="<?= base_url() ?>/assets/app/js/print-area.js"></script>
 <script>
-    var oldVal1 = "<?=isset($kop->header_1) ? $kop->header_1 : ""?>";
-    var oldVal2 = "<?=isset($kop->header_2) ? $kop->header_2 : ""?>";
-    var oldVal3 = "<?=isset($kop->header_3) ? $kop->header_3 : ""?>";
-    var oldVal4 = "<?=isset($kop->header_4) ? $kop->header_4 : ""?>";
-    var logoKanan = "<?=isset($kop->logo_kanan) ? base_url() . $kop->logo_kanan : ""?>";
-    var logoKiri = "<?=isset($kop->logo_kiri) ? base_url() . $kop->logo_kiri : ""?>";
-    var tandatangan = "<?= isset($kop->tanda_tangan) ? base_url() . $kop->tanda_tangan : ""?>";
-    var proktor = "<?=isset($kop->proktor) ? $kop->proktor : ""?>";
-    //var pengawas1 = "<?=isset($kop->pengawas_1) ? $kop->pengawas_1 : ""?>";
-    //var pengawas2 = "<?=isset($kop->pengawas_2) ? $kop->pengawas_2 : ""?>";
+    var oldVal1 = "<?= isset($kop->header_1) ? $kop->header_1 : "" ?>";
+    var oldVal2 = "<?= isset($kop->header_2) ? $kop->header_2 : "" ?>";
+    var oldVal3 = "<?= isset($kop->header_3) ? $kop->header_3 : "" ?>";
+    var oldVal4 = "<?= isset($kop->header_4) ? $kop->header_4 : "" ?>";
+    var logoKanan = "<?= isset($kop->logo_kanan) ? base_url() . $kop->logo_kanan : "" ?>";
+    var logoKiri = "<?= isset($kop->logo_kiri) ? base_url() . $kop->logo_kiri : "" ?>";
+    var tandatangan = "<?= isset($kop->tanda_tangan) ? base_url() . $kop->tanda_tangan : "" ?>";
+    var proktor = "<?= isset($kop->proktor) ? $kop->proktor : "" ?>";
+    //var pengawas1 = "<?= isset($kop->pengawas_1) ? $kop->pengawas_1 : "" ?>";
+    //var pengawas2 = "<?= isset($kop->pengawas_2) ? $kop->pengawas_2 : "" ?>";
     var printBy = 1;
 
     function handleNull(value) {
@@ -207,7 +207,7 @@
     function createPrintPreview(data) {
         console.log(data);
         //var bagi = 25;
-		var bagi = 28;
+        var bagi = 28;
         var pages = Math.ceil(data.siswa.length / bagi);
         console.log('page', pages);
         var kelasTitle = printBy === 2 ? 'Kelas' : 'Ruang';
@@ -398,7 +398,7 @@
         }
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
         var opsiJadwal = $("#jadwal");
         var opsiRuang = $("#ruang");
@@ -413,14 +413,14 @@
                 //$('#print-preview').addClass('d-none');
                 $('#loading').removeClass('d-none');
 
-                setTimeout(function () {
+                setTimeout(function() {
                     $.ajax({
                         type: "GET",
                         url: base_url + "cbtcetak/getsiswaruang?ruang=" + ruang + '&sesi=' + sesi + '&jadwal=' + jadwal,
-                        success: function (response) {
+                        success: function(response) {
                             createPrintPreview(response);
                         },
-                        error: function (xhr, status, error) {
+                        error: function(xhr, status, error) {
                             $('#loading').addClass('d-none');
                             console.log("error", xhr.responseText);
                         }
@@ -435,14 +435,14 @@
             console.log('url', base_url + "cbtcetak/getsiswakelas?kelas=" + kelas + '&sesi=' + sesi + '&jadwal=' + jadwal);
             if (notempty) {
                 $('#loading').removeClass('d-none');
-                setTimeout(function () {
+                setTimeout(function() {
                     $.ajax({
                         type: "GET",
                         url: base_url + "cbtcetak/getsiswakelas?kelas=" + kelas + '&sesi=' + sesi + '&jadwal=' + jadwal,
-                        success: function (response) {
+                        success: function(response) {
                             createPrintPreview(response);
                         },
-                        error: function (xhr, status, error) {
+                        error: function(xhr, status, error) {
                             console.log("error", xhr.responseText);
                         }
                     });
@@ -455,15 +455,15 @@
         opsiSesi.prepend("<option value='' selected='selected'>Pilih Sesi</option>");
         opsiKelas.prepend("<option value='' selected='selected'>Pilih Kelas</option>");
 
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             loadSiswaKelas($(this).val(), opsiSesi.val(), opsiJadwal.val())
         });
 
-        opsiRuang.change(function () {
+        opsiRuang.change(function() {
             loadSiswaRuang($(this).val(), opsiSesi.val(), opsiJadwal.val())
         });
 
-        opsiSesi.change(function () {
+        opsiSesi.change(function() {
             if (printBy === 1) {
                 loadSiswaRuang(opsiRuang.val(), $(this).val(), opsiJadwal.val())
             } else {
@@ -471,7 +471,7 @@
             }
         });
 
-        opsiJadwal.change(function () {
+        opsiJadwal.change(function() {
             if (printBy === 1) {
                 loadSiswaRuang(opsiRuang.val(), opsiSesi.val(), $(this).val())
             } else {
@@ -479,7 +479,7 @@
             }
         });
 
-        $("#btn-print").click(function () {
+        $("#btn-print").click(function() {
             var kosong = printBy === 2 ? ($('#kelas').val() === '' || ($('#sesi').val() === '') || ($('#jadwal').val() === '')) : ($('#ruang').val() === '' || ($('#sesi').val() === '') || ($('#jadwal').val() === ''));
             if (kosong) {
                 Swal.fire({
@@ -492,28 +492,28 @@
             }
         });
 
-        $("#header-1").on("change keyup paste", function () {
+        $("#header-1").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal1) {
                 return;
             }
             oldVal1 = currentVal;
         });
-        $("#header-2").on("change keyup paste", function () {
+        $("#header-2").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal2) {
                 return;
             }
             oldVal2 = currentVal;
         });
-        $("#header-3").on("change keyup paste", function () {
+        $("#header-3").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal3) {
                 return;
             }
             oldVal3 = currentVal;
         });
-        $("#header-4").on("change keyup paste", function () {
+        $("#header-4").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal4) {
                 return;
@@ -521,7 +521,7 @@
             oldVal4 = currentVal;
         });
 
-        $('#set-kop').on('submit', function (e) {
+        $('#set-kop').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -545,7 +545,7 @@
                 processData: false,
                 contentType: false,
                 data: form,
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     swal.fire({
                         title: 'Sukses',
@@ -559,7 +559,7 @@
                         }
                     });
                 },
-                error: function (xhr, error, status) {
+                error: function(xhr, error, status) {
                     console.log(xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -571,7 +571,7 @@
             });
         });
 
-        $('#selector button').click(function () {
+        $('#selector button').click(function() {
             $(this).addClass('active').siblings().addClass('btn-outline-primary').removeClass('active btn-primary');
 
             if (!$('#by-kelas').is(':hidden')) {
@@ -587,10 +587,18 @@
             }
         });
 
-        opsiKelas.select2({theme: 'bootstrap4'});
-        opsiRuang.select2({theme: 'bootstrap4'});
-        opsiSesi.select2({theme: 'bootstrap4'});
-        opsiJadwal.select2({theme: 'bootstrap4'});
+        opsiKelas.select2({
+            theme: 'bootstrap4'
+        });
+        opsiRuang.select2({
+            theme: 'bootstrap4'
+        });
+        opsiSesi.select2({
+            theme: 'bootstrap4'
+        });
+        opsiJadwal.select2({
+            theme: 'bootstrap4'
+        });
 
     })
 </script>

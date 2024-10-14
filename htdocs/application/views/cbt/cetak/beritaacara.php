@@ -1,14 +1,14 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <a href="<?= base_url('cbtcetak') ?>" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </a>
                 </div>
             </div>
@@ -18,45 +18,45 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow">
-                <div class="card-header">
-                    <h6 class="card-title">Setting Kop</h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold">Setting Kop</h6>
                     <button class="card-tools btn btn-sm bg-primary text-white" onclick="submitKop()">
                         <i class="fas fa-save mr-1"></i> Simpan
                     </button>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <?= form_open('', array('id' => 'set-kop')) ?>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Header 1</label>
                                 <textarea id="header-1" class="form-control" name="header_1" rows="2"
-                                          placeholder="Header baris 1"
-                                          required><?= isset($kop->header_1) ? $kop->header_1 : '' ?></textarea>
+                                    placeholder="Header baris 1"
+                                    required><?= isset($kop->header_1) ? $kop->header_1 : '' ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Header 2</label>
                                 <textarea id="header-2" class="form-control" name="header_2" rows="2"
-                                          placeholder="Header baris 2"
-                                          required><?= isset($kop->header_2) ? $kop->header_2 : '' ?></textarea>
+                                    placeholder="Header baris 2"
+                                    required><?= isset($kop->header_2) ? $kop->header_2 : '' ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Header 3</label>
                                 <textarea id="header-3" class="form-control" name="header_3" rows="2"
-                                          placeholder="Header baris 3"
-                                          required><?= isset($kop->header_3) ? $kop->header_3 : '' ?></textarea>
+                                    placeholder="Header baris 3"
+                                    required><?= isset($kop->header_3) ? $kop->header_3 : '' ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Header 4</label>
                                 <textarea id="header-4" class="form-control" name="header_4" rows="2"
-                                          placeholder="Header baris 4"
-                                          required><?= isset($kop->header_4) ? $kop->header_4 : '' ?></textarea>
+                                    placeholder="Header baris 4"
+                                    required><?= isset($kop->header_4) ? $kop->header_4 : '' ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -65,16 +65,16 @@
             </div>
 
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6>Cetak</h6>
+                        <h6 class="text-bold">Cetak</h6>
                     </div>
                     <div id="selector" class="card-tools btn-group">
                         <button type="button" class="btn active btn-primary">By Ruang</button>
                         <button type="button" class="btn btn-outline-primary">By Kelas</button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <div class="col-3 d-none" id="by-kelas">
                             <div class="input-group">
@@ -141,24 +141,25 @@
                         <div style="display: flex; justify-content: center; align-items: center;">
                             <div id="print-preview" style="width: 21cm; min-height: 29cm;" class="border my-shadow p-5">
                                 <table id="table-header-print"
-                                       style="width: 100%; border: 0;">
+                                    style="width: 100%; border: 0;">
                                     <tr>
                                         <td style="width:15%;">
                                             <img alt="logo kiri" id="prev-logo-kanan-print"
-                                                 src="<?= isset($kop->logo_kiri) ? base_url() . $kop->logo_kiri : '' ?>"
-                                                 style="width:85px; height:85px; margin: 6px;">
+                                                src="<?= isset($kop->logo_kiri) ? base_url() . $kop->logo_kiri : '' ?>"
+                                                style="width:85px; height:85px; margin: 6px;">
                                         </td>
                                         <td style="width:70%; text-align: center;">
                                             <div style="line-height: 1.1; font-family: 'Times New Roman'; font-size: 14pt"><?= isset($kop->header_1) ? $kop->header_1 : '' ?></div>
                                             <div style="line-height: 1.1; font-family: 'Times New Roman'; font-size: 16pt">
-                                                <b><?= isset($kop->header_2) ? $kop->header_2 : '' ?></b></div>
+                                                <b><?= isset($kop->header_2) ? $kop->header_2 : '' ?></b>
+                                            </div>
                                             <div style="line-height: 1.2; font-family: 'Times New Roman'; font-size: 13pt"><?= isset($kop->header_3) ? $kop->header_3 : '' ?></div>
                                             <div style="line-height: 1.2; font-family: 'Times New Roman'; font-size: 12pt"><?= isset($kop->header_4) ? $kop->header_4 : '' ?></div>
                                         </td>
                                         <td style="width:15%;">
                                             <img alt="logo kanan" id="prev-logo-kiri-print"
-                                                 src="<?= isset($kop->logo_kanan) ? base_url() . $kop->logo_kanan : '' ?>"
-                                                 style="width:85px; height:85px; margin: 6px; border-style: none">
+                                                src="<?= isset($kop->logo_kanan) ? base_url() . $kop->logo_kanan : '' ?>"
+                                                style="width:85px; height:85px; margin: 6px; border-style: none">
                                         </td>
                                     </tr>
                                 </table>
@@ -167,21 +168,21 @@
                                 <br>
                                 <div style="text-align: justify; font-family: 'Times New Roman'">
                                     Pada hari ini <span class="editable bg-gray-light" id="edit-hari"
-                                                        style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('D')) ?></span>
+                                        style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('D')) ?></span>
                                     tanggal <span class="editable bg-gray-light" id="edit-tanggal"
-                                                  style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('d')) ?></span>
+                                        style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('d')) ?></span>
                                     bulan <span class="editable bg-gray-light" id="edit-bulan"
-                                                style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('M')) ?></span>
+                                        style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('M')) ?></span>
                                     tahun <span class="editable bg-gray-light" id="edit-tahun"
-                                                style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('Y')) ?></span>
+                                        style="display: inline-block;min-width: 20px"><?= buat_tanggal(date('Y')) ?></span>
                                     telah diselenggarakan <span class="editable bg-gray-light" id="edit-jenis-ujian"
-                                                                style="display: inline-block;min-width: 20px">............................................</span>
+                                        style="display: inline-block;min-width: 20px">............................................</span>
                                     untuk Mata Pelajaran <span class="editable bg-gray-light" id="edit-mapel"
-                                                               style="display: inline-block;min-width: 20px">.....................................</span>
+                                        style="display: inline-block;min-width: 20px">.....................................</span>
                                     dari pukul <span class="editable bg-gray-light" id="edit-waktu-mulai"
-                                                     style="display: inline-block;min-width: 20px">.............</span>
+                                        style="display: inline-block;min-width: 20px">.............</span>
                                     sampai dengan pukul <span class="editable bg-gray-light" id="edit-waktu-akhir"
-                                                              style="display: inline-block;min-width: 20px">...........</span>
+                                        style="display: inline-block;min-width: 20px">...........</span>
                                 </div>
                                 <br>
                                 <table style="width: 100%;font-family: 'Times New Roman';">
@@ -256,7 +257,7 @@
                                         <td style="padding-top: 12px">2.</td>
                                         <td style="padding-top: 12px" colspan="3">
                                             Catatan selama <span class="editable bg-gray-light" id="edit-nama-ujian"
-                                                                 style="display: inline-block;min-width: 20px">.......</span>
+                                                style="display: inline-block;min-width: 20px">.......</span>
                                             berlangsung :
                                         </td>
                                     </tr>
@@ -345,10 +346,10 @@
 <script>
     const kepsek = "<?= isset($kop->kepsek) && $kop->kepsek != "" ? $kop->kepsek : "_________________________" ?>";
     const nip = "<?= isset($kop->nip) && $kop->nip != "" ? $kop->nip : "_________________________" ?>";
-    var oldVal1 = "<?=isset($kop->header_1) ? $kop->header_1 : ""?>";
-    var oldVal2 = "<?=isset($kop->header_2) ? $kop->header_2 : ""?>";
-    var oldVal3 = "<?=isset($kop->header_3) ? $kop->header_3 : ""?>";
-    var oldVal4 = "<?=isset($kop->header_4) ? $kop->header_4 : ""?>";
+    var oldVal1 = "<?= isset($kop->header_1) ? $kop->header_1 : "" ?>";
+    var oldVal2 = "<?= isset($kop->header_2) ? $kop->header_2 : "" ?>";
+    var oldVal3 = "<?= isset($kop->header_3) ? $kop->header_3 : "" ?>";
+    var oldVal4 = "<?= isset($kop->header_4) ? $kop->header_4 : "" ?>";
     var printBy = 1;
 
     var HARI, TANGGAL, BULAN, TAHUN;
@@ -380,7 +381,7 @@
         $('#set-kop').submit();
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
         var opsiJadwal = $("#jadwal");
         var opsiRuang = $("#ruang");
@@ -396,7 +397,7 @@
                 $.ajax({
                     type: "GET",
                     url: base_url + "cbtcetak/getsiswaruang?ruang=" + ruang + '&sesi=' + sesi + '&jadwal=' + jadwal,
-                    success: function (response) {
+                    success: function(response) {
                         $('#loading').addClass('d-none');
                         console.log('respon', response);
                         handleTanggal(response.info.jadwal.tgl_mulai);
@@ -421,7 +422,7 @@
                          */
                         document.title = 'Berita Acara ' + response.info.jadwal.kode + ' ' + $('#edit-ruang').text() + ' ' + $('#edit-sesi').text();
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         $('#loading').addClass('d-none');
                         console.log("error", xhr.responseText);
                     }
@@ -436,7 +437,7 @@
                 $.ajax({
                     type: "GET",
                     url: base_url + "cbtcetak/getsiswakelas?kelas=" + kelas + '&sesi=' + sesi + '&jadwal=' + jadwal,
-                    success: function (response) {
+                    success: function(response) {
                         $('#loading').addClass('d-none');
                         console.log('respon', response);
                         handleTanggal(response.info.jadwal.tgl_mulai);
@@ -461,7 +462,7 @@
                          */
                         document.title = 'Berita Acara ' + response.info.jadwal.kode + ' ' + $('#edit-ruang').text() + ' ' + $('#edit-sesi').text();
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         $('#loading').addClass('d-none');
                         console.log("error", xhr.responseText);
                     }
@@ -475,17 +476,17 @@
         opsiKelas.prepend("<option value='' selected='selected'>Pilih Kelas</option>");
 
 
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             $('#edit-ruang').text($("#kelas option:selected").text());
             loadSiswaKelas($(this).val(), opsiSesi.val(), opsiJadwal.val())
         });
 
-        opsiRuang.change(function () {
+        opsiRuang.change(function() {
             $('#edit-ruang').text($("#ruang option:selected").text());
             loadSiswaRuang($(this).val(), opsiSesi.val(), opsiJadwal.val())
         });
 
-        opsiSesi.change(function () {
+        opsiSesi.change(function() {
             $('#edit-sesi').text($("#sesi option:selected").text());
             if (printBy === 1) {
                 loadSiswaRuang(opsiRuang.val(), $(this).val(), opsiJadwal.val())
@@ -494,7 +495,7 @@
             }
         });
 
-        opsiJadwal.change(function () {
+        opsiJadwal.change(function() {
             if (printBy === 1) {
                 loadSiswaRuang(opsiRuang.val(), opsiSesi.val(), $(this).val())
             } else {
@@ -502,7 +503,7 @@
             }
         });
 
-        $("#btn-print").click(function () {
+        $("#btn-print").click(function() {
             var kosong = printBy === 2 ? ($('#kelas').val() === '' || ($('#sesi').val() === '') || ($('#jadwal').val() === '')) : ($('#ruang').val() === '' || ($('#sesi').val() === '') || ($('#jadwal').val() === ''));
             if (kosong) {
                 Swal.fire({
@@ -515,7 +516,7 @@
             }
         });
 
-        $("#header-1").on("change keyup paste", function () {
+        $("#header-1").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal1) {
                 return;
@@ -523,7 +524,7 @@
             oldVal1 = currentVal;
         });
 
-        $("#header-2").on("change keyup paste", function () {
+        $("#header-2").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal2) {
                 return;
@@ -531,7 +532,7 @@
             oldVal2 = currentVal;
         });
 
-        $("#header-3").on("change keyup paste", function () {
+        $("#header-3").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal3) {
                 return;
@@ -539,7 +540,7 @@
             oldVal3 = currentVal;
         });
 
-        $("#header-4").on("change keyup paste", function () {
+        $("#header-4").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal4) {
                 return;
@@ -547,7 +548,7 @@
             oldVal4 = currentVal;
         });
 
-        $('#set-kop').on('submit', function (e) {
+        $('#set-kop').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -569,7 +570,7 @@
                 processData: false,
                 contentType: false,
                 data: form,
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     swal.fire({
                         title: 'Sukses',
@@ -583,7 +584,7 @@
                         }
                     });
                 },
-                error: function (xhr, error, status) {
+                error: function(xhr, error, status) {
                     console.log(xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -595,7 +596,7 @@
             });
         });
 
-        $('#selector button').click(function () {
+        $('#selector button').click(function() {
             $(this).addClass('active').siblings().addClass('btn-outline-primary').removeClass('active btn-primary');
             console.log('change')
             if (!$('#by-kelas').is(':hidden')) {
@@ -613,10 +614,18 @@
             }
         });
 
-        opsiKelas.select2({theme: 'bootstrap4'});
-        opsiRuang.select2({theme: 'bootstrap4'});
-        opsiSesi.select2({theme: 'bootstrap4'});
-        opsiJadwal.select2({theme: 'bootstrap4'});
+        opsiKelas.select2({
+            theme: 'bootstrap4'
+        });
+        opsiRuang.select2({
+            theme: 'bootstrap4'
+        });
+        opsiSesi.select2({
+            theme: 'bootstrap4'
+        });
+        opsiJadwal.select2({
+            theme: 'bootstrap4'
+        });
 
     })
 
@@ -630,59 +639,59 @@
         var title_p1 = pengawas2 == '' ? 'Pengawas' : 'Pengawas 1';
 
         var table = '<table style="width:90%; font-family: \'Times New Roman\';">' +
-        ' <tr>' +
-        ' <th></th>' +
-        ' <th></th>' +
-        ' <th></th> <th></th> <th style="text-align: center">TTD</th>' +
-        ' </tr>' +
+            ' <tr>' +
+            ' <th></th>' +
+            ' <th></th>' +
+            ' <th></th> <th></th> <th style="text-align: center">TTD</th>' +
+            ' </tr>' +
 
-        ' <tr>' +
-        ' <td style="width: 30px;">'+nomor+'.</td>' +
-        ' <td>'+title_p1+'</td>' +
-        ' <td>:</td>' +
-        ' <td class="editable bg-gray-light" id="edit-pengawas1">'+pengawas1+'</td>' +
-        ' <td style="padding-left: 20px" rowspan="2">1. _________________________</td>' +
-        ' </tr>' +
+            ' <tr>' +
+            ' <td style="width: 30px;">' + nomor + '.</td>' +
+            ' <td>' + title_p1 + '</td>' +
+            ' <td>:</td>' +
+            ' <td class="editable bg-gray-light" id="edit-pengawas1">' + pengawas1 + '</td>' +
+            ' <td style="padding-left: 20px" rowspan="2">1. _________________________</td>' +
+            ' </tr>' +
 
-        ' <tr>' +
-        ' <td></td>' +
-        ' <td>NIP/NUPTK </td>' +
-        '         <td>:</td>' +
-        ' <td class="editable bg-gray-light">'+nip1+'</td>' +
-        ' </tr>';
-        nomor +=1;
+            ' <tr>' +
+            ' <td></td>' +
+            ' <td>NIP/NUPTK </td>' +
+            '         <td>:</td>' +
+            ' <td class="editable bg-gray-light">' + nip1 + '</td>' +
+            ' </tr>';
+        nomor += 1;
         if (pengawas2 !== '') {
             table += ' <tr>' +
-                ' <td style="padding-top: 12px">'+nomor+'.</td>' +
+                ' <td style="padding-top: 12px">' + nomor + '.</td>' +
                 ' <td style="padding-top: 12px">Pengawas 2</td>' +
                 ' <td style="padding-top: 12px">:</td>' +
-                ' <td style="padding-top: 12px" class="editable bg-gray-light" id="edit-pengawas2">'+pengawas2+'</td>' +
-                ' <td style="padding-left: 20px" rowspan="2">'+nomor+'. _________________________</td>' +
+                ' <td style="padding-top: 12px" class="editable bg-gray-light" id="edit-pengawas2">' + pengawas2 + '</td>' +
+                ' <td style="padding-left: 20px" rowspan="2">' + nomor + '. _________________________</td>' +
                 '</tr>' +
 
                 ' <tr>' +
                 ' <td></td>' +
                 ' <td>NIP/NUPTK </td>' +
                 '         <td>:</td>' +
-                ' <td class="editable bg-gray-light">'+nip2+'</td>' +
+                ' <td class="editable bg-gray-light">' + nip2 + '</td>' +
                 ' </tr>';
-            nomor +=1;
+            nomor += 1;
         }
         table += ' <tr>' +
-        ' <td style="padding-top: 12px">'+nomor+'.</td>' +
-        ' <td style="padding-top: 12px">Kepala Sekolah</td>' +
-        '         <td style="padding-top: 12px">:</td>' +
-        ' <td style="padding-top: 12px"class="editable bg-gray-light">'+kepsek+'</td>' +
-        '         <td style="padding-left: 20px" rowspan="2">'+nomor+'. _________________________</td>' +
-        ' </tr>' +
+            ' <td style="padding-top: 12px">' + nomor + '.</td>' +
+            ' <td style="padding-top: 12px">Kepala Sekolah</td>' +
+            '         <td style="padding-top: 12px">:</td>' +
+            ' <td style="padding-top: 12px"class="editable bg-gray-light">' + kepsek + '</td>' +
+            '         <td style="padding-left: 20px" rowspan="2">' + nomor + '. _________________________</td>' +
+            ' </tr>' +
 
-        ' <tr>' +
-        ' <td></td>' +
-        ' <td>NIP/NUPTK </td>' +
-        '         <td>:</td>' +
-        ' <td class="editable bg-gray-light">'+nip+'</td>' +
-        ' </tr>' +
-        ' </table>';
+            ' <tr>' +
+            ' <td></td>' +
+            ' <td>NIP/NUPTK </td>' +
+            '         <td>:</td>' +
+            ' <td class="editable bg-gray-light">' + nip + '</td>' +
+            ' </tr>' +
+            ' </table>';
 
         $('#berita-ttd').html(table)
         $('.editable').attr('contentEditable', true);

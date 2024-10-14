@@ -1,11 +1,11 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between mb-2">
-                <h1><?= $subjudul ?></h1>
+                <h1 class="text-bold"><?= $subjudul ?></h1>
                 <a href="<?= base_url('cbtbanksoal') ?>" type="button" class="btn btn-sm btn-danger float-right">
                     <i class="fas fa-arrow-circle-left"></i><span
-                            class="d-none d-sm-inline-block ml-1">Kembali</span>
+                        class="d-none d-sm-inline-block ml-1">Kembali</span>
                 </a>
             </div>
         </div>
@@ -14,21 +14,21 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <div class="card-tools">
                         <button type="button" onclick="javascript:window.location.reload()"
-                                class="btn btn-sm btn-default">
+                            class="btn btn-sm btn-default">
                             <i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ml-1">Reload</span>
                         </button>
                         <button id="convert" class="btn btn-sm btn-primary">
                             <i class="fas fa-download"></i> <span
-                                    class="d-none d-sm-inline-block ml-1">Download Soal</span>
+                                class="d-none d-sm-inline-block ml-1">Download Soal</span>
                         </button>
                         <a href="<?= base_url('cbtbanksoal/buatsoal/' . $bank->id_bank) ?>"
-                           type="button" class="btn btn-sm btn-success">
+                            type="button" class="btn btn-sm btn-success">
                             <i class="fas fa-plus"></i> <span
-                                    class="d-none d-sm-inline-block ml-1">Tambah/Edit Soal</span>
+                                class="d-none d-sm-inline-block ml-1">Tambah/Edit Soal</span>
                         </a>
                     </div>
                 </div>
@@ -127,8 +127,8 @@
                                 </li>
                                 <li class="list-group-item p-1"> Guru
                                     <span class="float-right">
-											<b><?= $bank->nama_guru ?></b>
-										</span>
+                                        <b><?= $bank->nama_guru ?></b>
+                                    </span>
                                 </li>
                                 <li class="list-group-item p-1"> Kelas
                                     <span class="float-right"><b><?= $kelasbank ?></b></span>
@@ -174,11 +174,11 @@
                         <li class="nav-item"><a class="nav-link" href="#kompleks" data-toggle="tab">Pilihan Ganda
                                 Kompleks <?= $badge_pg2 ?></a></li>
                         <li class="nav-item"><a class="nav-link" href="#jodoh"
-                                                data-toggle="tab">Menjodohkan <?= $badge_jodohkan ?></a></li>
+                                data-toggle="tab">Menjodohkan <?= $badge_jodohkan ?></a></li>
                         <li class="nav-item"><a class="nav-link" href="#isian" data-toggle="tab">Isian
                                 Singkat <?= $badge_isian ?></a></li>
                         <li class="nav-item"><a class="nav-link" href="#essai"
-                                                data-toggle="tab">Essai/Uraian <?= $badge_essai ?></a></li>
+                                data-toggle="tab">Essai/Uraian <?= $badge_essai ?></a></li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -216,7 +216,7 @@
                                         <br>
                                         <?php if ($total_pg < $bank->tampil_pg) : ?>
                                             Soal PILIHAN GANDA masih kurang, klik tombol <b>(<i class="fas fa-plus"></i>
-                                                Tambah/Edit Soal)</b>  untuk menambahkan.
+                                                Tambah/Edit Soal)</b> untuk menambahkan.
                                             <br>
                                         <?php endif; ?>
                                         <?php if ($total_pg > 0 && $bank->tampil_pg == '0') : ?>
@@ -238,7 +238,7 @@
                                 <div class="d-sm-flex justify-content-between">
                                     <div>
                                         <input style="width: 24px; height: 24px" class="check-pg-all m-1" id="all-pg"
-                                               type="checkbox">
+                                            type="checkbox">
                                         <label for="all-pg" class="align-middle">Pilih Semua PG</label>
                                     </div>
                                     <div>
@@ -255,42 +255,42 @@
                                     <div class="rTableBody">
                                         <?php
                                         foreach ($soals_pg as $s) :
-                                        $checked = $s->tampilkan == 1 ? 'checked' : '' ?>
-                                        <div class="rTableRow">
-                                            <div class="rTableCell align-top">
-                                                <input style="width: 24px; height: 24px" class="check-pg mt-1"
-                                                       id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
-                                                       value="<?= $s->id_soal ?>" <?= $checked ?>>
-                                            </div>
-                                            <div class="rTableCell align-top">
-                                                <div class="mt-2">
-                                                    <?= $s->nomor_soal ?>.
+                                            $checked = $s->tampilkan == 1 ? 'checked' : '' ?>
+                                            <div class="rTableRow">
+                                                <div class="rTableCell align-top">
+                                                    <input style="width: 24px; height: 24px" class="check-pg mt-1"
+                                                        id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
+                                                        value="<?= $s->id_soal ?>" <?= $checked ?>>
                                                 </div>
-                                            </div>
-                                            <div class="rTableCell">
-                                                <div class="mt-2">
-                                                    <?= $s->soal ?>
+                                                <div class="rTableCell align-top">
+                                                    <div class="mt-2">
+                                                        <?= $s->nomor_soal ?>.
+                                                    </div>
+                                                </div>
+                                                <div class="rTableCell">
+                                                    <div class="mt-2">
+                                                        <?= $s->soal ?>
+                                                        <br>
+                                                    </div>
                                                     <br>
-                                                </div>
-                                                <br>
-                                                <ul class="list-group list-group-unbordered pl-3"
-                                                    style="list-style-type: upper-alpha">
-                                                    <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_a) ?></li>
-                                                    <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_b) ?></li>
-                                                    <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_c) ?></li>
-                                                    <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_d) ?></li>
-                                                    <?php if ($setting->jenjang === '3') : ?>
-                                                        <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_e) ?></li>
-                                                    <?php endif; ?>
-                                                </ul>
-                                                <div class="mb-2 mt-2">Jawaban: <b><?= strtoupper($s->jawaban) ?></b>
+                                                    <ul class="list-group list-group-unbordered pl-3"
+                                                        style="list-style-type: upper-alpha">
+                                                        <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_a) ?></li>
+                                                        <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_b) ?></li>
+                                                        <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_c) ?></li>
+                                                        <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_d) ?></li>
+                                                        <?php if ($setting->jenjang === '3') : ?>
+                                                            <li><?= str_replace(['<p>', '</p>'], '', $s->opsi_e) ?></li>
+                                                        <?php endif; ?>
+                                                    </ul>
+                                                    <div class="mb-2 mt-2">Jawaban: <b><?= strtoupper($s->jawaban) ?></b>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
-                            <!--
+                                <!--
                                 <table id="table-pg" class="table-soal table table-striped mt-3">
                                     <?php
                                     foreach ($soals_pg as $s) :
@@ -369,8 +369,8 @@
                                         <br>
                                         <?php if ($total_pg2 < $bank->tampil_kompleks) : ?>
                                             Soal PILIHAN GANDA KOMPLEKS masih kurang, klik tombol <b>(<i
-                                                        class="fas fa-plus"></i> Tambah/Edit
-                                                Soal)</b>  untuk menambahkan.
+                                                    class="fas fa-plus"></i> Tambah/Edit
+                                                Soal)</b> untuk menambahkan.
                                             <br>
                                         <?php endif; ?>
                                         <?php if ($total_pg2 > 0 && $bank->tampil_kompleks == '0') : ?>
@@ -392,7 +392,7 @@
                                 <div class="d-sm-flex justify-content-between">
                                     <div>
                                         <input style="width: 24px; height: 24px" class="check-pg2-all m-1" id="all-pg2"
-                                               type="checkbox">
+                                            type="checkbox">
                                         <label for="all-pg2" class="align-middle">Pilih Semua</label>
                                     </div>
                                     <div>
@@ -411,8 +411,8 @@
                                         <tr>
                                             <td class="border-0" style="width: 30px">
                                                 <input style="width: 24px; height: 24px" class="check-pg2"
-                                                       id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
-                                                       value="<?= $s->id_soal ?>" <?= $checked ?>>
+                                                    id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
+                                                    value="<?= $s->id_soal ?>" <?= $checked ?>>
                                             </td>
                                             <td class="border-0" style="width: 30px">
                                                 <div class="mt-2">
@@ -484,7 +484,7 @@
                                         <br>
                                         <?php if ($total_jodohkan < $bank->tampil_jodohkan) : ?>
                                             Soal MENJODOHKAN masih kurang, klik tombol <b>(<i class="fas fa-plus"></i>
-                                                Tambah/Edit Soal)</b>  untuk menambahkan.
+                                                Tambah/Edit Soal)</b> untuk menambahkan.
                                             <br>
                                         <?php endif; ?>
                                         <?php if ($total_jodohkan > 0 && $bank->tampil_jodohkan == '0') : ?>
@@ -506,7 +506,7 @@
                                 <div class="d-sm-flex justify-content-between">
                                     <div>
                                         <input style="width: 24px; height: 24px" class="check-jodohkan-all m-1"
-                                               id="all-jodohkan" type="checkbox">
+                                            id="all-jodohkan" type="checkbox">
                                         <label for="all-jodohkan" class="align-middle">Pilih Semua</label>
                                     </div>
                                     <div>
@@ -525,8 +525,8 @@
                                         <tr>
                                             <td class="border-0" style="width: 30px">
                                                 <input style="width: 24px; height: 24px" class="check-jodohkan"
-                                                       id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
-                                                       value="<?= $s->id_soal ?>" <?= $checked ?>>
+                                                    id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
+                                                    value="<?= $s->id_soal ?>" <?= $checked ?>>
                                             </td>
                                             <td class="border-0" style="width: 30px">
                                                 <div class="mt-2">
@@ -543,9 +543,9 @@
                                                 <div class="mb-2 mt-2"><b>Jawaban:</b></div>
                                                 <?php if (isset($jawaban['model']) && $jawaban['model'] == '1') : ?>
                                                     <div class='list-jodohkan'
-                                                         data-list='<?= json_encode($jawaban['jawaban']) ?>'>
+                                                        data-list='<?= json_encode($jawaban['jawaban']) ?>'>
                                                         <div class="bonds" id="soal<?= $s->id_soal ?>"
-                                                             style="display:block;"></div>
+                                                            style="display:block;"></div>
                                                     </div>
                                                 <?php else : ?>
                                                     <table class="table table-bordered">
@@ -566,7 +566,8 @@
                                                                         <td><?= $jbenar ?></td>
                                                                     <?php endforeach; ?>
                                                                 </tr>
-                                                            <?php endif; endforeach; ?>
+                                                        <?php endif;
+                                                        endforeach; ?>
                                                     </table>
                                                 <?php endif; ?>
                                             </td>
@@ -613,7 +614,7 @@
                                         <br>
                                         <?php if ($total_isian < $bank->tampil_isian) : ?>
                                             Soal ISIAN SINGKAT masih kurang, klik tombol <b>(<i class="fas fa-plus"></i>
-                                                Tambah/Edit Soal)</b>  untuk menambahkan.
+                                                Tambah/Edit Soal)</b> untuk menambahkan.
                                             <br>
                                         <?php endif; ?>
                                         <?php if ($total_isian > 0 && $bank->tampil_isian == '0') : ?>
@@ -635,7 +636,7 @@
                                 <div class="d-sm-flex justify-content-between">
                                     <div>
                                         <input style="width: 24px; height: 24px" class="check-isian-all m-1"
-                                               id="all-isian" type="checkbox">
+                                            id="all-isian" type="checkbox">
                                         <label for="all-isian" class="align-middle">Pilih Semua</label>
                                     </div>
                                     <div>
@@ -654,8 +655,8 @@
                                         <tr>
                                             <td class="border-0" style="width: 30px">
                                                 <input style="width: 24px; height: 24px" class="check-isian"
-                                                       id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
-                                                       value="<?= $s->id_soal ?>" <?= $checked ?>>
+                                                    id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
+                                                    value="<?= $s->id_soal ?>" <?= $checked ?>>
                                             </td>
                                             <td class="border-0" style="width: 30px">
                                                 <div class="mt-2">
@@ -712,7 +713,7 @@
                                         <br>
                                         <?php if ($total_essai < $bank->tampil_esai) : ?>
                                             Soal ESSAI masih kurang, klik tombol <b>(<i class="fas fa-plus"></i>
-                                                Tambah/Edit Soal)</b>  untuk menambahkan.
+                                                Tambah/Edit Soal)</b> untuk menambahkan.
                                             <br>
                                         <?php endif; ?>
                                         <?php if ($total_essai > 0 && $bank->tampil_esai == '0') : ?>
@@ -734,7 +735,7 @@
                                 <div class="d-sm-flex justify-content-between">
                                     <div>
                                         <input style="width: 24px; height: 24px" class="check-essai-all" id="all-essai"
-                                               type="checkbox">
+                                            type="checkbox">
                                         <label for="all-essai" class="align-middle">Pilih Semua Essai</label>
                                     </div>
                                     <div>
@@ -753,8 +754,8 @@
                                         <tr>
                                             <td class="border-0" style="width: 30px">
                                                 <input style="width: 24px; height: 24px" class="check-essai"
-                                                       id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
-                                                       value="<?= $s->id_soal ?>" <?= $checked ?>>
+                                                    id="<?= $s->id_soal ?>" type="checkbox" name="soal[]"
+                                                    value="<?= $s->id_soal ?>" <?= $checked ?>>
                                             </td>
                                             <td class="border-0" style="width: 30px">
                                                 <div class="mt-2">
@@ -784,28 +785,28 @@
             <div id="for-export" class="d-none">
                 <p><b>I. Soal Pilihan Ganda</b></p>
                 <table class="table-soal"
-                       style="width:100%; font-size: 11pt; border: 1px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
+                    style="width:100%; font-size: 11pt; border: 1px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
                     <thead>
-                    <tr style="background-color: lightgrey">
-                        <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            NO
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold;">
-                            SOAL
-                        </th>
-                        <th style="width:100px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold">
-                            JENIS
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold">
-                            OPSI
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold">
-                            JAWABAN
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse;  text-align: center; font-weight: bold; padding: 12px">
-                            KUNCI
-                        </th>
-                    </tr>
+                        <tr style="background-color: lightgrey">
+                            <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                NO
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold;">
+                                SOAL
+                            </th>
+                            <th style="width:100px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold">
+                                JENIS
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold">
+                                OPSI
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold">
+                                JAWABAN
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse;  text-align: center; font-weight: bold; padding: 12px">
+                                KUNCI
+                            </th>
+                        </tr>
                     </thead>
                     <?php
                     $rows1 = count($soals_pg) > 50 ? count($soals_pg) : 50;
@@ -838,7 +839,7 @@
                         $post_char = 98;
                         for ($a = 0; $a < 4; $a++) :
                             $abjad = chr($post_char);
-                            ?>
+                        ?>
                             <tr>
                                 <td style="border: 1px solid black; vertical-align: top; padding-left: 6px">
                                     <?= strtoupper($abjad) ?>
@@ -848,33 +849,35 @@
                                 </td>
                                 <td style="border: 1px solid black; vertical-align: top; padding-left: 6px"><?= strtolower($s['jawaban']) == $abjad ? 'v' : '' ?></td>
                             </tr>
-                            <?php $post_char++; endfor; endfor; ?>
+                    <?php $post_char++;
+                        endfor;
+                    endfor; ?>
                 </table>
                 <p>&nbsp;</p>
                 <p><b>II. Soal Pilihan Ganda Kompleks</b></p>
                 <table class="table-soal"
-                       style="width:100%; font-size: 11pt; border: 3px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
+                    style="width:100%; font-size: 11pt; border: 3px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
                     <thead>
-                    <tr style="border-bottom: 3px solid black; background-color: lightgrey">
-                        <th style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            NO
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold;">
-                            SOAL
-                        </th>
-                        <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold; padding: 12px">
-                            JENIS
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold; padding: 12px">
-                            OPSI
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold; padding: 12px">
-                            JAWABAN
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse;  text-align: center; font-weight: bold; padding: 12px">
-                            KUNCI
-                        </th>
-                    </tr>
+                        <tr style="border-bottom: 3px solid black; background-color: lightgrey">
+                            <th style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                NO
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold;">
+                                SOAL
+                            </th>
+                            <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold; padding: 12px">
+                                JENIS
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold; padding: 12px">
+                                OPSI
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold; padding: 12px">
+                                JAWABAN
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse;  text-align: center; font-weight: bold; padding: 12px">
+                                KUNCI
+                            </th>
+                        </tr>
                     </thead>
                     <?php
                     $rows2 = count($soals_pg2) > 10 ? count($soals_pg2) : 10;
@@ -890,7 +893,7 @@
                         $jawabs = unserialize($s->jawaban);
                         $bg = $s->nomor_soal % 2 == 0 ? '#FFFFFF' : '#F2F2F2';
                         //if ($opsis) :
-                        ?>
+                    ?>
                         <tr style="border-top: 3px solid black;background-color: <?= $bg ?>">
                             <td rowspan="<?= $rows ?>"
                                 style="border: 1px solid black;vertical-align: top;text-align: center;">
@@ -930,61 +933,62 @@
                                     <?= in_array($abjad, $jawabs) ? 'v' : '' ?>
                                 </td>
                             </tr>
-                            <?php $post_char++; endfor;
-                        //endif;
+                    <?php $post_char++;
+                        endfor;
+                    //endif;
                     endfor; ?>
                 </table>
                 <p>&nbsp;</p>
                 <p><b>III. Soal Menjodohkan</b></p>
                 <table class="table-soal"
-                       style="width:100%; font-size: 11pt; border: 3px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
+                    style="width:100%; font-size: 11pt; border: 3px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
                     <thead>
-                    <tr style="border-bottom: 3px solid black; background-color: lightgrey">
-                        <th rowspan="2"
-                            style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            NO
-                        </th>
-                        <th rowspan="2"
-                            style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 300px">
-                            SOAL
-                        </th>
-                        <th rowspan="2"
-                            style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            JENIS
-                        </th>
-                        <th colspan="2"
-                            style="border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            BARIS
-                        </th>
-                        <th colspan="2"
-                            style="width:100px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            KOLOM
-                        </th>
-                        <th colspan="2"
-                            style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 200px">
-                            KUNCI
-                        </th>
-                    </tr>
-                    <tr style="background-color: lightgrey;font-weight: bold;">
-                        <th style="border: 1px solid black;vertical-align: top;text-align: center;width:60px;">
-                            KODE
-                        </th>
-                        <th style="border: 1px solid black;vertical-align: top;text-align: center;width:140px; ">
-                            NAMA BARIS
-                        </th>
-                        <th style="border: 1px solid black;vertical-align: top;text-align: center;width:60px;">
-                            KODE
-                        </th>
-                        <th style="border: 1px solid black;vertical-align: top;text-align: center;width:140px; ">
-                            NAMA KOLOM
-                        </th>
-                        <th style="border: 1px solid black;vertical-align: top;text-align: center;width:60px;">
-                            KODE BARIS
-                        </th>
-                        <th style="border: 1px solid black;vertical-align: top;text-align: center;width:140px; ">
-                            KODE KOLOM
-                        </th>
-                    </tr>
+                        <tr style="border-bottom: 3px solid black; background-color: lightgrey">
+                            <th rowspan="2"
+                                style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                NO
+                            </th>
+                            <th rowspan="2"
+                                style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 300px">
+                                SOAL
+                            </th>
+                            <th rowspan="2"
+                                style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                JENIS
+                            </th>
+                            <th colspan="2"
+                                style="border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                BARIS
+                            </th>
+                            <th colspan="2"
+                                style="width:100px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                KOLOM
+                            </th>
+                            <th colspan="2"
+                                style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 200px">
+                                KUNCI
+                            </th>
+                        </tr>
+                        <tr style="background-color: lightgrey;font-weight: bold;">
+                            <th style="border: 1px solid black;vertical-align: top;text-align: center;width:60px;">
+                                KODE
+                            </th>
+                            <th style="border: 1px solid black;vertical-align: top;text-align: center;width:140px; ">
+                                NAMA BARIS
+                            </th>
+                            <th style="border: 1px solid black;vertical-align: top;text-align: center;width:60px;">
+                                KODE
+                            </th>
+                            <th style="border: 1px solid black;vertical-align: top;text-align: center;width:140px; ">
+                                NAMA KOLOM
+                            </th>
+                            <th style="border: 1px solid black;vertical-align: top;text-align: center;width:60px;">
+                                KODE BARIS
+                            </th>
+                            <th style="border: 1px solid black;vertical-align: top;text-align: center;width:140px; ">
+                                KODE KOLOM
+                            </th>
+                        </tr>
                     </thead>
                     <?php
                     $count = 0;
@@ -1015,7 +1019,7 @@
                                 }
                             }
                         }
-                        ?>
+                    ?>
                         <tr style="border-top: 3px solid black;background-color: <?= $bg ?>">
                             <td rowspan="<?= $rows ?>"
                                 style="border: 1px solid black;vertical-align: top;text-align: center;">
@@ -1057,7 +1061,7 @@
                         for ($i = 1; $i < $rows; $i++) :
                             $abjad = chr($post_char);
                             $index = $i + 1;
-                            ?>
+                        ?>
                             <tr style="background-color: <?= $bg ?>">
                                 <td style="border: 1px solid black;vertical-align: top;text-align: center;">
                                     <?= isset($jawaban['jawaban'][$index][0]) && $jawaban['jawaban'][$index][0] != "" ? $index : '&nbsp;' ?>
@@ -1080,27 +1084,29 @@
                                     ?>
                                 </td>
                             </tr>
-                            <?php $post_char++; endfor; endfor; ?>
+                    <?php $post_char++;
+                        endfor;
+                    endfor; ?>
                 </table>
                 <p>&nbsp;</p>
                 <p><b>IV. Soal Isian Singkat</b></p>
                 <table class="table-soal"
-                       style="width:100%; font-size: 11pt; border: 1px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
+                    style="width:100%; font-size: 11pt; border: 1px solid black; border-collapse: collapse; border-spacing: 0; page-break-after: always">
                     <thead>
-                    <tr style="background-color: lightgrey">
-                        <th style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            NO
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 300px">
-                            SOAL
-                        </th>
-                        <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            JENIS
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 200px">
-                            JAWABAN BENAR
-                        </th>
-                    </tr>
+                        <tr style="background-color: lightgrey">
+                            <th style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                NO
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 300px">
+                                SOAL
+                            </th>
+                            <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                JENIS
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 200px">
+                                JAWABAN BENAR
+                            </th>
+                        </tr>
                     </thead>
                     <?php
                     $count = 0;
@@ -1110,7 +1116,7 @@
                             ['jawaban' => '', 'nomor_soal' => $si + 1, 'soal' => '']
                         ));
                         $count++;
-                        ?>
+                    ?>
                         <tr>
                             <td style="border: 1px solid black;vertical-align: top;text-align: center;">
                                 <?= $s->nomor_soal ?>
@@ -1130,22 +1136,22 @@
                 <p>&nbsp;</p>
                 <p><b>V. Soal Essai</b></p>
                 <table class="table-soal"
-                       style="width:100%; font-size: 11pt; border: 1px solid black; border-collapse: collapse; border-spacing: 0;">
+                    style="width:100%; font-size: 11pt; border: 1px solid black; border-collapse: collapse; border-spacing: 0;">
                     <thead>
-                    <tr style="background-color: lightgrey">
-                        <th style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            NO
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 300px">
-                            SOAL
-                        </th>
-                        <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
-                            JENIS
-                        </th>
-                        <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 200px">
-                            JAWABAN BENAR
-                        </th>
-                    </tr>
+                        <tr style="background-color: lightgrey">
+                            <th style="width:40px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                NO
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 300px">
+                                SOAL
+                            </th>
+                            <th style="width:60px; border: 1px solid black;border-collapse: collapse; text-align: center;font-weight: bold;">
+                                JENIS
+                            </th>
+                            <th style="border: 1px solid black;border-collapse: collapse; text-align: center; font-weight: bold; width: 200px">
+                                JAWABAN BENAR
+                            </th>
+                        </tr>
                     </thead>
                     <?php
                     $count = 0;
@@ -1156,7 +1162,7 @@
                         ));
                         //foreach ($soals_essai as $s) :
                         $count++;
-                        ?>
+                    ?>
                         <tr>
                             <td style="border: 1px solid black;vertical-align: top;text-align: center;">
                                 <?= $s->nomor_soal ?>
@@ -1188,20 +1194,20 @@
 <script type="text/javascript" src="<?= base_url() ?>/assets/app/js/html-docx.js"></script>
 <script src="<?= base_url() ?>/assets/app/js/convert-area.js"></script>
 <script>
-    var jmlPgTampil = '<?=$bank->tampil_pg?>';
-    var jmlPg2Tampil = '<?=$bank->tampil_kompleks?>';
-    var jmlJodohkanTampil = '<?=$bank->tampil_jodohkan?>';
-    var jmlIsianTampil = '<?=$bank->tampil_isian?>';
-    var jmlEssaiTampil = '<?=$bank->tampil_esai?>';
+    var jmlPgTampil = '<?= $bank->tampil_pg ?>';
+    var jmlPg2Tampil = '<?= $bank->tampil_kompleks ?>';
+    var jmlJodohkanTampil = '<?= $bank->tampil_jodohkan ?>';
+    var jmlIsianTampil = '<?= $bank->tampil_isian ?>';
+    var jmlEssaiTampil = '<?= $bank->tampil_esai ?>';
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        //const totalSeharusnyaTampil = <?=$total_soal_seharusnya_tampil?>
+        //const totalSeharusnyaTampil = <?= $total_soal_seharusnya_tampil ?>
 
         var $tableSoal = $('.table-soal');
-        $.each($tableSoal, function () {
+        $.each($tableSoal, function() {
             var $imgs = $(this).find('tr img');
-            $.each($imgs, function () {
+            $.each($imgs, function() {
                 var curSrc = $(this).attr('src');
                 if (curSrc.indexOf("http") === -1 && curSrc.indexOf("data:image") === -1) {
                     $(this).attr('src', base_url + curSrc);
@@ -1223,13 +1229,12 @@
             "options": {
                 "associationMode": "manyToMany", // oneToOne,manyToMany
                 "lineStyle": "square-ends",
-                "buttonErase": false,//"Batalkan",
+                "buttonErase": false, //"Batalkan",
                 "displayMode": "original",
                 "whiteSpace": 'normal', //normal,nowrap,pre,pre-wrap,pre-line,break-spaces default => nowrap
                 "mobileClickIt": true
             },
-            "Lists": [
-                {
+            "Lists": [{
                     "name": "kiri",
                     "list": datas.jawaban[0]
                 },
@@ -1266,23 +1271,23 @@
             isianUnchecked = [];
             essaiUnchecked = [];
 
-            $("#table-pg tbody tr .check-pg:not(:checked)").each(function () {
+            $("#table-pg tbody tr .check-pg:not(:checked)").each(function() {
                 pgUnchecked.push($(this).val());
             });
 
-            $("#table-pg2 tbody tr .check-pg2:not(:checked)").each(function () {
+            $("#table-pg2 tbody tr .check-pg2:not(:checked)").each(function() {
                 pg2Unchecked.push($(this).val());
             });
 
-            $("#table-jodohkan tbody tr .check-jodohkan:not(:checked)").each(function () {
+            $("#table-jodohkan tbody tr .check-jodohkan:not(:checked)").each(function() {
                 jodohkanUnchecked.push($(this).val());
             });
 
-            $("#table-isian tbody tr .check-isian:not(:checked)").each(function () {
+            $("#table-isian tbody tr .check-isian:not(:checked)").each(function() {
                 isianUnchecked.push($(this).val());
             });
 
-            $("#table-essai tbody tr .check-essai:not(:checked)").each(function () {
+            $("#table-essai tbody tr .check-essai:not(:checked)").each(function() {
                 essaiUnchecked.push($(this).val());
             });
 
@@ -1309,34 +1314,34 @@
 
         findUnchecked();
 
-        $("#table-pg tbody").on("change", "tr .check-pg", function () {
+        $("#table-pg tbody").on("change", "tr .check-pg", function() {
             findUnchecked();
         });
 
-        $("#table-pg2 tbody").on("change", "tr .check-pg2", function () {
+        $("#table-pg2 tbody").on("change", "tr .check-pg2", function() {
             findUnchecked();
         });
 
-        $("#table-jodohkan tbody").on("change", "tr .check-jodohkan", function () {
+        $("#table-jodohkan tbody").on("change", "tr .check-jodohkan", function() {
             findUnchecked();
         });
 
-        $("#table-isian tbody").on("change", "tr .check-isian", function () {
+        $("#table-isian tbody").on("change", "tr .check-isian", function() {
             findUnchecked();
         });
 
-        $("#table-essai tbody").on("change", "tr .check-essai", function () {
+        $("#table-essai tbody").on("change", "tr .check-essai", function() {
             findUnchecked();
         });
 
-        $("#all-pg").on("click", function () {
+        $("#all-pg").on("click", function() {
             if (this.checked) {
-                $(".check-pg").each(function () {
+                $(".check-pg").each(function() {
                     this.checked = true;
                     $("#all-pg").prop("checked", true);
                 });
             } else {
-                $(".check-pg").each(function () {
+                $(".check-pg").each(function() {
                     this.checked = false;
                     $("#all-pg").prop("checked", false);
                 });
@@ -1344,14 +1349,14 @@
             findUnchecked();
         });
 
-        $("#all-pg2").on("click", function () {
+        $("#all-pg2").on("click", function() {
             if (this.checked) {
-                $(".check-pg2").each(function () {
+                $(".check-pg2").each(function() {
                     this.checked = true;
                     $("#all-pg2").prop("checked", true);
                 });
             } else {
-                $(".check-pg2").each(function () {
+                $(".check-pg2").each(function() {
                     this.checked = false;
                     $("#all-pg2").prop("checked", false);
                 });
@@ -1359,14 +1364,14 @@
             findUnchecked();
         });
 
-        $("#all-jodohkan").on("click", function () {
+        $("#all-jodohkan").on("click", function() {
             if (this.checked) {
-                $(".check-jodohkan").each(function () {
+                $(".check-jodohkan").each(function() {
                     this.checked = true;
                     $("#all-jodohkan").prop("checked", true);
                 });
             } else {
-                $(".check-jodohkan").each(function () {
+                $(".check-jodohkan").each(function() {
                     this.checked = false;
                     $("#all-jodohkan").prop("checked", false);
                 });
@@ -1374,14 +1379,14 @@
             findUnchecked();
         });
 
-        $("#all-isian").on("click", function () {
+        $("#all-isian").on("click", function() {
             if (this.checked) {
-                $(".check-isian").each(function () {
+                $(".check-isian").each(function() {
                     this.checked = true;
                     $("#all-isian").prop("checked", true);
                 });
             } else {
-                $(".check-isian").each(function () {
+                $(".check-isian").each(function() {
                     this.checked = false;
                     $("#all-isian").prop("checked", false);
                 });
@@ -1389,14 +1394,14 @@
             findUnchecked();
         });
 
-        $("#all-essai").on("click", function () {
+        $("#all-essai").on("click", function() {
             if (this.checked) {
-                $(".check-essai").each(function () {
+                $(".check-essai").each(function() {
                     this.checked = true;
                     $("#all-essai").prop("checked", true);
                 });
             } else {
-                $(".check-essai").each(function () {
+                $(".check-essai").each(function() {
                     this.checked = false;
                     $("#all-essai").prop("checked", false);
                 });
@@ -1404,7 +1409,7 @@
             findUnchecked();
         });
 
-        $('#save-pg').on('click', function (e) {
+        $('#save-pg').on('click', function(e) {
             var dataPost = $('#select-pg').serialize() + "&uncheck=" + JSON.stringify(pgUnchecked);
             console.log(dataPost);
 
@@ -1420,7 +1425,7 @@
             }
         });
 
-        $('#save-pg2').on('click', function (e) {
+        $('#save-pg2').on('click', function(e) {
             var dataPost = $('#select-pg2').serialize() + "&uncheck=" + JSON.stringify(pg2Unchecked);
             console.log(dataPost);
 
@@ -1436,7 +1441,7 @@
             }
         });
 
-        $('#save-jodohkan').on('click', function (e) {
+        $('#save-jodohkan').on('click', function(e) {
             var dataPost = $('#select-jodohkan').serialize() + "&uncheck=" + JSON.stringify(jodohkanUnchecked);
             console.log(dataPost);
 
@@ -1452,7 +1457,7 @@
             }
         });
 
-        $('#save-isian').on('click', function (e) {
+        $('#save-isian').on('click', function(e) {
             var dataPost = $('#select-isian').serialize() + "&uncheck=" + JSON.stringify(isianUnchecked);
             console.log(dataPost);
 
@@ -1468,7 +1473,7 @@
             }
         });
 
-        $('#save-essai').on('click', function (e) {
+        $('#save-essai').on('click', function(e) {
             var dataPost = $('#select-essai').serialize() + "&uncheck=" + JSON.stringify(essaiUnchecked);
             console.log(dataPost);
 
@@ -1502,7 +1507,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: dataPost,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.check > 0) {
                         //showSuccessToast(`${data.check} Soal terpilih berhasil disimpan`)
@@ -1510,14 +1515,15 @@
                     } else {
                         showDangerToast('Soal terpilih gagal disimpan')
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     showDangerToast('Error');
                 }
             });
         }
 
-        $("#convert").click(function (e) {
+        $("#convert").click(function(e) {
             e.preventDefault();
 
             var contentDocument = $('#for-export').convertToHtmlFile('detail', '');
@@ -1528,7 +1534,12 @@
             var converted = htmlDocx.asBlob(content, {
                 orientation: 'landscape',
                 size: 'A4',
-                margins: {top: 700, bottom: 700, left: 1000, right: 1000}
+                margins: {
+                    top: 700,
+                    bottom: 700,
+                    left: 1000,
+                    right: 1000
+                }
             });
             saveAs(converted, 'Soal <?= $bank->bank_kode ?> <?= $bank->nama_mapel ?> Kls <?= $bank->bank_level ?>.docx');
 
@@ -1543,7 +1554,7 @@
 
             $('#alert-download').removeClass('d-none');
 
-            $("#alert-download").fadeTo(10000, 500).slideUp(500, function () {
+            $("#alert-download").fadeTo(10000, 500).slideUp(500, function() {
                 $("#alert-download").slideUp(500);
             });
 
@@ -1553,7 +1564,7 @@
             var regularImages = contentDocument.querySelectorAll("img");
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
-            [].forEach.call(regularImages, function (imgElement) {
+            [].forEach.call(regularImages, function(imgElement) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 canvas.width = imgElement.width;
                 canvas.height = imgElement.height;
@@ -1569,14 +1580,14 @@
     function convertTableToList(array) {
         var kanan = array.shift();
         var kiri = [];
-        $.each(array, function (i, v) {
+        $.each(array, function(i, v) {
             kiri.push(v.shift());
         });
         kanan.shift();
 
         var linked = [];
-        $.each(array, function (n, arv) {
-            $.each(arv, function (t, v) {
+        $.each(array, function(n, arv) {
+            $.each(arv, function(t, v) {
                 if (v != '0') {
                     var it = {};
                     it['from'] = kiri[n];
@@ -1590,5 +1601,4 @@
         item['linked'] = linked;
         return item;
     }
-
 </script>

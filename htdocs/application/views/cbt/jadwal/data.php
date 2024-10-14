@@ -162,8 +162,8 @@ if (isset($jadwal_ujian)) {
                             foreach ($jadwals as $title => $arrjadwal) :
                         ?>
                                 <div class="card card-default my-shadow mb-4">
-                                    <div class="card-header">
-                                        <h3 class="card-title"><?= $title ?></h3>
+                                    <div class="card-header bg-orange">
+                                        <h3 class="card-title text-bold"><?= $title ?></h3>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                                 title="Collapse">
@@ -172,10 +172,10 @@ if (isset($jadwal_ujian)) {
                                         </div>
                                     </div>
                                     <?php foreach ($arrjadwal as $lvl => $sjadwal) : ?>
-                                        <div class="card-body" style="display: block;">
+                                        <div class="card-body text-dark" style="display: block;">
                                             <h6 class="text-bold">Kelas: <?= $lvl ?></h6>
                                             <table class="table table-bordered w-100">
-                                                <thead>
+                                                <thead class="bg-maroon">
                                                     <tr>
                                                         <th class="text-center align-middle pt-3 pb-3" style="width: 40px">No.</th>
                                                         <th class="d-none">Hari/Tanggal</th>

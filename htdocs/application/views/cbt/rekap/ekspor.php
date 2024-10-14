@@ -1,14 +1,14 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <a href="<?= base_url('cbtrekap') ?>" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </a>
                 </div>
             </div>
@@ -18,12 +18,12 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <br>
                     <small><i>untuk semua jadwal ujian/ulangan yang sudah direkap</i></small>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <?php
                     if (count($rekaps) === 0) : ?>
                         <?php if (!isset($tp_active) || !isset($smt_active)) : ?>
@@ -100,21 +100,21 @@
                             <div class="col-12 mb-3">
                                 <div class="float-right">
                                     <button type="button" id="rollback"
-                                            class="btn btn-warning align-text-bottom d-none">
+                                        class="btn btn-warning align-text-bottom d-none">
                                         <i class="fa fa-undo ml-1 mr-1"></i> Nilai Asli
                                     </button>
                                     <button type="button" id="convert" class="btn btn-danger align-text-bottom"
-                                            data-toggle="modal" data-target="#perbaikanModal">
+                                        data-toggle="modal" data-target="#perbaikanModal">
                                         <i class="fa fa-star-half-alt ml-1 mr-1"></i> Perbaikan Nilai
                                     </button>
                                     <button type="button" id="download-excel" class="btn btn-success align-text-bottom"
-                                            data-toggle="tooltip"
-                                            title="Download Excel">
+                                        data-toggle="tooltip"
+                                        title="Download Excel">
                                         <i class="fa fa-file-excel ml-1 mr-1"></i> Ekspor ke Excel
                                     </button>
                                     <button type="button" id="download-word" class="btn btn-primary align-text-bottom"
-                                            data-toggle="tooltip"
-                                            title="Download Word">
+                                        data-toggle="tooltip"
+                                        title="Download Word">
                                         <i class="fa fa-file-word ml-1 mr-1"></i> Ekspor ke Word
                                     </button>
                                 </div>
@@ -126,7 +126,7 @@
                             </table>
                         </div>
                         <table class="table d-none" id="table-status" style="font-size: 11pt; width: 100%;"
-                               data-cols-width="5,15,35,10">
+                            data-cols-width="5,15,35,10">
                         </table>
                     <?php endif; ?>
                 </div>
@@ -138,7 +138,7 @@
     </section>
 </div>
 <div class="modal fade" id="perbaikanModal" tabindex="-1" role="dialog" aria-labelledby="perbaikanModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -152,7 +152,7 @@
                     <label class="col-md-4 col-form-label">Nilai Tertinggi</label>
                     <div class="col-md-8">
                         <input type="text" id="ya" class="form-control" name="ya" value="100"
-                               placeholder="Nilai tertinggi yang diinginkan" required>
+                            placeholder="Nilai tertinggi yang diinginkan" required>
                         <small>diisi nilai puluhan maksimal 100, misal 80 sampai 100</small>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                     <label class="col-md-4 col-form-label">Nilai Terrendah</label>
                     <div class="col-md-8">
                         <input type="text" id="yb" class="form-control" name="yb" value="60"
-                               placeholder="Nilai terrendah yang diinginkan" required>
+                            placeholder="Nilai terrendah yang diinginkan" required>
                         <small>diisi nilai puluhan dibawah nilai tertinggi, misal 60</small>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                     <label class="col-md-4 col-form-label">KKM</label>
                     <div class="col-md-8">
                         <input type="text" id="kkm" class="form-control" name="kkm" value="70" placeholder="KKM"
-                               required>
+                            required>
                     </div>
                 </div>
             </div>
@@ -197,10 +197,10 @@
     var kodeMapel = 'Semua Mapel';
 
     var dataNilai;
-    var nilai_max = 100;//nilai siswa terbesar
-    var nilai_min = 0;//nilai siswa terkecil
-    var hasil_max = 100;//batas nilai terbesar
-    var hasil_min = 60;//batas nilai terkecil
+    var nilai_max = 100; //nilai siswa terbesar
+    var nilai_min = 0; //nilai siswa terkecil
+    var hasil_max = 100; //batas nilai terbesar
+    var hasil_min = 60; //batas nilai terkecil
     var kkm = 70;
     var orientation = 'potrait';
 
@@ -284,7 +284,7 @@
 
         var tbody = '';
         var nos = 1;
-        $.each(data.siswa, function (ind, v) {
+        $.each(data.siswa, function(ind, v) {
             //var disabled = mulai.includes('-') ? 'disabled' : '';
             var jumlahNilai = 0;
             var i = v.id_siswa;
@@ -292,7 +292,7 @@
                 '<td data-a-v="middle" data-a-h="center" data-b-a-s="thin" style="border: 1px solid black;border-collapse: collapse; text-align: center;">' + nos + '</td>' +
                 '<td data-a-v="middle" data-a-h="center" data-b-a-s="thin" style="border: 1px solid black;border-collapse: collapse; text-align: center;">' + v.nomor_peserta + '</td>' +
                 '<td data-a-v="middle" data-a-h="left" data-b-a-s="thin" style="border: 1px solid black;border-collapse: collapse;">' + v.nama + '</td>';
-            $.each(arrMapel, function (key, val) {
+            $.each(arrMapel, function(key, val) {
                 var nn = data.nilai[i][val.id_jadwal];
                 var nilaiPg = nn == null ? 0 : parseFloat(nn.nilai_pg);
                 var nilaiPg2 = nn == null ? 0 : parseFloat(nn.soal_kompleks.nilai);
@@ -313,7 +313,7 @@
                 }
                 jumlahNilai += decimalFixed(skor);
                 var bgFill = skor == kkm ? 'D7F2DA' : (skor > kkm ? 'BEEBC2' : 'FFFFB7');
-                tbody += '<td data-a-v="middle" data-a-h="center" data-b-a-s="thin" class="align-middle" data-fill-color="'+bgFill+'" style="border: 1px solid black;border-collapse: collapse; text-align: center;background-color: #'+bgFill+';">' + (''+decimalFixed(skor).toFixed(2)).replace('.', ',') + '</td>';
+                tbody += '<td data-a-v="middle" data-a-h="center" data-b-a-s="thin" class="align-middle" data-fill-color="' + bgFill + '" style="border: 1px solid black;border-collapse: collapse; text-align: center;background-color: #' + bgFill + ';">' + ('' + decimalFixed(skor).toFixed(2)).replace('.', ',') + '</td>';
             });
 
             var rata2 = decimalFixed(jumlahNilai / arrMapel.length);
@@ -321,10 +321,10 @@
             var bgFill = rata2 == kkm ? 'D7F2DA' : (rata2 > kkm ? 'BEEBC2' : 'FFFFB7');
             if (arrMapel.length > 1) {
                 tbody += '<td class="align-middle" data-a-v="middle" data-a-h="center" data-b-a-s="thin" style="border: 1px solid black;border-collapse: collapse;text-align: center">' + ('' + decimalFixed(jumlahNilai).toFixed(2)).replace('.', ',') + '</td>';
-                tbody += '<td class="total align-middle" data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-fill-color="'+bgFill+'" style="border: 1px solid black;border-collapse: collapse;text-align: center;background-color: #'+bgFill+';"><b>' + decimalFixed(jumlahNilai / arrMapel.length) + '</b></td>';
+                tbody += '<td class="total align-middle" data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-fill-color="' + bgFill + '" style="border: 1px solid black;border-collapse: collapse;text-align: center;background-color: #' + bgFill + ';"><b>' + decimalFixed(jumlahNilai / arrMapel.length) + '</b></td>';
                 tbody += '<td class="align-middle" data-a-v="middle" data-a-h="center" data-b-a-s="thin" style="border: 1px solid black;border-collapse: collapse;text-align: center"></td>';
             }
-            tbody += '<td class="align-middle" data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-fill-color="'+bgFill+'" style="border: 1px solid black;border-collapse: collapse;text-align: center;background-color: #'+bgFill+';">' + ketNilai + '</td>';
+            tbody += '<td class="align-middle" data-a-v="middle" data-a-h="center" data-b-a-s="thin" data-fill-color="' + bgFill + '" style="border: 1px solid black;border-collapse: collapse;text-align: center;background-color: #' + bgFill + ';">' + ketNilai + '</td>';
             tbody += '</tr>';
             nos += 1;
         });
@@ -351,19 +351,19 @@
         $('#loading').addClass('d-none');
 
         $(".total")
-            .map(function () {
+            .map(function() {
                 return $(this).text()
             })
             .get()
-            .sort(function (a, b) {
+            .sort(function(a, b) {
                 return a - b
             })
-            .reduce(function (a, b) {
+            .reduce(function(a, b) {
                 if (b != a[0]) a.unshift(b);
                 return a
             }, [])
             .forEach((v, i) => {
-                $('.total').filter(function () {
+                $('.total').filter(function() {
                     return $(this).text() == v;
                 }).next().text(i + 1);
             });
@@ -377,11 +377,11 @@
         $('#info').addClass('d-none');
         $('#loading').removeClass('d-none');
 
-        setTimeout(function () {
+        setTimeout(function() {
             $.ajax({
                 type: "GET",
                 url: url,
-                success: function (response) {
+                success: function(response) {
                     console.log('refresh', response);
                     $('#loading').addClass('d-none');
                     if (response.siswa.length === 0) {
@@ -395,7 +395,7 @@
         }, 500);
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         var opsiKelas = $("#kelas");
@@ -426,7 +426,7 @@
             changeKelas(thn, smt, null);
             if (jeniss[thn][smt] != null) {
                 opsiJenis.append("<option value='' selected='selected'>Pilih Jenis</option>");
-                $.each(jeniss[thn][smt], function (k, j) {
+                $.each(jeniss[thn][smt], function(k, j) {
                     opsiJenis.append("<option value='" + k + "'>" + j + "</option>")
                 });
             } else {
@@ -438,7 +438,7 @@
             opsiKelas.html('');
             if (jenis != null && kelass[thn][smt][jenis] != null) {
                 opsiKelas.append("<option value='' selected='selected'>Pilih Kelas</option>");
-                $.each(kelass[thn][smt][jenis], function (k, j) {
+                $.each(kelass[thn][smt][jenis], function(k, j) {
                     opsiKelas.append("<option value='" + k + "'>" + j + "</option>")
                 });
             } else {
@@ -446,46 +446,51 @@
             }
         }
 
-        opsiTahun.change(function () {
+        opsiTahun.change(function() {
             $("#opsi-mapel select").val("0");
             changeJenis($(this).val(), opsiSmt.val())
         });
 
-        opsiSmt.on('change', function () {
+        opsiSmt.on('change', function() {
             $("#opsi-mapel select").val("0");
             changeJenis(opsiTahun.val(), $(this).val())
         });
 
-        opsiJenis.on('change', function () {
+        opsiJenis.on('change', function() {
             $("#opsi-mapel select").val("0");
             changeKelas(opsiTahun.val(), opsiSmt.val(), $(this).val())
         });
 
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             $("#opsi-mapel select").val("0");
             reload($(this).val(), opsiJenis.val(), opsiTahun.val(), opsiSmt.val(), '0');
         });
 
-        opsiMapel.on('change', function () {
+        opsiMapel.on('change', function() {
             mplSelected = $(this).val();
             kodeMapel = $("#opsi-mapel option:selected").text();
             reload(opsiKelas.val(), opsiJenis.val(), opsiTahun.val(), opsiSmt.val(), $(this).val());
         });
 
-        $("#download-word").click(function (event) {
+        $("#download-word").click(function(event) {
             event.preventDefault();
             var contentDocument = $('#for-word').convertToHtmlFile('detail', '');
             var content = '<!DOCTYPE html>' + contentDocument.documentElement.outerHTML;
             var converted = htmlDocx.asBlob(content, {
                 orientation: orientation,
                 size: 'A4',
-                margins: {top: 700, bottom: 700, left: 1000, right: 1000}
+                margins: {
+                    top: 700,
+                    bottom: 700,
+                    left: 1000,
+                    right: 1000
+                }
             });
             saveAs(converted, `${titleDownload} ${$("#jenis option:selected").text()} ${kodeMapel} ` +
                 `${$("#kelas option:selected").text()} ${$("#opsi-tahun option:selected").text()} smt ${$("#opsi-semester option:selected").text()}.docx`);
         });
 
-        $("#download-excel").click(function (event) {
+        $("#download-excel").click(function(event) {
             var table = document.querySelector("#table-status");
             TableToExcel.convert(table, {
                 name: `${titleDownload} ${$("#jenis option:selected").text()} ${kodeMapel} ${$("#kelas option:selected").text()} ${$("#opsi-tahun option:selected").text()} smt ${$("#opsi-semester option:selected").text()}.xlsx`,
@@ -495,13 +500,13 @@
             });
         });
 
-        $('#perbaikanModal').on('show.bs.modal', function (e) {
+        $('#perbaikanModal').on('show.bs.modal', function(e) {
             $('#ya').val(hasil_max);
             $('#yb').val(hasil_min);
             $('#kkm').val(kkm);
         });
 
-        $('#btn-convert').click(function (e) {
+        $('#btn-convert').click(function(e) {
             hasil_max = parseInt($('#ya').val());
             hasil_min = parseInt($('#yb').val());
             //console.log(hasil_max, hasil_min);
@@ -509,14 +514,14 @@
             kkm = parseInt($('#kkm').val());
 
             $('#perbaikanModal').modal('hide').data('bs.modal', null);
-            $('#perbaikanModal').on('hidden', function () {
+            $('#perbaikanModal').on('hidden', function() {
                 $(this).data('modal', null);
             });
             $('#loading').removeClass('d-none');
             createPreview(dataNilai, true);
         });
 
-        $('#rollback').click(function (e) {
+        $('#rollback').click(function(e) {
             createPreview(dataNilai, false);
         });
 
@@ -526,5 +531,4 @@
     function decimalFixed(num) {
         return Math.round(num * 100) / 100
     }
-
 </script>

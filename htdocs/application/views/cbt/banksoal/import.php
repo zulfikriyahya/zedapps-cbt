@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-9">
-                    <h1><?= $subjudul ?></h1>
+                    <h1 class="text-bold"><?= $subjudul ?></h1>
                 </div>
                 <div class="col-3">
                     <button onclick="window.history.back();" type="button" class="btn btn-sm btn-danger float-right">
@@ -25,12 +25,12 @@
             </div>
 
             <div class="card my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><b>Upload Soal <?= $bank->nama_mapel . " kelas " . $bank->bank_level ?></b>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold">Upload Soal <?= $bank->nama_mapel . " kelas " . $bank->bank_level ?>
                     </h6>
                     <input type="hidden" name="bank_id" id="formInput" class="form-control">
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <a href="<?= base_url('uploads/import/format/format_soal_akm.docx') ?>"

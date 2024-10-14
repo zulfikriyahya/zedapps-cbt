@@ -43,7 +43,7 @@ $allBanksIds = [];
                 </div>
                 <div class="card-body text-dark">
                     <div class="row ml-1">
-                        Kode Warna:
+                        <b>Kode Warna:</b>
                         <table class="w-100">
                             <tr>
                                 <td class="p-1" style="width: 20px"><i class="fas fa-square text-muted"></i></td>
@@ -123,7 +123,7 @@ $allBanksIds = [];
                         if ($mode == '1') :
                             if (isset($banks[$tp_active->id_tp]) && isset($banks[$tp_active->id_tp][$smt_active->id_smt]) && count($banks[$tp_active->id_tp][$smt_active->id_smt]) > 0) : ?>
                                 <table class="w-100 table table-striped table-bordered">
-                                    <thead>
+                                    <thead class="bg-maroon">
                                         <tr>
                                             <th class="text-center align-middle p-0">No.</th>
                                             <th>Kode</th>

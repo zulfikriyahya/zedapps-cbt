@@ -6,12 +6,12 @@ function date_sort($a, $b)
 
 $allowedDates = [];
 ?>
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <a href="<?= base_url('cbtcetak') ?>" type="button" class="btn btn-sm btn-danger float-right">
@@ -26,8 +26,8 @@ $allowedDates = [];
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow mb-4">
-                <div class="card-header">
-                    <h3 class="card-title"><b><?= $subjudul ?></b></h3>
+                <div class="card-header bg-orange">
+                    <h3 class="card-title text-bold"><?= $subjudul ?></h3>
                     <div class="card-tools">
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-default" data-toggle="tooltip"
@@ -46,7 +46,7 @@ $allowedDates = [];
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row mb-3">
                         <div class="col-md-3 col-6">
                             <div class="form-group">

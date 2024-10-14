@@ -1,14 +1,14 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <a href="<?= base_url('cbtcetak') ?>" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </a>
                 </div>
             </div>
@@ -18,9 +18,9 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6>Cetak</h6>
+                        <h6 class="text-bold">Cetak</h6>
                     </div>
                     <div class="card-tools">
                         <div id="selector" class="card-tools btn-group">
@@ -44,7 +44,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <!--
                         <div class="col-md-3 mb-4">
@@ -53,26 +53,26 @@
                                     <span class="input-group-text">Level Kelas</span>
                                 </div>
                                 <?php
-                        $arrLevel[0] = 'Pilih Level Kelas';
-                        if ($setting->jenjang == "1") {
-                            for ($i = 1; $i < 7; $i++) {
-                                $arrLevel[$i] = $i;
-                            }
-                        } else if ($setting->jenjang == "2") {
-                            for ($j = 7; $j < 10; $j++) {
-                                $arrLevel[$j] = $j;
-                            }
-                        } else {
-                            for ($k = 10; $k < 13; $k++) {
-                                $arrLevel[$k] = $k;
-                            }
-                        }
-                        echo form_dropdown(
-                            'level',
-                            $arrLevel,
-                            null,
-                            'id="level" class="form-control"'
-                        ); ?>
+                                $arrLevel[0] = 'Pilih Level Kelas';
+                                if ($setting->jenjang == "1") {
+                                    for ($i = 1; $i < 7; $i++) {
+                                        $arrLevel[$i] = $i;
+                                    }
+                                } else if ($setting->jenjang == "2") {
+                                    for ($j = 7; $j < 10; $j++) {
+                                        $arrLevel[$j] = $j;
+                                    }
+                                } else {
+                                    for ($k = 10; $k < 13; $k++) {
+                                        $arrLevel[$k] = $k;
+                                    }
+                                }
+                                echo form_dropdown(
+                                    'level',
+                                    $arrLevel,
+                                    null,
+                                    'id="level" class="form-control"'
+                                ); ?>
                             </div>
                         </div>
                         -->
@@ -96,16 +96,16 @@
                             <?php
                             if ($mode == null || $mode == '1'):
                                 foreach ($siswa as $ruang => $sesi):
-                                    foreach ($sesi as $ses => $sis):?>
+                                    foreach ($sesi as $ses => $sis): ?>
                                         <div class="border my-shadow mb-3 p-4 bg-white">
                                             <div class="pt-4"
-                                                 style="-webkit-justify-content: center;justify-content: center;background: white;width: 210mm; min-height: 297mm;padding: 1mm">
+                                                style="-webkit-justify-content: center;justify-content: center;background: white;width: 210mm; min-height: 297mm;padding: 1mm">
                                                 <div style="display: flex; justify-content: center; align-items: center;">
                                                     <table style="width: 100%; border: 0;">
                                                         <tr>
                                                             <td style="width:15%;">
                                                                 <img src="<?= base_url() . $kop->logo_kiri ?>"
-                                                                     style="width:85px; height:85px; margin: 6px;">
+                                                                    style="width:85px; height:85px; margin: 6px;">
                                                             </td>
                                                             <td style="width:70%; text-align: center;">
                                                                 <div style="line-height: 1.1;font-size: 13pt"><?= $kop->sekolah ?></div>
@@ -113,7 +113,7 @@
                                                                         PESERTA</b>
                                                                 </div>
                                                                 <div style="line-height: 1.1;font-size: 14pt"
-                                                                     class="jenis-ujian">Jenis
+                                                                    class="jenis-ujian">Jenis
                                                                     Ujian
                                                                 </div>
                                                                 <div style="line-height: 1.1;font-size: 12pt">Tahun
@@ -121,7 +121,7 @@
                                                             </td>
                                                             <td style="width:15%;">
                                                                 <img src="<?= base_url() . $kop->logo_kanan ?>"
-                                                                     style="width:85px; height:85px; margin: 6px; border-style: none">
+                                                                    style="width:85px; height:85px; margin: 6px; border-style: none">
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -148,47 +148,48 @@
                                                         <td>WAKTU</td>
                                                         <td> : </td>
                                                         <td><b>
-                                                            <?= date('H:i', strtotime($mulai_sesi)) ?>
-                                                            sampai
-                                                            <?= date('H:i', strtotime($akhir_sesi)) ?></b>
+                                                                <?= date('H:i', strtotime($mulai_sesi)) ?>
+                                                                sampai
+                                                                <?= date('H:i', strtotime($akhir_sesi)) ?></b>
                                                         </td>
                                                     </tr>
                                                 </table>
                                                 <table style="width: 100%; border: 1px solid black;border-collapse: collapse; font-size: 10pt;margin-top: 8px">
                                                     <thead>
-                                                    <tr>
-                                                        <th style="border: 1px solid black; width: 40px; height: 50px; text-align: center;">
-                                                            NO
-                                                        </th>
-                                                        <th style="border: 1px solid black; text-align: center;">NO.
-                                                            PESERTA
-                                                        </th>
-                                                        <th style="border: 1px solid black; text-align: center;">NAMA
-                                                            PESERTA
-                                                        </th>
-                                                        <th style="border: 1px solid black; text-align: center;">KELAS
-                                                        </th>
-                                                        <th style="border: 1px solid black; text-align: center;">RUANG
-                                                        </th>
-                                                        <th style="border: 1px solid black; text-align: center;">SESI
-                                                        </th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th style="border: 1px solid black; width: 40px; height: 50px; text-align: center;">
+                                                                NO
+                                                            </th>
+                                                            <th style="border: 1px solid black; text-align: center;">NO.
+                                                                PESERTA
+                                                            </th>
+                                                            <th style="border: 1px solid black; text-align: center;">NAMA
+                                                                PESERTA
+                                                            </th>
+                                                            <th style="border: 1px solid black; text-align: center;">KELAS
+                                                            </th>
+                                                            <th style="border: 1px solid black; text-align: center;">RUANG
+                                                            </th>
+                                                            <th style="border: 1px solid black; text-align: center;">SESI
+                                                            </th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    foreach ($sis as $s) :?>
-                                                        <tr>
-                                                            <td style="border: 1px solid black; text-align: center;height: 30px">
-                                                                <?= $no ?>
-                                                            </td>
-                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nomor_peserta ?></td>
-                                                            <td style="border: 1px solid black; padding: 1px 0 1px 6px"><?= $s->nama ?></td>
-                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nama_kelas ?></td>
-                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nama_ruang ?></td>
-                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nama_sesi ?></td>
-                                                        </tr>
-                                                        <?php $no++; endforeach; ?>
+                                                        <?php
+                                                        $no = 1;
+                                                        foreach ($sis as $s) : ?>
+                                                            <tr>
+                                                                <td style="border: 1px solid black; text-align: center;height: 30px">
+                                                                    <?= $no ?>
+                                                                </td>
+                                                                <td style="border: 1px solid black; text-align: center;"><?= $s->nomor_peserta ?></td>
+                                                                <td style="border: 1px solid black; padding: 1px 0 1px 6px"><?= $s->nama ?></td>
+                                                                <td style="border: 1px solid black; text-align: center;"><?= $s->nama_kelas ?></td>
+                                                                <td style="border: 1px solid black; text-align: center;"><?= $s->nama_ruang ?></td>
+                                                                <td style="border: 1px solid black; text-align: center;"><?= $s->nama_sesi ?></td>
+                                                            </tr>
+                                                        <?php $no++;
+                                                        endforeach; ?>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -200,13 +201,13 @@
                                 foreach ($siswa as $kelas => $sis): ?>
                                     <div class="border my-shadow mb-3 p-4 bg-white">
                                         <div class="pt-4"
-                                             style="-webkit-justify-content: center;justify-content: center;background: white;width: 210mm; min-height: 297mm;padding: 1mm">
+                                            style="-webkit-justify-content: center;justify-content: center;background: white;width: 210mm; min-height: 297mm;padding: 1mm">
                                             <div style="display: flex; justify-content: center; align-items: center;">
                                                 <table style="width: 100%; border: 0;">
                                                     <tr>
                                                         <td style="width:15%;">
                                                             <img src="<?= base_url() . $kop->logo_kiri ?>"
-                                                                 style="width:85px; height:85px; margin: 6px;">
+                                                                style="width:85px; height:85px; margin: 6px;">
                                                         </td>
                                                         <td style="width:70%; text-align: center;">
                                                             <div style="line-height: 1.1;font-size: 13pt"><?= $kop->sekolah ?></div>
@@ -214,7 +215,7 @@
                                                                     PESERTA</b>
                                                             </div>
                                                             <div style="line-height: 1.1;font-size: 14pt"
-                                                                 class="jenis-ujian">Jenis
+                                                                class="jenis-ujian">Jenis
                                                                 Ujian
                                                             </div>
                                                             <div style="line-height: 1.1;font-size: 12pt">Tahun
@@ -222,7 +223,7 @@
                                                         </td>
                                                         <td style="width:15%;">
                                                             <img src="<?= base_url() . $kop->logo_kanan ?>"
-                                                                 style="width:85px; height:85px; margin: 6px; border-style: none">
+                                                                style="width:85px; height:85px; margin: 6px; border-style: none">
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -250,43 +251,45 @@
                                             </table>
                                             <table style="width: 100%; border: 1px solid black;border-collapse: collapse; font-size: 10pt">
                                                 <thead>
-                                                <tr>
-                                                    <th style="border: 1px solid black; width: 40px; height: 40px; text-align: center;">
-                                                        NO
-                                                    </th>
-                                                    <th style="border: 1px solid black; text-align: center;">NO.
-                                                        PESERTA
-                                                    </th>
-                                                    <th style="border: 1px solid black; text-align: center;">NAMA
-                                                        PESERTA
-                                                    </th>
-                                                    <th style="border: 1px solid black; text-align: center;">KELAS
-                                                    </th>
-                                                    <th style="border: 1px solid black; text-align: center;">RUANG
-                                                    </th>
-                                                    <th style="border: 1px solid black; text-align: center;">SESI
-                                                    </th>
-                                                </tr>
+                                                    <tr>
+                                                        <th style="border: 1px solid black; width: 40px; height: 40px; text-align: center;">
+                                                            NO
+                                                        </th>
+                                                        <th style="border: 1px solid black; text-align: center;">NO.
+                                                            PESERTA
+                                                        </th>
+                                                        <th style="border: 1px solid black; text-align: center;">NAMA
+                                                            PESERTA
+                                                        </th>
+                                                        <th style="border: 1px solid black; text-align: center;">KELAS
+                                                        </th>
+                                                        <th style="border: 1px solid black; text-align: center;">RUANG
+                                                        </th>
+                                                        <th style="border: 1px solid black; text-align: center;">SESI
+                                                        </th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php
-                                                $no = 1;
-                                                foreach ($sis as $s) :?>
-                                                    <tr>
-                                                        <td style="border: 1px solid black; text-align: center;"><?= $no ?></td>
-                                                        <td style="border: 1px solid black; text-align: center;"><?= $s->nomor_peserta ?></td>
-                                                        <td style="border: 1px solid black;padding: 1px 0 1px 6px"><?= $s->nama ?></td>
-                                                        <td style="border: 1px solid black; text-align: center;"><?= $s->nama_kelas ?></td>
-                                                        <td style="border: 1px solid black; text-align: center;"><?= $s->nama_ruang ?></td>
-                                                        <td style="border: 1px solid black; text-align: center;"><?= $s->nama_sesi ?></td>
-                                                    </tr>
-                                                    <?php $no++; endforeach; ?>
+                                                    <?php
+                                                    $no = 1;
+                                                    foreach ($sis as $s) : ?>
+                                                        <tr>
+                                                            <td style="border: 1px solid black; text-align: center;"><?= $no ?></td>
+                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nomor_peserta ?></td>
+                                                            <td style="border: 1px solid black;padding: 1px 0 1px 6px"><?= $s->nama ?></td>
+                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nama_kelas ?></td>
+                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nama_ruang ?></td>
+                                                            <td style="border: 1px solid black; text-align: center;"><?= $s->nama_sesi ?></td>
+                                                        </tr>
+                                                    <?php $no++;
+                                                    endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div style="page-break-after: always"></div>
-                                <?php endforeach; endif; ?>
+                            <?php endforeach;
+                            endif; ?>
                         </div>
                     </div>
                     <div class="overlay d-none" id="loading">
@@ -300,22 +303,24 @@
 <script src="<?= base_url() ?>/assets/app/js/print-area.js"></script>
 <script>
     var logoKanan = "<?= isset($kop->logo_kiri) ? base_url() . $kop->logo_kiri : "" ?>";
-    var logoKiri = "<?= isset($kop->logo_kanan) ? base_url() . $kop->logo_kanan : ""?>";
+    var logoKiri = "<?= isset($kop->logo_kanan) ? base_url() . $kop->logo_kanan : "" ?>";
     var sklh = "<?= isset($kop->sekolah) ? $kop->sekolah : "" ?>";
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
         var opsiJenis = $("#jenis");
 
         //opsiJenis.prepend("<option value="" selected='selected'>Pilih Jenis Ujian</option>");
 
-        opsiJenis.change(function () {
+        opsiJenis.change(function() {
             $('.jenis-ujian').text($("#jenis option:selected").text().toUpperCase());
         });
 
-        opsiJenis.select2({theme: 'bootstrap4'});
+        opsiJenis.select2({
+            theme: 'bootstrap4'
+        });
 
-        $("#btn-print").click(function () {
+        $("#btn-print").click(function() {
             if (opsiJenis.val() === '') {
                 Swal.fire({
                     title: "ERROR",

@@ -26,7 +26,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
             <div class="card my-shadow">
                 <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6 class="text-bold"><?= $subjudul . ' - ' . $bank->bank_kode ?></h6>
+                        <h6 class="text-bold"><?= $subjudul ?></h6>
                     </div>
                     <div class="card-tools">
                         <button type="submit" class="btn btn-primary btn-sm">

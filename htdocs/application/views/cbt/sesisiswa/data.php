@@ -46,9 +46,9 @@ $jenjang = $setting->jenjang;
                         <?php if (count($siswas) > 0) : ?>
                             <div class="col-2 mb-2"></div>
                             <div class="col-12 col-md-7 mb-3">
-                                <label>Gabungkan siswa <?= $kelass[$kelas_selected] ?> ke ruang dan sesi: </label>
-                                <span id="undo" class="float-right badge btn">
-                                    <i class="fa fa-undo"></i>
+                                <label>Gabungkan Siswa <?= $kelass[$kelas_selected] ?> ke Ruang dan Sesi: </label>
+                                <!-- <span id="undo" class="float-right badge btn"> -->
+                                <!-- <i class="fa fa-undo"></i> -->
                                 </span>
                                 <div class="row">
                                     <div class="col-6">
@@ -78,7 +78,7 @@ $jenjang = $setting->jenjang;
                             <?= form_open('cbtsesisiswa/editsesisiswa', array('id' => 'editsesisiswa')) ?>
                             <div class="table-responsive" id="list-siswa">
                                 <table id="sesi-siswa" class="w-100 table table-bordered table-sm">
-                                    <tr class="bg-primary">
+                                    <tr class="bg-maroon">
                                         <th height="50" width="40" class="align-middle text-center">No.</th>
                                         <th class="align-middle text-center">Nama Siswa</th>
                                         <th class="align-middle text-center">Kelas</th>

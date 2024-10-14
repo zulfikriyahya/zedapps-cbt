@@ -23,12 +23,12 @@ $colWidth = '';
 $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
 ?>
 
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -37,10 +37,10 @@ $cols_name = ["PG", "PK", "JOD", "IS", "ES"];
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <?php $dnone = $kelas_selected == null ? 'class="d-none"' : ''; ?>
                         <div class="col-md-4" id="by-kelas">

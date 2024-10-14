@@ -1,14 +1,14 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <a href="<?= base_url('cbtcetak') ?>" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </a>
                 </div>
             </div>
@@ -20,42 +20,42 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="card my-shadow card-primary card-outline">
-                        <div class="card-header">
-                            <h6 class="card-title">Setting Kartu</h6>
+                        <div class="card-header bg-orange">
+                            <h6 class="card-title text-bold">Setting Kartu</h6>
                             <button class="card-tools btn btn-sm bg-primary text-white" onclick="submitKartu()">
                                 <i class="fas fa-save mr-1"></i> Simpan
                             </button>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <?= form_open('', array('id' => 'set-kartu')) ?>
                             <div class="form-group">
                                 <label>Header 1</label>
                                 <textarea id="header-1" class="form-control" name="header_1" rows="2"
-                                          placeholder="Header baris 1"
-                                          required><?= isset($kartu->header_1) ? $kartu->header_1 : '' ?></textarea>
+                                    placeholder="Header baris 1"
+                                    required><?= isset($kartu->header_1) ? $kartu->header_1 : '' ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Header 2</label>
                                 <textarea id="header-2" class="form-control" name="header_2" rows="2"
-                                          placeholder="Header baris 2"
-                                          required><?= isset($kartu->header_2) ? $kartu->header_2 : '' ?></textarea>
+                                    placeholder="Header baris 2"
+                                    required><?= isset($kartu->header_2) ? $kartu->header_2 : '' ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Header 3</label>
                                 <textarea id="header-3" class="form-control" name="header_3" rows="2"
-                                          placeholder="Header baris 3"
-                                          required><?= isset($kartu->header_3) ? $kartu->header_3 : '' ?></textarea>
+                                    placeholder="Header baris 3"
+                                    required><?= isset($kartu->header_3) ? $kartu->header_3 : '' ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Header 4</label>
                                 <textarea id="header-4" class="form-control" name="header_4" rows="2"
-                                          placeholder="Header baris 4"
-                                          required><?= isset($kartu->header_4) ? $kartu->header_4 : '' ?></textarea>
+                                    placeholder="Header baris 4"
+                                    required><?= isset($kartu->header_4) ? $kartu->header_4 : '' ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Tanggal</label>
                                 <input id="input-tanggal" class="form-control" name="tanggal" placeholder="Titimangsa"
-                                       value="<?= isset($kartu->tanggal) ? $kartu->tanggal : '' ?>" required>
+                                    value="<?= isset($kartu->tanggal) ? $kartu->tanggal : '' ?>" required>
                             </div>
                             <?= form_close() ?>
                         </div>
@@ -63,12 +63,12 @@
                 </div>
                 <div class="col-md-7">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <div class="card-title">
+                        <div class="card-header bg-orange">
+                            <div class="card-title text-bold">
                                 Preview
                             </div>
-                            <!--
-                            <div class="card-tools mr-2 mt-1">
+
+                            <!-- <div class="card-tools mr-2 mt-1">
                                 <button class="btn btn-sm bg-blue text-white">
                                     <i class="fa fa-file-word-o"></i><span class="ml-1">Word</span>
                                 </button>
@@ -78,35 +78,36 @@
                                 <button class="btn btn-sm bg-success text-white">
                                     <i class="fa fa-print"></i><span class="ml-1">Cetak</span>
                                 </button>
-                            </div>
-                            -->
+                            </div> -->
+
                         </div>
-                        <div class="card-body pb-4">
+                        <div class="card-body text-dark pb-4">
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <div style="width: 10cm">
                                     <table id="table-header"
-                                           style="width: 100%; border-top: 1px solid black; border-bottom: 0;border-left: 1px solid black; border-right: 1px solid black">
+                                        style="width: 100%; border-top: 1px solid black; border-bottom: 0;border-left: 1px solid black; border-right: 1px solid black">
                                         <tr>
                                             <td style="width:20%;">
                                                 <img alt="Logo kiri" id="prev-logo-kiri"
-                                                     src="<?= base_url() . $setting->logo_kiri ?>"
-                                                     style="width:55px; height:55px; margin: 6px;">
+                                                    src="<?= base_url() . $setting->logo_kiri ?>"
+                                                    style="width:55px; height:55px; margin: 6px;">
                                             </td>
                                             <td style="width:60%;">
                                                 <div id="prev-header-1" class="text-center"
-                                                     style="line-height: 1.1; font-family: 'Times New Roman'; font-size: 9pt"><?= isset($kartu->header_1) ? $kartu->header_1 : '' ?></div>
+                                                    style="line-height: 1.1; font-family: 'Times New Roman'; font-size: 9pt"><?= isset($kartu->header_1) ? $kartu->header_1 : '' ?></div>
                                                 <div id="prev-header-2" class="text-center"
-                                                     style="line-height: 1.1; font-family: 'Times New Roman'; font-size: 10pt">
-                                                    <b><?= isset($kartu->header_2) ? $kartu->header_2 : '' ?></b></div>
+                                                    style="line-height: 1.1; font-family: 'Times New Roman'; font-size: 10pt">
+                                                    <b><?= isset($kartu->header_2) ? $kartu->header_2 : '' ?></b>
+                                                </div>
                                                 <div id="prev-header-3" class="text-center"
-                                                     style="line-height: 1.2; font-family: 'Times New Roman'; font-size: 8pt"><?= isset($kartu->header_3) ? $kartu->header_3 : '' ?></div>
+                                                    style="line-height: 1.2; font-family: 'Times New Roman'; font-size: 8pt"><?= isset($kartu->header_3) ? $kartu->header_3 : '' ?></div>
                                                 <div id="prev-header-4" class="text-center"
-                                                     style="line-height: 1.2; font-family: 'Times New Roman'; font-size: 8pt"><?= isset($kartu->header_4) ? $kartu->header_4 : '' ?></div>
+                                                    style="line-height: 1.2; font-family: 'Times New Roman'; font-size: 8pt"><?= isset($kartu->header_4) ? $kartu->header_4 : '' ?></div>
                                             </td>
                                             <td style="width:20%;">
                                                 <img alt="Logo kanan" id="prev-logo-kanan"
-                                                     src="<?= base_url() . $setting->logo_kanan ?>"
-                                                     style="width:55px; height:55px; margin: 6px; border-style: none">
+                                                    src="<?= base_url() . $setting->logo_kanan ?>"
+                                                    style="width:55px; height:55px; margin: 6px; border-style: none">
                                             </td>
                                         </tr>
                                     </table>
@@ -119,17 +120,17 @@
                                         <tr style="line-height: 1; font-family: 'Times New Roman'; font-size: 9pt">
                                             <td style="padding-left:22px">Nama</td>
                                             <td>:</td>
-                                            <td>Nama Siswa</td>
+                                            <td>Yahya Zulfikri</td>
                                         </tr>
                                         <tr style="line-height: 1; font-family: 'Times New Roman'; font-size: 9pt">
                                             <td style="padding-left:22px;width: 35%">NIS/NISN</td>
                                             <td>:</td>
-                                            <td>012334455</td>
+                                            <td>0000971291</td>
                                         </tr>
                                         <tr style="line-height: 1; font-family: 'Times New Roman'; font-size: 9pt">
                                             <td style="padding-left:22px;width: 35%">Kelas</td>
                                             <td>:</td>
-                                            <td>IXA</td>
+                                            <td>IX A</td>
                                         </tr>
                                         <tr style="line-height: 1; font-family: 'Times New Roman'; font-size: 9pt">
                                             <td style="padding-left:22px;width: 35%">Ruang/Sesi</td>
@@ -139,30 +140,30 @@
                                         <tr style="line-height: 1; font-family: 'Times New Roman'; font-size: 9pt">
                                             <td style="padding-left:22px;width: 35%">Username</td>
                                             <td>:</td>
-                                            <td><b>umbk001</b></td>
+                                            <td><b>0000971291</b></td>
                                         </tr>
                                         <tr style="line-height: 1; font-family: 'Times New Roman'; font-size: 9pt">
                                             <td style="padding-left:22px;width: 35%">Password</td>
                                             <td>:</td>
-                                            <td><b>umbk001</b></td>
+                                            <td><b>0000971291</b></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"
                                                 style="padding-top: 6px; padding-bottom: 6px; padding-left:22px;width: 35%">
                                                 <div
-                                                        style="width: 60px; height: 70px; background: url('<?= base_url('assets/img/siswa.png') ?>') no-repeat center; background-size: cover; outline: 1px solid;"></div>
+                                                    style="width: 60px; height: 70px; background: url('<?= base_url('assets/img/siswa.png') ?>') no-repeat center; background-size: cover; outline: 1px solid;"></div>
                                             </td>
                                             <td style="text-align: center;">
                                                 <div id="prev-tandatangan"
-                                                     style="font-family: 'Times New Roman'; font-size: 9pt; line-height: 1; background: url('<?= base_url() . $setting->tanda_tangan ?>') no-repeat center; background-size: 100px 60px">
+                                                    style="font-family: 'Times New Roman'; font-size: 9pt; line-height: 1; background: url('<?= base_url() . $setting->tanda_tangan ?>') no-repeat center; background-size: 100px 60px">
                                                     <span id="prev-kota"><?= $setting->kota ?></span>, <span
-                                                            id="prev-tanggal"><?= isset($kartu->tanggal) ? $kartu->tanggal : '' ?></span>
+                                                        id="prev-tanggal"><?= isset($kartu->tanggal) ? $kartu->tanggal : '' ?></span>
                                                     <br>
                                                     Kepala <?= $setting->satuan_pendidikan == '2' ? 'Madrasah' : 'Sekolah' ?>
                                                     <br>
                                                     <br>
                                                     <br>
-                                                    <span id="prev-kepsek"><u><?= $setting->kepsek ?></u></span>
+                                                    <span id="prev-kepsek" class="text-bold"><?= $setting->kepsek ?></span>
                                                     <p id="prev-nip" style="margin-top: 4px; margin-bottom: 4px">NIP: <?= $setting_rapor != null && $setting_rapor->nip_kepsek == '1' ? $setting->nip : '-' ?></p>
                                                 </div>
                                             </td>
@@ -174,18 +175,18 @@
                         </div>
                     </div>
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <div class="card-title">
+                        <div class="card-header bg-orange">
+                            <div class="card-title text-bold">
                                 Cetak
                             </div>
-                            <!--
-							<div id="selector" class="card-tools btn-group">
-								<button type="button" class="btn active btn-primary">By Kelas</button>
-								<button type="button" class="btn btn-outline-primary">By Ruang</button>
-							</div>
-							-->
+
+                            <!-- <div id="selector" class="card-tools btn-group">
+                                <button type="button" class="btn active btn-primary">By Kelas</button>
+                                <button type="button" class="btn btn-outline-primary">By Ruang</button>
+                            </div> -->
+
                         </div>
-                        <div class="card-body pb-4">
+                        <div class="card-body text-dark pb-4">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="input-group">
@@ -208,15 +209,15 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <!--
-                                    <button class="btn bg-blue text-white">
+
+                                    <!-- <button class="btn bg-blue text-white">
                                         <i class="fa fa-file-word-o"></i><span class="ml-1">Word</span>
                                     </button>
                                     <button class="btn bg-red text-white" id="btn-pdf">
                                         <i class="fa fa-file-pdf-o"></i><span class="ml-1">Pdf</span>
-                                    </button>
-                                    -->
-                                    <button class="btn bg-success text-white" id="btn-print">
+                                    </button> -->
+
+                                    <button class="btn bg-primary text-white" id="btn-print">
                                         <i class="fa fa-print"></i><span class="ml-1">Cetak</span>
                                     </button>
                                 </div>
@@ -228,12 +229,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <div class="card-title">
+                        <div class="card-header bg-orange">
+                            <div class="card-title text-bold">
                                 Preview
                             </div>
                         </div>
-                        <div class="card-body pb-4">
+                        <div class="card-body text-dark pb-4">
                             <div class="d-flex justify-content-center bg-gray-light" style="min-height: 300mm">
                                 <div id="print-preview" class="m-2">
                                 </div>
@@ -256,10 +257,10 @@
     var oldVal3 = "<?= isset($kartu->header_3) ? $kartu->header_3 : "" ?>";
     var oldVal4 = "<?= isset($kartu->header_4) ? $kartu->header_4 : "" ?>";
     var oldTgl = "<?= isset($kartu->tanggal) ? $kartu->tanggal : "" ?>";
-    var oldKota = "<?=$setting->kota?>";
-    var logoKanan = "<?=base_url() . $setting->logo_kanan?>";
-    var logoKiri = "<?=base_url() . $setting->logo_kiri?>";
-    var tandatangan = "<?=base_url() . $setting->tanda_tangan?>";
+    var oldKota = "<?= $setting->kota ?>";
+    var logoKanan = "<?= base_url() . $setting->logo_kanan ?>";
+    var logoKiri = "<?= base_url() . $setting->logo_kiri ?>";
+    var tandatangan = "<?= base_url() . $setting->tanda_tangan ?>";
     var kepsek = "<?= $setting->kepsek ?>";
     var nip = "<?= $setting->nip ?>";
     var satuanPend = "<?= $setting->satuan_pendidikan ?>" === "2" ? "Madrasah" : "Sekolah";
@@ -367,8 +368,8 @@
                         '<br>' +
                         '<br>' +
                         '<br>' +
-                        '<span>' + kepsek + '</span>' +
-                        '<p id="prev-nip" style="margin-top: 4px; margin-bottom: 4px">NIP: '+nipKepsek+'</p>' +
+                        '<span class="text-bold">' + kepsek + '</span>' +
+                        '<p id="prev-nip" style="margin-top: 4px; margin-bottom: 4px">NIP: ' + nipKepsek + '</p>' +
                         '</div>' +
                         '</td>' +
                         '</tr>' +
@@ -471,7 +472,7 @@
                     '<br>' +
                     '<br>' +
                     '<span>' + kepsek + '</span>' +
-                    '<p id="prev-nip" style="margin-top: 4px; margin-bottom: 4px">NIP: '+nipKepsek+'</p>' +
+                    '<p id="prev-nip" style="margin-top: 4px; margin-bottom: 4px">NIP: ' + nipKepsek + '</p>' +
                     '</div>' +
                     '</td>' +
                     '</tr>' +
@@ -496,11 +497,11 @@
 
         $("#print-preview").html(konten);
 
-        $(`.avatar`).each(function () {
-            $(this).on("error", function () {
+        $(`.avatar`).each(function() {
+            $(this).on("error", function() {
                 var src = $(this).attr('src').replace('profiles', 'foto_siswa');
                 $(this).attr("src", src);
-                $(this).on("error", function () {
+                $(this).on("error", function() {
                     $(this).attr("src", base_url + 'assets/img/siswa.png');
                 });
 
@@ -508,8 +509,8 @@
         });
     }
 
-    $(document).ready(function () {
-        $("#header-1").on("change keyup paste", function () {
+    $(document).ready(function() {
+        $("#header-1").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal1) {
                 return;
@@ -519,7 +520,7 @@
             $('#prev-header-1').html(currentVal);
             //alert("changed!");
         });
-        $("#header-2").on("change keyup paste", function () {
+        $("#header-2").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal2) {
                 return;
@@ -529,7 +530,7 @@
             $('#prev-header-2').text(currentVal);
             //alert("changed!");
         });
-        $("#header-3").on("change keyup paste", function () {
+        $("#header-3").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal3) {
                 return;
@@ -539,7 +540,7 @@
             $('#prev-header-3').text(currentVal);
             //alert("changed!");
         });
-        $("#header-4").on("change keyup paste", function () {
+        $("#header-4").on("change keyup paste", function() {
             var currentVal = $(this).val();
             if (currentVal === oldVal4) {
                 return;
@@ -550,13 +551,13 @@
             //alert("changed!");
         });
 
-        $('#input-tanggal').on('input', function (e) {
+        $('#input-tanggal').on('input', function(e) {
             var tgl = $(this).val();
             $('#prev-tanggal').text(tgl);
             oldTgl = tgl;
         });
 
-        $('#set-kartu').on('submit', function (e) {
+        $('#set-kartu').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -578,7 +579,7 @@
                 processData: false,
                 contentType: false,
                 data: form,
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     swal.fire({
                         title: 'Sukses',
@@ -592,7 +593,7 @@
                         }
                     });
                 },
-                error: function (xhr, error, status) {
+                error: function(xhr, error, status) {
                     console.log(xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -614,7 +615,7 @@
                 contentType: false,
                 cache: false,
                 timeout: 600000,
-                success: function (data) {
+                success: function(data) {
                     if (data.src.includes('kanan')) {
                         logoKanan = data.src;
                         //console.log('kanan', data.src);
@@ -626,7 +627,7 @@
                         //console.log('tandatangan', data.src);
                     }
                 },
-                error: function (xhr, error, status) {
+                error: function(xhr, error, status) {
                     console.log("error", xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -640,11 +641,13 @@
 
         function deleteImage(src) {
             $.ajax({
-                data: {src: src},
+                data: {
+                    src: src
+                },
                 type: "POST",
                 url: base_url + "cbtcetak/deletefile",
                 cache: false,
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                 }
             });
@@ -654,7 +657,7 @@
             $.ajax({
                 type: "GET",
                 url: base_url + "cbtcetak/getsiswakelas?kelas=" + kelas,
-                success: function (response) {
+                success: function(response) {
                     createPrintPreview(response.siswa);
                 }
             });
@@ -664,7 +667,7 @@
             $.ajax({
                 type: "GET",
                 url: base_url + "cbtcetak/getsiswaruang?ruang=" + ruang,
-                success: function (response) {
+                success: function(response) {
                     createPrintPreview(response.siswa);
                 }
             });
@@ -673,18 +676,20 @@
         //loadSiswaKelas($('#kelas').val());
         $("#kelas").prepend("<option value='' selected='selected' disabled>Pilih Kelas</option>");
         $("#ruang").prepend("<option value='' selected='selected' disabled>Pilih Ruang</option>");
-        $("#kelas").change(function () {
+        $("#kelas").change(function() {
             loadSiswaKelas($(this).val());
         });
 
-        $("#ruang").change(function () {
+        $("#ruang").change(function() {
             loadSiswaRuang($(this).val());
         });
 
-        $('#kelas').select2({theme: 'bootstrap4'});
+        $('#kelas').select2({
+            theme: 'bootstrap4'
+        });
         //$('#ruang').select2({theme: 'bootstrap4'});
 
-        $("#btn-print").click(function () {
+        $("#btn-print").click(function() {
             if ($('#kelas').val() === '') {
                 Swal.fire({
                     title: "ERROR",
@@ -696,7 +701,7 @@
             }
         });
 
-        $('#selector button').click(function () {
+        $('#selector button').click(function() {
             $(this).addClass('active').siblings().addClass('btn-outline-primary').removeClass('active btn-primary');
 
             if (!$('#kelas').is(':hidden')) {
@@ -710,5 +715,4 @@
             }
         });
     })
-
 </script>
