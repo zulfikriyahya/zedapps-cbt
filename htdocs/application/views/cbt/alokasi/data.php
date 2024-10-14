@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,10 +12,10 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h3 class="card-title"><b><?= $subjudul ?></b></h3>
+                <div class="card-header bg-orange">
+                    <h3 class="card-title text-bold"><?= $subjudul ?></h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="alert alert-default-info shadow align-content-center" role="alert">
                         <strong>Catatan!</strong>
                         <ol>

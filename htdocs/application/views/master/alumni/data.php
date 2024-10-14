@@ -1,18 +1,18 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
-                <!--
-                <div class="col-6">
+                <!-- comment -->
+                <!-- <div class="col-6">
                     <a href="<?= base_url('datakelas') ?>" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </a>
-                </div>
-                -->
+                </div> -->
+
             </div>
         </div>
     </section>
@@ -23,8 +23,8 @@
         ?>
         <div class="container-fluid">
             <div class="card my-shadow mb-4">
-                <div class="card-header">
-                    <div class="card-title">
+                <div class="card-header bg-orange">
+                    <div class="card-title text-bold">
                         <?= $subjudul ?>
                     </div>
                     <div class="card-tools">
@@ -36,16 +36,19 @@
                             <i class="fa fa-gear"></i>
                             <span class="d-none d-sm-inline-block ml-1">Generate Alumni</span>
                         </button>
-                        <!--
+
+
+
+                        <!-- comment -->
                         <button type="button" data-toggle="modal" data-target="#createAlumniModal"
-                                class="btn btn-sm btn-primary">
+                            class="btn btn-sm btn-primary">
                             <i class="fas fa-plus"></i>
                             <span class="d-none d-sm-inline-block ml-1">Tambah Alumni</span>
                         </button>
                         <a href="<?= base_url('dataalumni/add') ?>" class="btn btn-sm bg-gradient-success">
                             <i class="fas fa-upload"></i>
                             <span class="d-none d-sm-inline-block ml-1">Import</span></a>
-                            -->
+
                     </div>
                 </div>
                 <?php
@@ -56,14 +59,15 @@
                 //$idTpActive = $tp[$searchId];
                 if ($searchId > 0) :
                     $tpBefore = $tp[$searchId - 1];
-                    if ($jumlah_lulus > 0) :?>
+                    if ($jumlah_lulus > 0) : ?>
                         <div class="alert alert-default-warning align-content-center" role="alert">
                             Ada <?= $jumlah_lulus ?> Siswa yang LULUS pada Tahun Pelajaran <?= $tpBefore->tahun ?>,
                             silahkan klik tombol <b><i class="fa fa-gear"></i> Generate Alumni</b> untuk memindahkan
                             siswa lulus ke data alumni.
                         </div>
-                    <?php endif; endif; ?>
-                <div class="card-body">
+                <?php endif;
+                endif; ?>
+                <div class="card-body text-dark">
                     <div class="alert alert-default-info align-content-center" role="alert">
                         <ul>
                             <?php
@@ -118,43 +122,44 @@
                         //echo '<pre>';
                         //var_dump($alumni_kelas_baru);
                         //echo '</pre>';
-                        ?>
+                    ?>
                         <div class="row">
                             <div class="col-12">
                                 <table class="table table-striped table-bordered table-hover" id="tbl-alumni">
-                                    <thead>
-                                    <tr>
-                                        <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
-                                        <th class="text-center p-0 align-middle">N I S N</th>
-                                        <th class="text-center p-0 align-middle">N I S</th>
-                                        <th class="text-center p-0 align-middle p-0">Nama Alumni</th>
-                                        <th class="text-center p-0 align-middle">Kelas Akhir</th>
-                                        <th class="text-center p-0 align-middle">Tahun Lulus</th>
-                                        <th class="text-center p-0 align-middle">Nomor Ijazah</th>
-                                        <th class="text-center p-0 align-middle">Aksi</th>
-                                    </tr>
+                                    <thead class="bg-maroon">
+                                        <tr>
+                                            <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
+                                            <th class="text-center p-0 align-middle">N I S N</th>
+                                            <th class="text-center p-0 align-middle">N I S</th>
+                                            <th class="text-center p-0 align-middle p-0">Nama Alumni</th>
+                                            <th class="text-center p-0 align-middle">Kelas Akhir</th>
+                                            <th class="text-center p-0 align-middle">Tahun Lulus</th>
+                                            <th class="text-center p-0 align-middle">Nomor Ijazah</th>
+                                            <th class="text-center p-0 align-middle">Aksi</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($alumnis as $alumni) :?>
-                                        <tr>
-                                            <td class="d-none id-alumni align-middle"><?= $alumni->id_siswa ?></td>
-                                            <td class="text-center align-middle"><?= $no ?></td>
-                                            <td class="text-center align-middle"><?= $alumni->nisn ?></td>
-                                            <td class="text-center align-middle"><?= $alumni->nis ?></td>
-                                            <td class="align-middle"><?= $alumni->nama ?></td>
-                                            <td class="text-center align-middle"><?= $alumni->kelas_akhir ?></td>
-                                            <td class="text-center align-middle"><?= $alumni->tahun_lulus ?></td>
-                                            <td class="text-center align-middle"><?= $alumni->no_ijazah ?></td>
-                                            <td class="text-center">
-                                                <a class="btn btn-xs btn-warning"
-                                                   href="<?= base_url() . 'dataalumni/edit?id=' . $alumni->id_siswa ?>">
-                                                    <i class="fa fa-pencil-alt"></i> Edit
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php $no++; endforeach; ?>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($alumnis as $alumni) : ?>
+                                            <tr>
+                                                <td class="d-none id-alumni align-middle"><?= $alumni->id_siswa ?></td>
+                                                <td class="text-center align-middle"><?= $no ?></td>
+                                                <td class="text-center align-middle"><?= $alumni->nisn ?></td>
+                                                <td class="text-center align-middle"><?= $alumni->nis ?></td>
+                                                <td class="align-middle"><?= $alumni->nama ?></td>
+                                                <td class="text-center align-middle"><?= $alumni->kelas_akhir ?></td>
+                                                <td class="text-center align-middle"><?= $alumni->tahun_lulus ?></td>
+                                                <td class="text-center align-middle"><?= $alumni->no_ijazah ?></td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-xs btn-warning"
+                                                        href="<?= base_url() . 'dataalumni/edit?id=' . $alumni->id_siswa ?>">
+                                                        <i class="fa fa-pencil-alt"></i> Edit
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php $no++;
+                                        endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -168,7 +173,7 @@
 
 <?= form_open('', array('id' => 'formalumni')); ?>
 <div class="modal fade" id="createAlumniModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -188,7 +193,7 @@
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input id="nama_alumni" type="text" class="form-control" name="nama_alumni"
-                                   placeholder="Nama Alumni" required>
+                                placeholder="Nama Alumni" required>
                         </div>
                     </div>
                 </div>
@@ -228,7 +233,7 @@
                                 <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
                             </div>
                             <select class="form-control" id="kelas_awal" data-placeholder="Jenis Kelamin"
-                                    name="jenis_kelamin" required>
+                                name="jenis_kelamin" required>
                                 <option value="">Pilih Jenis Kelamin</option>
                                 <option value="L">Laki-laki</option>
                                 <option value="P">Perempuan</option>
@@ -246,7 +251,7 @@
                                 <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
                             </div>
                             <input id="tahun-lulus" type="number" class="form-control" name="tahun_lulus"
-                                   placeholder="Tahun Lulus" required>
+                                placeholder="Tahun Lulus" required>
                         </div>
                     </div>
                 </div>
@@ -260,7 +265,7 @@
                                 <span class="input-group-text"><i class="fas fa-school"></i></span>
                             </div>
                             <input id="kelas-akhir" class="form-control" name="kelas_akhir" placeholder="Kelas Akhir"
-                                   required>
+                                required>
                         </div>
                     </div>
                 </div>
@@ -274,7 +279,7 @@
                                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                             </div>
                             <input type="text" id="nomor-ijazah" class="form-control" name="no_ijazah"
-                                   placeholder="Nomor Ijazah">
+                                placeholder="Nomor Ijazah">
                         </div>
                     </div>
                 </div>
@@ -295,8 +300,8 @@
 <?= form_close() ?>
 
 <script>
-    var thnSelected = '<?= isset($tahun_selected) ? $tahun_selected : '';?>';
-    var klsSelected = '<?= isset($kelas_selected) ? $kelas_selected : '';?>';
+    var thnSelected = '<?= isset($tahun_selected) ? $tahun_selected : ''; ?>';
+    var klsSelected = '<?= isset($kelas_selected) ? $kelas_selected : ''; ?>';
 
     function generate() {
         swal.fire({
@@ -315,7 +320,7 @@
         $.ajax({
             url: base_url + "dataalumni/generatealumni",
             type: "GET",
-            success: function (data) {
+            success: function(data) {
                 console.log("result", data);
                 if (data) {
                     swal.fire({
@@ -336,7 +341,8 @@
                         showCancelButton: false,
                     });
                 }
-            }, error: function (xhr, status, error) {
+            },
+            error: function(xhr, status, error) {
                 console.log("error", xhr.responseText);
                 swal.fire({
                     title: "ERROR",
@@ -348,7 +354,7 @@
         });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         //console.log(arrKelas);
 
         var opsiTahun = $('#opsi-tahun');
@@ -356,13 +362,13 @@
 
         var tslctd = thnSelected == '' ? "selected='selected'" : "";
         opsiTahun.prepend("<option value='0' " + tslctd + " disabled='disabled'>Pilih Tahun Lulus</option>");
-        opsiTahun.change(function () {
+        opsiTahun.change(function() {
             getDataAlumni($(this).val(), opsiKelas.val());
         });
 
         var kslctd = klsSelected == '' ? "selected='selected'" : "";
         opsiKelas.prepend("<option value='0' " + kslctd + " disabled='disabled'>Pilih Kelas Akhir</option>");
-        opsiKelas.change(function () {
+        opsiKelas.change(function() {
             getDataAlumni(opsiTahun.val(), $(this).val());
         });
 
@@ -373,7 +379,7 @@
             }
         }
 
-        $('#formalumni').on('submit', function (e) {
+        $('#formalumni').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log($(this).serialize());
@@ -383,11 +389,11 @@
                 data: $(this).serialize(),
                 dataType: "JSON",
                 type: 'POST',
-                success: function (response) {
+                success: function(response) {
                     console.log("result", response);
                     $('#createAlumniModal').modal('hide').data('bs.modal', null);
-                    $('#createAlumniModal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#createAlumniModal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
 
                     if (response.insert) {
@@ -397,10 +403,10 @@
                         showDangerToast(response.text);
                     }
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     $('#createAlumniModal').modal('hide').data('bs.modal', null);
-                    $('#createAlumniModal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#createAlumniModal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
                     showDangerToast("Gagal disimpan");
                     console.log(xhr.responseText);

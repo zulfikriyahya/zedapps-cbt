@@ -1,14 +1,14 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <button onclick="window.history.back();" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </button>
                 </div>
             </div>
@@ -19,18 +19,18 @@
         <div class="container-fluid">
             <?= form_open('create', array('id' => 'create')) ?>
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6>Edit Jadwal</h6>
+                        <h6 class="text-bold">Edit Jadwal</h6>
                     </div>
                     <div class="card-tools">
                         <input type="hidden" id="id-jadwal" name='id_jadwal' value="<?= $jadwal->id_jadwal ?>"
-                               class='form-control d-none'/>
+                            class='form-control d-none' />
                         <button name='tambahjadwal' class='btn btn-success btn-sm'><i class='fa fa-check'></i> Simpan
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <?php
                     $disabled_option = $disable_opsi ? 'disabled="disabled"' : '';
                     ?>
@@ -48,7 +48,7 @@
                         <div class="col-md-4 mb-3">
                             <label>Bank Soal</label>
                             <select <?= $disabled_option ?> name="bank_id" id="bank-id"
-                                                            class="form-control form-control-sm" required=""></select>
+                                class="form-control form-control-sm" required=""></select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label>Jenis</label>
@@ -63,28 +63,28 @@
                         <div class='col-6 col-md-3 mb-3'>
                             <label>Tanggal Mulai</label>
                             <input type='text' id="tgl-mulai" name='tgl_mulai' value="<?= $jadwal->tgl_mulai ?>"
-                                   class='tgl form-control form-control-sm' autocomplete='off' required='true'/>
+                                class='tgl form-control form-control-sm' autocomplete='off' required='true' />
                         </div>
                         <div class='col-6 col-md-3 mb-3'>
                             <label>Tanggal Expired</label>
                             <input type='text' id="tgl-selesai" name='tgl_selesai' value="<?= $jadwal->tgl_selesai ?>"
-                                   class='tgl form-control form-control-sm'
-                                   autocomplete='off' required='true'/>
+                                class='tgl form-control form-control-sm'
+                                autocomplete='off' required='true' />
                         </div>
                         <div class='col-6 col-md-3 mb-3'>
                             <div class='form-group'>
                                 <label>Durasi (menit)</label>
                                 <input type='number' id="durasi-ujian" name='durasi_ujian'
-                                       class='form-control form-control-sm' value="<?= $jadwal->durasi_ujian ?>"
-                                       required='true'/>
+                                    class='form-control form-control-sm' value="<?= $jadwal->durasi_ujian ?>"
+                                    required='true' />
                             </div>
                         </div>
                         <div class='col-6 col-md-3 mb-3'>
                             <div class='form-group'>
                                 <label>Durasi minimal (mnt)</label>
                                 <input type='number' id="durasi-ujian" name='jarak'
-                                       class='form-control form-control-sm' value="<?= $jadwal->jarak ?>"
-                                       required='true'/>
+                                    class='form-control form-control-sm' value="<?= $jadwal->jarak ?>"
+                                    required='true' />
                             </div>
                         </div>
                     </div>
@@ -95,42 +95,42 @@
                                     <div class='col-6'>
                                         <div class="icheck-cyan">
                                             <input type='checkbox' id="check-soal" name='acak_soal'
-                                                   value='1' <?= $jadwal->acak_soal == 1 ? 'checked="checked"' : '' ?> <?= $disabled_option ?>/>
+                                                value='1' <?= $jadwal->acak_soal == 1 ? 'checked="checked"' : '' ?> <?= $disabled_option ?> />
                                             <label for="check-soal">Acak Soal</label>
                                         </div>
                                     </div>
                                     <div class='col-6'>
                                         <div class="icheck-cyan">
                                             <input type='checkbox' id="check-opsi" name='acak_opsi'
-                                                   value='1' <?= $jadwal->acak_opsi == 1 ? 'checked="checked"' : '' ?> <?= $disabled_option ?>/>
+                                                value='1' <?= $jadwal->acak_opsi == 1 ? 'checked="checked"' : '' ?> <?= $disabled_option ?> />
                                             <label for="check-opsi">Acak Jawaban</label>
                                         </div>
                                     </div>
                                     <div class='col-6'>
                                         <div class="icheck-cyan">
                                             <input type='checkbox' id="check-token" name='token'
-                                                   value='1' <?= $jadwal->token === '1' ? 'checked="checked"' : '' ?> />
+                                                value='1' <?= $jadwal->token === '1' ? 'checked="checked"' : '' ?> />
                                             <label for="check-token">Gunakan Token</label>
                                         </div>
                                     </div>
                                     <div class='col-6'>
                                         <div class="icheck-cyan">
                                             <input type='checkbox' id="check-hasil" name='hasil_tampil'
-                                                   value='1' <?= $jadwal->hasil_tampil === '1' ? 'checked="checked"' : '' ?> />
+                                                value='1' <?= $jadwal->hasil_tampil === '1' ? 'checked="checked"' : '' ?> />
                                             <label for="check-hasil">Tampilkan Hasil</label>
                                         </div>
                                     </div>
                                     <div class='col-6'>
                                         <div class="icheck-cyan">
                                             <input type='checkbox' id="check-login" name='reset_login'
-                                                   value='1' <?= $jadwal->reset_login === '1' ? 'checked="checked"' : '' ?> />
+                                                value='1' <?= $jadwal->reset_login === '1' ? 'checked="checked"' : '' ?> />
                                             <label for="check-login">Reset Izin</label>
                                         </div>
                                     </div>
                                     <div class='col-6'>
                                         <div class="icheck-cyan">
                                             <input type='checkbox' id="check-status" name='status'
-                                                   value='1' <?= $jadwal->status === '1' ? 'checked="checked"' : '' ?> <?= $disabled_option ?>/>
+                                                value='1' <?= $jadwal->status === '1' ? 'checked="checked"' : '' ?> <?= $disabled_option ?> />
                                             <label for="check-status">Aktif</label>
                                         </div>
                                     </div>
@@ -139,11 +139,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer text-dark">
                     <ul>
                         <?php
                         if ($jadwal->id_jadwal != "") :
-                            ?>
+                        ?>
                             <li>
                                 Beberapa opsi <b>tidak bisa diedit</b> karena jadwal ujian <b>sedang berlangsung</b>.
                             </li>
@@ -155,7 +155,7 @@
                         <li>
                             <b>Durasi minimal</b> untuk mengizinkan siswa menyelesaikan ujian pada menit yg ditentukan.
                         </li>
-                        <li><b>Reset Izin</b> jika aktif maka siswa tidak bisa mengerjakan ujian di beberapa komputer
+                        <li><b>Reset Izin</b> jika aktif maka siswa tidak bisa mengerjakan ujian di beberapa perangkat
                             kecuali setelah diizinkan
                         </li>
                     </ul>
@@ -168,8 +168,8 @@
 
 <script>
     var digunakan = <?= $disable_opsi ? '1' : '0' ?>;
-    var idBank = '<?=$jadwal->id_bank?>';
-    $(document).ready(function () {
+    var idBank = '<?= $jadwal->id_bank ?>';
+    $(document).ready(function() {
         ajaxcsrf();
         //console.log('used',digunakan);
 
@@ -182,11 +182,10 @@
         selBank.select2();
 
         $('.tgl').datetimepicker({
-            icons:
-                {
-                    next: 'fa fa-angle-right',
-                    previous: 'fa fa-angle-left'
-                },
+            icons: {
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
+            },
             timepicker: false,
             scrollInput: false,
             scrollMonth: false,
@@ -212,7 +211,7 @@
             }
         }
 
-        $('#create').submit('click', function (e) {
+        $('#create').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             reEnable(false);
@@ -234,12 +233,12 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     reEnable(true);
                     $('#tambahjadwal').modal('hide').data('bs.modal', null);
-                    $('#tambahjadwal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#tambahjadwal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
 
                     if (data.success) {
@@ -262,7 +261,8 @@
                             showCancelButton: false,
                         });
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -279,20 +279,21 @@
             $.ajax({
                 url: base_url + "cbtjadwal/getbankmapel/" + mapel,
                 type: "GET",
-                success: function (data) {
+                success: function(data) {
                     console.log('bank', data);
                     selBank.html('<option value="" ' + selec + '>Pilih Bank Soal:</option>');
-                    $.each(data, function (i, v) {
+                    $.each(data, function(i, v) {
                         var selected = i === idBank ? 'selected' : '';
                         if (i !== '') selBank.append('<option value="' + i + '" ' + selected + '>' + v + '</option>');
                     });
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                 }
             });
         }
 
-        selMapel.on('change', function () {
+        selMapel.on('change', function() {
             getBankMapel($(this).val());
         });
 

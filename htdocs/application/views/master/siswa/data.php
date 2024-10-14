@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><b><?= $judul ?></b></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-0">
                 <div class="card-header bg-orange">
-                    <h6 class="card-title"><b><?= $subjudul ?></b></h6>
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <div class="card-tools">
                         <button type="button" data-toggle="modal" data-target="#createSiswaModal"
                             class="btn btn-sm btn-primary"><i
@@ -83,7 +83,7 @@
                                 <?= form_open('datasiswa/delete', array('id' => 'bulk')); ?>
                                 <div class="table-responsive">
                                     <table id="table-siswa" class="w-100 table table-md table-striped table-bordered table-hover">
-                                        <thead>
+                                        <thead class="bg-maroon">
                                             <tr>
                                                 <th height="50" class="align-middle text-center p-0">
                                                     <input class="select_all" type="checkbox">

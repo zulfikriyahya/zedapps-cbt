@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,8 +12,8 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <div class="card-tools">
                         <button type="button" onclick="reload_ajax()" class="btn btn-sm btn-default">
                             <i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ml-1">Reload</span>
@@ -24,11 +24,11 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <?= form_open('cbtsesi/delete', array('id' => 'bulk')); ?>
                     <div class="table-responsive">
                         <table id="sesi" class="w-100 table table-striped table-bordered table-hover">
-                            <thead>
+                            <thead class="bg-maroon">
                                 <tr>
                                     <th width="40" class="align-middle text-center p-0">
                                         <input class="select_all" type="checkbox">

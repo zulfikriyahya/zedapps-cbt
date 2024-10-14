@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,33 +12,33 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <div class="card-tools">
                         <button type="button" onclick="reload_ajax()" class="btn btn-sm btn-default">
                             <i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ml-1">Reload</span>
                         </button>
                         <button type="button" data-toggle="modal" data-target="#createRuangModal"
-                                class="btn btn-sm btn-primary"><i
-                                    class="fas fa-plus"></i><span class="d-none d-sm-inline-block ml-1">Tambah Ruang Ujian</span>
+                            class="btn btn-sm btn-primary"><i
+                                class="fas fa-plus"></i><span class="d-none d-sm-inline-block ml-1">Tambah Ruang Ujian</span>
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <?= form_open('cbtruang/delete', array('id' => 'bulk')); ?>
                     <div class="table-responsive">
                         <table id="ruang" class="w-100 table table-striped table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th width="40" class="align-middle text-center p-0">
-                                    <input class="select_all" type="checkbox">
-                                </th>
-                                <th width="40" class="align-middle text-center p-0">No.</th>
-                                <th>Kelompok/Ruang Ujian</th>
-                                <th>Kode Ruang</th>
-                                <th>Jum. Sesi</th>
-                                <th width="100" class="align-middle text-center p-0">Aksi</th>
-                            </tr>
+                            <thead class="bg-maroon">
+                                <tr>
+                                    <th width="40" class="align-middle text-center p-0">
+                                        <input class="select_all" type="checkbox">
+                                    </th>
+                                    <th width="70" class="align-middle text-center p-0">No.</th>
+                                    <th>Kelompok/Ruang Ujian</th>
+                                    <th>Kode Ruang</th>
+                                    <th>Jum. Sesi</th>
+                                    <th width="100" class="align-middle text-center p-0">Aksi</th>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -51,7 +51,7 @@
 
 <?= form_open('create', array('id' => 'create')) ?>
 <div class="modal fade" id="createRuangModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -72,7 +72,7 @@
                     <label for="kode_ruang" class="col-md-4 col-form-label">Kode Ruang*</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" name="kode_ruang" placeholder="Kode Ruang Ujian"
-                               required>
+                            required>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
 
 <?= form_open('update', array('id' => 'update')) ?>
 <div class="modal fade" id="editRuangModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,5 +129,3 @@
 <?= form_close() ?>
 
 <script src="<?= base_url() ?>/assets/app/js/cbt/ruang/crud.js"></script>
-
-

@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,34 +12,34 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow mb-4">
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="mb-3">
                         <button type="button" onclick="reload_ajax()" class="btn btn-sm btn-default"><i
-                                    class="fa fa-sync"></i> Reload
+                                class="fa fa-sync"></i> Reload
                         </button>
                         <button type="button" data-toggle="modal" data-target="#createEkstraModal"
-                                class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah Ekstrakurikuler
+                            class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah Ekstrakurikuler
                         </button>
                     </div>
                     <div class="row">
                         <div class="col-md-6 table-responsive">
                             <table id="tableEkstra" class="w-100 table table-striped table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="text-center align-middle p-0">No.</th>
-                                    <th>Ekstrakurikuler</th>
-                                    <th>Kode</th>
-                                    <th class="text-center align-middle p-0" style="width: 100px"><span>Aksi</span></th>
-                                </tr>
+                                <thead class="bg-maroon">
+                                    <tr>
+                                        <th class="text-center align-middle p-0">No.</th>
+                                        <th>Ekstrakurikuler</th>
+                                        <th>Kode</th>
+                                        <th class="text-center align-middle p-0" style="width: 100px"><span>Aksi</span></th>
+                                    </tr>
                                 </thead>
                             </table>
                         </div>
                         <div class="col-md-6">
                             <?= form_open('save', array('id' => 'save')) ?>
                             <div class="card border mt-1">
-                                <div class="card-header">
+                                <div class="card-header bg-maroon">
                                     <div class="card-title">
-                                        <h6>Tentukan Kelas Ekstrakurikuler</h6>
+                                        <h6 class="text-bold">Tentukan Kelas Ekstrakurikuler</h6>
                                     </div>
                                     <div class="card-tools">
                                         <button type="submit" class="btn btn-primary btn-sm">
@@ -59,7 +59,7 @@
                                                 }
                                             }
 
-                                            ?>
+                                    ?>
                                             <div class="input-group input-group-sm mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Kelas <?= $kls ?></span>
@@ -89,7 +89,7 @@
 
 <?= form_open('create', array('id' => 'create')) ?>
 <div class="modal fade" id="createEkstraModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -125,7 +125,7 @@
 
 <?= form_open('update', array('id' => 'update')) ?>
 <div class="modal fade" id="editEkstraModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -162,7 +162,7 @@
 
 
 <script>
-    var kelases = JSON.parse('<?=json_encode($kelas)?>');
+    var kelases = JSON.parse('<?= json_encode($kelas) ?>');
     var table;
 
     function deleteItem(id) {
@@ -179,7 +179,7 @@
             if (result.value) {
                 $.ajax({
                     url: base_url + "dataekstra/delete/" + id,
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data);
                         if (data.status) {
                             showSuccessToast(data.message);
@@ -192,7 +192,8 @@
                                 icon: "error"
                             });
                         }
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log(xhr.responseText);
                         showDangerToast('Data error');
                     }
@@ -201,13 +202,13 @@
         });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         $('.select2').select2();
 
         var arrKelas = [];
-        $.each(kelases, function (key, entry) {
+        $.each(kelases, function(key, entry) {
             var item = {};
             item['kls_id'] = key;
             arrKelas.push(item);
@@ -215,11 +216,11 @@
         console.log(arrKelas);
 
         table = $("#tableEkstra").DataTable({
-            initComplete: function () {
+            initComplete: function() {
                 var api = this.api();
                 $("#tableEkstra_filter input")
                     .off(".DT")
-                    .on("keyup.DT", function (e) {
+                    .on("keyup.DT", function(e) {
                         api.search(this.value).draw();
                     });
             },
@@ -238,8 +239,7 @@
                 type: "POST"
                 //data: csrf
             },
-            columns: [
-                {
+            columns: [{
                     data: "id_ekstra",
                     className: "text-center",
                     orderable: false,
@@ -252,18 +252,17 @@
                     data: "kode_ekstra",
                 }
             ],
-            columnDefs: [
-                {
-                    searchable: false,
-                    targets: 3,
-                    className: "text-center",
-                    data: {
-                        id_ekstra: "id_ekstra",
-                        nama_ekstra: "nama_ekstra",
-                        kode_ekstra: "kode_ekstra"
-                    },
-                    render: function (data, type, row, meta) {
-                        return `<div class="btn-group btn-group-xs">
+            columnDefs: [{
+                searchable: false,
+                targets: 3,
+                className: "text-center",
+                data: {
+                    id_ekstra: "id_ekstra",
+                    nama_ekstra: "nama_ekstra",
+                    kode_ekstra: "kode_ekstra"
+                },
+                render: function(data, type, row, meta) {
+                    return `<div class="btn-group btn-group-xs">
 									<a class="btn btn-xs btn-warning editRecord" data-toggle="modal" data-target="#editEkstraModal" data-id='${data.id_ekstra}' data-nama='${data.nama_ekstra}' data-kode='${data.kode_ekstra}'>
 										<i class="fa fa-pencil-alt text-white text-xs"></i>
 									</a>
@@ -271,14 +270,15 @@
 								<i class="fa fa-trash text-white text-xs"></i>
 							</a>
 								</div>`;
-                    }
                 }
+            }],
+            order: [
+                [1, "asc"]
             ],
-            order: [[1, "asc"]],
-            rowId: function (a) {
+            rowId: function(a) {
                 return a;
             },
-            rowCallback: function (row, data, iDisplayIndex) {
+            rowCallback: function(row, data, iDisplayIndex) {
                 var info = this.fnPagingInfo();
                 var page = info.iPage;
                 var length = info.iLength;
@@ -292,11 +292,11 @@
             .container()
             .appendTo("#tableEkstra_wrapper .col-md-6:eq(1)");
 
-        $("#myModal").on("shown.modal.bs", function () {
+        $("#myModal").on("shown.modal.bs", function() {
             $(':input[name="banyak"]').select();
         });
 
-        $("#tableEkstra tbody").on("click", "tr .check", function () {
+        $("#tableEkstra tbody").on("click", "tr .check", function() {
             var check = $("#tableEkstra tbody tr .check").length;
             var checked = $("#tableEkstra tbody tr .check:checked").length;
             if (check === checked) {
@@ -306,7 +306,7 @@
             }
         });
 
-        $('#save').submit(function (e) {
+        $('#save').submit(function(e) {
             e.preventDefault();
 
             console.log("data:", $(this).serialize() + '&kelas=' + JSON.stringify(arrKelas));
@@ -315,7 +315,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize() + '&kelas=' + JSON.stringify(arrKelas),
-                success: function (data) {
+                success: function(data) {
                     if (data.status) {
                         console.log(data);
                         showSuccessToast(data.message)
@@ -323,14 +323,15 @@
                     } else {
                         showDangerToast('Data tidak tersimpan.');
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log(xhr.responseText);
                     showDangerToast('Data tidak tersimpan.');
                 }
             });
         });
 
-        $('#create').on('submit', function () {
+        $('#create').on('submit', function() {
             var nama = $('#createnama').val();
             var kode = $('#createkode').val();
             console.log("data:", $(this).serialize());
@@ -340,7 +341,7 @@
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     console.log("result", data);
                     window.location.href = base_url + 'dataekstra';
                     /*
@@ -351,10 +352,11 @@
                     //showSuccessToast('Data berhasil disimpan.');
                     //table.ajax.reload();
                     */
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     $('#createEkstraModal').modal('hide').data('bs.modal', null);
-                    $('#createEkstraModal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#createEkstraModal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
                     showDangerToast();
                 }
@@ -362,7 +364,7 @@
             return false;
         });
 
-        $('#editEkstraModal').on('show.bs.modal', function (e) {
+        $('#editEkstraModal').on('show.bs.modal', function(e) {
             var id = $(e.relatedTarget).data('id');
             var nama = $(e.relatedTarget).data('nama');
             var kode = $(e.relatedTarget).data('kode');
@@ -381,7 +383,7 @@
             attrKode.setAttribute("name", "kode_ekstra");
         });
 
-        $('#update').on('submit', function (e) {
+        $('#update').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -395,21 +397,21 @@
                 data: $(this).serialize(),
                 method: 'POST',
                 dataType: "JSON",
-                success: function (data) {
+                success: function(data) {
                     console.log("result", jQuery.parseJSON(data));
                     btn.removeAttr('disabled').text('Simpan');
                     $('#editEkstraModal').modal('hide').data('bs.modal', null);
-                    $('#editEkstraModal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#editEkstraModal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
 
                     showSuccessToast('Data berhasil diupdate.');
                     table.ajax.reload();
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     $('#editEkstraModal').modal('hide').data('bs.modal', null);
-                    $('#editEkstraModal').on('hidden', function () {
-                        $(this).data('modal', null);  // destroys modal
+                    $('#editEkstraModal').on('hidden', function() {
+                        $(this).data('modal', null); // destroys modal
                     });
                     showDangerToast('Error');
                     console.log(xhr);
@@ -429,5 +431,4 @@
             }
         }
     }
-
 </script>

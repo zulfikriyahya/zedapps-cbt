@@ -3,17 +3,17 @@
 $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
 ?>
 
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <button onclick="window.history.back();" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </button>
                 </div>
             </div>
@@ -24,9 +24,9 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
         <div class="container-fluid">
             <?= form_open('create', array('id' => 'create')) ?>
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6><?= $subjudul . ' - ' . $bank->bank_kode ?></h6>
+                        <h6 class="text-bold"><?= $subjudul . ' - ' . $bank->bank_kode ?></h6>
                     </div>
                     <div class="card-tools">
                         <button type="submit" class="btn btn-primary btn-sm">
@@ -34,7 +34,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="row">
                         <?php
                         echo form_hidden('id_bank', $bank->id_bank) ?>
@@ -42,7 +42,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                             <div class="form-group">
                                 <label for="">Kode Bank Soal</label>
                                 <input type="text" class="form-control form-control-sm" name="kode" maxlength="20"
-                                       placeholder="Masukan Kode Bank Soal" value="<?= $bank->bank_kode ?>" required>
+                                    placeholder="Masukan Kode Bank Soal" value="<?= $bank->bank_kode ?>" required>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -82,8 +82,8 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                             <div class="form-group">
                                 <label>Pilih Kelas</label><br>
                                 <select name="kelas[]" id="select-kelas"
-                                        class="select2 form-control form-control-sm" multiple="multiple"
-                                        required=""></select>
+                                    class="select2 form-control form-control-sm" multiple="multiple"
+                                    required=""></select>
                             </div>
                         </div>
                     </div>
@@ -98,27 +98,27 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                             <div class="form-group">
                                                 <label>Jml. Soal</label>
                                                 <input id="jml-pg" type='number' name='tampil_pg'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->tampil_pg ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->tampil_pg ?>" required />
                                             </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label>Bobot %</label>
                                                 <input id="bobot-pg" type='number' name='bobot_pg'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->bobot_pg ?>"
-                                                       required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->bobot_pg ?>"
+                                                    required />
                                             </div>
                                         </div>
                                         <div class="col-5">
                                             <div class="form-group">
                                                 <label>Opsi Jawaban</label>
                                                 <?php
-                                                $opsis [''] = 'Pilih Jml Opsi :';
-                                                $opsis ['3'] = '3 (A, B, C)';
-                                                $opsis ['4'] = '4 (A, B, C, D)';
-                                                $opsis ['5'] = '5 (A, B, C, D, E)';
+                                                $opsis[''] = 'Pilih Jml Opsi :';
+                                                $opsis['3'] = '3 (A, B, C)';
+                                                $opsis['4'] = '4 (A, B, C, D)';
+                                                $opsis['5'] = '5 (A, B, C, D, E)';
 
                                                 echo form_dropdown('opsi', $opsis, $bank->opsi, 'class="form-control form-control-sm" required'); ?>
                                             </div>
@@ -136,17 +136,17 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                             <div class="form-group">
                                                 <label>Jml. Soal</label>
                                                 <input id="jml-pg2" type='number' name='tampil_kompleks'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->tampil_kompleks ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->tampil_kompleks ?>" required />
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Bobot %</label>
                                                 <input id="bobot-pg2" type='number' name='bobot_kompleks'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->bobot_kompleks ?>"
-                                                       required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->bobot_kompleks ?>"
+                                                    required />
                                             </div>
                                         </div>
                                     </div>
@@ -165,16 +165,16 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                             <div class="form-group">
                                                 <label>Jml. Soal</label>
                                                 <input id="jml-jodohkan" type='number' name='tampil_jodohkan'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->tampil_jodohkan ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->tampil_jodohkan ?>" required />
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Bobot %</label>
                                                 <input id="bobot-jodohkan" type='number' name='bobot_jodohkan'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->bobot_jodohkan ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->bobot_jodohkan ?>" required />
                                             </div>
                                         </div>
                                     </div>
@@ -190,16 +190,16 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                             <div class="form-group">
                                                 <label>Jml. Soal</label>
                                                 <input id="jml-isian" type='number' name='tampil_isian'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->tampil_isian ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->tampil_isian ?>" required />
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Bobot %</label>
                                                 <input id="bobot-isian" type='number' name='bobot_isian'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->bobot_isian ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->bobot_isian ?>" required />
                                             </div>
                                         </div>
                                     </div>
@@ -215,16 +215,16 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                                             <div class="form-group">
                                                 <label>Jml. Soal</label>
                                                 <input id="jml-essai" type='number' name='tampil_esai'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->tampil_esai ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->tampil_esai ?>" required />
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Bobot %</label>
                                                 <input id="bobot-essai" type='number' name='bobot_esai'
-                                                       class='form-control form-control-sm'
-                                                       value="<?= $bank->bobot_esai ?>" required/>
+                                                    class='form-control form-control-sm'
+                                                    value="<?= $bank->bobot_esai ?>" required />
                                             </div>
                                         </div>
                                     </div>
@@ -261,9 +261,9 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                             <div class="form-group">
                                 <label>Status Bank Soal</label>
                                 <?php
-                                $aktifs [''] = 'Pilih Status :';
-                                $aktifs ['1'] = 'Aktif';
-                                $aktifs ['0'] = 'Non Aktif';
+                                $aktifs[''] = 'Pilih Status :';
+                                $aktifs['1'] = 'Aktif';
+                                $aktifs['0'] = 'Non Aktif';
 
                                 echo form_dropdown('status', $aktifs, $bank->status, 'class="form-control form-control-sm" required'); ?>
                             </div>
@@ -279,10 +279,10 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
 <script>
     var isAdmin = '<?= $this->ion_auth->is_admin() ?>';
     let kelasSelect = JSON.parse('<?= $kelasSelected ?>');
-    var idGuru = '<?=$id_guru?>';
-    var idMapel = '<?=$bank->bank_mapel_id?>';
+    var idGuru = '<?= $id_guru ?>';
+    var idMapel = '<?= $bank->bank_mapel_id ?>';
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
         var selLevel = $('#select-level');
         var selKelas = $('#select-kelas');
@@ -301,7 +301,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
         getGuruMapel(selMapel.val());
         getKelasLevel(selLevel.val(), selMapel.val());
 
-        $('#create').submit('click', function (e) {
+        $('#create').submit('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             console.log("data:", $(this).serialize());
@@ -321,7 +321,7 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                 type: "POST",
                 dataType: "JSON",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     swal.fire({
                         title: "Sukses",
                         html: 'Bank soal berhasil disimpan',
@@ -334,7 +334,8 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                             window.history.back();
                         }
                     });
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
@@ -351,18 +352,19 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                 $.ajax({
                     url: base_url + "cbtbanksoal/getgurumapel?id_mapel=" + mapel,
                     type: "GET",
-                    success: function (data) {
+                    success: function(data) {
                         console.log('guru', data);
                         var opts = '';
                         selGuru.html(opts);
-                        $.each(data, function (k, v) {
+                        $.each(data, function(k, v) {
                             var selected = idGuru == k ? 'selected=selected' : '';
                             opts += '<option value="' + k + '" ' + selected + '>' + v + '</option>';
                         });
                         selGuru.html(opts);
                         idGuru = selGuru.val();
                         getKelasLevel(selLevel.val(), selMapel.val());
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log("error", xhr.responseText);
                     }
                 });
@@ -379,33 +381,36 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
                 $.ajax({
                     url: base_url + "cbtbanksoal/getkelaslevel?level=" + level + "&id_guru=" + idGuru + '&mapel=' + mapel,
                     type: "GET",
-                    success: function (data) {
+                    success: function(data) {
                         console.log('kelas', data);
-                        selKelas.html('').select2({data: null}).trigger('change');
+                        selKelas.html('').select2({
+                            data: null
+                        }).trigger('change');
                         var kelas = data.kelas;
                         for (let i = 0; i < kelas.length; i++) {
                             var selected = jQuery.inArray(kelas[i].id_kelas, as) > -1;
                             selKelas.append(new Option(kelas[i].kode_kelas, kelas[i].id_kelas, false, selected));
                         }
                         selKelas.trigger('change');
-                    }, error: function (xhr, status, error) {
+                    },
+                    error: function(xhr, status, error) {
                         console.log("error", xhr.responseText);
                     }
                 });
             }
         }
 
-        selGuru.on('change', function () {
+        selGuru.on('change', function() {
             idGuru = $(this).val();
             console.log('id_guru_change', idGuru);
             getKelasLevel(selLevel.val(), selMapel.val());
         });
 
-        selLevel.on('change', function () {
+        selLevel.on('change', function() {
             getKelasLevel($(this).val(), selMapel.val());
         });
 
-        selMapel.on('change', function () {
+        selMapel.on('change', function() {
             getGuruMapel($(this).val());
         });
 
@@ -445,37 +450,36 @@ $kelasSelected = json_encode(unserialize($bank->bank_kelas ?? ''));
             totalSoal.text((jmlpg + jmlpp2 + jmljodohkan + jmlisian + jmlessai) + '');
         }
 
-        valBobotPg.on('change keyup', function () {
+        valBobotPg.on('change keyup', function() {
             onChangeValueBobot();
         });
-        valBobotPg2.on('change keyup', function () {
+        valBobotPg2.on('change keyup', function() {
             onChangeValueBobot();
         });
-        valBobotJodohkan.on('change keyup', function () {
+        valBobotJodohkan.on('change keyup', function() {
             onChangeValueBobot();
         });
-        valBobotIsian.on('change keyup', function () {
+        valBobotIsian.on('change keyup', function() {
             onChangeValueBobot();
         });
-        valBobotEssai.on('change keyup', function () {
+        valBobotEssai.on('change keyup', function() {
             onChangeValueBobot();
         });
 
-        valSoalPg.on('change keyup', function () {
+        valSoalPg.on('change keyup', function() {
             onChangeValueJumlah();
         });
-        valSoalPg2.on('change keyup', function () {
+        valSoalPg2.on('change keyup', function() {
             onChangeValueJumlah();
         });
-        valSoalJodohkan.on('change keyup', function () {
+        valSoalJodohkan.on('change keyup', function() {
             onChangeValueJumlah();
         });
-        valSoalIsian.on('change keyup', function () {
+        valSoalIsian.on('change keyup', function() {
             onChangeValueJumlah();
         });
-        valSoalEssai.on('change keyup', function () {
+        valSoalEssai.on('change keyup', function() {
             onChangeValueJumlah();
         });
     });
-
 </script>

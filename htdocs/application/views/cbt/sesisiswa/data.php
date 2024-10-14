@@ -3,12 +3,12 @@
 $jenjang = $setting->jenjang;
 ?>
 
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -17,16 +17,16 @@ $jenjang = $setting->jenjang;
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow mb-4">
-                <div class="card-header">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                <div class="card-header bg-orange">
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <div class="card-tools">
                         <a type="button" href="<?= base_url('cbtsesisiswa?kls=' . $kelas_selected) ?>"
-                           class="btn btn-sm btn-default">
+                            class="btn btn-sm btn-default">
                             <i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ml-1">Reload</span>
                         </a>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <?php
                     $kelass = ['0' => 'Pilih kelas'] + $kelas;
                     $ruangs = ['0' => 'Pilih ruang'] + $ruang;
@@ -48,8 +48,8 @@ $jenjang = $setting->jenjang;
                             <div class="col-12 col-md-7 mb-3">
                                 <label>Gabungkan siswa <?= $kelass[$kelas_selected] ?> ke ruang dan sesi: </label>
                                 <span id="undo" class="float-right badge btn">
-                                <i class="fa fa-undo"></i>
-                            </span>
+                                    <i class="fa fa-undo"></i>
+                                </span>
                                 <div class="row">
                                     <div class="col-6">
                                         <?php
@@ -90,7 +90,7 @@ $jenjang = $setting->jenjang;
                                     foreach ($siswas as $siswa) :
                                         $ruangId = isset($siswa->id_ruang) && $siswa->id_ruang != null ? $siswa->id_ruang : '0';
                                         $sesiId = isset($siswa->id_sesi) && $siswa->id_sesi != null ? $siswa->id_sesi : '0';
-                                        ?>
+                                    ?>
                                         <tr>
                                             <td class="align-middle text-center p-0"><?= $num ?></td>
                                             <td class="align-middle pl-2 pr-2"><?= $siswa->nama ?></td>
@@ -114,7 +114,8 @@ $jenjang = $setting->jenjang;
                                                 ); ?>
                                             </td>
                                         </tr>
-                                        <?php $num++; endforeach; ?>
+                                    <?php $num++;
+                                    endforeach; ?>
                                 </table>
                             </div>
                             <div class="float-right">
@@ -126,7 +127,7 @@ $jenjang = $setting->jenjang;
                         </div>
                     <?php else: ?>
                         <div class="alert alert-default-warning align-content-center"
-                             role="alert"><?= $kelas_selected == '0' ? 'Pilih kelas' : 'Belum ada data siswa' ?></div>
+                            role="alert"><?= $kelas_selected == '0' ? 'Pilih kelas' : 'Belum ada data siswa' ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="overlay d-none" id="loading">
@@ -140,11 +141,11 @@ $jenjang = $setting->jenjang;
 <script>
     let tp_id = '<?= $tp_active->id_tp ?>';
     let smt_id = '<?= $smt_active->id_smt ?>';
-    var kelas_id = '<?=$kelas_selected?>';
+    var kelas_id = '<?= $kelas_selected ?>';
     var jsonRuang = [];
     var jsonSesi = [];
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
         var opsiKelas = $('#dropdown-kelas');
         var opsiGruang = $('#g-ruang');
@@ -153,7 +154,7 @@ $jenjang = $setting->jenjang;
         opsiKelas.select2();
         opsiGruang.select2();
         opsiGsesi.select2();
-        opsiKelas.on('change', function (e) {
+        opsiKelas.on('change', function(e) {
             var id = $(this).val();
             console.log(id);
             if (id != kelas_id) {
@@ -162,47 +163,47 @@ $jenjang = $setting->jenjang;
             }
         });
 
-        opsiGruang.on('change', function () {
+        opsiGruang.on('change', function() {
             const $ruangSelect = $('.ruangsiswa');
             if (jsonRuang.length === 0) {
                 $ruangSelect.each((i, row) => {
                     let item = {};
-                    item ["id"] = $(row).data('ruangid');
-                    item ["val"] = $(row).val();
+                    item["id"] = $(row).data('ruangid');
+                    item["val"] = $(row).val();
                     jsonRuang.push(item);
                 });
             }
             $ruangSelect.val($(this).val());
         });
 
-        opsiGsesi.on('change', function () {
+        opsiGsesi.on('change', function() {
             const $sesiSelect = $('.sesisiswa');
             if (jsonSesi.length === 0) {
                 $sesiSelect.each((i, row) => {
                     let item = {};
-                    item ["id"] = $(row).data('sesiid');
-                    item ["val"] = $(row).val();
+                    item["id"] = $(row).data('sesiid');
+                    item["val"] = $(row).val();
                     jsonSesi.push(item);
                 });
             }
             $sesiSelect.val($(this).val());
         });
 
-        $('#undo').on('click', function () {
+        $('#undo').on('click', function() {
             if (jsonRuang.length > 0) {
-                $.each(jsonRuang, function (i, v) {
+                $.each(jsonRuang, function(i, v) {
                     $('select[data-ruangid="' + v.id + '"]').val(v.val);
                 });
             }
 
             if (jsonSesi.length > 0) {
-                $.each(jsonSesi, function (i, v) {
+                $.each(jsonSesi, function(i, v) {
                     $('select[data-sesiid="' + v.id + '"]').val(v.val);
                 });
             }
         });
 
-        $("#editsesisiswa").on("submit", function (e) {
+        $("#editsesisiswa").on("submit", function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             $('#loading').removeClass('d-none');
@@ -212,7 +213,7 @@ $jenjang = $setting->jenjang;
                 url: base_url + "cbtsesisiswa/editsesisiswa",
                 type: "POST",
                 data: $(this).serialize(),
-                success: function (data) {
+                success: function(data) {
                     $('#loading').addClass('d-none');
                     console.log("response:", data);
                     if (data.status) {
@@ -221,7 +222,8 @@ $jenjang = $setting->jenjang;
                     } else {
                         showDangerToast('gagal disimpan')
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     $('#loading').addClass('d-none');
                     console.log("response:", xhr.responseText);
                     showDangerToast('gagal disimpan')
@@ -230,4 +232,3 @@ $jenjang = $setting->jenjang;
         });
     });
 </script>
-
