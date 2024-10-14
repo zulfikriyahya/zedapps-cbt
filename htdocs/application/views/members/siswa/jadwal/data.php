@@ -20,12 +20,14 @@ if (isset($jadwal_kbm)) {
             <div class="row">
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <h5 class="text-center">
-                                Jadwal Pelajaran Kelas <?= $siswa->nama_kelas ?>
-                                <br>Tahun Pelajaran <?= $tp_active->tahun ?> Semester <?= $smt_active->smt ?>
-                            </h5>
+                        <div class="card-header bg-info">
+                            <div class="text-center text-bold">
+                                Jadwal Pelajaran <strong>Kelas <?= $siswa->nama_kelas ?></strong>
+                                <br>
+                                <small>Tahun Pelajaran <?= $tp_active->tahun ?> Semester <?= $smt_active->smt ?></small>
+                            </div>
                         </div>
+
                         <div class="card-body">
                             <?php
                             if (isset($jadwal_mapel)) :
@@ -51,7 +53,7 @@ if (isset($jadwal_kbm)) {
                             ?>
                                 <div class="table-responsive">
                                     <table id="jadwal-pelajaran" class="w-100 table table-striped table-bordered">
-                                        <thead class="alert alert-primary">
+                                        <thead class="alert alert-info">
                                             <tr>
                                                 <th height="50" class="align-middle text-center p-0">JAM</th>
                                                 <th class="align-middle text-center p-0">SEN</th>

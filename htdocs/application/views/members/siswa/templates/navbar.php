@@ -10,7 +10,7 @@
     </ul>
 
     <div class="mx-auto text-white text-center" style="line-height: 1">
-        <span class="text-lg p-0">e-Learning</span>
+        <span class="text-lg p-0">ZEDAPPS SCHOOL</span>
         <br>
         <small>Belajar kapanpun dimanapun</small>
     </div>

@@ -8,9 +8,9 @@
             <?php $this->load->view('members/siswa/templates/top'); ?>
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <div class="card card-primary">
+                    <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
+                            <div class="card-title text-white text-bold">
                                 NILAI HASIL MATERI
                             </div>
                         </div>
@@ -60,9 +60,9 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="card card-red">
+                    <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
+                            <div class="card-title text-white text-bold">
                                 NILAI HASIL TUGAS
                             </div>
                         </div>
@@ -111,10 +111,10 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="card card-purple">
+                    <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
-                                NILAI HASIL ULANGAN/UJIAN
+                            <div class="card-title text-white text-bold">
+                                NILAI HASIL ASSESMEN
                             </div>
                         </div>
                         <div class="card-body">
@@ -127,8 +127,8 @@
                                 ?>
                                 <table class="table w-100" id="table-nilai-ujian">
                                     <thead>
-                                        <tr>
-                                            <th class="text-center align-middle">NO</th>
+                                        <tr class="text-center align-middle bg-info">
+                                            <th>NO</th>
                                             <th>Jenis Penilaian</th>
                                             <th>Mata Pelajaran</th>
                                             <th>Kode Penilaian</th>

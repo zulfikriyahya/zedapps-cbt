@@ -23,10 +23,11 @@
                 ?>
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <h5 class="text-center">
-                                <?= strtoupper($judul ?? '') ?> HARI INI<br /><?= buat_tanggal(date('D, d M Y')) ?>
-                            </h5>
+                        <div class="card-header bg-info">
+                            <div class="text-center text-bold">
+                                <?= strtoupper($judul ?? '') ?> HARI INI<br />
+                                <small><?= buat_tanggal(date('D, d M Y')) ?></small>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -192,13 +193,13 @@
                 </div>
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <h5 class="text-center">
+                        <div class="card-header bg-info">
+                            <div class="text-center text-bold">
                                 <?= strtoupper($judul ?? '') ?> TERDAHULU
-                            </h5>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <ul class="nav nav-pills mb-2" id="pills-tab" role="tablist">
+                            <ul class="nav nav-pills mb-2 border" id="pills-tab" role="tablist">
                                 <?php foreach ($week as $index => $tgl) :
                                     $idhari = date('N', strtotime($tgl));
                                     $hari = date('Y-m-d');

@@ -22,8 +22,8 @@ $jadwal_selesai = [];
             <div class="row">
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <div class="text-center">INFO ULANGAN/UJIAN</div>
+                        <div class="card-header bg-info">
+                            <div class="text-center text-bold">INFO ASSESMEN</div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -64,7 +64,7 @@ $jadwal_selesai = [];
                                 <div class="col-md-8">
                                     <div class="alert alert-default-danger">
                                         <div class="text-center"><b>** INFORMASI PENTING **</b></div>
-                                        Selama melaksanakan ULANGAN/UJIAN <b>Siswa DILARANG:</b>
+                                        Selama melaksanakan Assesmen <b>Siswa DILARANG:</b>
                                         <ul>
                                             <li>
                                                 Meninggalkan ruang ujian tanpa izin pengawas
@@ -88,18 +88,17 @@ $jadwal_selesai = [];
 
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <h5 class="text-center">
-                                JADWAL PENILAIAN HARI INI<br /><?= buat_tanggal(date('D, d M Y')) ?>
-                            </h5>
+                        <div class="card-header bg-info">
+                            <div class="text-center text-bold">
+                                JADWAL ASSESMEN<br /><small><?= buat_tanggal(date('D, d M Y')) ?></small>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row" id="jadwal-content">
                                 <?php
                                 if ($cbt_info == null || count($cbt_setting) > 0) : ?>
                                     <div class="col-12 alert alert-default-warning">
-                                        <div class="text-center">Tidak ada jadwal penilaian.<b>Tidak bisa mengerjakan
-                                                ulangan/ujian.<br>Hubungi Proktor/Admin</div>
+                                        <div class="text-center">Tidak ada jadwal assesmen.</div>
                                     </div>
                                     <?php else:
                                     $jamSesi = $cbt_info == null ? '0' : (isset($cbt_info->sesi_id) ? $cbt_info->sesi_id : $cbt_info->id_sesi);
@@ -246,7 +245,7 @@ $jadwal_selesai = [];
                                         endforeach;
                                     else: ?>
                                         <div class="col-12 alert alert-default-warning">
-                                            <div class="text-center">Tidak ada jadwal penilaian hari ini.</div>
+                                            <div class="text-center">Tidak ada jadwal assesmen hari ini.</div>
                                         </div>
                                 <?php
                                     endif;
@@ -259,10 +258,10 @@ $jadwal_selesai = [];
 
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <h5 class="text-center">
-                                JADWAL PENILAIAN SEBELUMNYA
-                            </h5>
+                        <div class="card-header bg-info">
+                            <div class="text-center text-bold">
+                                JADWAL ASSESMEN SEBELUMNYA
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row table-responsive">

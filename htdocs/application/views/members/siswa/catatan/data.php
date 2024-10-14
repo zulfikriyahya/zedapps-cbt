@@ -8,9 +8,9 @@
             <?php $this->load->view('members/siswa/templates/top'); ?>
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-purple">
+                    <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white">
+                            <div class="card-title text-white text-bold">
                                 <?= $subjudul ?>
                             </div>
                         </div>

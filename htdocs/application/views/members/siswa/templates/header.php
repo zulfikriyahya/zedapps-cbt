@@ -15,7 +15,7 @@
     <!-- v3 -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
-          href="<?= base_url() ?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        href="<?= base_url() ?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/fontawesome.min.css">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/Ionicons/css/ionicons.min.css">
     <!-- pace-progress -->
     <link rel="stylesheet"
-          href="<?= base_url() ?>/assets/plugins/pace-progress/themes/silver/pace-theme-center-circle.css">
+        href="<?= base_url() ?>/assets/plugins/pace-progress/themes/silver/pace-theme-center-circle.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -92,7 +92,7 @@
 </head>
 
 <script type="text/javascript">
-    let base_url = '<?=base_url()?>';
+    let base_url = '<?= base_url() ?>';
 </script>
 
 <?php
@@ -155,41 +155,43 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
 ?>
 
 <body class="layout-top-nav layout-navbar-fixed">
-<div class="wrapper">
-    <nav class="main-header navbar navbar-expand-md navbar-dark navbar-green border-bottom-0">
-        <ul class="navbar-nav ml-2 <?= $dnone ?>" id="back">
-            <li class="nav-item">
-                <a href="<?= base_url('dashboard') ?>" type="button" class="btn btn-success" id="url-back">
-                    <i class="fas fa-arrow-left mr-2"></i><span class="d-none d-sm-inline-block ml-1">Beranda</span>
-                </a>
-            </li>
-        </ul>
-        <div class="mx-auto text-white text-center" style="line-height: 1">
-            <span class="text-lg p-0"><?= $setting->nama_aplikasi ?></span>
-            <br>
-            <small>Tahun Pelajaran: <?= $tp_active->tahun ?> Smt:<?= $smt_active->smt ?></small>
-        </div>
-        <ul class="navbar-nav <?= $display_clock ?>">
-            <li class="nav-item">
-                <div id="live-clock" class="text-right text-white"></div>
-            </li>
-        </ul>
-        <ul class="navbar-nav <?= $display_logout ?>">
-            <li class="nav-item">
-                <button onclick="logout()" class="btn btn-danger btn-outline-light">
-                    <span class="d-none d-sm-inline-block mr-2">Logout</span><i class="fas fa-sign-out-alt"></i>
-                </button>
-            </li>
-        </ul>
-    </nav>
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark border-bottom-0">
+            <ul class="navbar-nav ml-2 <?= $dnone ?>" id="back">
+                <li class="nav-item">
+                    <a href="<?= base_url('dashboard') ?>" type="button" class="btn btn-success" id="url-back">
+                        <i class="fas fa-arrow-left mr-2"></i><span class="d-none d-sm-inline-block ml-1">Beranda</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="mx-auto text-white text-center" style="line-height: 1">
+                <span class="text-lg p-0">
+                    <h5 class="text-bold"><?= $setting->nama_aplikasi ?></h5>
+                </span>
+                <!-- <br>
+                <small>Tahun Pelajaran: <?= $tp_active->tahun ?> Smt:<?= $smt_active->smt ?></small> -->
+            </div>
+            <ul class="navbar-nav <?= $display_clock ?>">
+                <li class="nav-item">
+                    <div id="live-clock" class="text-right text-white"></div>
+                </li>
+            </ul>
+            <ul class="navbar-nav <?= $display_logout ?>">
+                <li class="nav-item">
+                    <button onclick="logout()" class="btn btn-danger btn-outline-light">
+                        <span class="d-none d-sm-inline-block mr-2">Logout</span><i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
 
-    <script type="text/javascript">
-        const isLogin = localStorage.getItem('garudaCBT.login')
-        const isCbtMode = isLogin ? isLogin === '1' : false
-        if (isCbtMode) {
-            $("a#url-back").attr("href", base_url + 'siswa/cbt');
-            if ('<?= $cbt ?>' === 'cbt') {
-                $('#back').addClass('d-none')
+        <script type="text/javascript">
+            const isLogin = localStorage.getItem('garudaCBT.login')
+            const isCbtMode = isLogin ? isLogin === '1' : false
+            if (isCbtMode) {
+                $("a#url-back").attr("href", base_url + 'siswa/cbt');
+                if ('<?= $cbt ?>' === 'cbt') {
+                    $('#back').addClass('d-none')
+                }
             }
-        }
-    </script>
+        </script>

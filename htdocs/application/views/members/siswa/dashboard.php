@@ -8,7 +8,7 @@
             <?php $this->load->view('members/siswa/templates/top'); ?>
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-blue">
+                    <div class="card card-info">
                         <div class="card-header">
                             <div class="card-title text-white">
                                 MENU UTAMA
@@ -21,8 +21,8 @@
                                         <a href="<?= base_url($m->link) ?>">
                                             <figure class="text-center">
                                                 <img class="img-fluid"
-                                                     src="<?= base_url() ?>/assets/app/img/<?= $m->icon ?>" width="80"
-                                                     height="80"/>
+                                                    src="<?= base_url() ?>/assets/app/img/<?= $m->icon ?>" width="80"
+                                                    height="80" />
                                                 <figcaption><?= $m->title ?></figcaption>
                                             </figure>
                                         </a>
@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-7">
-                    <div class="card card-success">
+                    <div class="card card-info">
                         <div class="card-header">
                             <div class="card-title text-white">
                                 INFO/PENGUMUMAN
@@ -46,11 +46,11 @@
                                 <div id="pengumuman">
                                 </div>
                                 <p id="loading-post" class="text-center d-none">
-                                    <br/><i class="fa fa-spin fa-circle-o-notch"></i> Loading....
+                                    <br /><i class="fa fa-spin fa-circle-o-notch"></i> Loading....
                                 </p>
                                 <div id="loadmore-post"
-                                     onclick="getPosts()"
-                                     class="text-center mt-4 loadmore d-none">
+                                    onclick="getPosts()"
+                                    class="text-center mt-4 loadmore d-none">
                                     <div class="btn btn-default">Muat Timeline lainnya ...</div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-5">
-                    <div class="card card-red">
+                    <div class="card card-info">
                         <div class="card-header">
                             <div class="card-title text-white">
                                 JADWAL HARI INI
@@ -66,7 +66,7 @@
                             <div class="card-tools">
                                 <button type="button" onclick="loadJadwal()" class="btn btn-sm">
                                     <i class="fa fa-sync text-white"></i> <span
-                                            class="d-none d-sm-inline-block ml-1 text-white">Reload</span>
+                                        class="d-none d-sm-inline-block ml-1 text-white">Reload</span>
                                 </button>
                             </div>
                         </div>
@@ -83,43 +83,44 @@
                                         }
                                     }
                                     $active = $no == 1 ? 'active' : '';
-                                    ?>
+                            ?>
 
                                     <div class="table-responsive">
                                         <table class="w-100 table">
                                             <tbody>
-                                            <?php
-                                            $jamMulai = new DateTime($kbms->kbm_jam_mulai);
-                                            $jamSampai = new DateTime($kbms->kbm_jam_mulai);
-                                            for ($i = 0; $i < $kbms->kbm_jml_mapel_hari; $i++) :
-                                                $jamke = $i + 1;
-                                                if (in_array($jamke, $arrIst)) :
-                                                    $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                                    ?>
-                                                    <tr class="jam" data-jamke="<?= $jamke ?>">
-                                                        <td class="align-middle" width="150">
-                                                            <?= $jamMulai->format('H:i') ?>
-                                                            - <?= $jamSampai->format('H:i') ?>
-                                                        </td>
-                                                        <td class="align-middle">ISTIRAHAT</td>
-                                                    </tr>
+                                                <?php
+                                                $jamMulai = new DateTime($kbms->kbm_jam_mulai);
+                                                $jamSampai = new DateTime($kbms->kbm_jam_mulai);
+                                                for ($i = 0; $i < $kbms->kbm_jml_mapel_hari; $i++) :
+                                                    $jamke = $i + 1;
+                                                    if (in_array($jamke, $arrIst)) :
+                                                        $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
+                                                ?>
+                                                        <tr class="jam" data-jamke="<?= $jamke ?>">
+                                                            <td class="align-middle" width="150">
+                                                                <?= $jamMulai->format('H:i') ?>
+                                                                - <?= $jamSampai->format('H:i') ?>
+                                                            </td>
+                                                            <td class="align-middle">ISTIRAHAT</td>
+                                                        </tr>
                                                     <?php
-                                                    $jamMulai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                                else :
-                                                    $jamSampai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
+                                                        $jamMulai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
+                                                    else :
+                                                        $jamSampai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
                                                     ?>
-                                                    <tr class="jam" data-jamke="<?= $jamke ?>">
-                                                        <td class="align-middle">
-                                                            <?= $jamMulai->format('H:i') ?>
-                                                            - <?= $jamSampai->format('H:i') ?>
-                                                        </td>
-                                                        <td class="align-middle">
-                                                            <?= $jadwals[$jamke]->kode != null ? $jadwals[$jamke]->kode : '--' ?>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                    $jamMulai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
-                                                endif; endfor; ?>
+                                                        <tr class="jam" data-jamke="<?= $jamke ?>">
+                                                            <td class="align-middle">
+                                                                <?= $jamMulai->format('H:i') ?>
+                                                                - <?= $jamSampai->format('H:i') ?>
+                                                            </td>
+                                                            <td class="align-middle">
+                                                                <?= $jadwals[$jamke]->kode != null ? $jadwals[$jamke]->kode : '--' ?>
+                                                            </td>
+                                                        </tr>
+                                                <?php
+                                                        $jamMulai->add(new DateInterval('PT' . $kbms->kbm_jam_pel . 'M'));
+                                                    endif;
+                                                endfor; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -142,7 +143,7 @@
 </div>
 
 <div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="previewLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -182,10 +183,10 @@
                     <input type="hidden" id="id-post" name="id_post" value="">
                     <div class="input-group">
                         <input type="text" name="text" placeholder="Tulis komentar ..."
-                               class="form-control form-control-sm" required>
+                            class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                                <button type="submit" class="btn btn-success btn-sm">Komentari</button>
-                            </span>
+                            <button type="submit" class="btn btn-success btn-sm">Komentari</button>
+                        </span>
                     </div>
                     <?= form_close() ?>
                 </div>
@@ -213,10 +214,10 @@
                     <input type="hidden" id="id-comment" name="id_comment" value="">
                     <div class="input-group">
                         <input type="text" name="text" placeholder="Tulis balasan ...."
-                               class="form-control form-control-sm" required>
+                            class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                                <button type="submit" class="btn btn-success btn-sm">Balas</button>
-                            </span>
+                            <button type="submit" class="btn btn-success btn-sm">Balas</button>
+                        </span>
                     </div>
                     <?= form_close() ?>
                 </div>
@@ -231,12 +232,12 @@
 <script>
     let jadwalKbm;
     var arrIst = [];
-    var kelas = '<?=$siswa->id_kelas?>';
-    var kodeKelas = '<?=$siswa->kode_kelas?>';
+    var kelas = '<?= $siswa->id_kelas ?>';
+    var kodeKelas = '<?= $siswa->kode_kelas ?>';
     var pengumuman;
 
     var halaman = 0;
-    var idSiswa = "<?=$siswa->id_siswa?>";
+    var idSiswa = "<?= $siswa->id_siswa ?>";
 
     function createTime(d) {
         var date = new Date(d);
@@ -277,7 +278,7 @@
 
     function addComments(id, comments, append) {
         var comm = '';
-        $.each(comments, function (i, v) {
+        $.each(comments, function(i, v) {
             var dari, foto, avatar;
             if (v.dari == '0') {
                 dari = 'Admin';
@@ -295,8 +296,8 @@
                 }
             }
 
-            comm += '<div class="media mt-1" id="parent-reply' + v.id_comment + '">'
-                + avatar +
+            comm += '<div class="media mt-1" id="parent-reply' + v.id_comment + '">' +
+                avatar +
                 '    <div class="w-100 ml-2">' +
                 '        <div class="media-body border pl-3 bg-light" style="border-radius: 20px">' +
                 '            <span class="text-xs text-muted"><b>' + dari + '</b></span>' +
@@ -337,14 +338,14 @@
             $(`#konten${id}`).prepend(comm);
         }
 
-        $('.toggle-reply').on('shown.bs.collapse', function (e) {
+        $('.toggle-reply').on('shown.bs.collapse', function(e) {
             var konten = $(this);
             var id = konten.data('id');
             var list = $(this).find('.media').length;
             if (list === 0) $(`#loadmore-reply${id}`).click();
         });
 
-        $('#balasan').on('submit', function (e) {
+        $('#balasan').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -356,18 +357,18 @@
                 data: $(this).serialize(),
                 method: 'POST',
                 dataType: "JSON",
-                success: function (response) {
+                success: function(response) {
                     console.log("result", response);
                     $('#balasanModal').modal('hide').data('bs.modal', null);
-                    $('#balasanModal').on('hidden', function () {
+                    $('#balasanModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     //window.location.href = base_url + 'pengumuman';
                     addReplies(id, response, false)
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     $('#balasanModal').modal('hide').data('bs.modal', null);
-                    $('#balasanModal').on('hidden', function () {
+                    $('#balasanModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     showDangerToast('Error, balasan tidak terkirim');
@@ -380,7 +381,7 @@
     function addReplies(id, replies, append) {
         console.log('replies', replies);
         var repl = '';
-        $.each(replies, function (i, v) {
+        $.each(replies, function(i, v) {
             var sudahAda = $(`.media${v.id_reply}`).length;
             if (!sudahAda) {
                 var dari, foto, avatar;
@@ -401,8 +402,8 @@
                 }
 
                 repl +=
-                    '<div class="media mt-1 media' + v.id_reply + '">'
-                    + avatar +
+                    '<div class="media mt-1 media' + v.id_reply + '">' +
+                    avatar +
                     '    <div class="w-100">' +
                     '        <div class="media-body border pl-3" style="border-radius: 17px; background-color: #dee2e6">' +
                     '            <span class="text-xs text-muted"><b>' + dari + '</b></span>' +
@@ -433,14 +434,15 @@
     function getComments(id) {
         $(`#loading${id}`).removeClass('d-none');
         $(`#loadmore${id}`).addClass('d-none');
-        var $count = $(`#loadmore${id}`), page = $count.data('count');
+        var $count = $(`#loadmore${id}`),
+            page = $count.data('count');
         if (!page) page = 0;
 
-        setTimeout(function () {
+        setTimeout(function() {
             $.ajax({
                 url: base_url + "siswa/getcomment/" + id + "/" + page,
                 type: "GET",
-                success: function (response) {
+                success: function(response) {
                     //console.log('page', page);
                     console.log("result", response);
                     page += 1;
@@ -452,7 +454,8 @@
                     }
                     $(`#loading${id}`).addClass('d-none');
                     addComments(id, response, true)
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                 }
             });
@@ -462,14 +465,15 @@
     function getReplies(id) {
         $(`#loading-reply${id}`).removeClass('d-none');
         $(`#loadmore-reply${id}`).addClass('d-none');
-        var $count = $(`#loadmore-reply${id}`), page = $count.data('count');
+        var $count = $(`#loadmore-reply${id}`),
+            page = $count.data('count');
         if (!page) page = 0;
 
-        setTimeout(function () {
+        setTimeout(function() {
             $.ajax({
                 url: base_url + "siswa/getreplies/" + id + "/" + page,
                 type: "GET",
-                success: function (response) {
+                success: function(response) {
                     //console.log('page', page);
                     console.log("result", response);
                     page += 1;
@@ -482,7 +486,8 @@
                     }
                     $(`#loading-reply${id}`).addClass('d-none');
                     addReplies(id, response, true)
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                 }
             });
@@ -492,7 +497,7 @@
     function addPosts(response) {
         var card = '';
 
-        $.each(response, function (i, v) {
+        $.each(response, function(i, v) {
             var dari, foto, avatar;
             if (v.dari == '0') {
                 dari = 'Admin';
@@ -557,14 +562,14 @@
 
         $('#pengumuman').html(card);
 
-        $('.toggle-comment').on('shown.bs.collapse', function (e) {
+        $('.toggle-comment').on('shown.bs.collapse', function(e) {
             var konten = $(this);
             var id = konten.data('id');
             var list = $(this).find('.media').length;
             if (list === 0) $(`#loadmore${id}`).click();
         });
 
-        $('#komentarModal').on('show.bs.modal', function (e) {
+        $('#komentarModal').on('show.bs.modal', function(e) {
             var id = $(e.relatedTarget).data('id');
             $("#id-post").val(id);
 
@@ -574,7 +579,7 @@
             }
         });
 
-        $('#balasanModal').on('show.bs.modal', function (e) {
+        $('#balasanModal').on('show.bs.modal', function(e) {
             var id = $(e.relatedTarget).data('id');
             $("#id-comment").val(id);
 
@@ -584,7 +589,7 @@
             }
         });
 
-        $('#komentar').on('submit', function (e) {
+        $('#komentar').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -596,18 +601,18 @@
                 data: $(this).serialize(),
                 method: 'POST',
                 dataType: "JSON",
-                success: function (response) {
+                success: function(response) {
                     console.log("result", response);
                     $('#komentarModal').modal('hide').data('bs.modal', null);
-                    $('#komentarModal').on('hidden', function () {
+                    $('#komentarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     addComments(id, response, false)
                     //window.location.href = base_url + 'pengumuman';
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     $('#komentarModal').modal('hide').data('bs.modal', null);
-                    $('#komentarModal').on('hidden', function () {
+                    $('#komentarModal').on('hidden', function() {
                         $(this).data('modal', null);
                     });
                     showDangerToast('Error, komentar tidak terkirim');
@@ -621,12 +626,12 @@
         $(`#loading-post`).removeClass('d-none');
         $(`#loadmore-post`).addClass('d-none');
 
-        setTimeout(function () {
+        setTimeout(function() {
             $.ajax({
                 url: base_url + "siswa/getpost?halaman=" + halaman + "&kelas=" + kodeKelas,
                 type: "GET",
                 //data: {halaman: halaman, kelas: kodeKelas},
-                success: function (response) {
+                success: function(response) {
                     console.log("result", response);
                     halaman += 1;
 
@@ -635,7 +640,8 @@
                     }
                     $(`#loading-post`).addClass('d-none');
                     addPosts(response)
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     console.log("error", xhr.responseText);
                 }
             });
@@ -646,14 +652,14 @@
         $.ajax({
             type: 'GET',
             url: base_url + 'dashboard/getpengumuman/3',
-            success: function (data) {
+            success: function(data) {
                 pengumuman = data;
                 //console.log('result', data);
                 var ul = '<ul class="products-list product-list-in-card pl-2 pr-2">';
                 var pos = 0;
-                $.each(data, function (key, value) {
+                $.each(data, function(key, value) {
                     //var nama = value.id_group === '1' ? value.name : (value.id_group === '2' ? value.nama_guru : value.nama);
-                    var tgl = formatTanggal(value.date);//new Date('02/12/2018');
+                    var tgl = formatTanggal(value.date); //new Date('02/12/2018');
                     ul += '  <li class="item">' +
                         '<a href="javascript:void(0)" data-toggle="modal" data-target="#pengumumanModal" data-pos="' + pos + '">' +
                         '    <div class="media" style="line-height: 1">' +
@@ -690,7 +696,7 @@
         $.ajax({
             type: 'GET',
             url: base_url + 'dashboard/getjadwalhariini/' + kelas + '/' + hari,
-            success: function (data) {
+            success: function(data) {
                 console.log('jadwal', data);
                 if (data.length !== 0) {
                     var tableJadwal = '<table class="table w-100">' +
@@ -742,21 +748,21 @@
         })
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         //form = $('#formselect');
         $.ajax({
             type: 'GET',
             url: base_url + 'dashboard/getjadwalkbm/' + kelas,
-            success: function (data) {
+            success: function(data) {
                 console.log('kbm', data);
                 jadwalKbm = data;
-                $.each(data.istirahat, function (key, value) {
+                $.each(data.istirahat, function(key, value) {
                     arrIst.push(value.ist);
                 });
             }
         });
 
-        $('#pengumumanModal').on('show.bs.modal', function (e) {
+        $('#pengumumanModal').on('show.bs.modal', function(e) {
             var pos = $(e.relatedTarget).data('pos');
             var item = pengumuman[pos];
             var tgl = formatTanggal(item.date);
@@ -813,12 +819,12 @@
             minutes -= 60 * h
         }
 
-        return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);// + ':' + ('0' + seconds).slice(-2)
+        return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2); // + ':' + ('0' + seconds).slice(-2)
     }
 
     function wrappTables() {
-        $('table').each(function () {
-            if (! $(this).parents('.table-responsive').length) {
+        $('table').each(function() {
+            if (!$(this).parents('.table-responsive').length) {
                 $(this).wrap('<div class="table-responsive"></div>');
             }
         })
