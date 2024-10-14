@@ -78,9 +78,6 @@ $jadwal_selesai = [];
                                             <li>
                                                 Membawa makanan dan minuman
                                             </li>
-                                            <li>
-                                                Membawa handphone ke ruangan ujian
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
