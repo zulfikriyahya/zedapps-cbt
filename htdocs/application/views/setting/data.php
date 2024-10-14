@@ -1,12 +1,13 @@
 <?php
 $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK"]];
 ?>
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <!-- <h1 class="text-bold"><?= $judul ?></h1> -->
+                    <h1 class="text-bold">Profile Madrasah</h1>
                 </div>
             </div>
         </div>
@@ -15,9 +16,9 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6>Setting</h6>
+                        <h6 class="text-bold">Setting</h6>
                     </div>
                     <div class="card-tools">
                         <button class="btn btn-primary btn-sm" onclick="submitSetting()">
@@ -25,18 +26,18 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <?= form_open('', array('id' => 'savesetting')) ?>
                     <div class="row">
                         <div class="col-md-6 mb-4">
                             <label>Nama Aplikasi *</label>
                             <input type="text" name="nama_aplikasi" class="form-control required"
-                                   value="<?= $setting->nama_aplikasi ?>">
+                                value="<?= $setting->nama_aplikasi ?>">
                         </div>
                         <div class="col-md-6 mb-4">
                             <label>Nama Sekolah *</label>
                             <input type="text" name="nama_sekolah" class="form-control required"
-                                   value="<?= $setting->sekolah ?>" required>
+                                value="<?= $setting->sekolah ?>" required>
                         </div>
                         <div class="col-md-3 mb-4">
                             <label>NSS/NSM</label>
@@ -49,7 +50,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                         <div class="col-md-3 mb-4">
                             <label>Jenjang *</label>
                             <select id="jenjang" class="form-control required" data-placeholder="Pilih Jenjang"
-                                    name="jenjang" required>
+                                name="jenjang" required>
                                 <option value="" disabled>Pilih Jenjang</option>
                                 <?php
                                 $jenjang = ["SD/MI", "SMP/MTS", "SMA/MA/SMK"];
@@ -58,15 +59,15 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                                 }
                                 foreach ($arrJenjang as $key => $val) :
                                     $selected = $setting->jenjang == $key ? 'selected' : '';
-                                    ?>
+                                ?>
                                     <option value="<?= $key ?>" <?= $selected ?>><?= $val ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col-md-3 mb-4">
-                            <label>Satuan Pend. *</label>
+                            <label>Satuan Pendidikan *</label>
                             <select id="satuan-pend" class="form-control required" data-placeholder="Satuan Pendidikan"
-                                    name="satuan_pendidikan" required>
+                                name="satuan_pendidikan" required>
                                 <option value="0" disabled>Satuan Pendidikan</option>
                                 <?php
                                 $satuan_selected = $satuan[$setting->jenjang];
@@ -75,7 +76,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                                 }
                                 foreach ($arrSatuan as $keys => $vals) :
                                     $selecteds = $setting->satuan_pendidikan == $keys ? 'selected' : '';
-                                    ?>
+                                ?>
                                     <option value="<?= $keys ?>" <?= $selecteds ?>><?= $vals ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -84,24 +85,24 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                             <label>Alamat *</label>
                             <br>
                             <textarea class="w-100 p-2 required" name="alamat" rows="5"
-                                      required><?= $setting->alamat ?></textarea>
+                                required><?= $setting->alamat ?></textarea>
                         </div>
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label>Desa/Kelurahan *</label>
                                     <input type="text" name="desa" class="form-control required"
-                                           value="<?= $setting->desa ?>" required>
+                                        value="<?= $setting->desa ?>" required>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <label>Kecamatan *</label>
                                     <input type="text" name="kec" class="form-control required"
-                                           value="<?= $setting->kecamatan ?>" required>
+                                        value="<?= $setting->kecamatan ?>" required>
                                 </div>
                                 <div class="col-md-5 mb-4">
                                     <label>Kabupaten/Kota *</label>
                                     <input type="text" name="kota" class="form-control required" value="<?= $setting->kota ?>"
-                                           required>
+                                        required>
                                 </div>
                                 <div class="col-md-2 mb-4">
                                     <label>Kode Pos</label>
@@ -110,7 +111,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                                 <div class="col-md-5 mb-4">
                                     <label>Provinsi *</label>
                                     <input type="text" name="provinsi" class="form-control required"
-                                           value="<?= $setting->provinsi ?>" required>
+                                        value="<?= $setting->provinsi ?>" required>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +139,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                         <div class="col-md-5 mb-4">
                             <label>Kepala Sekolah *</label>
                             <input type="text" name="kepsek" class="form-control required"
-                                   value="<?= $setting->kepsek ?>" required>
+                                value="<?= $setting->kepsek ?>" required>
                         </div>
                         <div class="col-md-3 mb-4">
                             <label>NIP</label>
@@ -152,8 +153,8 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                             <div class="form-group pb-2">
                                 <label for="logo-kiri">Tandatangan</label>
                                 <input type="file" id="tanda-tangan" name="logo" class="dropify"
-                                       data-max-file-size-preview="2M" data-allowed-file-extensions="jpg jpeg png"
-                                       data-default-file="<?= base_url() . $setting->tanda_tangan ?>"/>
+                                    data-max-file-size-preview="2M" data-allowed-file-extensions="jpg jpeg png"
+                                    data-default-file="<?= base_url() . $setting->tanda_tangan ?>" />
                             </div>
                             <?= form_close() ?>
                         </div>
@@ -162,9 +163,9 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                             <div class="form-group pb-2">
                                 <label for="logo-kiri">Logo Kiri / Logo Aplikasi</label>
                                 <input type="file" id="logo-kiri" name="logo" class="dropify"
-                                       data-max-file-size-preview="2M"
-                                       data-allowed-file-extensions="jpg jpeg png"
-                                       data-default-file="<?= base_url() . $setting->logo_kiri ?>"/>
+                                    data-max-file-size-preview="2M"
+                                    data-allowed-file-extensions="jpg jpeg png"
+                                    data-default-file="<?= base_url() . $setting->logo_kiri ?>" />
                             </div>
                             <?= form_close() ?>
                         </div>
@@ -173,9 +174,9 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                             <div class="form-group pb-2">
                                 <label for="logo-kanan">Logo Kanan</label>
                                 <input type="file" id="logo-kanan" name="logo" class="dropify"
-                                       data-max-file-size-preview="2M"
-                                       data-allowed-file-extensions="jpg jpeg png"
-                                       data-default-file="<?= base_url() . $setting->logo_kanan ?>"/>
+                                    data-max-file-size-preview="2M"
+                                    data-allowed-file-extensions="jpg jpeg png"
+                                    data-default-file="<?= base_url() . $setting->logo_kanan ?>" />
                             </div>
                             <?= form_close() ?>
                         </div>
@@ -187,16 +188,16 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
 </div>
 
 <script>
-    var logoKanan = '<?=base_url() . $setting->logo_kanan?>';
-    var logoKiri = '<?=base_url() . $setting->logo_kiri?>';
-    var tandatangan = '<?=base_url() . $setting->tanda_tangan?>';
-    var satuanPend = JSON.parse(JSON.stringify(<?= json_encode($satuan)?>));
+    var logoKanan = '<?= base_url() . $setting->logo_kanan ?>';
+    var logoKiri = '<?= base_url() . $setting->logo_kiri ?>';
+    var tandatangan = '<?= base_url() . $setting->tanda_tangan ?>';
+    var satuanPend = JSON.parse(JSON.stringify(<?= json_encode($satuan) ?>));
 
     function submitSetting() {
         $('#savesetting').submit();
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         ajaxcsrf();
 
         var drEvent = $('.dropify').dropify({
@@ -217,11 +218,11 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
         });
 
 
-        drEvent.on('dropify.beforeClear', function (event, element) {
+        drEvent.on('dropify.beforeClear', function(event, element) {
             //return confirm("Hapus logo \"" + element.file.name + "\" ?");
         });
 
-        drEvent.on('dropify.afterClear', function (event, element) {
+        drEvent.on('dropify.afterClear', function(event, element) {
             deleteImage($(event.currentTarget).data('default-file'));
             if (element.element.id === 'logo-kanan') {
                 logoKanan = '';
@@ -231,16 +232,19 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                 $('#prev-logo-kiri').attr('src', '');
             } else if (element.element.id === 'tanda-tangan') {
                 tandatangan = '';
-                $('#prev-tandatangan').css(
-                    {'background': 'url() no-repeat center'},
-                    {'font-family': 'Times New Roman'},
-                    {'font-size': '10pt'},
-                    {'background-size': '100px 60px'}
-                );
+                $('#prev-tandatangan').css({
+                    'background': 'url() no-repeat center'
+                }, {
+                    'font-family': 'Times New Roman'
+                }, {
+                    'font-size': '10pt'
+                }, {
+                    'background-size': '100px 60px'
+                });
             }
         });
 
-        drEvent.on('dropify.errors', function (event, element) {
+        drEvent.on('dropify.errors', function(event, element) {
             console.log('Has Errors');
             $.toast({
                 heading: "Error",
@@ -253,7 +257,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
             });
         });
 
-        $('#jenjang').change(function () {
+        $('#jenjang').change(function() {
             var htmlOptions = '<option value="0" disabled="">Satuan Pendidikan</option>\n';
             var satSelected = satuanPend[$(this).val()];
             for (let i = 0; i < satSelected.length; i++) {
@@ -262,12 +266,12 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
             $('#satuan-pend').html(htmlOptions);
         });
 
-        $('#savesetting').on('submit', function (e) {
+        $('#savesetting').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
             var hasInput = true;
-            $('.required').each(function () {
+            $('.required').each(function() {
                 if ($(this).val() === "") {
                     hasInput = false;
                     return false;
@@ -298,7 +302,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                     url: base_url + 'settings/savesetting',
                     type: 'POST',
                     data: $(this).serialize() + '&logo_kanan=' + logoKanan + '&logo_kiri=' + logoKiri + '&tanda_tangan=' + tandatangan,
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
                         swal.fire({
                             title: "Sukses",
@@ -312,7 +316,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                             }
                         });
                     },
-                    error: function (xhr, error, status) {
+                    error: function(xhr, error, status) {
                         console.log(xhr.responseText);
                         const err = JSON.parse(xhr.responseText)
                         swal.fire({
@@ -325,11 +329,11 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
             }
         });
 
-        $("#logo-kanan").change(function () {
+        $("#logo-kanan").change(function() {
             var input = $(this)[0];
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     $('#prev-logo-kanan').attr('src', e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
@@ -339,11 +343,11 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
             }
         });
 
-        $("#logo-kiri").change(function () {
+        $("#logo-kiri").change(function() {
             var input = $(this)[0];
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     $('#prev-logo-kiri').attr('src', e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
@@ -353,13 +357,21 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
             }
         });
 
-        $("#tanda-tangan").change(function () {
+        $("#tanda-tangan").change(function() {
             var input = $(this)[0];
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function (e) {
-                    //style="font-family: 'Times New Roman'; font-size: 10pt; background: url('<?=base_url('assets/img/user.jpg')?>') no-repeat center; background-size: 100px 60px
-                    $('#prev-tandatangan').css({'background': 'url(' + e.target.result + ') no-repeat center'}, {'font-family': 'Times New Roman'}, {'font-size': '10pt'}, {'background-size': '100px 60px'});
+                reader.onload = function(e) {
+                    //style="font-family: 'Times New Roman'; font-size: 10pt; background: url('<?= base_url('assets/img/user.jpg') ?>') no-repeat center; background-size: 100px 60px
+                    $('#prev-tandatangan').css({
+                        'background': 'url(' + e.target.result + ') no-repeat center'
+                    }, {
+                        'font-family': 'Times New Roman'
+                    }, {
+                        'font-size': '10pt'
+                    }, {
+                        'background-size': '100px 60px'
+                    });
                     //$('#prev-tandatangan').attr('src', e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
@@ -379,7 +391,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                 contentType: false,
                 cache: false,
                 timeout: 600000,
-                success: function (data) {
+                success: function(data) {
                     if (data.src.includes('kanan')) {
                         logoKanan = data.src;
                         //console.log('kanan', data.src);
@@ -391,7 +403,7 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
                         //console.log('tandatangan', data.src);
                     }
                 },
-                error: function (e) {
+                error: function(e) {
                     console.log("error", e.responseText);
                     $.toast({
                         heading: "ERROR!!",
@@ -409,11 +421,13 @@ $satuan = ["1" => ["SD", "MI"], "2" => ["SMP", "MTS"], "3" => ["SMA", "MA", "SMK
         function deleteImage(src) {
             console.log(src);
             $.ajax({
-                data: {src: src},
+                data: {
+                    src: src
+                },
                 type: "POST",
                 url: base_url + "settings/deletefile",
                 cache: false,
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                 }
             });

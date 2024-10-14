@@ -1,19 +1,19 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><b><?= $judul ?></b></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="content">
+    <section class="content text-dark">
         <div class="container-fluid">
             <div class="card card-default my-shadow">
                 <div class="card-header bg-orange with-border">
-                    <h6 class="card-title"><?= $subjudul ?></h6>
+                    <h6 class="card-title text-bold"><?= $subjudul ?></h6>
                     <div class="card-tools">
                         <button type="button" onclick="reload_ajax()" class="btn btn-sm btn-default">
                             <i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ml-1">Reload</span>
@@ -25,13 +25,13 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="mt-2 mb-3">
                     </div>
                 </div>
                 <div class="table-responsive px-4 pb-3" style="border: 0">
                     <table id="users" class="w-100 table table-striped table-bordered table-hover">
-                        <thead>
+                        <thead class="bg-maroon">
                             <tr>
                                 <th>No.</th>
                                 <th>First Name</th>

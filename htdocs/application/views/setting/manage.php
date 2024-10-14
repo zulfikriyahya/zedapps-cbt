@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,13 +12,13 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6><?= $subjudul ?></h6>
+                        <h6 class="text-bold"><?= $subjudul ?></h6>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="alert alert-danger shadow align-content-center" role="alert">
+                <div class="card-body text-dark">
+                    <div class="alert alert-warning shadow align-content-center" role="alert">
                         <strong>Catatan !</strong> <br>BACKUP terlebih dahulu di menu Backup/Restore.
                     </div>
 
@@ -34,13 +34,13 @@
                             '<li>Tabel berisi data yang hanya digunakan satu tahun/semester</li>' .
                             '<li>Tabel otomatis dibackup ketika dihapus, lihat di menu Backup/Restore untuk melihat backup table yang dihapus</li>';
                     ?>
-                        <div class="alert alert-default-success border-success">
+                        <div class="alert alert-default-info border-info">
                             <ul class="mb-1">
                                 <?= $keterangan ?>
                             </ul>
                         </div>
                         <table id="database" class="table table-striped table-bordered table-hover mb-5">
-                            <thead>
+                            <thead class="bg-maroon">
                                 <tr>
                                     <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
                                     <th class="text-center p-0 align-middle">Tabel</th>

@@ -11,12 +11,12 @@ $satuan = [
 
 ?>
 
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@ $satuan = [
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow mb-4">
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="alert alert-default-info align-content-center" role="alert">
                         <span><b>KKM</b></span>
                         <ul>

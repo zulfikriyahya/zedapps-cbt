@@ -1,10 +1,10 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
 
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-4">
-                <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                <div class="col-lg-12">
+                    <h1 class="text-bold text-center"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -20,12 +20,12 @@
                 ?>
                     <div class="col-12 col-md-5 mb-4">
                         <div class="card my-shadow border">
-                            <div class="card-header">
+                            <div class="card-header bg-orange text-bold">
                                 Running Text
                             </div>
-                            <div class="card-body">
+                            <div class="card-body text-dark">
                                 <div class="alert alert-default-info align-content-center" role="alert">
-                                    RUNNING TEXT akan muncul di bagian bawah layar siswa.
+                                    Running Text akan muncul di bagian atas footer siswa.
                                 </div>
 
                                 <table id="tb-text" class="table mb-2 table-bordered">
@@ -51,10 +51,10 @@
                 <div class="col-12 <?= $col ?> mb-4">
                     <div class="card my-shadow border">
                         <?= form_open('', array('id' => 'formpengumuman')) ?>
-                        <div class="card-header">
-                            Tulis Info/Pengumuman
+                        <div class="card-header bg-orange text-bold">
+                            Info/Pengumuman
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div class="row mb-2">
                                 <div class="col-2">
                                     <p>Kepada:</p>
@@ -134,19 +134,19 @@
                 -->
                 <div class="col-md-12">
                     <div class="card my-shadow">
-                        <div class="card-header">
-                            <div class="card-title">
+                        <div class="card-header bg-orange">
+                            <div class="card-title text-bold">
                                 <?= $subjudul ?>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <?php
                             //echo '<pre>';
                             //var_dump($posts);
                             //echo '</pre>';
                             foreach ($pengumumans as $pengumuman) : ?>
                                 <div class="card">
-                                    <div class="card-body" id="parent<?= $pengumuman->id_post ?>">
+                                    <div class="card-body text-dark" id="parent<?= $pengumuman->id_post ?>">
                                         <div class="media">
                                             <?php if ($pengumuman->dari == '0') : ?>
                                                 <span class="btn-circle btn-success media-left pt-1">A</span>

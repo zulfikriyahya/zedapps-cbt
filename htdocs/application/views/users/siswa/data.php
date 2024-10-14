@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-light pt-4 ">
+<div class="content-wrapper bg-dark pt-4 ">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,8 +12,8 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default my-shadow">
-                <div class="card-header with-border">
-                    <h3 class="card-title">Master <?= $subjudul ?></h3>
+                <div class="card-header bg-orange with-border">
+                    <h3 class="card-title text-bold"><?= $subjudul ?></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-action btn-success btn-sm" data-action="aktifkan"
                             data-toggle="tooltip" title="Aktifkan">
@@ -27,7 +27,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div class="dataTables_wrapper dt-bootstrap4 no-footer">
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
@@ -61,7 +61,7 @@
                     <div class="table-responsive mb-3">
                         <?= form_open('', array('id' => 'bulk')); ?>
                         <table id="users" class="w-100 table table-striped table-bordered table-hover">
-                            <thead>
+                            <thead class="bg-maroon">
                                 <tr>
                                     <th class="text-center" style="width: 40px">No.</th>
                                     <th>NIS</th>

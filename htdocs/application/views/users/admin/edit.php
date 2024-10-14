@@ -1,14 +1,14 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
                 <div class="col-6">
                     <a href="<?= base_url('useradmin') ?>" type="button" class="btn btn-sm btn-danger float-right">
                         <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
+                            class="d-none d-sm-inline-block ml-1">Kembali</span>
                     </a>
                 </div>
             </div>
@@ -22,27 +22,27 @@
                     <div class="col-md-6">
                         <?= form_open('users/edit_info', array('id' => 'user_info'), array('id' => $users->id)) ?>
                         <div class="card card-info my-shadow">
-                            <div class="card-header">
-                                <h3 class="card-title"><?= $subjudul ?></h3>
+                            <div class="card-header bg-orange">
+                                <h3 class="card-title text-bold"><?= $subjudul ?></h3>
                             </div>
-                            <div class="card-body pb-0">
+                            <div class="card-body text-dark pb-0">
                                 <div class="form-group">
                                     <label for="username">Username</label>
                                     <input type="text" name="username" class="form-control"
-                                           value="<?= $users->username ?>">
+                                        value="<?= $users->username ?>">
                                     <small class="help-block"></small>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-sm-6">
                                         <label for="first_name">First Name</label>
                                         <input type="text" name="first_name" class="form-control"
-                                               value="<?= $users->first_name ?>">
+                                            value="<?= $users->first_name ?>">
                                         <small class="help-block"></small>
                                     </div>
                                     <div class="form-group col-sm-6">
                                         <label for="last_name">Last Name</label>
                                         <input type="text" name="last_name" class="form-control"
-                                               value="<?= $users->last_name ?>">
+                                            value="<?= $users->last_name ?>">
                                         <small class="help-block"></small>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                     <small class="help-block"></small>
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer text-dark">
                                 <button type="submit" id="btn-info" class="btn btn-info float-right">Simpan</button>
                             </div>
                         </div>
@@ -62,19 +62,19 @@
                 <?php if ($user->id === $users->id || $this->ion_auth->is_admin()) : ?>
                     <div class="col-md-6">
                         <div class="card card-primary my-shadow">
-                            <div class="card-header">
-                                <h3 class="card-title">Foto Profile</h3>
+                            <div class="card-header bg-orange">
+                                <h3 class="card-title text-bold">Foto Profile</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body text-dark">
                                 <div class="row">
                                     <div class="col-5">
                                         <?= form_open_multipart('', array('id' => 'set-foto')) ?>
-                                        <div class="form-group pb-2">
+                                        <div class="form-group pb-0">
                                             <label for="logo-kanan">Foto</label>
                                             <input type="file" id="foto" name="foto" class="dropify"
-                                                   data-max-file-size-preview="2M"
-                                                   data-allowed-file-extensions="jpg jpeg png"
-                                                   data-default-file="<?= base_url() . $profile->foto ?>"/>
+                                                data-max-file-size-preview="2M"
+                                                data-allowed-file-extensions="jpg jpeg png"
+                                                data-default-file="<?= base_url() . $profile->foto ?>" />
                                         </div>
                                         <?= form_close() ?>
                                     </div>
@@ -82,28 +82,30 @@
                                         <div class="form-group">
                                             <label>Nama Lengkap</label>
                                             <input type="text" placeholder="Nama Lengkap" id="nama-lengkap"
-                                                   class="form-control" value="<?= $profile->nama_lengkap ?>">
+                                                class="form-control" value="<?= $profile->nama_lengkap ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Jabatan</label>
                                             <input type="text" id="jabatan" placeholder="Jabatan" class="form-control"
-                                                   value="<?= $profile->jabatan ?>">
+                                                value="<?= $profile->jabatan ?>">
                                         </div>
-                                        <button onclick="simpanProfile()" id="simpan"
-                                                class="btn btn-success float-right mt-3">Simpan
-                                        </button>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-footer text-dark">
+                                <button onclick="simpanProfile()" id="simpan"
+                                    class="btn btn-info float-right ml-3">Simpan
+                                </button>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <?= form_open('useradmin/change_password', array('id' => 'change_password'), array('id' => $users->id)) ?>
                         <div class="card card-warning my-shadow">
-                            <div class="card-header">
-                                <h3 class="card-title">Ubah Password</h3>
+                            <div class="card-header bg-orange">
+                                <h3 class="card-title text-bold">Ubah Password</h3>
                             </div>
-                            <div class="card-body pb-0">
+                            <div class="card-body text-dark pb-0">
                                 <div class="form-group">
                                     <label for="old">Password Lama</label>
                                     <input type="password" placeholder="Password Lama" name="old" class="form-control">
@@ -115,15 +117,14 @@
                                 <div class="form-group">
                                     <label for="new_confirm">Konfirmasi Password</label>
                                     <input type="password" placeholder="Konfirmasi Password Baru" name="new_confirm"
-                                           class="form-control">
+                                        class="form-control">
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" id="btn-pass" class="btn btn-warning float-right ml-3">Ganti
-                                    Password
+                            <div class="card-footer text-dark">
+                                <button type="submit" id="btn-pass" class="btn btn-info float-right ml-3">Simpan
                                 </button>
                                 <button type="reset" class="btn btn-default float-right ml-3">
-                                    <i class="fa fa-rotate-left"></i> Refresh
+                                    <i class="fa fa-rotate-left"></i> Reload
                                 </button>
                             </div>
                         </div>
@@ -136,7 +137,7 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         function submitajax(url, data, msg, type) {
             swal.fire({
                 text: "Silahkan tunggu....",
@@ -153,7 +154,7 @@
                 url: url,
                 data: data,
                 type: 'POST',
-                success: function (response) {
+                success: function(response) {
                     if (response.status) {
                         swal.fire({
                             title: "Sukses",
@@ -182,7 +183,8 @@
                             });
                         }
                     }
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
                         title: "Error",
@@ -193,7 +195,7 @@
             });
         }
 
-        $('form#change_password').on('submit', function (e) {
+        $('form#change_password').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -206,12 +208,12 @@
             submitajax(url, data, msg, 1);
         });
 
-        $('form input, form select').on('change', function () {
+        $('form input, form select').on('change', function() {
             $(this).closest('.form-group').removeClass('has-error');
             $(this).nextAll('.help-block').eq(0).text('');
         });
 
-        $('form#user_info').on('submit', function (e) {
+        $('form#user_info').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -224,7 +226,7 @@
             submitajax(url, data, msg, 2);
         });
 
-        $('form#user_level').on('submit', function (e) {
+        $('form#user_level').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -237,7 +239,7 @@
             submitajax(url, data, msg, 3);
         });
 
-        $('form#user_status').on('submit', function (e) {
+        $('form#user_status').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
 
@@ -255,9 +257,9 @@
 
 <?php if ($user->id === $users->id) : ?>
     <script type="text/javascript">
-        var idUser = '<?=$user->id?>';
+        var idUser = '<?= $user->id ?>';
         var fprofil = '<?= base_url() . $profile->foto ?>';
-        $(document).ready(function () {
+        $(document).ready(function() {
             ajaxcsrf();
             var drEvent = $('.dropify').dropify({
                 messages: {
@@ -277,15 +279,15 @@
             });
 
 
-            drEvent.on('dropify.beforeClear', function (event, element) {
+            drEvent.on('dropify.beforeClear', function(event, element) {
                 //return confirm("Hapus logo \"" + element.file.name + "\" ?");
             });
 
-            drEvent.on('dropify.afterClear', function (event, element) {
+            drEvent.on('dropify.afterClear', function(event, element) {
                 deleteImage($(event.currentTarget).data('default-file'));
             });
 
-            drEvent.on('dropify.errors', function (event, element) {
+            drEvent.on('dropify.errors', function(event, element) {
                 console.log('Has Errors');
                 $.toast({
                     heading: "Error",
@@ -298,11 +300,11 @@
                 });
             });
 
-            $("#foto").change(function () {
+            $("#foto").change(function() {
                 var input = $(this)[0];
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         $('#prev-logo-kanan').attr('src', e.target.result);
                     };
                     reader.readAsDataURL(input.files[0]);
@@ -322,11 +324,11 @@
                     contentType: false,
                     cache: false,
                     timeout: 600000,
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data.src);
                         fprofil = data.src;
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         const err = JSON.parse(xhr.responseText)
                         swal.fire({
                             title: "Error",
@@ -340,11 +342,13 @@
             function deleteImage(src) {
                 console.log(src);
                 $.ajax({
-                    data: {src: src},
+                    data: {
+                        src: src
+                    },
                     type: "POST",
                     url: base_url + "useradmin/deletefile",
                     cache: false,
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
                         fprofil = '';
                     }
@@ -367,17 +371,22 @@
                 }
             });
             $.ajax({
-                data: {foto: fprofil, nama_lengkap: namaLengkap, jabatan: jabatan},
+                data: {
+                    foto: fprofil,
+                    nama_lengkap: namaLengkap,
+                    jabatan: jabatan
+                },
                 type: "POST",
                 url: base_url + "useradmin/saveprofile",
-                success: function (response) {
+                success: function(response) {
                     //console.log(response);
                     swal.fire({
                         title: "Sukses",
                         text: "Profile berhasil disimpan",
                         icon: "success",
                     });
-                }, error: function (xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     const err = JSON.parse(xhr.responseText)
                     swal.fire({
                         title: "Error",

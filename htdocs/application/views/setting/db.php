@@ -1,9 +1,9 @@
-<div class="content-wrapper bg-white pt-4">
+<div class="content-wrapper bg-dark pt-4">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+                    <h1 class="text-bold"><?= $judul ?></h1>
                 </div>
             </div>
         </div>
@@ -12,28 +12,30 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card my-shadow">
-                <div class="card-header">
+                <div class="card-header bg-orange">
                     <div class="card-title">
-                        <h6><?= $subjudul ?></h6>
+                        <h6 class="text-bold"><?= $subjudul ?></h6>
                     </div>
                 </div>
-                <div class="card-body">
-                    <button class="btn btn-primary mb-2" onclick="processBackup()">BACKUP SEMUA DATA</button>
-                    <div class="progress" style="height: 30px">
+                <div class="card-body text-dark">
+                    <button class="btn btn-primary text-bold mb-2" onclick="processBackup()"><i class="fas fa-download"></i> BACKUP SEMUA DATA</button>
+                    <div class="progress my-4" style="height: 30px">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%; height: 30px">
                         </div>
                     </div>
-                    <p>Jangan merefresh/menutup halaman ini atau ke halaman lain selama proses backup berlangsung
-                        <br>Jika backup gagal, gunakan cpanel untuk membackup file dan database
-                    </p>
+                    <ul>
+                        <li>Jangan merefresh/menutup halaman ini atau pindah ke halaman lain selama proses backup berlangsung.</li>
+                        <li>Jika backup gagal, gunakan database manager untuk membackup file dan database.</li>
+                    </ul>
+
                     <hr>
                     <br>
 
-                    <h6><b>RIWAYAT BACKUP</b></h6>
+                    <h6 class="text-bold">RIWAYAT BACKUP</h6>
                     <?= form_open('', array('id' => 'edittp')) ?>
                     <table id="database" class="table table-striped table-bordered table-hover">
-                        <thead>
+                        <thead class="bg-maroon">
                             <tr>
                                 <th width="50" height="50" class="text-center p-0 align-middle">No.</th>
                                 <th class="text-center p-0 align-middle">Database/File</th>
