@@ -1,68 +1,61 @@
 <div class="container pt-5">
-    <!-- <div class="container-fluid"> -->
     <div class="row justify-content-center">
-        <div class="login-box pt-4">
-            <div class="card mt-4" style="font-family: Arial, sans-serif;">
-                <div class="card-header bg-dark mb-4">
-                    <?php
-                    $logo_app = $setting->logo_kanan == null ? base_url() . 'assets/img/favicon.png' : base_url() . $setting->logo_kiri;
-                    ?>
-                    <div class="text-center mb-2"><img src="<?= $logo_app ?>" width="90"></div>
-                    <div class="text-center">
-                        <h2 class="text-bold"><?= $setting->nama_aplikasi ?></h2>
-                    </div>
+        <div class="login-box pt-5 mt-4" style="font-family: Arial, sans-serif;">
+            <div class="card-header rounded-top bg-dark mb-5">
+                <?php
+                $logo_app = $setting->logo_kanan == null ? base_url() . 'assets/img/favicon.png' : base_url() . $setting->logo_kiri;
+                ?>
+                <div class="text-center mb-2"><img src="<?= $logo_app ?>" width="80"></div>
+                <div class="text-center">
+                    <h2 class="text-bold"><?= $setting->nama_aplikasi ?></h2>
                 </div>
-                <marquee behavior="alternate" class="h5 text-bold mb-4"><em>Selamat datang! Silakan masuk menggunakan Username dan Password anda.</em></marquee>
-                <div class="card-body bg-dark">
-                    <h2 class="login-box-msg font-weight-normal"><b>L O G I N</b></h2>
-                    <div id="infoMessage"><?php echo $message; ?></div>
+            </div>
+            <div class="card-body rounded-bottom bg-dark">
+                <h2 class="login-box-msg font-weight-normal"><b>L O G I N</b></h2>
+                <div id="infoMessage"><?php echo $message; ?></div>
 
-                    <?= form_open("auth/cek_login", array('id' => 'login')); ?>
-                    <div class="input-group mb-4 has-feedback">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
-                        </div>
-                        <?= form_input($identity, '', 'required'); ?>
-                        <div class="help-block"></div>
-                    </div>
-                    <div class="input-group mb-4 has-feedback">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                        <?= form_input($password, '', 'required'); ?>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span id="toggle-password" class="fas fa-eye-slash" style="cursor: pointer"></span>
-                            </div>
-                        </div>
-                        <div class="help-block"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-cyan">
-                                <input type='checkbox' id="cbt-only" name='cbt-only'
-                                    value='1' checked="checked" />
-                                <!-- <label for="cbt-only">Login CBT</label> -->
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <?= form_submit('submit', lang('login_submit_btn'), array('id' => 'submit', 'class' => 'btn btn-primary btn-outline-light btn-block btn-flat rounded')); ?>
+                <?= form_open("auth/cek_login", array('id' => 'login')); ?>
+                <div class="input-group mb-4 has-feedback">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    <?= form_close(); ?>
+                    <?= form_input($identity, '', 'required'); ?>
+                    <div class="help-block"></div>
                 </div>
+                <div class="input-group mb-4 has-feedback">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    <?= form_input($password, '', 'required'); ?>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span id="toggle-password" class="fas fa-eye-slash" style="cursor: pointer"></span>
+                        </div>
+                    </div>
+                    <div class="help-block"></div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-cyan">
+                            <input type='checkbox' id="cbt-only" name='cbt-only'
+                                value='1' checked="checked" />
+                            <!-- <label for="cbt-only">Login CBT</label> -->
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <?= form_submit('submit', lang('login_submit_btn'), array('id' => 'submit', 'class' => 'btn btn-primary btn-outline-light btn-block btn-flat rounded')); ?>
+                    </div>
+                </div>
+                <?= form_close(); ?>
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </div>
 
-
-<!-- Script -->
 <script src="<?= base_url() ?>/assets/app/js/jquery.backstretch.js"></script>
 <script type="text/javascript">
     let base_url = '<?= base_url(); ?>';
