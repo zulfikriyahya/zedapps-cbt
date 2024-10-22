@@ -1,31 +1,12 @@
 <div class="content-wrapper" style="margin-top: -1px;">
     <div class="sticky">
     </div>
-    <section class="content overlap pt-4">
+    <section class="content overlap p-4">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-6">
-                    <div class="info-box bg-transparent shadow-none">
-                        <img src="<?= base_url() ?>/assets/img/garuda_circle.png" width="60" height="60">
-                        <div class="info-box-content">
-                            <span class="text-white"
-                                style="font-size: 24pt; line-height: 0.7;"><b>ZEDAPPS SCHOOL</b></span>
-                            <span class="text-white">C B T A p p l i c a t i o n</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="float-right mt-2 d-none d-md-inline-block">
-                        <div class="float-right ml-4">
-                            <img src="<?= base_url() ?>/assets/app/img/ic_graduate.png" width="60" height="60">
-                        </div>
-                        <div class="float-left" style="line-height: 1.2">
-                            <span class="text-white"><b><?= $siswa->nama ?></b></span>
-                            <br>
-                            <span class="text-white"><?= $siswa->nis ?></span>
-                            <br>
-                            <span class="text-white"><?= $siswa->nama_kelas ?></span>
-                        </div>
+                <div class="row">
+                    <div class="col-12">
+                        <?php $this->load->view('members/siswa/templates/top'); ?>
                     </div>
                 </div>
             </div>
@@ -33,25 +14,26 @@
         <div class="container"
             style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
             unselectable="on">
-            <div class="row">
+
+            <div class="row mt-2">
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header p-4">
-                            <div class="card-title">
-                                NOMOR:
-                                <div id="nomor-soal" class="btn bg-primary no-hover ml-2 text-lg"></div>
+                        <div class="card-header bg-dark">
+                            <div class="card-title text-bold">
+                                <div id="nomor-soal" class="btn bg-info btn-circle-sm btn-outline-light no-hover ml-2 text-md"></div>
                             </div>
                             <div class="card-tools">
                                 <button class="btn btn-outline-danger btn-oval-sm no-hover">
-                                    <span class='mr-4 d-none d-md-inline-block'><b>Sisa Waktu</b></span>
+                                    <span class='mr-4 d-none d-md-inline-block text-bold'>Sisa Waktu</span>
                                     <span id="timer" class="text-bold">00:00:00</span>
                                 </button>
                                 <button data-toggle="modal" data-target="#daftarModal"
-                                    class="btn btn-primary btn-oval-sm">
-                                    <span class="d-none d-md-inline-block mr-2"><b>Daftar Soal</b></span>
+                                    class="btn btn-primary btn-outline-light btn-square-sm ml-2">
+                                    <span class="d-none d-md-inline-block mr-2"><b>Soal</b></span>
                                     <i class="fa fa-th"></i>
                                 </button>
                             </div>
+
                         </div>
                         <div class="card-body p-3">
                             <div class="zoom-tool-bar"></div>
@@ -104,7 +86,7 @@
     <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="daftarLabel">Daftar Nomor Soal</h5>
+                <h5 class="modal-title text-bold" id="daftarLabel">Daftar Nomor Soal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -114,7 +96,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>
+                <button type="button" class="btn btn-danger btn-outline-light" data-dismiss="modal"><i class="fa fa-close"></i></button>
             </div>
         </div>
     </div>

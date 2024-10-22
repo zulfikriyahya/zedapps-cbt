@@ -16,7 +16,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <?php foreach ($menu as $m): ?>
+                                <!-- <?php foreach ($menu as $m): ?>
                                     <div class="col-lg-2 col-sm-3 col-4 mb-3">
                                         <a href="<?= base_url($m->link) ?>">
                                             <figure class="text-center">
@@ -27,7 +27,68 @@
                                             </figure>
                                         </a>
                                     </div>
-                                <?php endforeach; ?>
+                                <?php endforeach; ?> -->
+
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <a href="<?= base_url() ?>siswa/jadwalpelajaran">
+                                        <figure class="text-center">
+                                            <img class="img-fluid"
+                                                src="<?= base_url() ?>/assets/app/img/icon/schedule.png" width="60"
+                                                height="60" />
+                                            <figcaption>Jadwal</figcaption>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <a href="<?= base_url() ?>siswa/materi">
+                                        <figure class="text-center">
+                                            <img class="img-fluid"
+                                                src="<?= base_url() ?>/assets/app/img/icon/list.png" width="60"
+                                                height="60" />
+                                            <figcaption>Materi</figcaption>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <a href="<?= base_url() ?>siswa/tugas">
+                                        <figure class="text-center">
+                                            <img class="img-fluid"
+                                                src="<?= base_url() ?>/assets/app/img/icon/done.png" width="60"
+                                                height="60" />
+                                            <figcaption>Tugas</figcaption>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <a href="<?= base_url() ?>siswa/catatan">
+                                        <figure class="text-center">
+                                            <img class="img-fluid"
+                                                src="<?= base_url() ?>/assets/app/img/icon/notebook.png" width="60"
+                                                height="60" />
+                                            <figcaption>Catatan</figcaption>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <a href="<?= base_url() ?>siswa/cbt">
+                                        <figure class="text-center">
+                                            <img class="img-fluid"
+                                                src="<?= base_url() ?>/assets/app/img/icon/assessment.png" width="60"
+                                                height="60" />
+                                            <figcaption>Assesmen</figcaption>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <a href="<?= base_url() ?>siswa/hasil">
+                                        <figure class="text-center">
+                                            <img class="img-fluid"
+                                                src="<?= base_url() ?>/assets/app/img/icon/report.png" width="60"
+                                                height="60" />
+                                            <figcaption>Hasil</figcaption>
+                                        </figure>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

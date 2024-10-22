@@ -40,7 +40,7 @@ $jadwal_selesai = [];
                                     <?php else: ?>
                                         <div class="card border">
                                             <div class="card-header border-bottom-0">
-                                                <h4 class="card-title mt-1 text-wrap"><?= $siswa->nama ?></h4>
+                                                <h4 class="card-title mt-1 text-wrap text-bold"><?= $siswa->nama ?></h4>
                                             </div>
                                             <div class="card-body pt-0">
                                                 <ul class="list-group list-group-unbordered">
@@ -269,18 +269,19 @@ $jadwal_selesai = [];
                                     <?php
                                     foreach ($cbt_jadwal as $tgl => $jadwals) :
                                         if ($tgl != date('Y-m-d')) : ?>
-                                            <tr>
-                                                <td colspan="4" class="tgl-ujian text-center bg-secondary"
+                                            <tr class="bg-maroon">
+                                                <td colspan="4" class="tgl-ujian"
                                                     data-tgl="<?= $tgl ?>">
                                                     <?= buat_tanggal(date('D, d M Y', strtotime($tgl))) ?>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th class="text-center">Jam ke</th>
+                                            <tr class="bg-info">
+                                                <th class="text-center align-middle">Jam ke</th>
                                                 <th class="text-center align-middle">Mapel</th>
-                                                <th class="align-middle d-none d-md-block">Jenis Penilaian</th>
-                                                <th class="align-middle">Status</th>
+                                                <th class="text-center align-middle">Jenis Penilaian</th>
+                                                <th class="text-center align-middle">Status</th>
                                             </tr>
+
                                             <?php
                                             foreach ($jadwals as $key => $jadwal) :
                                                 $jam_ke = $jadwal->jam_ke == '0' ? '1' : $jadwal->jam_ke;
@@ -311,7 +312,7 @@ $jadwal_selesai = [];
                                                     $lanjutkan = $durasi->lama_ujian != null;
                                                     $reset = $durasi->reset;
                                                     if ($lanjutkan != null && !$selesai) $bg = 'btn-warning';
-                                                    elseif ($selesai) $bg = 'btn-success';
+                                                    elseif ($selesai) $bg = 'btn-secondary';
                                                     else {
                                                         $bg = 'btn-danger';
                                                     }
@@ -319,7 +320,7 @@ $jadwal_selesai = [];
                                                     $selesai = false;
                                                     $lanjutkan = false;
                                                     $reset = 0;
-                                                    $bg = 'btn-danger';
+                                                    $bg = 'btn-primary';
                                                 }
 
                                                 $status = '';
@@ -327,31 +328,31 @@ $jadwal_selesai = [];
                                                     if ($today < $startDay) {
                                                         $status = '<button id="' . $jadwal->id_jadwal . '" class="status-table btn btn-disabled ' . $bg . '"'
                                                             . ' data-tgl="' . $jadwal->tgl_mulai . '" data-jamke="' . $jadwal->jam_ke . '">'
-                                                            . ' <b>BELUM DIMULAI</b></button>';
+                                                            . ' <b>Belum Mulai</b></button>';
                                                     } elseif ($today > $endDay) {
                                                         $status = '<button id="' . $jadwal->id_jadwal . '" class="status-table btn btn-disabled ' . $bg . '"'
                                                             . ' data-tgl="' . $jadwal->tgl_mulai . '" data-jamke="' . $jadwal->jam_ke . '">'
-                                                            . ' <b>SUDAH BERAKHIR</b></button>';
+                                                            . ' <b>Sudah Berakhir</b></button>';
                                                     } else {
                                                         if ($now < strtotime($sesiMulai->format('H:i'))) {
                                                             $status = '<button id="' . $jadwal->id_jadwal . '" class="status-table btn btn-disabled ' . $bg . '"'
                                                                 . ' data-tgl="' . $jadwal->tgl_mulai . '" data-jamke="' . $jadwal->jam_ke . '">'
-                                                                . ' <b>' . strtoupper($cbt_info->nama_sesi ?? '') . ' BELUM DIMULAI</b></button>';
+                                                                . ' <b>' . strtoupper($cbt_info->nama_sesi ?? '') . ' Belum Mulai</b></button>';
                                                         } elseif ($now > strtotime($sesiSampai->format('H:i'))) {
                                                             $status = '<button id="' . $jadwal->id_jadwal . '" class="status-table btn btn-disabled ' . $bg . '"'
                                                                 . ' data-tgl="' . $jadwal->tgl_mulai . '" data-jamke="' . $jadwal->jam_ke . '">'
-                                                                . '<b>' . strtoupper($cbt_info->nama_sesi ?? '') . ' SUDAH BERAKHIR</b></button>';
+                                                                . '<b>' . strtoupper($cbt_info->nama_sesi ?? '') . ' Sudah Berakhir</b></button>';
                                                         } else {
                                                             if (isset($jadwal_selesai[$jadwal->tgl_mulai][$jadwal->jam_ke - 1]) && $jadwal_selesai[$jadwal->tgl_mulai][$jadwal->jam_ke - 1] == false) {
                                                                 $status = '<button id="' . $jadwal->id_jadwal . '"'
                                                                     . ' class="status-table btn btn-disabled ' . $bg . '" disabled>'
-                                                                    . ' <b>MENUNGGU</b></button>';
+                                                                    . ' <b>Menunggu</b></button>';
                                                             } else {
                                                                 $status = '<button id="' . $jadwal->id_jadwal . '"'
                                                                     . ' onclick="location.href=\'' . base_url() . 'siswa/konfirmasi/' . $jadwal->id_jadwal . '\'"'
                                                                     . ' class="status-table btn ' . $bg . '"'
                                                                     . ' data-tgl="' . $jadwal->tgl_mulai . '" data-jamke="' . $jadwal->jam_ke . '">'
-                                                                    . ' <b>KERJAKAN</b></button>';
+                                                                    . ' <b>Kerjakan</b></button>';
                                                             }
                                                         }
                                                     }
@@ -359,20 +360,22 @@ $jadwal_selesai = [];
                                                     $status = '<button id="' . $jadwal->id_jadwal . '" class="status-table btn ' . $bg . '"'
                                                         . ' onclick="location.href=\'' . base_url() . 'siswa/konfirmasi/' . $jadwal->id_jadwal . '\'"'
                                                         . ' data-tgl="' . $jadwal->tgl_mulai . '" data-jamke="' . $jadwal->jam_ke . '">'
-                                                        . ' <b>LANJUTKAN</b></button>';
+                                                        . ' <b>Lanjutkan</b></button>';
                                                 } else {
                                                     $status = '<button id="' . $jadwal->id_jadwal . '" class="status-table btn btn-disabled ' . $bg . '"'
                                                         . ' data-tgl="' . $jadwal->tgl_mulai . '" data-jamke="' . $jadwal->jam_ke . '">'
-                                                        . ' <b>SUDAH SELESAI</b></button>';
-                                                } ?>
+                                                        . ' <b>Sudah Selesai</b></button>';
+                                                }
+                                            ?>
+
                                                 <tr>
                                                     <td class="text-center"><?= $jam_ke ?>
                                                         <br><?= $jadwal->durasi_ujian ?> mnt
                                                     </td>
                                                     <td class="text-center"><?= $jadwal->nama_mapel ?><br>
-                                                        <small class="d-block d-md-none"><?= $jadwal->nama_jenis ?></small>
+                                                        <!-- <small class="d-block d-md-none"><?= $jadwal->nama_jenis ?></small> -->
                                                     </td>
-                                                    <td class="d-none d-md-block"><?= $jadwal->nama_jenis ?></td>
+                                                    <td class="text-center"><?= $jadwal->nama_jenis ?></td>
                                                     <td><?= $status ?></td>
                                                 </tr>
                                     <?php

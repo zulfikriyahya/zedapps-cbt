@@ -7,7 +7,7 @@
 	position: sticky;
 	bottom: 0;
 	padding: 2px;
-	background-color: darkgreen;
+	background-color: #101010;
 	font-size: 16pt;
 	color: white;
     height: auto;">
@@ -16,7 +16,9 @@
 
 <!-- Main Footer -->
 <footer class="main-footer">
-    <strong>ZEDAPPS SCHOOL</strong> <!-- v.<?= APP_VERSION ?> -->
+    <!-- <div class="float-left d-sm-inline-block"> -->
+    <!-- <strong>ZEDAPPS SCHOOL </strong><small>Ver.<?= APP_VERSION ?></small> -->
+    <!-- </div> -->
     <div class="float-right d-none d-sm-inline-block">
         <strong>Copyright &copy; 2018 - <?= date('Y'); ?></strong>
     </div>

@@ -157,10 +157,10 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
 <body class="layout-top-nav layout-navbar-fixed">
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark border-bottom-0">
-            <ul class="navbar-nav ml-2 <?= $dnone ?>" id="back">
+            <ul class="navbar-nav <?= $dnone ?>" id="back">
                 <li class="nav-item">
-                    <a href="<?= base_url('dashboard') ?>" type="button" class="btn btn-success" id="url-back">
-                        <i class="fas fa-arrow-left mr-2"></i><span class="d-none d-sm-inline-block ml-1">Beranda</span>
+                    <a href="<?= base_url('dashboard') ?>" type="button" class="btn btn-primary btn-outline-light" id="url-back">
+                        <i class="fas fa-arrow-left mr-2"></i><span class="d-none d-sm-inline-block">Beranda</span>
                     </a>
                 </li>
             </ul>
@@ -179,7 +179,7 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
             <ul class="navbar-nav <?= $display_logout ?>">
                 <li class="nav-item">
                     <button onclick="logout()" class="btn btn-danger btn-outline-light">
-                        <span class="d-none d-sm-inline-block mr-2">Logout</span><i class="fas fa-sign-out-alt"></i>
+                        <span class="d-none d-sm-inline-block mr-2">Keluar</span><i class="fas fa-sign-out-alt"></i>
                     </button>
                 </li>
             </ul>
@@ -189,8 +189,9 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
             const isLogin = localStorage.getItem('garudaCBT.login')
             const isCbtMode = isLogin ? isLogin === '1' : false
             if (isCbtMode) {
-                $("a#url-back").attr("href", base_url + 'siswa/cbt');
-                if ('<?= $cbt ?>' === 'cbt') {
+                // $("a#url-back").attr("href", base_url + 'siswa/cbt');
+                $("a#url-back").attr("href", base_url + 'dashboard');
+                if ('<?= $cbt ?>' === 'cbt' && '<?= $cbt ?>' !== 'cbt') {
                     $('#back').addClass('d-none')
                 }
             }

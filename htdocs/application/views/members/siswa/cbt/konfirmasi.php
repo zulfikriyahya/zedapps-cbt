@@ -17,9 +17,9 @@
                                 <?php
                                 //var_dump($pengawas);
                                 if ($support && $valid) : ?>
-                                    <h3 class="text-center">KONFIRMASI</h3>
-                                    <h5 class="text-center">
-                                        <b><?= $bank->kode_jenis . ' | ' . $bank->tahun . ' | ' . $bank->smt ?></b>
+                                    <h3 class="text-center text-bold">KONFIRMASI</h3>
+                                    <h5 class="text-center text-semibold">
+                                        <?= $bank->kode_jenis . ' | ' . $bank->tahun . ' | ' . $bank->smt ?>
                                     </h5>
                                     <br>
                                     <?php
@@ -39,14 +39,13 @@
                                             }
                                         }
                                     }
-
                                     ?>
                                     <?= form_open('', array('id' => 'konfir')) ?>
                                     <input type="hidden" name="siswa" value="<?= $siswa->id_siswa ?>">
                                     <input type="hidden" name="jadwal" value="<?= $bank->id_jadwal ?>">
                                     <input type="hidden" name="bank" value="<?= $bank->id_bank ?>">
                                     <ul class="list-group list-group-unbordered">
-                                        <li class="list-group-item p-1"> Mata Pelajaran
+                                        <li class="list-group-item p-1"> Pelajaran
                                             <span class="float-right"><b><?= $bank->nama_mapel ?></b></span>
                                         </li>
                                         <!--
@@ -83,8 +82,8 @@
                                         <?php endif; ?>
                                     </ul>
 
-                                    <div class="alert alert-default-info">
-                                        <h5>Pengawas Ujian:</h5>
+                                    <div class="alert alert-default-info mt-4">
+                                        <h5 class="text-bold">Pengawas:</h5>
                                         <ul>
                                             <?php
                                             foreach ($pengawas as $pws) : ?>
@@ -92,9 +91,8 @@
                                             <?php endforeach; ?>
                                         </ul>
                                     </div>
-                                    <br>
-                                    <span class="float-right" data-toggle="tooltip" title="MULAI">
-                                        <button id="load-soal" type="submit" class="btn btn-success">MULAI</button>
+                                    <span class="float-right" data-toggle="tooltip" title="Mulai Assesmen">
+                                        <button id="load-soal" type="submit" class="btn btn-primary">Mulai</button>
                                     </span>
                                     <?= form_close(); ?>
 
@@ -102,7 +100,7 @@
                                     <div class="alert alert-default-danger text-center p-2">
                                         <h3><i class="icon fas fa-ban"></i> WARNING..!!</h3>
                                         <div class="text-lg">
-                                            Ujian tidak bisa dilanjutkan
+                                            Assesmen tidak bisa dilanjutkan
                                             <br>
                                             hubungi proktor
                                         </div>
@@ -167,7 +165,7 @@
                         });
                     } else {
                         // browser OK
-                        // cek izin ujian
+                        // cek izin Assesmen
                         if (data.izinkan === true) {
                             // diizinkan
                             // cek sisa waktu
@@ -176,18 +174,18 @@
                                 // cek apakah ada soal?
                                 if (data.jml_soal > 0) {
                                     // ada soal
-                                    // siswa masuk halaman ujian
+                                    // siswa masuk halaman Assesmen
                                     window.location.href = base_url + 'siswa/penilaian/' + jadwal;
                                 } else {
                                     // soal belum dibuat
                                     swal.fire({
                                         "title": "Error",
-                                        "html": "Tidak ada soal ujian<br>Hubungi proktor<br>004",
+                                        "html": "Tidak ada soal Assesmen<br>Hubungi proktor<br>004",
                                         "icon": "error"
                                     });
                                 }
                             } else {
-                                // siswa logout ditengah ujian dan tidak melanjutkan sampai waktu ujian habis
+                                // siswa logout ditengah assesmen dan tidak melanjutkan sampai waktu assesmen habis
                                 // admin harus reset waktu
                                 swal.fire({
                                     "title": "Error",
@@ -196,12 +194,12 @@
                                 });
                             }
                         } else {
-                            // ditengah ujian, siswa ganti hape/komputer
-                            // siswa tidak diizinkan ujian
+                            // ditengah assesmen, siswa ganti hape/komputer
+                            // siswa tidak diizinkan assesmen
                             // admin perlu reset izin
                             swal.fire({
                                 "title": "Error",
-                                "html": "Anda sedang mengerjakan ujian di perangkat lain<br>Hubungi proktor<br>002",
+                                "html": "Anda sedang mengerjakan assesmen di perangkat lain<br>Hubungi proktor<br>002",
                                 "icon": "error"
                             });
                         }
