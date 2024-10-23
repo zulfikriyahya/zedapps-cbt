@@ -28,7 +28,7 @@ $arrHari = ['Ming', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Ming'];
 $arrBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 ?>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <!-- Main content -->
     <div class="sticky">
     </div>
@@ -43,7 +43,7 @@ $arrBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli',
                                 Kehadiran Hari Ini
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <?php
                             $today = date('Y-m-d');
                             if ($kbm == null) : ?>
@@ -148,7 +148,7 @@ $arrBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli',
                                 Kehadiran Bulan <?= buat_tanggal(date('M')) ?>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <?php if ($kbm != null) :
                                 $tanggal = date('d');
                                 $bulan = date('m');

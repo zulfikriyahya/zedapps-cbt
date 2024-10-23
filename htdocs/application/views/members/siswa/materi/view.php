@@ -3,7 +3,7 @@
 $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
 ?>
 
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <div class="sticky">
     </div>
     <section class="content overlap">
@@ -51,7 +51,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                         }
                         $isi_materi = $dom->saveHTML();
                         ?>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <?php if ($ada_nilai) : ?>
                                 <div class="col-lg-12 p-0">
                                     <div class="alert align-content-center alert-default-warning" role="alert">
@@ -70,7 +70,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                         <div class="card-header">
                             <div class="media card-title text-bold">File Pendukung</div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <img id="img1" />
                             <ul class="clearfix media-list">
                                 <?php
@@ -135,7 +135,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                 </div>
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div id="input-materi" class="row">
                                 <div class="col-12 mb-3">
                                     <?= form_open('', array('id' => 'formhasil')) ?>
@@ -155,7 +155,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                         <div class="card-header">
                                             <h6 class="card-title">Tambahkan File</h6>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body text-dark">
                                             <?= form_open_multipart('', array('id' => 'formfile')) ?>
                                             <div class="form-group">
                                                 <ul id="media-upload" class="clearfix media-list">
@@ -171,7 +171,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
                                             </div>
                                             <?= form_close(); ?>
                                         </div>
-                                        <div class="card-footer">
+                                        <div class="card-footer text-dark">
                                             <i class="fa fa-info-circle"></i> File yang akan ditambahkan harus diberi
                                             nama siswa!
                                             <br>File yang bisa ditambahkan:
@@ -213,7 +213,7 @@ $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
     </section>
 </div>
 
-<div class="modal fade" id="view-modal" tabindex="-1" role="dialog">
+<div class="modal fade text-dark" id="view-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

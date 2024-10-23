@@ -7,28 +7,15 @@
 	position: sticky;
 	bottom: 0;
 	padding: 2px;
-	background-color: #101010;
-	font-size: 16pt;
+	background-color: #353a40;
+	font-size: 14pt;
 	color: white;
-    height: auto;">
+    height: auto;
+    z-index:3">
     <div id="running-text-siswa" class="marquee" style="overflow: hidden;"></div>
 </div>
 
-<!-- Main Footer -->
-<footer class="main-footer">
-    <!-- <div class="float-left d-sm-inline-block"> -->
-    <!-- <strong>ZEDAPPS SCHOOL </strong><small>Ver.<?= APP_VERSION ?></small> -->
-    <!-- </div> -->
-    <div class="float-right d-none d-sm-inline-block">
-        <strong>Copyright &copy; 2018 - <?= date('Y'); ?></strong>
-    </div>
-</footer>
 
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
 
 <!-- Required JS -->
 <!-- v3 -->

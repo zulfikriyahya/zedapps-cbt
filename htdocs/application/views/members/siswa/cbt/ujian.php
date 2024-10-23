@@ -1,26 +1,20 @@
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <div class="sticky">
     </div>
-    <section class="content overlap p-4">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="row">
-                    <div class="col-12">
-                        <?php $this->load->view('members/siswa/templates/top'); ?>
-                    </div>
+    <section class="content overlap pt-4 px-0">
+        <!-- <div class="container" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on"> -->
+        <div class="container" unselectable="on">
+            <div class="row">
+                <div class="col-12">
+                    <?php $this->load->view('members/siswa/templates/top'); ?>
                 </div>
             </div>
-        </div>
-        <div class="container"
-            style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
-            unselectable="on">
-
-            <div class="row mt-2">
+            <div class="row">
                 <div class="col-12">
                     <div class="card my-shadow">
-                        <div class="card-header bg-dark">
-                            <div class="card-title text-bold">
-                                <div id="nomor-soal" class="btn bg-info btn-circle-sm btn-outline-light no-hover ml-2 text-md"></div>
+                        <div class="card-header bg-info">
+                            <div class="card-title align-center">
+                                <div id="nomor-soal" class="btn btn-secondary btn-circle-sm btn-outline-light no-hover text-md"></div>
                             </div>
                             <div class="card-tools">
                                 <button class="btn btn-outline-danger btn-oval-sm no-hover">
@@ -33,11 +27,9 @@
                                     <i class="fa fa-th"></i>
                                 </button>
                             </div>
-
                         </div>
-                        <div class="card-body p-3">
-                            <div class="zoom-tool-bar"></div>
-                            <div style="border: 1px solid; border-color: #D3D3D3;">
+                        <div class="card-body text-dark">
+                            <div style="border: 2px solid; border-color: #bdbdbd;">
                                 <div class="konten-soal-jawab">
                                     <div class="row p-2 mb-4 ml-1">
                                         <div id="konten-soal" class="table-responsive"></div>
@@ -54,7 +46,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer text-dark zoom-tool-bar">
+                        </div>
+                        <div class="card-footer text-dark">
                             <div class="d-flex justify-content-between bd-highlight">
                                 <div class="bd-highlight">
                                     <button class="btn btn-primary btn-oval-sm" id="prev" onclick="prevSoal()">
@@ -81,11 +75,11 @@
     </section>
 </div>
 
-<div class="modal fade" id="daftarModal" tabindex="-1" role="dialog" aria-labelledby="daftarLabel"
+<div class="modal fade text-dark" id="daftarModal" tabindex="-1" role="dialog" aria-labelledby="daftarLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-info">
                 <h5 class="modal-title text-bold" id="daftarLabel">Daftar Nomor Soal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -95,9 +89,9 @@
                 <div class="container-fluid" id="konten-modal">
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer bg-dark">
                 <button type="button" class="btn btn-danger btn-outline-light" data-dismiss="modal"><i class="fa fa-close"></i></button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

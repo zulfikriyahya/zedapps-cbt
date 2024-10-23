@@ -66,13 +66,6 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/show.toast.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/plugins/fields-linker/fieldsLinker.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
     <!-- jQuery -->
     <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -154,19 +147,18 @@ $display_clock = $this->uri->segment(2) == "penilaian" ? '' : 'd-none';
 $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
 ?>
 
-<body class="layout-top-nav layout-navbar-fixed">
-    <div class="wrapper">
-        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark border-bottom-0">
+<body class="layout-top-nav layout-navbar-fixed bg-dark">
+    <div class="wrapper bg-dark">
+        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark border-bottom-1">
             <ul class="navbar-nav <?= $dnone ?>" id="back">
                 <li class="nav-item">
                     <a href="<?= base_url('dashboard') ?>" type="button" class="btn btn-primary btn-outline-light" id="url-back">
-                        <i class="fas fa-arrow-left mr-2"></i><span class="d-none d-sm-inline-block">Beranda</span>
+                        <i class="fas fa-home"></i><span class="d-none d-sm-inline-block"></span>
                     </a>
                 </li>
             </ul>
-            <div class="mx-auto text-white text-center" style="line-height: 1">
-                <span class="text-lg p-0">
-                    <h5 class="text-bold"><?= $setting->nama_aplikasi ?></h5>
+            <div class="mx-auto text-white text-center">
+                <span class="text-lg text-bold"><?= $setting->nama_aplikasi ?>
                 </span>
                 <!-- <br>
                 <small>Tahun Pelajaran: <?= $tp_active->tahun ?> Smt:<?= $smt_active->smt ?></small> -->
@@ -179,7 +171,7 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
             <ul class="navbar-nav <?= $display_logout ?>">
                 <li class="nav-item">
                     <button onclick="logout()" class="btn btn-danger btn-outline-light">
-                        <span class="d-none d-sm-inline-block mr-2">Keluar</span><i class="fas fa-sign-out-alt"></i>
+                        <span class="d-none d-sm-inline-block"></span><i class="fas fa-sign-out-alt"></i>
                     </button>
                 </li>
             </ul>

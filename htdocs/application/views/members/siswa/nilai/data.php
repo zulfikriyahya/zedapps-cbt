@@ -1,9 +1,7 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="margin-top: -1px;">
-    <!-- Main content -->
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <div class="sticky">
     </div>
-    <section class="content overlap p-4">
+    <section class="content overlap pt-4">
         <div class="container">
             <?php $this->load->view('members/siswa/templates/top'); ?>
             <div class="row">
@@ -14,7 +12,7 @@
                                 NILAI HASIL MATERI
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div id="list-nilai-materi" class="table-responsive">
                                 <?php
                                 if (count($nilai_materi) > 0): ?>
@@ -62,11 +60,11 @@
                 <div class="col-12 col-md-6">
                     <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white text-bold">
+                            <div class="card-title text-light text-bold">
                                 NILAI HASIL TUGAS
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div id='list-nilai-tugas'>
                                 <?php if (count($nilai_tugas) > 0): ?>
                                     <table class="table table-hover w-100" id="table-nilai-tugas" style="line-height: 1">
@@ -110,83 +108,82 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+
+                <div class="col-12 col-md-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <div class="card-title text-white text-bold">
+                            <div class="card-title text-light text-bold">
                                 NILAI HASIL ASSESMEN
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div id='list-cbt'>
-                                <?php
-                                //echo '<pre>';
-                                //var_dump($kelass);
-                                //var_dump($jadwal);
-                                //echo '</pre>';
-                                ?>
-                                <table class="table w-100" id="table-nilai-ujian">
-                                    <thead>
-                                        <tr class="text-center align-middle bg-info">
-                                            <th>NO</th>
-                                            <th>Jenis Penilaian</th>
-                                            <th>Mata Pelajaran</th>
-                                            <th>Kode Penilaian</th>
-                                            <th class="text-center">Nilai</th>
-                                            <th class="text-center">Detail</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        if (count($jadwal) > 0) :
-                                            $no = 1;
-                                            foreach ($jadwal as $j) :
-                                                $hanya_pg = $j->tampil_pg > 0 && $j->tampil_kompleks == 0 && $j->tampil_jodohkan == 0 && $j->tampil_isian == 0 && $j->tampil_esai == 0;
-                                                $total = !$hanya_pg && isset($skor[$j->id_jadwal]->dikoreksi) && $skor[$j->id_jadwal]->dikoreksi == 0 ? '*' : ($j->hasil_tampil == '0' ? '**' : $skor[$j->id_jadwal]->skor_total);
-                                        ?>
+                        <div class="card-body text-dark">
+                            <div class="table-responsive">
+                                <div id='list-cbt'>
+                                    <table class="table table-striped table-bordered" id="table-nilai-ujian">
+                                        <thead>
+                                            <tr class="text-center align-middle bg-info">
+                                                <th>NO</th>
+                                                <th>Jenis Penilaian</th>
+                                                <th>Mata Pelajaran</th>
+                                                <th>Kode Penilaian</th>
+                                                <th class="text-center">Nilai</th>
+                                                <th class="text-center">Detail</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            if (count($jadwal) > 0) :
+                                                $no = 1;
+                                                foreach ($jadwal as $j) :
+                                                    $hanya_pg = $j->tampil_pg > 0 && $j->tampil_kompleks == 0 && $j->tampil_jodohkan == 0 && $j->tampil_isian == 0 && $j->tampil_esai == 0;
+                                                    $total = !$hanya_pg && isset($skor[$j->id_jadwal]->dikoreksi) && $skor[$j->id_jadwal]->dikoreksi == 0 ? '*' : ($j->hasil_tampil == '0' ? '**' : $skor[$j->id_jadwal]->skor_total);
+                                            ?>
+                                                    <tr>
+                                                        <td class="text-center"><?= $no ?></td>
+                                                        <td><?= $j->nama_jenis ?>
+                                                            <br><small><?= buat_tanggal(date('D, d M Y', strtotime($j->tgl_mulai))) ?></small>
+                                                        </td>
+                                                        <td><?= $j->kode ?></td>
+                                                        <td><?= $j->bank_kode ?></td>
+                                                        <td class="text-center"><?= $total ?></td>
+                                                        <td class="text-center">
+                                                            <button type="button"
+                                                                data-koreksi="<?= isset($skor[$j->id_jadwal]->dikoreksi) ? $skor[$j->id_jadwal]->dikoreksi : '0' ?>"
+                                                                data-tampil="<?= $j->hasil_tampil ?>"
+                                                                data-id="<?= $j->id_jadwal ?>"
+                                                                data-toggle="modal"
+                                                                data-target="#detail-nilai"
+                                                                class="btn btn-sm btn-primary">
+                                                                Detail
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                <?php $no++;
+                                                endforeach;
+                                            else: ?>
                                                 <tr>
-                                                    <td class="text-center"><?= $no ?></td>
-                                                    <td><?= $j->nama_jenis ?>
-                                                        <br><small><?= buat_tanggal(date('D, d M Y', strtotime($j->tgl_mulai))) ?></small>
-                                                    </td>
-                                                    <td><?= $j->kode ?></td>
-                                                    <td><?= $j->bank_kode ?></td>
-                                                    <td class="text-center"><?= $total ?></td>
-                                                    <td class="text-center">
-                                                        <button type="button"
-                                                            data-koreksi="<?= isset($skor[$j->id_jadwal]->dikoreksi) ? $skor[$j->id_jadwal]->dikoreksi : '0' ?>"
-                                                            data-tampil="<?= $j->hasil_tampil ?>"
-                                                            data-id="<?= $j->id_jadwal ?>"
-                                                            data-toggle="modal"
-                                                            data-target="#detail-nilai"
-                                                            class="btn btn-sm btn-primary">
-                                                            Detail
-                                                        </button>
+                                                    <td colspan="6" class="text-center">
+                                                        <div class="alert align-content-center alert-default-warning"
+                                                            role="alert">
+                                                            Belum ada jadwal ulangan/ujian
+                                                        </div>
                                                     </td>
                                                 </tr>
-                                            <?php $no++;
-                                            endforeach;
-                                        else: ?>
-                                            <tr>
-                                                <td colspan="6" class="text-center">
-                                                    <div class="alert align-content-center alert-default-warning"
-                                                        role="alert">
-                                                        Belum ada jadwal ulangan/ujian
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php endif; ?>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <span><i>Catatan:</i></span>
-                                <br>
-                                <small>
-                                    <b>(-)</b> Belum dikerjakan
-                                    <br><b>(*)</b> Menunggu hasil koreksi
-                                    <br><b>(**)</b> Hubungi Guru Pengampu jika ingin mengetahui nilai
-                                </small>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+                        </div>
+                        <div class="card-footer text-dark">
+                            <span class="text-bold">
+                                Catatan:
+                            </span>
+                            <small>
+                                <br><b>(-)</b> Belum dikerjakan
+                                <br><b>(*)</b> Menunggu hasil koreksi
+                                <br><b>(**)</b> Hubungi Guru Pengampu jika ingin mengetahui nilai
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -195,12 +192,12 @@
     </section>
 </div>
 
-<div class="modal fade" id="detail-nilai" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+<div class="modal fade text-dark" id="detail-nilai" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">Detail Hasil Assesmen</h5>
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-bold" id="createModalLabel">Detail Hasil Assesmen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -208,7 +205,7 @@
             <div class="modal-body">
                 <table class="w-100">
                     <tr>
-                        <td>Tgl. Pelaksanaan</td>
+                        <td>Tanggal</td>
                         <td id="jwaktu">:</td>
                     </tr>
                     <tr>
@@ -225,7 +222,7 @@
                     </tr>
                 </table>
                 <hr>
-                <div id="alert" class="alert alert-default-warning align-content-center" role="alert">
+                <div id="alert" class="alert alert-default-info align-content-center" role="alert">
                     Hubungi guru pengampu jika ingin mengetahui nilai.
                 </div>
                 <table id="table-detail-soal" class="w-100 table-striped">
@@ -271,9 +268,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal">Tutup</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

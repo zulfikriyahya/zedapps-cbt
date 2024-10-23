@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <!-- Main content -->
     <div class="sticky">
     </div>
@@ -14,11 +14,11 @@
                                 <?= $subjudul ?>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card">
-                                        <div class="card-body p-0">
+                                        <div class="card-body text-dark p-0">
                                             <?php if (count($catatan) > 0) : ?>
                                                 <ul class="list-group"
                                                     style="list-style:none;border-radius: 0;padding: 0">
@@ -68,15 +68,15 @@
                                             <?php endif; ?>
                                         </div>
                                     </div>
-                                    <div class="ket">Keteraangan:</div>
+                                    <div class="ket">Keterangan:</div>
                                     <div style="line-height: 1">
-                                        <span class="text-xs"><i class="fa fa-circle text-success"></i> : saran</span>
+                                        <span class="text-xs"><i class="fa fa-circle text-success"></i> : Saran</span>
                                         <br>
-                                        <span class="text-xs"><i class="fa fa-circle text-warning"></i> : teguran</span>
+                                        <span class="text-xs"><i class="fa fa-circle text-warning"></i> : Teguran</span>
                                         <br>
-                                        <span class="text-xs"><i class="fa fa-circle text-pink"></i> : peringatan</span>
+                                        <span class="text-xs"><i class="fa fa-circle text-pink"></i> : Peringatan</span>
                                         <br>
-                                        <span class="text-xs"><i class="fa fa-circle text-danger"></i> : sangsi</span>
+                                        <span class="text-xs"><i class="fa fa-circle text-danger"></i> : Sanksi</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-md-6 hidden-xs">
@@ -94,7 +94,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body text-dark">
                                             <div id="isi" class="text-justify"></div>
                                         </div>
                                         <div class="overlay d-none">
@@ -110,7 +110,7 @@
         </div>
     </section>
 </div>
-<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailLabel">
+<div class="modal fade text-dark" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-dark">
                     <div id="isi-modal" class="text-justify"></div>
                 </div>
                 <div class="overlay d-none">

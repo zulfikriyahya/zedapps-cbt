@@ -6,7 +6,7 @@ if (isset($jadwal_kbm)) {
 }
 ?>
 
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <div class="sticky">
     </div>
     <section class="content overlap p-4">
@@ -28,7 +28,7 @@ if (isset($jadwal_kbm)) {
                             </div>
                         </div>
 
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <?php
                             if (isset($jadwal_mapel)) :
                                 foreach ($jadwal_mapel as $k) {

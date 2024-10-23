@@ -1,4 +1,4 @@
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <div class="sticky">
     </div>
     <section class="content overlap p-4">
@@ -29,7 +29,7 @@
                                 <small><?= buat_tanggal(date('D, d M Y')) ?></small>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div class="row">
                                 <?php
                                 //var_dump($materis);
@@ -60,7 +60,7 @@
                                                                 s/d <?= $jamSampai->format('H:i') ?>
                                                             </div>
                                                         </div>
-                                                        <div class="card-body p-0">
+                                                        <div class="card-body text-dark p-0">
                                                             <div class="text-center" style="min-height: 192px;">
                                                                 <br>
                                                                 <br>
@@ -94,7 +94,7 @@
                                                                     s/d <?= $jamSampai->format('H:i') ?>
                                                                 </div>
                                                             </div>
-                                                            <div class="card-body p-0">
+                                                            <div class="card-body text-dark p-0">
                                                                 <div class="small-box bg-gradient-<?= $jenis == '1' ? 'success' : 'indigo' ?> mb-0">
                                                                     <div class="inner">
                                                                         <h3><?= $materi[$jamke]->kode_materi ?></h3>
@@ -157,7 +157,7 @@
                                                                     s/d <?= $jamSampai->format('H:i') ?>
                                                                 </div>
                                                             </div>
-                                                            <div class="card-body p-0">
+                                                            <div class="card-body text-dark p-0">
                                                                 <div class="text-center" style="min-height: 192px;">
                                                                     <br>
                                                                     <br>
@@ -198,7 +198,7 @@
                                 <?= strtoupper($judul ?? '') ?> TERDAHULU
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <ul class="nav nav-pills mb-2 border " id="pills-tab" role="tablist">
                                 <?php foreach ($week as $index => $tgl) :
                                     $idhari = date('N', strtotime($tgl));

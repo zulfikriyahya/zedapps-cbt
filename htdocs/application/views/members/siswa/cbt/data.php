@@ -7,10 +7,10 @@ foreach ($guru as $g) {
 $jam_pertama = null;
 $jadwal_selesai = [];
 ?>
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <div class="sticky">
     </div>
-    <section class="content overlap p-4">
+    <section class="content overlap pt-4">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -18,14 +18,12 @@ $jadwal_selesai = [];
                     $cbt_setting = [];
                     $this->load->view('members/siswa/templates/top'); ?>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-12">
                     <div class="card my-shadow">
                         <div class="card-header bg-info">
                             <div class="text-center text-bold">INFO ASSESMEN</div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div class="row">
                                 <div class="col-md-4">
                                     <?php
@@ -42,7 +40,7 @@ $jadwal_selesai = [];
                                             <div class="card-header border-bottom-0">
                                                 <h4 class="card-title mt-1 text-wrap text-bold"><?= $siswa->nama ?></h4>
                                             </div>
-                                            <div class="card-body pt-0">
+                                            <div class="card-body text-dark pt-0">
                                                 <ul class="list-group list-group-unbordered">
                                                     <?php
                                                     $arrTitle = ['No. Peserta', 'Ruang', 'Sesi', 'Dari', 'Sampai'];
@@ -93,7 +91,7 @@ $jadwal_selesai = [];
                                 JADWAL ASSESMEN<br /><small><?= buat_tanggal(date('D, d M Y')) ?></small>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div class="row" id="jadwal-content">
                                 <?php
                                 if ($cbt_info == null || count($cbt_setting) > 0) : ?>
@@ -156,7 +154,7 @@ $jadwal_selesai = [];
                                                                 mnt</b>
                                                         </div>
                                                     </div>
-                                                    <div class="card-body p-0">
+                                                    <div class="card-body text-dark p-0">
                                                         <div class="small-box <?= $bg ?> mb-0">
                                                             <div class="inner">
                                                                 <h6 class="crop-text-1">
@@ -175,14 +173,14 @@ $jadwal_selesai = [];
                                                                         class="status small-box-footer p-2"
                                                                         data-tgl="<?= $jadwal->tgl_mulai ?>"
                                                                         data-jamke="<?= $jadwal->jam_ke ?>">
-                                                                        <b>BELUM DIMULAI</b>
+                                                                        <b>Belum Mulai</b>
                                                                     </div>
                                                                 <?php elseif ($today > $endDay) : ?>
                                                                     <div id="<?= $jadwal->id_jadwal ?>"
                                                                         class="status small-box-footer p-2"
                                                                         data-tgl="<?= $jadwal->tgl_mulai ?>"
                                                                         data-jamke="<?= $jadwal->jam_ke ?>">
-                                                                        <b>SUDAH BERAKHIR</b>
+                                                                        <b>Sudah Berakhir</b>
                                                                     </div>
                                                                 <?php else: ?>
                                                                     <?php if ($now < strtotime($sesiMulai->format('H:i'))) : ?>
@@ -191,7 +189,7 @@ $jadwal_selesai = [];
                                                                             data-tgl="<?= $jadwal->tgl_mulai ?>"
                                                                             data-jamke="<?= $jadwal->jam_ke ?>">
                                                                             <b><?= strtoupper($cbt_info->nama_sesi ?? '') ?>
-                                                                                BELUM DIMULAI</b>
+                                                                                Belum Mulai</b>
                                                                         </div>
                                                                     <?php elseif ($now > strtotime($sesiSampai->format('H:i'))) : ?>
                                                                         <div id="<?= $jadwal->id_jadwal ?>"
@@ -199,14 +197,14 @@ $jadwal_selesai = [];
                                                                             data-tgl="<?= $jadwal->tgl_mulai ?>"
                                                                             data-jamke="<?= $jadwal->jam_ke ?>">
                                                                             <b><?= strtoupper($cbt_info->nama_sesi ?? '') ?>
-                                                                                SUDAH BERAKHIR</b>
+                                                                                Sudah Berakhir</b>
                                                                         </div>
                                                                     <?php else : ?>
                                                                         <?php if (isset($jadwal_selesai[$jadwal->tgl_mulai][$jadwal->jam_ke - 1]) && $jadwal_selesai[$jadwal->tgl_mulai][$jadwal->jam_ke - 1] == false) : ?>
                                                                             <button id="<?= $jadwal->id_jadwal ?>"
                                                                                 class="btn-block btn status text-white small-box-footer p-2 btn-disabled"
                                                                                 disabled>
-                                                                                <b>MENUNGGU</b>
+                                                                                <b>Menunggu</b>
                                                                             </button>
                                                                         <?php else : ?>
                                                                             <button id="<?= $jadwal->id_jadwal ?>"
@@ -214,7 +212,7 @@ $jadwal_selesai = [];
                                                                                 class="btn btn-block status text-white small-box-footer p-2"
                                                                                 data-tgl="<?= $jadwal->tgl_mulai ?>"
                                                                                 data-jamke="<?= $jadwal->jam_ke ?>">
-                                                                                <b>KERJAKAN</b><i
+                                                                                <b>Kerjakan</b><i
                                                                                     class="fas fa-arrow-circle-right ml-3"></i>
                                                                             </button>
                                                                 <?php endif;
@@ -263,13 +261,13 @@ $jadwal_selesai = [];
                                 JADWAL ASSESMEN SEBELUMNYA
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row table-responsive">
-                                <table class="table">
+                        <div class="card-body text-dark">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered">
                                     <?php
                                     foreach ($cbt_jadwal as $tgl => $jadwals) :
                                         if ($tgl != date('Y-m-d')) : ?>
-                                            <tr class="bg-maroon">
+                                            <tr class="bg-info">
                                                 <td colspan="4" class="tgl-ujian"
                                                     data-tgl="<?= $tgl ?>">
                                                     <?= buat_tanggal(date('D, d M Y', strtotime($tgl))) ?>
@@ -279,7 +277,7 @@ $jadwal_selesai = [];
                                                 <th class="text-center align-middle">Jam ke</th>
                                                 <th class="text-center align-middle">Mapel</th>
                                                 <th class="text-center align-middle">Jenis Penilaian</th>
-                                                <th class="text-center align-middle">Status</th>
+                                                <th class="align-middle">Status</th>
                                             </tr>
 
                                             <?php

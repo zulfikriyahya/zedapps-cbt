@@ -1,121 +1,117 @@
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <div class="sticky">
     </div>
-    <section class="content overlap p-4">
+    <section class="content overlap pt-4">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <?php $this->load->view('members/siswa/templates/top'); ?>
-                </div>
-            </div>
-
+            <?php $this->load->view('members/siswa/templates/top'); ?>
             <div class="container-fluid h-100">
                 <div class="row h-100 justify-content-center">
-                    <div class="col-md-8 col-lg-6">
+                    <div class="col-12">
                         <div class="card my-shadow">
-                            <div class="card-body">
-                                <?php
-                                //var_dump($pengawas);
-                                if ($support && $valid) : ?>
-                                    <h3 class="text-center text-bold">KONFIRMASI</h3>
-                                    <h5 class="text-center text-semibold">
-                                        <?= $bank->kode_jenis . ' | ' . $bank->tahun . ' | ' . $bank->smt ?>
-                                    </h5>
-                                    <br>
+                            <div class="card-header bg-info">
+                                <div class="card-title">
                                     <?php
-                                    $jk = json_decode(json_encode($bank->bank_kelas));
-                                    $jumlahKelas = json_decode(json_encode(unserialize($jk ?? '')));
+                                    //var_dump($pengawas);
+                                    if ($support && $valid) : ?>
+                                        <span class="text-bold">KONFIRMASI</span>
+                                        <br><small><?= $bank->kode_jenis . ' | ' . $bank->tahun . ' | ' . $bank->smt ?></small>
+                                </div>
+                            </div>
+                            <div class="card-body text-dark">
+                                <?php
+                                        $jk = json_decode(json_encode($bank->bank_kelas));
+                                        $jumlahKelas = json_decode(json_encode(unserialize($jk ?? '')));
 
-                                    $kelasbank = '';
-                                    $no = 1;
-                                    foreach ($jumlahKelas as $j) {
-                                        foreach ($kelas as $k) {
-                                            if ($j->kelas_id === $k->id_kelas) {
-                                                if ($no > 1) {
-                                                    $kelasbank .= ', ';
+                                        $kelasbank = '';
+                                        $no = 1;
+                                        foreach ($jumlahKelas as $j) {
+                                            foreach ($kelas as $k) {
+                                                if ($j->kelas_id === $k->id_kelas) {
+                                                    if ($no > 1) {
+                                                        $kelasbank .= ', ';
+                                                    }
+                                                    $kelasbank .= $k->nama_kelas;
+                                                    $no++;
                                                 }
-                                                $kelasbank .= $k->nama_kelas;
-                                                $no++;
                                             }
                                         }
-                                    }
-                                    ?>
-                                    <?= form_open('', array('id' => 'konfir')) ?>
-                                    <input type="hidden" name="siswa" value="<?= $siswa->id_siswa ?>">
-                                    <input type="hidden" name="jadwal" value="<?= $bank->id_jadwal ?>">
-                                    <input type="hidden" name="bank" value="<?= $bank->id_bank ?>">
-                                    <ul class="list-group list-group-unbordered">
-                                        <li class="list-group-item p-1"> Pelajaran
-                                            <span class="float-right"><b><?= $bank->nama_mapel ?></b></span>
-                                        </li>
-                                        <!--
+                                ?>
+                                <?= form_open('', array('id' => 'konfir')) ?>
+                                <input type="hidden" name="siswa" value="<?= $siswa->id_siswa ?>">
+                                <input type="hidden" name="jadwal" value="<?= $bank->id_jadwal ?>">
+                                <input type="hidden" name="bank" value="<?= $bank->id_bank ?>">
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item p-1"> Pelajaran
+                                        <span class="float-right"><b><?= $bank->nama_mapel ?></b></span>
+                                    </li>
+                                    <!--
                                         <li class="list-group-item p-1"> Guru
                                             <span class="float-right"><b><?= $bank->nama_guru ?></b></span>
                                         </li>
                                         -->
-                                        <li class="list-group-item p-1"> Kelas
-                                            <span class="float-right"><b><?= $kelasbank ?></b></span>
-                                        </li>
-                                        <li class="list-group-item p-1"> Durasi Waktu
-                                            <span class="float-right"><b><?= $bank->durasi_ujian ?> Menit</b></span>
-                                        </li>
-                                        <!--
+                                    <li class="list-group-item p-1"> Kelas
+                                        <span class="float-right"><b><?= $kelasbank ?></b></span>
+                                    </li>
+                                    <li class="list-group-item p-1"> Durasi Waktu
+                                        <span class="float-right"><b><?= $bank->durasi_ujian ?> Menit</b></span>
+                                    </li>
+                                    <!--
 									<li class="list-group-item p-1"> Status
 										<span class="float-right">
 											<b><?= ($bank->status === '0') ? 'Non Aktif' : 'Aktif' ?></b>
 										</span>
 									</li>
 									-->
-                                        <li class="list-group-item p-1"> Jumlah Soal
-                                            <span class="float-right">
-                                                <b><?= $bank->tampil_pg + $bank->tampil_kompleks + $bank->tampil_jodohkan + $bank->tampil_isian + $bank->tampil_esai ?></b>
-                                            </span>
+                                    <li class="list-group-item p-1"> Jumlah Soal
+                                        <span class="float-right">
+                                            <b><?= $bank->tampil_pg + $bank->tampil_kompleks + $bank->tampil_jodohkan + $bank->tampil_isian + $bank->tampil_esai ?></b>
+                                        </span>
+                                    </li>
+                                    <?php if ($bank->token === '1') : ?>
+                                        <li class="list-group-item p-1"><span
+                                                class="text-danger"><b>Token</b></span>
+                                            <div class="float-right" style="width: 100px">
+                                                <input type='text' id="input-token" class="form-control form-control-sm text-center" name='token'
+                                                    placeholder="Token" />
+                                            </div>
                                         </li>
-                                        <?php if ($bank->token === '1') : ?>
-                                            <li class="list-group-item p-1"><span
-                                                    class="text-danger"><b>Token</b></span>
-                                                <div class="float-right" style="width: 100px">
-                                                    <input type='text' id="input-token" class="form-control form-control-sm text-center" name='token'
-                                                        placeholder="Token" />
-                                                </div>
-                                            </li>
-                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </ul>
+
+                                <div class="alert alert-default-info mt-4">
+                                    <h5 class="text-bold">Pengawas:</h5>
+                                    <ul>
+                                        <?php
+                                        foreach ($pengawas as $pws) : ?>
+                                            <li><?= $pws->nama_guru ?></li>
+                                        <?php endforeach; ?>
                                     </ul>
+                                </div>
+                                <span class="float-right" data-toggle="tooltip" title="Mulai Assesmen">
+                                    <button id="load-soal" type="submit" class="btn btn-primary">Mulai</button>
+                                </span>
+                                <?= form_close(); ?>
 
-                                    <div class="alert alert-default-info mt-4">
-                                        <h5 class="text-bold">Pengawas:</h5>
-                                        <ul>
-                                            <?php
-                                            foreach ($pengawas as $pws) : ?>
-                                                <li><?= $pws->nama_guru ?></li>
-                                            <?php endforeach; ?>
-                                        </ul>
+                            <?php elseif (!$valid) : ?>
+                                <div class="alert alert-default-danger text-center p-2">
+                                    <h3><i class="icon fas fa-ban"></i> WARNING..!!</h3>
+                                    <div class="text-lg">
+                                        Assesmen tidak bisa dilanjutkan
+                                        <br>
+                                        hubungi proktor
                                     </div>
-                                    <span class="float-right" data-toggle="tooltip" title="Mulai Assesmen">
-                                        <button id="load-soal" type="submit" class="btn btn-primary">Mulai</button>
-                                    </span>
-                                    <?= form_close(); ?>
-
-                                <?php elseif (!$valid) : ?>
-                                    <div class="alert alert-default-danger text-center p-2">
-                                        <h3><i class="icon fas fa-ban"></i> WARNING..!!</h3>
-                                        <div class="text-lg">
-                                            Assesmen tidak bisa dilanjutkan
-                                            <br>
-                                            hubungi proktor
-                                        </div>
+                                </div>
+                                <small>Refresh halaman ini jika sudah diizinkan</small>
+                            <?php elseif (!$support): ?>
+                                <div class="alert alert-default-danger text-center p-2">
+                                    <h3><i class="icon fas fa-ban"></i> WARNING..!!</h3>
+                                    <div class="text-lg">
+                                        Browser yang digunakan tidak mendukung
+                                        <br>
+                                        silahkan gunakan browser lain dengan versi terbaru
                                     </div>
-                                    <small>Refresh halaman ini jika sudah diizinkan</small>
-                                <?php elseif (!$support): ?>
-                                    <div class="alert alert-default-danger text-center p-2">
-                                        <h3><i class="icon fas fa-ban"></i> WARNING..!!</h3>
-                                        <div class="text-lg">
-                                            Browser yang digunakan tidak mendukung
-                                            <br>
-                                            silahkan gunakan browser lain dengan versi terbaru
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -224,7 +220,7 @@
         });
     });
 
-    console.log('mnt', getMinutes('2023-01-30 11:30:30'));
+    // console.log('mnt', getMinutes('2023-01-30 11:30:30'));
 
     function getMinutes(d) {
         var startTime = new Date(d);

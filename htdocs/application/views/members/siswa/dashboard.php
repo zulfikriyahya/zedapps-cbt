@@ -1,9 +1,9 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper bg-dark" style="margin-top: -1px;">
     <!-- Main content -->
     <div class="sticky">
     </div>
-    <section class="content overlap p-4">
+    <section class="content overlap pt-4">
         <div class="container">
             <?php $this->load->view('members/siswa/templates/top'); ?>
             <div class="row">
@@ -14,21 +14,8 @@
                                 MENU UTAMA
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div class="row">
-                                <!-- <?php foreach ($menu as $m): ?>
-                                    <div class="col-lg-2 col-sm-3 col-4 mb-3">
-                                        <a href="<?= base_url($m->link) ?>">
-                                            <figure class="text-center">
-                                                <img class="img-fluid"
-                                                    src="<?= base_url() ?>/assets/app/img/<?= $m->icon ?>" width="60"
-                                                    height="60" />
-                                                <figcaption><?= $m->title ?></figcaption>
-                                            </figure>
-                                        </a>
-                                    </div>
-                                <?php endforeach; ?> -->
-
                                 <div class="col-lg-2 col-sm-3 col-4">
                                     <a href="<?= base_url() ?>siswa/jadwalpelajaran">
                                         <figure class="text-center">
@@ -102,7 +89,7 @@
                                 PENGUMUMAN
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <div class="konten-pengumuman">
                                 <div id="pengumuman">
                                 </div>
@@ -131,7 +118,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-dark">
                             <?php
                             if ($kbms != null) :
                                 if (count($jadwals) > 0):
@@ -203,15 +190,15 @@
     </section>
 </div>
 
-<div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="previewLabel"
+<div class="modal fade text-dark" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="previewLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-info">
                 <div class="user-block">
                     <img id="foto" class="img-circle" src="<?= base_url() ?>/assets/img/user.jpg" alt="User Image">
-                    <span id="username" class="username">test</span>
-                    <span id="tgl" class="description">aja</span>
+                    <span id="username" class="username">Username</span>
+                    <span id="tgl" class="description">Deskripsi</span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -220,25 +207,25 @@
             <div class="modal-body p-3">
                 <div id="isi-pengumuman"></div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-2"></i>Tutup
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="komentarModal" tabindex="-1" role="dialog" aria-labelledby="komentarLabel">
+<div class="modal fade text-dark" id="komentarModal" tabindex="-1" role="dialog" aria-labelledby="komentarLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="komentarLabel">Tulis Komentar</h5>
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-bold" id="komentarLabel">Tulis Komentar</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <img class="img-fluid img-circle img-sm" src="<?= base_url('assets/img/siswa.png') ?>" alt="Alt Text">
+                <img class="img-fluid img-circle img-sm" src="<?= base_url($siswa->foto) ?>" alt="">
                 <div class="img-push">
                     <?= form_open('create', array('id' => 'komentar')) ?>
                     <input type="hidden" id="id-post" name="id_post" value="">
@@ -246,30 +233,30 @@
                         <input type="text" name="text" placeholder="Tulis komentar ..."
                             class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                            <button type="submit" class="btn btn-success btn-sm">Komentari</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Komentari</button>
                         </span>
                     </div>
                     <?= form_close() ?>
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="balasanModal" tabindex="-1" role="dialog" aria-labelledby="balasanLabel">
+<div class="modal fade text-dark" id="balasanModal" tabindex="-1" role="dialog" aria-labelledby="balasanLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="balasanLabel">Tulis Balasan</h5>
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-bold" id="balasanLabel">Tulis Balasan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <img class="img-fluid img-circle img-sm" src="<?= base_url('assets/img/siswa.png') ?>" alt="Alt Text">
+                <img class="img-fluid img-circle img-sm" src="<?= base_url($siswa->foto) ?>" alt="">
                 <div class="img-push">
                     <?= form_open('create', array('id' => 'balasan')) ?>
                     <input type="hidden" id="id-comment" name="id_comment" value="">
@@ -277,15 +264,15 @@
                         <input type="text" name="text" placeholder="Tulis balasan ...."
                             class="form-control form-control-sm" required>
                         <span class="input-group-append">
-                            <button type="submit" class="btn btn-success btn-sm">Balas</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Balas</button>
                         </span>
                     </div>
                     <?= form_close() ?>
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -577,7 +564,7 @@
             }
 
             card += '<div class="card">' +
-                '    <div class="card-body" id="parent' + v.id_post + '">' +
+                '    <div class="card-body text-dark" id="parent' + v.id_post + '">' +
                 '        <div class="media">' +
                 avatar +
                 '                <div class="media-body ml-3">' +
