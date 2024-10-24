@@ -1,6 +1,7 @@
+# Instalasi ZEDAPPS CBT
 ```shell
 @echo off
-title ZEDAPPS SCHOOL INSTALLER
+title ZEDAPPS CBT INSTALLER
 mode con: cols=70 lines=5
 
 if not exist "C:\Program Files\Git\git-bash.exe" (
