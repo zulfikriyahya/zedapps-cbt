@@ -28,7 +28,7 @@ start http://localhost
 
 if not exist "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\cbt.cmd" (
     echo @echo off >> "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\cbt.cmd"
-    echo title ZEDAPPS SCHOOL INSTALLER >> "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\cbt.cmd"
+    echo title ZEDAPPS CBT INSTALLER >> "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\cbt.cmd"
     echo mode con: cols=70 lines=5 >> "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\cbt.cmd"
     echo cd \zedapps-cbt >> "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\cbt.cmd"
     echo git init >> "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\cbt.cmd"
