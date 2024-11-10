@@ -1,3 +1,30 @@
+# ZEDAPPS CBT
+
+ZEDAPPS CBT adalah platform digital yang dirancang untuk mengelola dan mengadakan ujian berbasis komputer (Computer Based Test atau CBT). Aplikasi ini memungkinkan pengguna untuk menyiapkan modul soal, mengelola data peserta, mengatur pengaturan ujian, dan mengelola aplikasi secara keseluruhan.
+
+## Fitur Utama
+
+- **Penambahan Modul dan Soal**  
+  Pengguna dapat menambahkan modul, topik, dan soal secara online.
+
+- **Import Data Peserta dan Soal**  
+  Aplikasi memungkinkan pengguna untuk mengimpor data peserta dan soal dari file.
+
+- **Pengelolaan Kelas dan Peserta**  
+  Pengguna dapat mengelola kelas dan peserta yang akan mengikuti ujian.
+
+- **Pengaturan Ujian**  
+  Aplikasi menyediakan berbagai pengaturan untuk ujian, termasuk pengaturan waktu dan prioritas.
+
+- **Laporan dan Analisis**  
+  Pengguna dapat membuat laporan dan analisis statistik untuk mengevaluasi kinerja peserta dan mengidentifikasi area perbaikan.
+
+## Keuntungan
+
+Aplikasi ini dirancang untuk memudahkan proses ujian tanpa menggunakan kertas, sehingga lebih ramah lingkungan dan efisien. Aplikasi ini juga memanfaatkan teknologi rekayasa web untuk memberikan pengalaman pengguna yang lebih baik.
+
+Untuk informasi lebih lanjut tentang aplikasi ZEDAPPS CBT, kunjungi [situs resmi ZEDAPPS](https://github.com/zulfikriyahya/zedapps-cbt).
+
 # Instalasi ZEDAPPS CBT (Khusus OS Windows)
 
 Skrip ini akan menginstal dan mengonfigurasi aplikasi ZEDAPPS CBT di sistem Anda.
