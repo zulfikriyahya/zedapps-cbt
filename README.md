@@ -1,4 +1,3 @@
-```markdown
 # Instalasi ZEDAPPS CBT (Khusus OS Windows)
 
 Skrip ini akan menginstal dan mengonfigurasi aplikasi ZEDAPPS CBT di sistem Anda.
@@ -75,4 +74,3 @@ exit
 7. **Setup Startup Script**
 
     Skrip ini juga akan membuat skrip startup yang akan dijalankan setiap kali sistem dinyalakan untuk memastikan layanan ZEDAPPS CBT aktif.
-```
