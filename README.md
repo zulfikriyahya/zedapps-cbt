@@ -75,8 +75,4 @@ exit
 7. **Setup Startup Script**
 
     Skrip ini juga akan membuat skrip startup yang akan dijalankan setiap kali sistem dinyalakan untuk memastikan layanan ZEDAPPS CBT aktif.
-
-Jika ada bagian lain yang perlu diperbarui atau diubah, beri tahu saya ya! 😊
-
-Apakah ada hal lain yang bisa saya bantu?
 ```
