@@ -1,4 +1,8 @@
-# Instalasi ZEDAPPS CBT
+```markdown
+# Instalasi ZEDAPPS CBT (Khusus OS Windows)
+
+Skrip ini akan menginstal dan mengonfigurasi aplikasi ZEDAPPS CBT di sistem Anda.
+
 ```shell
 @echo off
 title ZEDAPPS CBT INSTALLER
@@ -40,4 +44,39 @@ if not exist "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Program
     echo Penyiapan aplikasi selesai, silakan tutup jendela ini.
 
 exit
+```
+
+## Langkah-langkah
+
+1. **Jalankan Skrip**
+
+    Jalankan skrip ini dengan izin administrator untuk memulai proses instalasi.
+
+2. **Instalasi Git**
+
+    Jika Git belum terinstal di sistem Anda, skrip ini akan menginstalnya secara otomatis menggunakan `winget`.
+
+3. **Clone Repository**
+
+    Skrip ini akan mengkloning repository ZEDAPPS CBT dari GitHub ke direktori `C:\zedapps-cbt`.
+
+4. **Mulai Layanan MySQL dan Apache**
+
+    Skrip ini akan memulai layanan MySQL dan Apache yang diperlukan untuk menjalankan aplikasi ZEDAPPS CBT.
+
+5. **Konfigurasi Git**
+
+    Skrip ini akan menginisialisasi dan menarik pembaruan dari repository Git.
+
+6. **Akses Aplikasi**
+
+    Setelah proses instalasi selesai, aplikasi akan dibuka di peramban web dengan mengakses `http://localhost`.
+
+7. **Setup Startup Script**
+
+    Skrip ini juga akan membuat skrip startup yang akan dijalankan setiap kali sistem dinyalakan untuk memastikan layanan ZEDAPPS CBT aktif.
+
+Jika ada bagian lain yang perlu diperbarui atau diubah, beri tahu saya ya! 😊
+
+Apakah ada hal lain yang bisa saya bantu?
 ```
