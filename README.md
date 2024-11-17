@@ -96,7 +96,7 @@ exit
 
 6. **Akses Aplikasi**
 
-    Setelah proses instalasi selesai, aplikasi akan dibuka di peramban web dengan mengakses `http://localhost`.
+    Setelah proses instalasi selesai, aplikasi akan dibuka di peramban web client dengan mengakses `http://<ip address komputer ini (server)>`.
 
 7. **Setup Startup Script**
 
